@@ -1,0 +1,1494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PGlove – A Browser With A New Generation</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: #0A0A0A;
+            color: #E5E7EB;
+            line-height: 1.7;
+            padding: 20px;
+            overflow-x: hidden;
+            cursor: default;
+        }
+
+        /* ===== CURSOR GLOW ===== */
+        #cursor-glow {
+            position: fixed;
+            width: 600px;
+            height: 600px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(255, 69, 0, 0.06) 0%, transparent 70%);
+            pointer-events: none;
+            z-index: 0;
+            transform: translate(-50%, -50%);
+            transition: opacity 0.3s ease;
+            will-change: transform;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== PARTICLES ===== */
+        #particles-canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* ===== TYPOGRAPHY ===== */
+        h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            letter-spacing: -0.03em;
+            line-height: 1.1;
+            background: linear-gradient(135deg, #FF4500, #FFD700);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 20px;
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            text-align: center;
+        }
+
+        h2 span.highlight {
+            color: #FF4500;
+            -webkit-text-fill-color: #FF4500;
+        }
+
+        h3 {
+            font-size: 1.3rem;
+            font-weight: 600;
+            letter-spacing: -0.01em;
+            margin-bottom: 8px;
+        }
+
+        .section-subhead {
+            text-align: center;
+            color: #9CA3AF;
+            font-size: 1.2rem;
+            max-width: 640px;
+            margin: 0 auto 60px;
+            font-weight: 400;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-block;
+            background: #FF4500;
+            color: #0A0A0A;
+            font-weight: 600;
+            padding: 14px 36px;
+            border-radius: 50px;
+            text-decoration: none;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border: none;
+            font-size: 1rem;
+            cursor: pointer;
+            box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn::after {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, transparent 60%);
+            transform: scale(0);
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .btn:hover::after {
+            transform: scale(1);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 69, 0, 0.4);
+            background: #FFD700;
+        }
+
+        .btn-outline {
+            background: transparent;
+            color: #E5E7EB;
+            border: 2px solid rgba(255, 69, 0, 0.4);
+            box-shadow: none;
+        }
+
+        .btn-outline:hover {
+            background: rgba(255, 69, 0, 0.1);
+            border-color: #FF4500;
+            color: #E5E7EB;
+            transform: translateY(-3px) scale(1.02);
+            box-shadow: 0 12px 40px rgba(255, 69, 0, 0.15);
+        }
+
+        .btn-download {
+            background: #10B981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+        }
+
+        .btn-download:hover {
+            background: #34D399;
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
+        }
+
+        .btn-small {
+            padding: 8px 20px;
+            font-size: 0.85rem;
+        }
+
+        /* ===== BADGE ===== */
+        .badge {
+            display: inline-block;
+            background: #FF4500;
+            color: #0A0A0A;
+            font-weight: 600;
+            font-size: 0.75rem;
+            padding: 6px 16px;
+            border-radius: 30px;
+            letter-spacing: 0.3px;
+            animation: pulse-badge 2.5s infinite;
+            text-transform: uppercase;
+        }
+
+        .badge.nighty {
+            background: #FF4500;
+            animation: pulse-badge 1.8s infinite, float-badge 3s ease-in-out infinite;
+        }
+        .badge.stable { background: #10B981; animation: pulse-badge 3s infinite; }
+        .badge.beta { background: #8B5CF6; animation: pulse-badge 2.5s infinite; }
+
+        @keyframes pulse-badge {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.7; transform: scale(0.96); }
+        }
+
+        @keyframes float-badge {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-6px); }
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 18px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .logo-wrapper {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 48px;
+            height: 48px;
+            display: inline-block;
+            animation: logo-rollout 2.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+            transform-origin: center;
+            position: relative;
+        }
+
+        .logo-icon img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        @keyframes logo-rollout {
+            0% { transform: rotate(-360deg) scale(0) skewX(20deg); opacity: 0; }
+            60% { transform: rotate(20deg) scale(1.15) skewX(-5deg); opacity: 1; }
+            100% { transform: rotate(0deg) scale(1) skewX(0deg); opacity: 1; }
+        }
+
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: -8px;
+            left: -8px;
+            right: -8px;
+            bottom: -8px;
+            border-radius: 16px;
+            border: 2px solid rgba(255, 69, 0, 0.2);
+            animation: logo-pulse-ring 3.5s ease-in-out infinite;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .logo-wrapper:hover .logo-icon::after { opacity: 1; }
+
+        @keyframes logo-pulse-ring {
+            0%, 100% { transform: scale(1); opacity: 0.2; }
+            50% { transform: scale(1.25); opacity: 0; }
+        }
+
+        .logo-text {
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #E5E7EB;
+            animation: logo-text-reveal 1.6s ease-out forwards;
+            opacity: 0;
+            transform: translateX(-20px);
+        }
+
+        @keyframes logo-text-reveal {
+            0% { opacity: 0; transform: translateX(-20px); }
+            100% { opacity: 1; transform: translateX(0); }
+        }
+
+        .logo-text span { color: #FF4500; }
+        .logo-sub {
+            font-size: 0.7rem;
+            color: #6B7280;
+            display: block;
+            font-weight: 400;
+            letter-spacing: 0.2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links a {
+            color: #9CA3AF;
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #FF4500;
+            transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .nav-links a:hover {
+            color: #E5E7EB;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* ===== VERSION SELECTOR ===== */
+        .version-selector {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin: 20px 0 30px;
+            flex-wrap: wrap;
+        }
+
+        .version-btn {
+            padding: 8px 22px;
+            border-radius: 30px;
+            border: 2px solid rgba(255, 255, 255, 0.08);
+            background: transparent;
+            color: #9CA3AF;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            font-size: 0.9rem;
+        }
+
+        .version-btn:hover {
+            border-color: rgba(255, 69, 0, 0.4);
+            color: #E5E7EB;
+            transform: translateY(-2px);
+        }
+
+        .version-btn.active {
+            border-color: #FF4500;
+            background: #FF4500;
+            color: #0A0A0A;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.25);
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            text-align: center;
+            padding: 50px 0 70px;
+            position: relative;
+        }
+
+        .hero .badge {
+            margin-bottom: 24px;
+        }
+
+        .typing-container {
+            display: inline-block;
+            margin: 12px 0;
+        }
+
+        .typing-text {
+            font-size: 1.3rem;
+            color: #9CA3AF;
+            border-right: 3px solid #FF4500;
+            padding-right: 6px;
+            animation: blink-caret 0.8s step-end infinite;
+            white-space: nowrap;
+            overflow: hidden;
+            font-weight: 400;
+        }
+
+        @keyframes blink-caret {
+            0%, 100% { border-color: #FF4500; }
+            50% { border-color: transparent; }
+        }
+
+        .hero .btn-group {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 16px;
+        }
+
+        .hero .warning-text {
+            font-size: 0.85rem;
+            color: #6B7280;
+            margin-top: 24px;
+        }
+
+        .hero .warning-text a {
+            color: #FF4500;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .hero .warning-text a:hover {
+            color: #FFD700;
+        }
+
+        /* ===== TEXT REVEAL ===== */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .reveal-text.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-text-delay-1 { transition-delay: 0.1s; }
+        .reveal-text-delay-2 { transition-delay: 0.2s; }
+        .reveal-text-delay-3 { transition-delay: 0.3s; }
+        .reveal-text-delay-4 { transition-delay: 0.4s; }
+
+        /* ===== DOWNLOAD SECTION ===== */
+        .download-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 32px;
+            padding: 60px 50px;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 69, 0, 0.15);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.5s ease;
+        }
+
+        .download-section:hover {
+            border-color: rgba(255, 69, 0, 0.4);
+        }
+
+        .download-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255, 69, 0, 0.03) 0%, transparent 70%);
+            animation: rotate-glow 30s linear infinite;
+        }
+
+        @keyframes rotate-glow {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 28px;
+            margin-top: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .download-card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 28px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .download-card:hover {
+            border-color: rgba(255, 215, 0, 0.2);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .download-card .method {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .download-card .desc {
+            color: #9CA3AF;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .download-card .code-block {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.8rem;
+            color: #FFD700;
+            word-break: break-all;
+            margin: 12px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .download-card .btn {
+            margin-top: 12px;
+            width: 100%;
+        }
+
+        .winget-badge {
+            display: inline-block;
+            background: #0078D4;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* ===== FEATURES CARDS ===== */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 32px;
+            margin: 60px 0;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 24px;
+            padding: 32px 28px;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            opacity: 0;
+            transform: translateY(50px);
+            backdrop-filter: blur(5px);
+            cursor: default;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:nth-child(1) { transition-delay: 0.05s; }
+        .card:nth-child(2) { transition-delay: 0.12s; }
+        .card:nth-child(3) { transition-delay: 0.19s; }
+        .card:nth-child(4) { transition-delay: 0.26s; }
+        .card:nth-child(5) { transition-delay: 0.33s; }
+        .card:nth-child(6) { transition-delay: 0.40s; }
+
+        .card.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .card:hover {
+            transform: translateY(-8px) scale(1.01);
+            border-color: rgba(255, 69, 0, 0.3);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.04);
+        }
+
+        .card .icon {
+            font-size: 2.8rem;
+            margin-bottom: 16px;
+            display: block;
+            animation: icon-float 4s ease-in-out infinite;
+        }
+
+        .card:nth-child(2) .icon { animation-delay: 0.4s; }
+        .card:nth-child(3) .icon { animation-delay: 0.8s; }
+        .card:nth-child(4) .icon { animation-delay: 1.2s; }
+        .card:nth-child(5) .icon { animation-delay: 1.6s; }
+        .card:nth-child(6) .icon { animation-delay: 2.0s; }
+
+        @keyframes icon-float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(4deg); }
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #E5E7EB;
+        }
+
+        .card p {
+            color: #9CA3AF;
+            font-size: 0.95rem;
+            font-weight: 400;
+        }
+
+        .card .tag {
+            display: inline-block;
+            background: rgba(255, 215, 0, 0.1);
+            color: #FFD700;
+            font-size: 0.7rem;
+            padding: 4px 14px;
+            border-radius: 30px;
+            margin-top: 16px;
+            font-weight: 500;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+        }
+
+        /* ===== SUPPORTED BY SECTION (NEW) ===== */
+        .support-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 32px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .support-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 30px;
+            margin-top: 35px;
+            align-items: center;
+        }
+
+        .support-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 20px 16px;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #E5E7EB;
+            min-height: 120px;
+        }
+
+        .support-item:hover {
+            transform: translateY(-6px) scale(1.03);
+            border-color: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .support-item img {
+            max-width: 70px;
+            max-height: 70px;
+            width: auto;
+            height: auto;
+            object-fit: contain;
+            margin-bottom: 10px;
+            filter: brightness(0.9) grayscale(0.1);
+            transition: filter 0.4s ease;
+        }
+
+        .support-item:hover img {
+            filter: brightness(1.1) grayscale(0);
+        }
+
+        .support-item .name {
+            font-size: 0.75rem;
+            font-weight: 500;
+            color: #9CA3AF;
+            transition: color 0.3s ease;
+        }
+
+        .support-item:hover .name {
+            color: #E5E7EB;
+        }
+
+        /* Special handling for text-only or missing logos */
+        .support-item .name-only {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #E5E7EB;
+        }
+
+        /* ===== CREDITS / TEAM ===== */
+        .credits-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 32px;
+            padding: 50px 40px;
+            margin: 40px 0 60px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+        }
+
+        .credits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 35px;
+        }
+
+        .credit-card {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 28px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: left;
+        }
+
+        .credit-card:hover {
+            border-color: rgba(255, 69, 0, 0.25);
+            transform: translateY(-6px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+            background: rgba(255, 255, 255, 0.03);
+        }
+
+        .credit-card .role {
+            color: #FF4500;
+            font-weight: 600;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .credit-card .name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 8px 0 4px;
+        }
+
+        .credit-card .desc {
+            color: #9CA3AF;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .credit-card .link {
+            display: inline-block;
+            margin-top: 12px;
+            color: #FFD700;
+            text-decoration: none;
+            font-size: 0.85rem;
+            border-bottom: 1px solid transparent;
+            transition: border-color 0.3s ease;
+        }
+
+        .credit-card .link:hover {
+            border-color: #FFD700;
+        }
+
+        /* ===== SERVER SECTION ===== */
+        .server-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 32px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .server-section:hover {
+            transform: translateY(-4px);
+            border-color: rgba(255, 69, 0, 0.15);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
+        }
+
+        .server-status-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .status-item {
+            background: rgba(0, 0, 0, 0.3);
+            padding: 22px 20px;
+            border-radius: 16px;
+            border-left: 4px solid #FF4500;
+            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .status-item:hover {
+            transform: scale(1.03);
+            border-left-color: #FFD700;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .status-item .label {
+            color: #6B7280;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            font-weight: 500;
+        }
+
+        .status-item .value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #FFD700;
+            margin-top: 4px;
+        }
+
+        .status-item .value.online {
+            color: #10B981;
+        }
+
+        /* ===== GITHUB CALLOUT ===== */
+        .github-callout {
+            text-align: center;
+            background: linear-gradient(145deg, rgba(255, 69, 0, 0.06), rgba(255, 215, 0, 0.03));
+            border-radius: 32px;
+            padding: 55px 50px;
+            margin: 60px 0;
+            border: 1px solid rgba(255, 69, 0, 0.1);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .github-callout:hover {
+            border-color: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 20px 60px rgba(255, 69, 0, 0.05);
+        }
+
+        .github-callout::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, #FF4500, transparent, #FFD700, transparent);
+            background-size: 400%;
+            border-radius: 32px;
+            z-index: -1;
+            animation: border-glow 8s linear infinite;
+            opacity: 0;
+            transition: opacity 0.6s ease;
+        }
+
+        .github-callout:hover::before {
+            opacity: 1;
+        }
+
+        @keyframes border-glow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .github-callout .btn {
+            margin-top: 20px;
+        }
+
+        /* ===== GLITCH OVERLAY ===== */
+        .glitch-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 9999;
+            background: rgba(255, 0, 0, 0.015);
+            opacity: 0;
+            transition: opacity 0.1s;
+        }
+
+        .glitch-overlay.active {
+            opacity: 1;
+            animation: glitch-flash 0.25s ease-out;
+        }
+
+        @keyframes glitch-flash {
+            0% { opacity: 0.7; transform: translateX(-8px) skewX(3deg); }
+            100% { opacity: 0; transform: translateX(8px) skewX(-3deg); }
+        }
+
+        /* ===== SCROLL PROGRESS BAR ===== */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF4500, #FFD700);
+            z-index: 999;
+            width: 0%;
+            transition: width 0.15s ease;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            text-align: center;
+            padding: 45px 0 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            margin-top: 40px;
+            color: #6B7280;
+            font-size: 0.9rem;
+            font-weight: 400;
+        }
+
+        .footer a {
+            color: #FF4500;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer a:hover {
+            color: #FFD700;
+        }
+
+        .footer .email {
+            color: #FFD700;
+            font-family: 'Courier New', monospace;
+            font-weight: 500;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            h1 { font-size: 2.6rem; }
+            h2 { font-size: 2rem; }
+            .navbar { flex-direction: column; gap: 16px; }
+            .nav-links { justify-content: center; gap: 20px; }
+            .server-section,
+            .credits-section,
+            .download-section,
+            .support-section { padding: 30px 20px; }
+            .github-callout { padding: 30px 20px; }
+            .typing-text { font-size: 1rem; white-space: normal; }
+            .logo-icon { width: 40px; height: 40px; }
+            .logo-text { font-size: 1.4rem; }
+            .credits-grid,
+            .download-grid,
+            .support-grid { grid-template-columns: 1fr 1fr; }
+            .cards-grid { grid-template-columns: 1fr; }
+            #cursor-glow { display: none; }
+        }
+
+        @media (max-width: 480px) {
+            .support-grid { grid-template-columns: 1fr 1fr; }
+            .support-item { min-height: 100px; padding: 15px; }
+            .support-item img { max-width: 50px; max-height: 50px; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== CURSOR GLOW ===== -->
+    <div id="cursor-glow"></div>
+
+    <!-- ===== PROGRESS BAR ===== -->
+    <div class="progress-bar" id="progressBar"></div>
+
+    <!-- ===== GLITCH OVERLAY ===== -->
+    <div class="glitch-overlay" id="glitchOverlay"></div>
+
+    <!-- ===== PARTICLES ===== -->
+    <canvas id="particles-canvas"></canvas>
+
+    <div class="container">
+
+        <!-- ===== NAVIGATION ===== -->
+        <nav class="navbar">
+            <a href="#" class="logo-wrapper">
+                <span class="logo-icon">
+                    <img src="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67" alt="PGlove Logo">
+                </span>
+                <span class="logo-text">
+                    P<span>Glove</span>
+                    <span class="logo-sub">by ProGroupco & Bro Gang</span>
+                </span>
+            </a>
+            <div class="nav-links">
+                <a href="#features">Features</a>
+                <a href="#download">Download</a>
+                <a href="#support">Support</a>
+                <a href="#credits">Team</a>
+                <a href="#server">BroGangMC</a>
+                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank">GitHub</a>
+            </div>
+        </nav>
+
+        <!-- ===== HERO ===== -->
+        <section class="hero">
+            <span class="badge nighty">⚠️ Nighty Build – Expect Chaos</span>
+            <h1>A Browser With A New Generation</h1>
+            <div class="typing-container">
+                <span class="typing-text" id="typingText"></span>
+            </div>
+
+            <div class="version-selector" id="versions">
+                <button class="version-btn active" data-version="nighty">🌙 Nighty (Unstable)</button>
+                <button class="version-btn" data-version="beta">🧪 Pre-Beta</button>
+                <button class="version-btn" data-version="stable">✅ Stable (Soon)</button>
+            </div>
+
+            <div class="btn-group">
+                <a href="#download" class="btn btn-download">⬇️ Download PGlove</a>
+                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" class="btn btn-outline">🛠️ View on GitHub</a>
+            </div>
+            <p class="warning-text">
+                Version 1.0.2-Nighty • Updated 3 hours ago •
+                <a href="https://github.com/microsoft/winget-pkgs/pull/421311/changes/fa4a774af1a23d972316a0ef4860e93ec086a95a" target="_blank">Winget PR #421311</a>
+            </p>
+        </section>
+
+        <!-- ===== DOWNLOAD SECTION ===== -->
+        <div class="download-section reveal-text" id="download">
+            <span class="badge" style="background: #10B981;">⬇️ Download PGlove</span>
+            <h2 style="margin-top: 20px;">Get <span class="highlight">PGlove</span> Today</h2>
+            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
+                Version 1.0.2-Nighty & Pre-Beta • Windows (x64) • 8.7 MB
+            </p>
+
+            <div class="download-grid">
+                <div class="download-card">
+                    <div class="method">📦 Direct EXE</div>
+                    <div class="desc">Standalone installer (recommended)</div>
+                    <div class="code-block">PGlove-Installers.exe (8.7 MB)</div>
+                    <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" class="btn btn-download" download>⬇️ Download from Archive</a>
+                    <a href="https://progroupco.itch.io/pglove" target="_blank" class="btn btn-small" style="margin-top: 8px; background: #8B5CF6;">🎮 Also on Itch.io</a>
+                </div>
+
+                <div class="download-card">
+                    <div class="method">⚡ Winget</div>
+                    <div class="desc">Windows Package Manager (CLI)</div>
+                    <span class="winget-badge">winget</span>
+                    <div class="code-block">winget install TechAditya.PGlove</div>
+                    <div style="font-size:0.7rem; color:#6B7280; margin:10px 0;">
+                        Silent: /s • SilentWithProgress: /SILENT
+                    </div>
+                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/changes/fa4a774af1a23d972316a0ef4860e93ec086a95a" target="_blank" class="btn btn-small" style="background: #0078D4;">🔍 View Winget PR</a>
+                </div>
+
+                <div class="download-card">
+                    <div class="method">📋 Package Info</div>
+                    <div class="desc">Manifest details</div>
+                    <div style="text-align: left; font-size:0.8rem; color:#9CA3AF;">
+                        <strong>Identifier:</strong> TechAditya.PGlove<br>
+                        <strong>Version:</strong> 1.0.2-Nighty & Pre Beta<br>
+                        <strong>Arch:</strong> x64<br>
+                        <strong>Type:</strong> EXE<br>
+                        <strong>SHA256:</strong>
+                        <span style="font-size:0.6rem; word-break:break-all; display:block; margin-top:4px; color:#6B7280;">
+                            AC592412FC86431D6F3095D10F3B83F9E5EC6B984C3DB9D0DFD4D9F9BF350277
+                        </span>
+                    </div>
+                    <a href="https://progroupco.itch.io/pglove" target="_blank" class="btn btn-small" style="margin-top:12px; background: #FF4500;">🎮 Itch.io Page</a>
+                </div>
+            </div>
+
+            <p style="margin-top: 28px; color: #6B7280; font-size:0.85rem;">
+                💾 <strong>Mirror:</strong> <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" style="color:#FFD700;">Internet Archive</a> •
+                📧 <strong>Support:</strong> <a href="mailto:pglove@atomicmail.io" style="color:#FFD700;">pglove@atomicmail.io</a>
+            </p>
+        </div>
+
+        <!-- ===== FEATURES ===== -->
+        <h2 class="reveal-text reveal-text-delay-1">Why <span class="highlight">PGlove</span>?</h2>
+        <p class="section-subhead reveal-text reveal-text-delay-2">Built for the brave. Breaks beautifully.</p>
+
+        <div class="cards-grid" id="features">
+            <div class="card">
+                <span class="icon">⚡</span>
+                <h3>Daily Updates</h3>
+                <p>We push code every 12-24 hours. You get new features before we even test them.</p>
+                <span class="tag">Experimental</span>
+            </div>
+            <div class="card">
+                <span class="icon">🐞</span>
+                <h3>Built-in Bug Reporter</h3>
+                <p>One-click to file an issue on GitHub. You <em>will</em> find bugs.</p>
+                <span class="tag">Report & Fix</span>
+            </div>
+            <div class="card">
+                <span class="icon">🔬</span>
+                <h3>Experimental APIs</h3>
+                <p>Try WebGPU, new CSS features, and Chrome flags months before stable.</p>
+                <span class="tag">Bleeding Edge</span>
+            </div>
+            <div class="card">
+                <span class="icon">💥</span>
+                <h3>Crash Recovery</h3>
+                <p>Recovers your tabs 80% of the time. The other 20%? Adventure.</p>
+                <span class="tag">Mostly Works</span>
+            </div>
+            <div class="card">
+                <span class="icon">🧪</span>
+                <h3>A/B Test Features</h3>
+                <p>Half get Feature X, half get Y. You're part of the experiment.</p>
+                <span class="tag">You're a Tester</span>
+            </div>
+            <div class="card">
+                <span class="icon">🌙</span>
+                <h3>Auto Dark Mode</h3>
+                <p>Even websites without dark mode get forced into it. Eyes will thank you.</p>
+                <span class="tag">Always On</span>
+            </div>
+        </div>
+
+        <!-- ===== SUPPORTED BY SECTION (NEW) ===== -->
+        <div class="support-section reveal-text" id="support">
+            <span class="badge" style="background: #FFD700; color: #0A0A0A;">🤝 Supported By</span>
+            <h2 style="margin-top: 20px;">Driven by the <span class="highlight">Best</span> in Tech</h2>
+            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
+                PGlove is built and maintained using tools and services from these amazing companies.
+            </p>
+
+            <div class="support-grid">
+                <!-- 1. Cloudflare Workers -->
+                <a href="https://www.cloudflare.com/products/workers/" target="_blank" class="support-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiSs7Dt3UesAUyL30xDYKlVrGjMJ8GzMEY8GgaBNH31g&s=10" alt="Cloudflare Workers" loading="lazy">
+                    <span class="name">Cloudflare Workers</span>
+                </a>
+
+                <!-- 2. Google Fonts -->
+                <a href="https://fonts.google.com/" target="_blank" class="support-item">
+                    <img src="https://icon2.cleanpng.com/lnd/20241121/sc/bd7ce03eb1225083f951fc01171835.webp" alt="Google Fonts" loading="lazy">
+                    <span class="name">Google Fonts</span>
+                </a>
+
+                <!-- 3. GitHub -->
+                <a href="https://www.github.com/" target="_blank" class="support-item">
+                    <img src="https://icon2.cleanpng.com/20181207/bhh/kisspng-scalable-vector-graphics-github-computer-icons-com-5c0ac2894a1370.0378836315442090333034.jpg" alt="GitHub" loading="lazy">
+                    <span class="name">GitHub</span>
+                </a>
+
+                <!-- 4. Internet Archive -->
+                <a href="https://archive.org/" target="_blank" class="support-item">
+                    <img src="https://icon2.cleanpng.com/20180414/cpe/kisspng-internet-archive-web-archiving-library-library-5ad1ac9173f669.199070121523690641475.jpg" alt="Internet Archive" loading="lazy">
+                    <span class="name">Internet Archive</span>
+                </a>
+
+                <!-- 5. Deepseek -->
+                <a href="https://chat.deepseek.com/" target="_blank" class="support-item">
+                    <img src="https://icon2.cleanpng.com/lnd/20250227/gc/3d4d03b9c16ed9db460c58685ab5e2.webp" alt="Deepseek" loading="lazy">
+                    <span class="name">Deepseek</span>
+                </a>
+
+                <!-- 6. Tiny 11 (Internet Archive) -->
+                <a href="https://archive.org/details/tiny-11-NTDEV" target="_blank" class="support-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjFlKUjDn6eFxvtrz-1hotgeOofPSTZPU8_JHk4rYTg&s=10" alt="Tiny 11" loading="lazy">
+                    <span class="name">Tiny 11</span>
+                </a>
+
+                <!-- 7. InfinityFree -->
+                <a href="https://dash.infinityfree.com/" target="_blank" class="support-item">
+                    <img src="https://vpassets.infinityfree.net/welcome2024/logo-header.png" alt="InfinityFree" loading="lazy">
+                    <span class="name">InfinityFree</span>
+                </a>
+
+                <!-- 8. Microsoft Winget (text-only as logo not available) -->
+                <a href="https://github.com/microsoft/winget-pkgs/pull/421311/changes/fa4a774af1a23d972316a0ef4860e93ec086a95a" target="_blank" class="support-item">
+                    <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🪟</span>
+                    <span class="name">Microsoft Winget</span>
+                </a>
+            </div>
+            <p style="color: #6B7280; font-size: 0.8rem; margin-top: 30px;">
+                Logos are property of their respective owners. We're grateful for their support!
+            </p>
+        </div>
+
+        <!-- ===== CREDITS ===== -->
+        <div class="credits-section reveal-text" id="credits">
+            <span class="badge" style="background: #FFD700; color: #0A0A0A;">🌟 The Team Behind PGlove</span>
+            <h2 style="margin-top: 20px;">Made with 💥 by <span class="highlight">Bro Gang</span></h2>
+            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto 10px; font-weight: 400;">
+                A group of passionate developers, gamers, and tech enthusiasts from India.
+            </p>
+
+            <div class="credits-grid">
+                <div class="credit-card">
+                    <div class="role">🏢 Organization</div>
+                    <div class="name">ProGroupco</div>
+                    <div class="desc">The parent group behind PGlove and other projects.</div>
+                    <a href="https://www.github.com/ProGroupco" target="_blank" class="link">🔗 GitHub (404?) →</a>
+                </div>
+
+                <div class="credit-card">
+                    <div class="role">👨‍💻 Lead Developer</div>
+                    <div class="name">Aditya (TechAdityaBRO)</div>
+                    <div class="desc">Student from India • Creator of PGlove • Full-stack dev</div>
+                    <a href="https://github.com/TechAdityaBRO/" target="_blank" class="link">🔗 github.com/TechAdityaBRO</a>
+                </div>
+
+                <div class="credit-card">
+                    <div class="role">🤝 Community</div>
+                    <div class="name">Bro Gang</div>
+                    <div class="desc">The squad • Testers • Idea generators • Support system</div>
+                    <a href="https://brogang.mooo.com/" target="_blank" class="link">🔗 brogang.mooo.com</a>
+                </div>
+            </div>
+
+            <p style="color: #6B7280; font-size: 0.85rem; margin-top: 28px; font-weight: 400;">
+                ⚠️ <strong>ProGroupco's GitHub</strong> returns a 404, but the team lives on!
+                Follow <a href="https://github.com/TechAdityaBRO/" style="color: #FF4500;">TechAdityaBRO</a> for active development.
+            </p>
+        </div>
+
+        <!-- ===== SERVER ===== -->
+        <div class="server-section reveal-text" id="server">
+            <span class="badge stable">🟢 Server Online</span>
+            <h2 style="margin-top: 20px;">⚔️ BroGangMC <span class="highlight">Server</span></h2>
+            <p style="color: #9CA3AF; font-weight: 400;">Survival • Community • Fun • 24/7 Online</p>
+
+            <div class="server-status-grid">
+                <div class="status-item">
+                    <div class="label">Java Edition</div>
+                    <div class="value">brogangmc.minefort.com</div>
+                    <div style="color: #6B7280; font-size:0.8rem;">Port: 25565</div>
+                </div>
+                <div class="status-item">
+                    <div class="label">Bedrock Edition</div>
+                    <div class="value">brogangmc.minefort.com</div>
+                    <div style="color: #6B7280; font-size:0.8rem;">Port: 19132</div>
+                </div>
+                <div class="status-item">
+                    <div class="label">Version</div>
+                    <div class="value">1.26.1.2</div>
+                    <div style="color: #6B7280; font-size:0.8rem;">Spigot</div>
+                </div>
+                <div class="status-item">
+                    <div class="label">Players</div>
+                    <div class="value online">0 / 100</div>
+                    <div style="color: #6B7280; font-size:0.8rem;">Next Event: Saturday, 8 PM EST</div>
+                </div>
+            </div>
+            <p style="margin-top: 30px;">
+                <a href="#" class="btn">▶️ Join the BroGang</a>
+            </p>
+        </div>
+
+        <!-- ===== GITHUB CALLOUT ===== -->
+        <div class="github-callout reveal-text">
+            <span style="font-size: 3rem; display: block; margin-bottom: 8px;">🛠️</span>
+            <h2 style="margin-bottom: 12px;">Help Us Build <span class="highlight">PGlove</span></h2>
+            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
+                PGlove is open-source and lives on GitHub. Report bugs, request features, or submit pull requests – we accept all chaos.
+            </p>
+            <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" class="btn">🚀 Visit the Repo</a>
+            <div style="margin-top: 20px; color: #6B7280; font-size: 0.9rem; font-weight: 400;">
+                <span>⭐ Open Issues: 47</span> • <span>🔄 Pull Requests: 12</span> • <span>📦 Commits: 89</span>
+            </div>
+        </div>
+
+        <!-- ===== FOOTER ===== -->
+        <div class="footer">
+            <p>
+                Built with 💥 by <a href="https://github.com/TechAdityaBRO/" target="_blank">Aditya (TechAdityaBRO)</a> •
+                <a href="https://www.github.com/ProGroupco" target="_blank">ProGroupco</a> •
+                <a href="https://brogang.mooo.com/" target="_blank">Bro Gang</a>
+            </p>
+            <p style="margin-top: 6px; font-size: 0.8rem;">
+                PGlove – A Browser With A New Generation • Made in India 🇮🇳
+            </p>
+            <p style="margin-top: 6px; font-size: 0.8rem;">
+                📧 <span class="email">pglove@atomicmail.io</span> •
+                <a href="https://progroupco.itch.io/pglove" target="_blank">Itch.io</a> •
+                <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" target="_blank">Archive Mirror</a>
+            </p>
+        </div>
+
+    </div>
+
+    <script>
+        // ============================================================
+        // 1. CURSOR GLOW
+        // ============================================================
+        const glow = document.getElementById('cursor-glow');
+
+        document.addEventListener('mousemove', (e) => {
+            const x = e.clientX;
+            const y = e.clientY;
+            glow.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
+        });
+
+        document.addEventListener('mouseleave', () => {
+            glow.style.opacity = '0';
+        });
+
+        document.addEventListener('mouseenter', () => {
+            glow.style.opacity = '1';
+        });
+
+        // ============================================================
+        // 2. TYPING TEXT
+        // ============================================================
+        const phrases = [
+            "The browser that breaks so you don't have to.",
+            "Experimental. Daily updates. Built for the fearless.",
+            "More unstable than your ex.",
+            "Push code. Break things. Repeat.",
+            "Warning: May contain bugs.",
+            "A Browser With A New Generation.",
+            "Made in India with 💥 by Bro Gang.",
+            "Version 1.0.2-Nighty • Winget ready!"
+        ];
+
+        let phraseIndex = 0,
+            charIndex = 0,
+            isDeleting = false;
+        const typingElement = document.getElementById('typingText');
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            if (isDeleting) {
+                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+            } else {
+                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+            }
+            let speed = isDeleting ? 40 : 80;
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                speed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                speed = 500;
+            }
+            setTimeout(typeEffect, speed);
+        }
+        typeEffect();
+
+        // ============================================================
+        // 3. VERSION SELECTOR
+        // ============================================================
+        const versionBtns = document.querySelectorAll('.version-btn');
+        const heroBadge = document.querySelector('.hero .badge');
+
+        versionBtns.forEach(btn => {
+            btn.addEventListener('click', function() {
+                versionBtns.forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const version = this.dataset.version;
+                const badge = heroBadge;
+                if (version === 'nighty') {
+                    badge.textContent = '⚠️ Nighty Build – Expect Chaos';
+                    badge.className = 'badge nighty';
+                } else if (version === 'beta') {
+                    badge.textContent = '🧪 Pre-Beta – Almost There';
+                    badge.className = 'badge beta';
+                } else if (version === 'stable') {
+                    badge.textContent = '✅ Stable – Coming Soon';
+                    badge.className = 'badge stable';
+                }
+                triggerGlitch();
+            });
+        });
+
+        // ============================================================
+        // 4. SCROLL PROGRESS
+        // ============================================================
+        window.addEventListener('scroll', () => {
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            document.getElementById('progressBar').style.width = (scrollTop / scrollHeight * 100) + '%';
+        });
+
+        // ============================================================
+        // 5. GLITCH
+        // ============================================================
+        const glitchOverlay = document.getElementById('glitchOverlay');
+
+        function triggerGlitch() {
+            glitchOverlay.classList.add('active');
+            setTimeout(() => glitchOverlay.classList.remove('active'), 250);
+        }
+
+        setInterval(() => {
+            if (Math.random() < 0.35) triggerGlitch();
+        }, 10000);
+
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('click', () => {
+                triggerGlitch();
+                card.style.transform = 'translateX(8px) rotate(1.5deg)';
+                setTimeout(() => card.style.transform = '', 250);
+            });
+        });
+
+        // ============================================================
+        // 6. PARTICLES
+        // ============================================================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        let particles = [];
+
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 0.5;
+                this.speedX = (Math.random() - 0.5) * 0.4;
+                this.speedY = (Math.random() - 0.5) * 0.4;
+                this.opacity = Math.random() * 0.4 + 0.05;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(255, 69, 0, ${this.opacity})`;
+                ctx.fill();
+            }
+        }
+
+        for (let i = 0; i < 60; i++) particles.push(new Particle());
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => { p.update();
+                p.draw(); });
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+                    if (distance < 150) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(255, 69, 0, ${0.05 * (1 - distance/150)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(animateParticles);
+        }
+        animateParticles();
+
+        // ============================================================
+        // 7. SCROLL REVEAL
+        // ============================================================
+        const revealElements = document.querySelectorAll('.reveal-text');
+        const cards = document.querySelectorAll('.card');
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        revealElements.forEach(el => observer.observe(el));
+
+        cards.forEach(card => {
+            observer.observe(card);
+            const rect = card.getBoundingClientRect();
+            if (rect.top < (window.innerHeight || document.documentElement.clientHeight) - 80) {
+                card.classList.add('visible');
+            }
+        });
+
+        // ============================================================
+        // 8. SMOOTH ANCHOR SCROLL
+        // ============================================================
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    e.preventDefault();
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+        console.log('🧤 PGlove Browser – v1.0.2-Nighty');
+        console.log('📧 Email: pglove@atomicmail.io');
+        console.log('📦 Winget: winget install TechAditya.PGlove');
+        console.log('🤝 Supported by: Cloudflare, Google, GitHub, Internet Archive, Deepseek, Tiny 11, InfinityFree, Winget');
+    </script>
+
+</body>
+</html>
