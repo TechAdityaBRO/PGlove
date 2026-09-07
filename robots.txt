@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+
+# Sitemap location
+Sitemap: https://pglove.jo3.org/sitemap.xml
+
+# Crawl delay (helps with server load)
+Crawl-delay: 10
+
+# Host (optional but helpful for some bots)
+Host: pglove.jo3.org
+
+# Disallow common private paths (if any)
+# Disallow: /private/
+# Disallow: /temp/
