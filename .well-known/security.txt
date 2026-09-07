@@ -1,0 +1,11 @@
+# ============================================
+# PGlove Security Policy
+# ============================================
+
+Contact: mailto:pglove@atomicmail.io
+Contact: https://github.com/TechAdityaBRO/PGlove/issues
+Encryption: https://github.com/TechAdityaBRO/PGlove/security
+Preferred-Languages: en, hi
+Canonical: https://pglove.jo3.org/.well-known/security.txt
+Policy: https://github.com/TechAdityaBRO/PGlove/security/policy
+Hiring: https://github.com/TechAdityaBRO/PGlove
