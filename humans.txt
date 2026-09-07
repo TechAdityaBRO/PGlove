@@ -1,0 +1,38 @@
+# ============================================
+# PGlove Browser – Humans.txt
+# ============================================
+
+/* TEAM */
+
+Lead Developer: Aditya (TechAdityaBRO)
+  GitHub: https://github.com/TechAdityaBRO/
+  Location: India
+
+Organization: ProGroupco
+  GitHub: https://github.com/ProGroupco
+
+Community: Bro Gang
+  Website: https://brogang.mooo.com/
+
+/* TECHNOLOGY */
+
+Browser Engine: Custom
+Hosting: GitHub Pages + DnsExit (custom domain)
+Version Control: GitHub & Codeberg
+Package Managers: NPM, NuGet, Winget
+
+/* THANKS */
+
+Cloudflare Workers
+Google Fonts
+Internet Archive
+Deepseek
+DNSExit
+Microsoft Winget
+Codeberg
+
+/* LAST UPDATED */
+
+2026-08-30
+
+/* THIS IS A BROWSER WITH A NEW GENERATION */
