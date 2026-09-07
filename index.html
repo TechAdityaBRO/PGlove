@@ -5,15 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>PGlove – Experimental Browser for Developers | Nighty Build</title>
-    <meta name="description" content="Download PGlove, the experimental browser built for developers. Try bleeding-edge web features, daily updates, and auto dark mode. Available via NPM, NuGet, and Winget.">
-    <meta name="keywords" content="PGlove, experimental browser, developer browser, nightly build, web browser, open source browser, TechAdityaBRO, Bro Gang, Codeberg">
+    <meta name="description" content="Download PGlove, the experimental browser built for developers. Roadmap: Pokemon, Minecraft, GTA themes coming soon. Available via NPM, NuGet, Winget.">
+    <meta name="keywords" content="PGlove, experimental browser, developer browser, nightly build, web browser, open source browser, TechAdityaBRO, Bro Gang, Codeberg, Bitcoin donation, roadmap">
     <meta name="author" content="TechAdityaBRO & Bro Gang">
     <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
     <link rel="canonical" href="https://pglove.jo3.org/">
 
     <!-- ===== OPEN GRAPH ===== -->
     <meta property="og:title" content="PGlove – Experimental Browser for Developers">
-    <meta property="og:description" content="Download the PGlove experimental browser. Bleeding-edge features, daily updates, auto dark mode. Available via NPM, NuGet, Winget, and Codeberg.">
+    <meta property="og:description" content="Download PGlove. Roadmap: Pokemon, Minecraft, GTA themes coming soon. Support us with Bitcoin donations.">
     <meta property="og:url" content="https://pglove.jo3.org/">
     <meta property="og:type" content="website">
     <meta property="og:image" content="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67">
@@ -24,7 +24,7 @@
     <!-- ===== TWITTER CARD ===== -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="PGlove – Experimental Browser for Developers">
-    <meta name="twitter:description" content="Download the PGlove experimental browser. Bleeding-edge features, daily updates, auto dark mode.">
+    <meta name="twitter:description" content="Roadmap: Pokemon, Minecraft, GTA themes coming soon. Download PGlove today.">
     <meta name="twitter:image" content="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67">
     <meta name="twitter:site" content="@ProGroupBroGang">
 
@@ -36,7 +36,7 @@
       "name": "PGlove",
       "applicationCategory": "BrowserApplication",
       "operatingSystem": "Windows",
-      "description": "A browser with a new generation. Experimental features, daily updates, and auto dark mode for developers.",
+      "description": "A browser with a new generation. Experimental features, daily updates, auto dark mode.",
       "offers": {
         "@type": "Offer",
         "price": "0",
@@ -264,6 +264,18 @@
             box-shadow: 0 12px 40px rgba(33, 133, 208, 0.5);
         }
 
+        .btn-donate {
+            background: #F7931A;
+            color: #0A0A0A;
+            box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
+        }
+
+        .btn-donate:hover {
+            background: #FFB347;
+            color: #0A0A0A;
+            box-shadow: 0 12px 40px rgba(247, 147, 26, 0.5);
+        }
+
         /* ===== BADGE ===== */
         .badge {
             display: inline-block;
@@ -286,6 +298,8 @@
         .badge.beta { background: #8B5CF6; animation: pulse-badge 2.5s infinite; }
         .badge.nuget { background: #004880; color: white; animation: pulse-badge 3.5s infinite; }
         .badge.codeberg { background: #2185D0; color: white; animation: pulse-badge 3.5s infinite; }
+        .badge.donate { background: #F7931A; color: #0A0A0A; animation: pulse-badge 2s infinite, float-badge 3s ease-in-out infinite; }
+        .badge.roadmap { background: #8B5CF6; color: white; animation: pulse-badge 2.5s infinite, float-badge 4s ease-in-out infinite; }
 
         @keyframes pulse-badge {
             0%, 100% { opacity: 1; transform: scale(1); }
@@ -655,7 +669,7 @@
             margin-bottom: 10px;
         }
 
-        /* ===== CODEBERG REPO CARD (NEW) ===== */
+        /* ===== CODEBERG REPO SECTION ===== */
         .repo-section {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 32px;
@@ -714,6 +728,246 @@
             word-break: break-all;
             margin: 12px 0;
             border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* ===== ROADMAP SECTION (NEW) ===== */
+        .roadmap-section {
+            background: linear-gradient(145deg, rgba(139, 92, 246, 0.08), rgba(255, 69, 0, 0.04));
+            border-radius: 32px;
+            padding: 60px 50px;
+            margin: 60px 0;
+            border: 2px solid rgba(139, 92, 246, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .roadmap-section:hover {
+            border-color: rgba(139, 92, 246, 0.4);
+            box-shadow: 0 0 60px rgba(139, 92, 246, 0.05);
+        }
+
+        .roadmap-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(139, 92, 246, 0.03) 0%, transparent 70%);
+            animation: rotate-glow 30s linear infinite;
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .roadmap-card {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 28px 22px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .roadmap-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 3px;
+            background: linear-gradient(90deg, #FF4500, #FFD700, #8B5CF6);
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+
+        .roadmap-card:hover::before {
+            opacity: 1;
+        }
+
+        .roadmap-card:hover {
+            border-color: rgba(139, 92, 246, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.1);
+        }
+
+        .roadmap-card .version {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: #FFD700;
+            margin-bottom: 4px;
+        }
+
+        .roadmap-card .theme {
+            font-size: 2.5rem;
+            display: block;
+            margin: 8px 0;
+        }
+
+        .roadmap-card .title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .roadmap-card .desc {
+            color: #9CA3AF;
+            font-size: 0.85rem;
+            font-weight: 400;
+        }
+
+        .roadmap-card .status {
+            display: inline-block;
+            margin-top: 12px;
+            padding: 4px 16px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .status-current {
+            background: #10B981;
+            color: #0A0A0A;
+        }
+
+        .status-upcoming {
+            background: #8B5CF6;
+            color: white;
+        }
+
+        .status-planning {
+            background: #1F2937;
+            color: #9CA3AF;
+        }
+
+        /* ===== DONATION SECTION ===== */
+        .donation-section {
+            background: linear-gradient(145deg, rgba(247, 147, 26, 0.08), rgba(255, 69, 0, 0.04));
+            border-radius: 32px;
+            padding: 60px 50px;
+            margin: 60px 0;
+            border: 2px solid rgba(247, 147, 26, 0.2);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            transition: border-color 0.5s ease, box-shadow 0.5s ease;
+        }
+
+        .donation-section:hover {
+            border-color: rgba(247, 147, 26, 0.4);
+            box-shadow: 0 0 60px rgba(247, 147, 26, 0.05);
+        }
+
+        .donation-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(247, 147, 26, 0.03) 0%, transparent 70%);
+            animation: rotate-glow 30s linear infinite;
+        }
+
+        .donation-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 35px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .donation-card {
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(10px);
+            padding: 30px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 215, 0, 0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .donation-card:hover {
+            border-color: rgba(247, 147, 26, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(247, 147, 26, 0.1);
+        }
+
+        .donation-card .qr-code {
+            width: 180px;
+            height: 180px;
+            border-radius: 16px;
+            background: white;
+            padding: 8px;
+            margin-bottom: 16px;
+            transition: transform 0.4s ease;
+        }
+
+        .donation-card .qr-code img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+
+        .donation-card:hover .qr-code {
+            transform: scale(1.03);
+        }
+
+        .donation-card .address-label {
+            font-size: 0.75rem;
+            color: #F7931A;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .donation-card .address {
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #E5E7EB;
+            background: rgba(0, 0, 0, 0.4);
+            padding: 8px 12px;
+            border-radius: 8px;
+            word-break: break-all;
+            max-width: 100%;
+            margin: 8px 0 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .donation-card .btn {
+            width: 100%;
+            margin-top: 4px;
+        }
+
+        .donation-note {
+            margin-top: 25px;
+            color: #9CA3AF;
+            font-size: 0.85rem;
+        }
+
+        .donation-note a {
+            color: #F7931A;
+            text-decoration: none;
+        }
+
+        .donation-note a:hover {
+            color: #FFD700;
         }
 
         /* ===== FEATURES CARDS ===== */
@@ -1018,7 +1272,7 @@
             color: #10B981;
         }
 
-        /* ===== GITHUB CALLOUT ===== */
+        /* ===== GITHUB / CODEBERG CALLOUT ===== */
         .github-callout {
             text-align: center;
             background: linear-gradient(145deg, rgba(255, 69, 0, 0.06), rgba(255, 215, 0, 0.03));
@@ -1139,14 +1393,18 @@
             .credits-section,
             .download-section,
             .support-section,
-            .repo-section { padding: 30px 20px; }
+            .repo-section,
+            .donation-section,
+            .roadmap-section { padding: 30px 20px; }
             .github-callout { padding: 30px 20px; }
             .typing-text { font-size: 1rem; white-space: normal; }
             .logo-icon { width: 40px; height: 40px; }
             .logo-text { font-size: 1.4rem; }
             .credits-grid,
             .download-grid,
-            .repo-grid { grid-template-columns: 1fr; }
+            .repo-grid,
+            .donation-grid,
+            .roadmap-grid { grid-template-columns: 1fr; }
             .cards-grid { grid-template-columns: 1fr; }
             #cursor-glow { display: none; }
 
@@ -1165,6 +1423,11 @@
             }
             .support-track-clone {
                 gap: 20px;
+            }
+
+            .donation-card .qr-code {
+                width: 150px;
+                height: 150px;
             }
         }
 
@@ -1187,6 +1450,11 @@
             }
             .support-track-clone {
                 gap: 15px;
+            }
+
+            .donation-card .qr-code {
+                width: 130px;
+                height: 130px;
             }
         }
     </style>
@@ -1221,7 +1489,9 @@
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#download">Download</a>
+                <a href="#roadmap">Roadmap</a>
                 <a href="#codeberg">Codeberg</a>
+                <a href="#donate">Donate</a>
                 <a href="#support">Support</a>
                 <a href="#credits">Team</a>
                 <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" rel="noopener">GitHub</a>
@@ -1326,7 +1596,74 @@
             </p>
         </section>
 
-        <!-- ===== CODEBERG REPOSITORY SECTION (NEW) ===== -->
+        <!-- ========================================================== -->
+        <!-- ===== ROADMAP SECTION (NEW) ===== -->
+        <!-- ========================================================== -->
+        <section class="roadmap-section reveal-text" id="roadmap">
+            <span class="badge roadmap" style="margin-bottom: 10px;">🗺️ Roadmap</span>
+            <h2 style="margin-top: 20px;">What's <span class="highlight">Next</span> for PGlove?</h2>
+            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
+                We're constantly evolving. Here's what we're working on for future releases.
+            </p>
+
+            <div class="roadmap-grid">
+                <!-- v1.0.4 - Pokemon Theme -->
+                <div class="roadmap-card">
+                    <div class="version">v1.0.4</div>
+                    <span class="theme">⚡</span>
+                    <div class="title">Pokémon Theme</div>
+                    <div class="desc">
+                        Bug fixes + Gotta catch 'em all!<br>
+                        Pokémon-inspired UI, custom icons, and nostalgic sounds.
+                    </div>
+                    <span class="status status-current">🔴 In Development</span>
+                </div>
+
+                <!-- v1.0.5 - Minecraft Style -->
+                <div class="roadmap-card">
+                    <div class="version">v1.0.5</div>
+                    <span class="theme">⛏️</span>
+                    <div class="title">Minecraft Style</div>
+                    <div class="desc">
+                        Blocky interface, pixel-perfect design,<br>
+                        ambient sound effects, and crafting-inspired menus.
+                    </div>
+                    <span class="status status-upcoming">🟣 Upcoming</span>
+                </div>
+
+                <!-- v1.0.6 - GTA 6 Style -->
+                <div class="roadmap-card">
+                    <div class="version">v1.0.6</div>
+                    <span class="theme">🏎️</span>
+                    <div class="title">GTA 6 Style</div>
+                    <div class="desc">
+                        Vice City vibes with neon accents,<br>
+                        dynamic UI, and high-energy animations.
+                    </div>
+                    <span class="status status-planning">⚪ Planning</span>
+                </div>
+
+                <!-- v1.0.7 - GTA Vice City Style -->
+                <div class="roadmap-card">
+                    <div class="version">v1.0.7</div>
+                    <span class="theme">🌴</span>
+                    <div class="title">GTA Vice City Style</div>
+                    <div class="desc">
+                        Retro 80s Miami aesthetic, pastel colors,<br>
+                        synthwave vibes, and classic nostalgia.
+                    </div>
+                    <span class="status status-planning">⚪ Planning</span>
+                </div>
+            </div>
+
+            <p style="color: #6B7280; font-size: 0.8rem; margin-top: 25px;">
+                🚀 <strong>Want to influence the roadmap?</strong> 
+                <a href="https://github.com/TechAdityaBRO/PGlove/issues" target="_blank" rel="noopener" style="color: #8B5CF6;">Open an issue</a> 
+                or <a href="https://github.com/TechAdityaBRO/PGlove/discussions" target="_blank" rel="noopener" style="color: #8B5CF6;">start a discussion</a> on GitHub!
+            </p>
+        </section>
+
+        <!-- ===== CODEBERG REPOSITORY SECTION ===== -->
         <section class="repo-section reveal-text" id="codeberg">
             <span class="badge codeberg" style="margin-bottom: 10px;">🔷 Codeberg Mirror</span>
             <h2 style="margin-top: 20px;">PGlove on <span class="highlight">Codeberg</span></h2>
@@ -1335,7 +1672,6 @@
             </p>
 
             <div class="repo-grid">
-                <!-- Repository Link -->
                 <div class="repo-card">
                     <div class="method">📂 Repository</div>
                     <div class="desc">Browse the source code</div>
@@ -1346,7 +1682,6 @@
                     <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-codeberg">🔷 View Repository</a>
                 </div>
 
-                <!-- SSH Clone -->
                 <div class="repo-card">
                     <div class="method">🔑 SSH Clone</div>
                     <div class="desc">Clone via SSH</div>
@@ -1357,7 +1692,6 @@
                     <a href="https://codeberg.org/TechAditya/PGlove.git" target="_blank" rel="noopener" class="btn btn-codeberg">🔗 SSH URL</a>
                 </div>
 
-                <!-- Releases -->
                 <div class="repo-card">
                     <div class="method">📦 Releases</div>
                     <div class="desc">Download stable and nightly builds</div>
@@ -1371,6 +1705,41 @@
 
             <p style="color: #6B7280; font-size: 0.8rem; margin-top: 25px;">
                 ⚠️ <strong>Note:</strong> Codeberg may occasionally rate-limit requests. If you see a "429 Too Many Requests" error, please try again later.
+            </p>
+        </section>
+
+        <!-- ===== DONATION SECTION ===== -->
+        <section class="donation-section reveal-text" id="donate">
+            <span class="badge donate" style="margin-bottom: 10px;">₿ Support PGlove</span>
+            <h2 style="margin-top: 20px;">Donate <span class="highlight">Bitcoin</span></h2>
+            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
+                Your support helps keep PGlove development alive. Every satoshi counts! 🙏
+            </p>
+
+            <div class="donation-grid">
+                <div class="donation-card">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w&bgcolor=ffffff&color=000000&margin=10" alt="Bitcoin QR Code for bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w" loading="lazy">
+                    </div>
+                    <span class="address-label">Bitcoin Address 1</span>
+                    <div class="address">bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w</div>
+                    <a href="bitcoin:bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w" target="_blank" class="btn btn-donate">₿ Donate with Bitcoin</a>
+                </div>
+
+                <div class="donation-card">
+                    <div class="qr-code">
+                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh&bgcolor=ffffff&color=000000&margin=10" alt="Bitcoin QR Code for bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh" loading="lazy">
+                    </div>
+                    <span class="address-label">Bitcoin Address 2</span>
+                    <div class="address">bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh</div>
+                    <a href="bitcoin:bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh" target="_blank" class="btn btn-donate">₿ Donate with Bitcoin</a>
+                </div>
+            </div>
+
+            <p class="donation-note">
+                💡 <strong>How to donate:</strong> Scan the QR code with your Bitcoin wallet, or click the "Donate with Bitcoin" button.
+                <br>
+                📧 For other donation methods, contact us at <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a>
             </p>
         </section>
 
@@ -1463,7 +1832,6 @@
                         <img src="https://dnsexit.com/ihome/images/dns-logo-2.png" alt="DNSExit logo" loading="lazy">
                         <span class="name">DNSExit</span>
                     </a>
-                    <!-- Codeberg (added to support section) -->
                     <a href="https://codeberg.org/" target="_blank" rel="noopener" class="support-item">
                         <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🔷</span>
                         <span class="name">Codeberg</span>
@@ -1622,6 +1990,9 @@
                 <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener">NuGet</a> •
                 <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener">Codeberg</a>
             </p>
+            <p style="margin-top: 6px; font-size: 0.8rem; color: #6B7280;">
+                ₿ Donate: <span style="font-family: 'Courier New', monospace; color: #F7931A;">bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w</span>
+            </p>
         </footer>
 
     </div>
@@ -1652,11 +2023,13 @@
         const phrases = [
             "The browser that breaks so you don't have to.",
             "Now with Stable v1.0.3 and PGloveCore!",
+            "Pokémon Theme coming in v1.0.4!",
+            "Minecraft Style coming in v1.0.5!",
+            "GTA 6 Style in v1.0.6!",
+            "Vice City vibes in v1.0.7!",
             "Also available on Codeberg!",
+            "Support us with Bitcoin donations!",
             "Experimental. Daily updates. Built for the fearless.",
-            "More unstable than your ex.",
-            "Push code. Break things. Repeat.",
-            "Warning: May contain bugs.",
             "A Browser With A New Generation.",
             "Made in India with 💥 by Bro Gang."
         ];
@@ -1852,6 +2225,7 @@
         console.log('🔷 NuGet: dotnet add package PGloveCore --version 1.0.3');
         console.log('📦 Winget: winget install TechAditya.PGlove');
         console.log('🔷 Codeberg: https://codeberg.org/TechAditya/PGlove/');
+        console.log('🗺️ Roadmap: v1.0.4 (Pokémon), v1.0.5 (Minecraft), v1.0.6 (GTA 6), v1.0.7 (Vice City)');
     </script>
 
 </body>
