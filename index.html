@@ -1,12 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>                                                                                                                                                                
+<head>
+    <!-- ===== PRIMARY META TAGS ===== -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PGlove – A Browser With A New Generation</title>
+    <title>PGlove – Experimental Browser for Developers | Nighty Build</title>
+    <meta name="description" content="Download PGlove, the experimental browser built for developers. Try bleeding-edge web features, daily updates, and auto dark mode. Available via NPM, NuGet, and Winget.">
+    <meta name="keywords" content="PGlove, experimental browser, developer browser, nightly build, web browser, open source browser, TechAdityaBRO, Bro Gang, Codeberg">
+    <meta name="author" content="TechAdityaBRO & Bro Gang">
+    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+    <link rel="canonical" href="https://pglove.jo3.org/">
+
+    <!-- ===== OPEN GRAPH ===== -->
+    <meta property="og:title" content="PGlove – Experimental Browser for Developers">
+    <meta property="og:description" content="Download the PGlove experimental browser. Bleeding-edge features, daily updates, auto dark mode. Available via NPM, NuGet, Winget, and Codeberg.">
+    <meta property="og:url" content="https://pglove.jo3.org/">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67">
+    <meta property="og:image:width" content="347">
+    <meta property="og:image:height" content="500">
+    <meta property="og:site_name" content="PGlove Browser">
+
+    <!-- ===== TWITTER CARD ===== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="PGlove – Experimental Browser for Developers">
+    <meta name="twitter:description" content="Download the PGlove experimental browser. Bleeding-edge features, daily updates, auto dark mode.">
+    <meta name="twitter:image" content="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67">
+    <meta name="twitter:site" content="@ProGroupBroGang">
+
+    <!-- ===== JSON-LD STRUCTURED DATA ===== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "PGlove",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Windows",
+      "description": "A browser with a new generation. Experimental features, daily updates, and auto dark mode for developers.",
+      "offers": {
+        "@type": "Offer",
+        "price": "0",
+        "priceCurrency": "USD"
+      },
+      "author": {
+        "@type": "Person",
+        "name": "TechAdityaBRO"
+      },
+      "creator": {
+        "@type": "Organization",
+        "name": "Bro Gang"
+      },
+      "downloadUrl": "https://archive.org/download/pglove-installers/PGlove-Installers.exe",
+      "softwareVersion": "1.0.3",
+      "releaseNotes": "https://github.com/TechAdityaBRO/PGlove/releases",
+      "codeRepository": "https://github.com/TechAdityaBRO/PGlove"
+    }
+    </script>
+
+    <!-- ===== PREVENT DUPLICATE CONTENT ===== -->
+    <meta name="googlebot" content="index, follow">
+    <meta name="bingbot" content="index, follow">
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧤</text></svg>">
+
+    <!-- ===== GOOGLE FONTS ===== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -170,6 +230,40 @@
             font-size: 0.85rem;
         }
 
+        .btn-stable {
+            background: #10B981;
+            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
+        }
+
+        .btn-stable:hover {
+            background: #34D399;
+            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.5);
+        }
+
+        .btn-nuget {
+            background: #004880;
+            color: white;
+            box-shadow: 0 0 20px rgba(0, 72, 128, 0.3);
+        }
+
+        .btn-nuget:hover {
+            background: #005A9E;
+            color: white;
+            box-shadow: 0 12px 40px rgba(0, 72, 128, 0.5);
+        }
+
+        .btn-codeberg {
+            background: #2185D0;
+            color: white;
+            box-shadow: 0 0 20px rgba(33, 133, 208, 0.3);
+        }
+
+        .btn-codeberg:hover {
+            background: #1A6FB0;
+            color: white;
+            box-shadow: 0 12px 40px rgba(33, 133, 208, 0.5);
+        }
+
         /* ===== BADGE ===== */
         .badge {
             display: inline-block;
@@ -190,6 +284,8 @@
         }
         .badge.stable { background: #10B981; animation: pulse-badge 3s infinite; }
         .badge.beta { background: #8B5CF6; animation: pulse-badge 2.5s infinite; }
+        .badge.nuget { background: #004880; color: white; animation: pulse-badge 3.5s infinite; }
+        .badge.codeberg { background: #2185D0; color: white; animation: pulse-badge 3.5s infinite; }
 
         @keyframes pulse-badge {
             0%, 100% { opacity: 1; transform: scale(1); }
@@ -464,7 +560,7 @@
 
         .download-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 28px;
             margin-top: 35px;
             position: relative;
@@ -503,7 +599,7 @@
             padding: 12px 16px;
             border-radius: 10px;
             font-family: 'Courier New', monospace;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: #FFD700;
             word-break: break-all;
             margin: 12px 0;
@@ -524,6 +620,100 @@
             font-size: 0.7rem;
             font-weight: 600;
             margin-bottom: 10px;
+        }
+
+        .npm-badge {
+            display: inline-block;
+            background: #CB3837;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .nuget-badge {
+            display: inline-block;
+            background: #004880;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .codeberg-badge {
+            display: inline-block;
+            background: #2185D0;
+            color: white;
+            padding: 3px 12px;
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        /* ===== CODEBERG REPO CARD (NEW) ===== */
+        .repo-section {
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 32px;
+            padding: 50px 40px;
+            margin: 60px 0;
+            border: 1px solid rgba(33, 133, 208, 0.2);
+            text-align: center;
+            transition: border-color 0.5s ease;
+        }
+
+        .repo-section:hover {
+            border-color: rgba(33, 133, 208, 0.5);
+        }
+
+        .repo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 28px;
+            margin-top: 35px;
+        }
+
+        .repo-card {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            padding: 28px 24px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .repo-card:hover {
+            border-color: rgba(33, 133, 208, 0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+        }
+
+        .repo-card .method {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-bottom: 4px;
+        }
+
+        .repo-card .desc {
+            color: #9CA3AF;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+        }
+
+        .repo-card .code-block {
+            background: rgba(0, 0, 0, 0.6);
+            padding: 12px 16px;
+            border-radius: 10px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            color: #FFD700;
+            word-break: break-all;
+            margin: 12px 0;
+            border: 1px solid rgba(255, 255, 255, 0.05);
         }
 
         /* ===== FEATURES CARDS ===== */
@@ -610,9 +800,7 @@
             border: 1px solid rgba(255, 215, 0, 0.1);
         }
 
-        /* ============================================================ */
-        /* ===== SUPPORTED BY SECTION – WITH DRIFT & ROLL ANIMATION ===== */
-        /* ============================================================ */
+        /* ===== SUPPORTED BY ===== */
         .support-section {
             background: rgba(255, 255, 255, 0.02);
             border-radius: 32px;
@@ -624,7 +812,6 @@
             position: relative;
         }
 
-        /* The animated track that holds all logos */
         .support-track {
             display: flex;
             gap: 40px;
@@ -634,12 +821,10 @@
             will-change: transform;
         }
 
-        /* Pause animation on hover */
         .support-track:hover {
             animation-play-state: paused;
         }
 
-        /* Individual logo items */
         .support-item {
             background: rgba(0, 0, 0, 0.3);
             padding: 20px 30px;
@@ -692,24 +877,17 @@
             color: #E5E7EB;
         }
 
-        /* Fallback for text-only items */
         .support-item .name-only {
             font-size: 1.1rem;
             font-weight: 700;
             color: #E5E7EB;
         }
 
-        /* The drift and roll keyframes */
         @keyframes driftRoll {
-            0% {
-                transform: translateX(0);
-            }
-            100% {
-                transform: translateX(-50%);
-            }
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
         }
 
-        /* Duplicate the logos for seamless looping */
         .support-track-clone {
             display: flex;
             gap: 40px;
@@ -960,13 +1138,15 @@
             .server-section,
             .credits-section,
             .download-section,
-            .support-section { padding: 30px 20px; }
+            .support-section,
+            .repo-section { padding: 30px 20px; }
             .github-callout { padding: 30px 20px; }
             .typing-text { font-size: 1rem; white-space: normal; }
             .logo-icon { width: 40px; height: 40px; }
             .logo-text { font-size: 1.4rem; }
             .credits-grid,
-            .download-grid { grid-template-columns: 1fr; }
+            .download-grid,
+            .repo-grid { grid-template-columns: 1fr; }
             .cards-grid { grid-template-columns: 1fr; }
             #cursor-glow { display: none; }
 
@@ -1031,7 +1211,7 @@
         <nav class="navbar">
             <a href="#" class="logo-wrapper">
                 <span class="logo-icon">
-                    <img src="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67" alt="PGlove Logo">
+                    <img src="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67" alt="PGlove Logo - Experimental Browser" loading="lazy">
                 </span>
                 <span class="logo-text">
                     P<span>Glove</span>
@@ -1041,55 +1221,93 @@
             <div class="nav-links">
                 <a href="#features">Features</a>
                 <a href="#download">Download</a>
+                <a href="#codeberg">Codeberg</a>
                 <a href="#support">Support</a>
                 <a href="#credits">Team</a>
-                <a href="#server">BroGangMC</a>
-                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank">GitHub</a>
+                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" rel="noopener">GitHub</a>
             </div>
         </nav>
 
         <!-- ===== HERO ===== -->
         <section class="hero">
-            <span class="badge nighty">⚠️ Nighty Build – Expect Chaos</span>
+            <span class="badge stable">✅ Stable Release v1.0.3</span>
             <h1>A Browser With A New Generation</h1>
             <div class="typing-container">
                 <span class="typing-text" id="typingText"></span>
             </div>
 
             <div class="version-selector" id="versions">
-                <button class="version-btn active" data-version="nighty">🌙 Nighty (Unstable)</button>
+                <button class="version-btn active" data-version="stable">✅ Stable (v1.0.3)</button>
+                <button class="version-btn" data-version="nighty">🌙 Nighty (Unstable)</button>
                 <button class="version-btn" data-version="beta">🧪 Pre-Beta</button>
-                <button class="version-btn" data-version="stable">✅ Stable (Soon)</button>
             </div>
 
             <div class="btn-group">
-                <a href="#download" class="btn btn-download">⬇️ Download PGlove</a>
-                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" class="btn btn-outline">🛠️ View on GitHub</a>
+                <a href="#download" class="btn btn-stable">⬇️ Download Stable</a>
+                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" rel="noopener" class="btn btn-outline">🛠️ View on GitHub</a>
+                <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-codeberg">🔷 View on Codeberg</a>
             </div>
             <p class="warning-text">
-                Version 1.0.2-Nighty • Updated 3 hours ago •
-                <a href="https://github.com/microsoft/winget-pkgs/pull/421311/changes/fa4a774af1a23d972316a0ef4860e93ec086a95a" target="_blank">Winget PR #421311</a>
+                <span style="color: #10B981;">Stable v1.0.3</span> •
+                <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener">NPM Package</a> •
+                <a href="https://github.com/microsoft/winget-pkgs/pull/421311/" target="_blank" rel="noopener">Winget PR #421311</a> •
+                <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener">NuGet Package</a> •
+                <a href="https://codeberg.org/TechAditya/PGlove/releases" target="_blank" rel="noopener">Codeberg Releases</a>
             </p>
         </section>
 
         <!-- ===== DOWNLOAD SECTION ===== -->
-        <div class="download-section reveal-text" id="download">
+        <section class="download-section reveal-text" id="download" aria-labelledby="download-heading">
             <span class="badge" style="background: #10B981;">⬇️ Download PGlove</span>
-            <h2 style="margin-top: 20px;">Get <span class="highlight">PGlove</span> Today</h2>
+            <h2 id="download-heading" style="margin-top: 20px;">Get <span class="highlight">PGlove</span></h2>
             <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
-                Version 1.0.2-Nighty & Pre-Beta • Windows (x64) • 8.7 MB
+                Choose between the stable release, experimental builds, or the core library.
             </p>
 
             <div class="download-grid">
-                <div class="download-card">
-                    <div class="method">📦 Direct EXE</div>
-                    <div class="desc">Standalone installer (recommended)</div>
-                    <div class="code-block">PGlove-Installers.exe (8.7 MB)</div>
-                    <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" class="btn btn-download" download>⬇️ Download from Archive</a>
-                    <a href="https://progroupco.itch.io/pglove" target="_blank" class="btn btn-small" style="margin-top: 8px; background: #8B5CF6;">🎮 Also on Itch.io</a>
+                <!-- STABLE CARD -->
+                <div class="download-card" style="border-color: rgba(16, 185, 129, 0.3);">
+                    <span class="badge stable" style="margin-bottom: 10px;">✅ Stable</span>
+                    <div class="method">📦 Stable Release</div>
+                    <div class="desc">Version 1.0.3 • Production ready</div>
+                    <div class="code-block" style="font-size:0.7rem;">
+                        npm install @techadityabro/pglove-stable --registry=https://npm.pkg.github.com
+                    </div>
+                    <div style="font-size:0.7rem; color:#6B7280; margin:10px 0;">
+                        Package: @techadityabro/pglove-stable • Registry: GitHub Packages
+                    </div>
+                    <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener" class="btn btn-stable">📦 View NPM Package</a>
+                    <a href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener" class="btn btn-small" style="margin-top:8px; background: #1F2937; color: #E5E7EB;">🔗 View Releases</a>
                 </div>
 
+                <!-- NUGET CARD -->
+                <div class="download-card" style="border-color: rgba(0, 72, 128, 0.3);">
+                    <span class="badge nuget" style="margin-bottom: 10px;">🔷 NuGet</span>
+                    <div class="method">📦 PGloveCore</div>
+                    <div class="desc">Version 1.0.3 • Core metadata helpers</div>
+                    <div class="code-block" style="font-size:0.7rem;">
+                        dotnet add package PGloveCore --version 1.0.3
+                    </div>
+                    <div style="font-size:0.7rem; color:#6B7280; margin:10px 0;">
+                        Package: PGloveCore • .NET Library
+                    </div>
+                    <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener" class="btn btn-nuget">📦 View NuGet Package</a>
+                    <a href="https://www.nuget.org/" target="_blank" rel="noopener" class="btn btn-small" style="margin-top:8px; background: #1F2937; color: #E5E7EB;">🔗 About NuGet</a>
+                </div>
+
+                <!-- NIGHTY CARD -->
                 <div class="download-card">
+                    <span class="badge nighty" style="margin-bottom: 10px;">🌙 Nighty</span>
+                    <div class="method">⚡ Nighty Build</div>
+                    <div class="desc">Version 1.0.2-Nighty • Unstable & experimental</div>
+                    <div class="code-block">PGlove-Installers.exe (8.7 MB)</div>
+                    <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" class="btn btn-download" download>⬇️ Download from Archive</a>
+                    <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener" class="btn btn-small" style="margin-top:8px; background: #8B5CF6;">🎮 Also on Itch.io</a>
+                </div>
+
+                <!-- WINGET CARD -->
+                <div class="download-card">
+                    <span class="badge beta" style="margin-bottom: 10px;">🪟 Winget</span>
                     <div class="method">⚡ Winget</div>
                     <div class="desc">Windows Package Manager (CLI)</div>
                     <span class="winget-badge">winget</span>
@@ -1097,31 +1315,64 @@
                     <div style="font-size:0.7rem; color:#6B7280; margin:10px 0;">
                         Silent: /s • SilentWithProgress: /SILENT
                     </div>
-                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/changes/fa4a774af1a23d972316a0ef4860e93ec086a95a" target="_blank" class="btn btn-small" style="background: #0078D4;">🔍 View Winget PR</a>
-                </div>
-
-                <div class="download-card">
-                    <div class="method">📋 Package Info</div>
-                    <div class="desc">Manifest details</div>
-                    <div style="text-align: left; font-size:0.8rem; color:#9CA3AF;">
-                        <strong>Identifier:</strong> TechAditya.PGlove<br>
-                        <strong>Version:</strong> 1.0.2-Nighty & Pre Beta<br>
-                        <strong>Arch:</strong> x64<br>
-                        <strong>Type:</strong> EXE<br>
-                        <strong>SHA256:</strong>
-                        <span style="font-size:0.6rem; word-break:break-all; display:block; margin-top:4px; color:#6B7280;">
-                            AC592412FC86431D6F3095D10F3B83F9E5EC6B984C3DB9D0DFD4D9F9BF350277
-                        </span>
-                    </div>
-                    <a href="https://progroupco.itch.io/pglove" target="_blank" class="btn btn-small" style="margin-top:12px; background: #FF4500;">🎮 Itch.io Page</a>
+                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/" target="_blank" rel="noopener" class="btn btn-small" style="background: #0078D4;">🔍 View Winget PR</a>
                 </div>
             </div>
 
             <p style="margin-top: 28px; color: #6B7280; font-size:0.85rem;">
-                💾 <strong>Mirror:</strong> <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" style="color:#FFD700;">Internet Archive</a> •
+                💾 <strong>Stable Mirror:</strong> <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" style="color:#10B981;" target="_blank" rel="noopener">GitHub Packages (NPM)</a> •
+                🔷 <strong>NuGet:</strong> <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" style="color:#004880;" target="_blank" rel="noopener">PGloveCore</a> •
                 📧 <strong>Support:</strong> <a href="mailto:pglove@atomicmail.io" style="color:#FFD700;">pglove@atomicmail.io</a>
             </p>
-        </div>
+        </section>
+
+        <!-- ===== CODEBERG REPOSITORY SECTION (NEW) ===== -->
+        <section class="repo-section reveal-text" id="codeberg">
+            <span class="badge codeberg" style="margin-bottom: 10px;">🔷 Codeberg Mirror</span>
+            <h2 style="margin-top: 20px;">PGlove on <span class="highlight">Codeberg</span></h2>
+            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto 10px; font-weight: 400;">
+                PGlove is also available on Codeberg, a free and open-source Git platform. Mirror repository and releases.
+            </p>
+
+            <div class="repo-grid">
+                <!-- Repository Link -->
+                <div class="repo-card">
+                    <div class="method">📂 Repository</div>
+                    <div class="desc">Browse the source code</div>
+                    <span class="codeberg-badge">codeberg.org</span>
+                    <div class="code-block" style="font-size:0.7rem;">
+                        https://codeberg.org/TechAditya/PGlove/
+                    </div>
+                    <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-codeberg">🔷 View Repository</a>
+                </div>
+
+                <!-- SSH Clone -->
+                <div class="repo-card">
+                    <div class="method">🔑 SSH Clone</div>
+                    <div class="desc">Clone via SSH</div>
+                    <span class="codeberg-badge">git clone</span>
+                    <div class="code-block" style="font-size:0.65rem;">
+                        git clone git@codeberg.org:TechAditya/PGlove.git
+                    </div>
+                    <a href="https://codeberg.org/TechAditya/PGlove.git" target="_blank" rel="noopener" class="btn btn-codeberg">🔗 SSH URL</a>
+                </div>
+
+                <!-- Releases -->
+                <div class="repo-card">
+                    <div class="method">📦 Releases</div>
+                    <div class="desc">Download stable and nightly builds</div>
+                    <span class="codeberg-badge">Releases</span>
+                    <div class="code-block" style="font-size:0.7rem;">
+                        https://codeberg.org/TechAditya/PGlove/releases
+                    </div>
+                    <a href="https://codeberg.org/TechAditya/PGlove/releases" target="_blank" rel="noopener" class="btn btn-codeberg">📥 View Releases</a>
+                </div>
+            </div>
+
+            <p style="color: #6B7280; font-size: 0.8rem; margin-top: 25px;">
+                ⚠️ <strong>Note:</strong> Codeberg may occasionally rate-limit requests. If you see a "429 Too Many Requests" error, please try again later.
+            </p>
+        </section>
 
         <!-- ===== FEATURES ===== -->
         <h2 class="reveal-text reveal-text-delay-1">Why <span class="highlight">PGlove</span>?</h2>
@@ -1129,46 +1380,44 @@
 
         <div class="cards-grid" id="features">
             <div class="card">
-                <span class="icon">⚡</span>
+                <span class="icon" role="img" aria-label="Lightning bolt icon">⚡</span>
                 <h3>Daily Updates</h3>
                 <p>We push code every 12-24 hours. You get new features before we even test them.</p>
                 <span class="tag">Experimental</span>
             </div>
             <div class="card">
-                <span class="icon">🐞</span>
+                <span class="icon" role="img" aria-label="Bug icon">🐞</span>
                 <h3>Built-in Bug Reporter</h3>
                 <p>One-click to file an issue on GitHub. You <em>will</em> find bugs.</p>
                 <span class="tag">Report & Fix</span>
             </div>
             <div class="card">
-                <span class="icon">🔬</span>
+                <span class="icon" role="img" aria-label="Microscope icon">🔬</span>
                 <h3>Experimental APIs</h3>
                 <p>Try WebGPU, new CSS features, and Chrome flags months before stable.</p>
                 <span class="tag">Bleeding Edge</span>
             </div>
             <div class="card">
-                <span class="icon">💥</span>
+                <span class="icon" role="img" aria-label="Explosion icon">💥</span>
                 <h3>Crash Recovery</h3>
                 <p>Recovers your tabs 80% of the time. The other 20%? Adventure.</p>
                 <span class="tag">Mostly Works</span>
             </div>
             <div class="card">
-                <span class="icon">🧪</span>
+                <span class="icon" role="img" aria-label="Test tube icon">🧪</span>
                 <h3>A/B Test Features</h3>
                 <p>Half get Feature X, half get Y. You're part of the experiment.</p>
                 <span class="tag">You're a Tester</span>
             </div>
             <div class="card">
-                <span class="icon">🌙</span>
+                <span class="icon" role="img" aria-label="Moon icon">🌙</span>
                 <h3>Auto Dark Mode</h3>
                 <p>Even websites without dark mode get forced into it. Eyes will thank you.</p>
                 <span class="tag">Always On</span>
             </div>
         </div>
 
-        <!-- ========================================================== -->
-        <!-- ===== SUPPORTED BY SECTION – WITH DRIFT & ROLL ===== -->
-        <!-- ========================================================== -->
+        <!-- ===== SUPPORTED BY ===== -->
         <div class="support-section reveal-text" id="support">
             <span class="badge" style="background: #FFD700; color: #0A0A0A;">🤝 Supported By</span>
             <h2 style="margin-top: 20px;">Driven by the <span class="highlight">Best</span> in Tech</h2>
@@ -1176,102 +1425,90 @@
                 PGlove is built and maintained using tools and services from these amazing companies.
             </p>
 
-            <!-- The scrolling track -->
             <div class="support-track" id="supportTrack">
-                <!-- First set of logos -->
                 <div class="support-track-clone">
-                    <!-- 1. Cloudflare Workers -->
-                    <a href="https://www.cloudflare.com/products/workers/" target="_blank" class="support-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiSs7Dt3UesAUyL30xDYKlVrGjMJ8GzMEY8GgaBNH31g&s=10" alt="Cloudflare Workers" loading="lazy">
+                    <a href="https://www.cloudflare.com/products/workers/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiSs7Dt3UesAUyL30xDYKlVrGjMJ8GzMEY8GgaBNH31g&s=10" alt="Cloudflare Workers logo" loading="lazy">
                         <span class="name">Cloudflare</span>
                     </a>
-
-                    <!-- 2. Google Fonts -->
-                    <a href="https://fonts.google.com/" target="_blank" class="support-item">
-                        <img src="https://icon2.cleanpng.com/lnd/20241121/sc/bd7ce03eb1225083f951fc01171835.webp" alt="Google Fonts" loading="lazy">
+                    <a href="https://fonts.google.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://icon2.cleanpng.com/lnd/20241121/sc/bd7ce03eb1225083f951fc01171835.webp" alt="Google Fonts logo" loading="lazy">
                         <span class="name">Google Fonts</span>
                     </a>
-
-                    <!-- 3. GitHub -->
-                    <a href="https://www.github.com/" target="_blank" class="support-item">
-                        <img src="https://icon2.cleanpng.com/20181207/bhh/kisspng-scalable-vector-graphics-github-computer-icons-com-5c0ac2894a1370.0378836315442090333034.jpg" alt="GitHub" loading="lazy">
+                    <a href="https://www.github.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://icon2.cleanpng.com/20181207/bhh/kisspng-scalable-vector-graphics-github-computer-icons-com-5c0ac2894a1370.0378836315442090333034.jpg" alt="GitHub logo" loading="lazy">
                         <span class="name">GitHub</span>
                     </a>
-
-                    <!-- 4. Internet Archive -->
-                    <a href="https://archive.org/" target="_blank" class="support-item">
-                        <img src="https://icon2.cleanpng.com/20180414/cpe/kisspng-internet-archive-web-archiving-library-library-5ad1ac9173f669.199070121523690641475.jpg" alt="Internet Archive" loading="lazy">
+                    <a href="https://archive.org/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://icon2.cleanpng.com/20180414/cpe/kisspng-internet-archive-web-archiving-library-library-5ad1ac9173f669.199070121523690641475.jpg" alt="Internet Archive logo" loading="lazy">
                         <span class="name">Archive.org</span>
                     </a>
-
-                    <!-- 5. Deepseek -->
-                    <a href="https://chat.deepseek.com/" target="_blank" class="support-item">
-                        <img src="https://icon2.cleanpng.com/lnd/20250227/gc/3d4d03b9c16ed9db460c58685ab5e2.webp" alt="Deepseek" loading="lazy">
+                    <a href="https://chat.deepseek.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://icon2.cleanpng.com/lnd/20250227/gc/3d4d03b9c16ed9db460c58685ab5e2.webp" alt="Deepseek logo" loading="lazy">
                         <span class="name">Deepseek</span>
                     </a>
-
-                    <!-- 6. Tiny 11 -->
-                    <a href="https://archive.org/details/tiny-11-NTDEV" target="_blank" class="support-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjFlKUjDn6eFxvtrz-1hotgeOofPSTZPU8_JHk4rYTg&s=10" alt="Tiny 11" loading="lazy">
+                    <a href="https://archive.org/details/tiny-11-NTDEV" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjFlKUjDn6eFxvtrz-1hotgeOofPSTZPU8_JHk4rYTg&s=10" alt="Tiny 11 logo" loading="lazy">
                         <span class="name">Tiny 11</span>
                     </a>
-
-                    <!-- 7. InfinityFree -->
-                    <a href="https://dash.infinityfree.com/" target="_blank" class="support-item">
-                        <img src="https://vpassets.infinityfree.net/welcome2024/logo-header.png" alt="InfinityFree" loading="lazy">
+                    <a href="https://dash.infinityfree.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://vpassets.infinityfree.net/welcome2024/logo-header.png" alt="InfinityFree logo" loading="lazy">
                         <span class="name">InfinityFree</span>
                     </a>
-
-                    <!-- 8. Winget (text/icon fallback) -->
-                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/changes/fa4a774af1a23d972316a0ef4860e93ec086a95a" target="_blank" class="support-item">
+                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/" target="_blank" rel="noopener" class="support-item">
                         <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🪟</span>
                         <span class="name">Winget</span>
                     </a>
-
-                    <!-- 9. DNSExit -->
-                    <a href="https://dnsexit.com/" target="_blank" class="support-item">
-                        <img src="https://dnsexit.com/ihome/images/dns-logo-2.png" alt="DNSExit" loading="lazy">
+                    <a href="https://dnsexit.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://dnsexit.com/ihome/images/dns-logo-2.png" alt="DNSExit logo" loading="lazy">
                         <span class="name">DNSExit</span>
+                    </a>
+                    <!-- Codeberg (added to support section) -->
+                    <a href="https://codeberg.org/" target="_blank" rel="noopener" class="support-item">
+                        <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🔷</span>
+                        <span class="name">Codeberg</span>
                     </a>
                 </div>
-
-                <!-- Duplicate for seamless looping -->
                 <div class="support-track-clone" aria-hidden="true">
-                    <a href="https://www.cloudflare.com/products/workers/" target="_blank" class="support-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiSs7Dt3UesAUyL30xDYKlVrGjMJ8GzMEY8GgaBNH31g&s=10" alt="Cloudflare Workers" loading="lazy">
+                    <a href="https://www.cloudflare.com/products/workers/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiSs7Dt3UesAUyL30xDYKlVrGjMJ8GzMEY8GgaBNH31g&s=10" alt="Cloudflare Workers logo" loading="lazy">
                         <span class="name">Cloudflare</span>
                     </a>
-                    <a href="https://fonts.google.com/" target="_blank" class="support-item">
-                        <img src="https://icon2.cleanpng.com/lnd/20241121/sc/bd7ce03eb1225083f951fc01171835.webp" alt="Google Fonts" loading="lazy">
+                    <a href="https://fonts.google.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://icon2.cleanpng.com/lnd/20241121/sc/bd7ce03eb1225083f951fc01171835.webp" alt="Google Fonts logo" loading="lazy">
                         <span class="name">Google Fonts</span>
                     </a>
-                    <a href="https://www.github.com/" target="_blank" class="support-item">
-                        <img src="https://icon2.cleanpng.com/20181207/bhh/kisspng-scalable-vector-graphics-github-computer-icons-com-5c0ac2894a1370.0378836315442090333034.jpg" alt="GitHub" loading="lazy">
+                    <a href="https://www.github.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://icon2.cleanpng.com/20181207/bhh/kisspng-scalable-vector-graphics-github-computer-icons-com-5c0ac2894a1370.0378836315442090333034.jpg" alt="GitHub logo" loading="lazy">
                         <span class="name">GitHub</span>
                     </a>
-                    <a href="https://archive.org/" target="_blank" class="support-item">
-                        <img src="https://icon2.cleanpng.com/20180414/cpe/kisspng-internet-archive-web-archiving-library-library-5ad1ac9173f669.199070121523690641475.jpg" alt="Internet Archive" loading="lazy">
+                    <a href="https://archive.org/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://icon2.cleanpng.com/20180414/cpe/kisspng-internet-archive-web-archiving-library-library-5ad1ac9173f669.199070121523690641475.jpg" alt="Internet Archive logo" loading="lazy">
                         <span class="name">Archive.org</span>
                     </a>
-                    <a href="https://chat.deepseek.com/" target="_blank" class="support-item">
-                        <img src="https://icon2.cleanpng.com/lnd/20250227/gc/3d4d03b9c16ed9db460c58685ab5e2.webp" alt="Deepseek" loading="lazy">
+                    <a href="https://chat.deepseek.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://icon2.cleanpng.com/lnd/20250227/gc/3d4d03b9c16ed9db460c58685ab5e2.webp" alt="Deepseek logo" loading="lazy">
                         <span class="name">Deepseek</span>
                     </a>
-                    <a href="https://archive.org/details/tiny-11-NTDEV" target="_blank" class="support-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjFlKUjDn6eFxvtrz-1hotgeOofPSTZPU8_JHk4rYTg&s=10" alt="Tiny 11" loading="lazy">
+                    <a href="https://archive.org/details/tiny-11-NTDEV" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjFlKUjDn6eFxvtrz-1hotgeOofPSTZPU8_JHk4rYTg&s=10" alt="Tiny 11 logo" loading="lazy">
                         <span class="name">Tiny 11</span>
                     </a>
-                    <a href="https://dash.infinityfree.com/" target="_blank" class="support-item">
-                        <img src="https://vpassets.infinityfree.net/welcome2024/logo-header.png" alt="InfinityFree" loading="lazy">
+                    <a href="https://dash.infinityfree.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://vpassets.infinityfree.net/welcome2024/logo-header.png" alt="InfinityFree logo" loading="lazy">
                         <span class="name">InfinityFree</span>
                     </a>
-                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/changes/fa4a774af1a23d972316a0ef4860e93ec086a95a" target="_blank" class="support-item">
+                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/" target="_blank" rel="noopener" class="support-item">
                         <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🪟</span>
                         <span class="name">Winget</span>
                     </a>
-                    <a href="https://dnsexit.com/" target="_blank" class="support-item">
-                        <img src="https://dnsexit.com/ihome/images/dns-logo-2.png" alt="DNSExit" loading="lazy">
+                    <a href="https://dnsexit.com/" target="_blank" rel="noopener" class="support-item">
+                        <img src="https://dnsexit.com/ihome/images/dns-logo-2.png" alt="DNSExit logo" loading="lazy">
                         <span class="name">DNSExit</span>
+                    </a>
+                    <a href="https://codeberg.org/" target="_blank" rel="noopener" class="support-item">
+                        <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🔷</span>
+                        <span class="name">Codeberg</span>
                     </a>
                 </div>
             </div>
@@ -1294,27 +1531,27 @@
                     <div class="role">🏢 Organization</div>
                     <div class="name">ProGroupco</div>
                     <div class="desc">The parent group behind PGlove and other projects.</div>
-                    <a href="https://www.github.com/ProGroupco" target="_blank" class="link">🔗 GitHub (404?) →</a>
+                    <a href="https://www.github.com/ProGroupco" target="_blank" rel="noopener" class="link">🔗 GitHub (404?) →</a>
                 </div>
 
                 <div class="credit-card">
                     <div class="role">👨‍💻 Lead Developer</div>
                     <div class="name">Aditya (TechAdityaBRO)</div>
                     <div class="desc">Student from India • Creator of PGlove • Full-stack dev</div>
-                    <a href="https://github.com/TechAdityaBRO/" target="_blank" class="link">🔗 github.com/TechAdityaBRO</a>
+                    <a href="https://github.com/TechAdityaBRO/" target="_blank" rel="noopener" class="link">🔗 github.com/TechAdityaBRO</a>
                 </div>
 
                 <div class="credit-card">
                     <div class="role">🤝 Community</div>
                     <div class="name">Bro Gang</div>
                     <div class="desc">The squad • Testers • Idea generators • Support system</div>
-                    <a href="https://brogang.mooo.com/" target="_blank" class="link">🔗 brogang.mooo.com</a>
+                    <a href="https://brogang.mooo.com/" target="_blank" rel="noopener" class="link">🔗 brogang.mooo.com</a>
                 </div>
             </div>
 
             <p style="color: #6B7280; font-size: 0.85rem; margin-top: 28px; font-weight: 400;">
                 ⚠️ <strong>ProGroupco's GitHub</strong> returns a 404, but the team lives on!
-                Follow <a href="https://github.com/TechAdityaBRO/" style="color: #FF4500;">TechAdityaBRO</a> for active development.
+                Follow <a href="https://github.com/TechAdityaBRO/" style="color: #FF4500;" target="_blank" rel="noopener">TechAdityaBRO</a> for active development.
             </p>
         </div>
 
@@ -1351,35 +1588,41 @@
             </p>
         </div>
 
-        <!-- ===== GITHUB CALLOUT ===== -->
+        <!-- ===== GITHUB / CODEBERG CALLOUT ===== -->
         <div class="github-callout reveal-text">
-            <span style="font-size: 3rem; display: block; margin-bottom: 8px;">🛠️</span>
+            <span style="font-size: 3rem; display: block; margin-bottom: 8px;" role="img" aria-label="Tools icon">🛠️</span>
             <h2 style="margin-bottom: 12px;">Help Us Build <span class="highlight">PGlove</span></h2>
             <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
-                PGlove is open-source and lives on GitHub. Report bugs, request features, or submit pull requests – we accept all chaos.
+                PGlove is open-source and lives on GitHub and Codeberg. Report bugs, request features, or submit pull requests – we accept all chaos.
             </p>
-            <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" class="btn">🚀 Visit the Repo</a>
+            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
+                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" rel="noopener" class="btn">🚀 GitHub</a>
+                <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-codeberg">🔷 Codeberg</a>
+            </div>
             <div style="margin-top: 20px; color: #6B7280; font-size: 0.9rem; font-weight: 400;">
                 <span>⭐ Open Issues: 47</span> • <span>🔄 Pull Requests: 12</span> • <span>📦 Commits: 89</span>
             </div>
         </div>
 
         <!-- ===== FOOTER ===== -->
-        <div class="footer">
+        <footer class="footer">
             <p>
-                Built with 💥 by <a href="https://github.com/TechAdityaBRO/" target="_blank">Aditya (TechAdityaBRO)</a> •
-                <a href="https://www.github.com/ProGroupco" target="_blank">ProGroupco</a> •
-                <a href="https://brogang.mooo.com/" target="_blank">Bro Gang</a>
+                Built with 💥 by <a href="https://github.com/TechAdityaBRO/" target="_blank" rel="noopener">Aditya (TechAdityaBRO)</a> •
+                <a href="https://www.github.com/ProGroupco" target="_blank" rel="noopener">ProGroupco</a> •
+                <a href="https://brogang.mooo.com/" target="_blank" rel="noopener">Bro Gang</a>
             </p>
             <p style="margin-top: 6px; font-size: 0.8rem;">
                 PGlove – A Browser With A New Generation • Made in India 🇮🇳
             </p>
             <p style="margin-top: 6px; font-size: 0.8rem;">
                 📧 <span class="email">pglove@atomicmail.io</span> •
-                <a href="https://progroupco.itch.io/pglove" target="_blank">Itch.io</a> •
-                <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" target="_blank">Archive Mirror</a>
+                <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener">Itch.io</a> •
+                <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" target="_blank" rel="noopener">Archive Mirror</a> •
+                <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener">NPM Stable</a> •
+                <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener">NuGet</a> •
+                <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener">Codeberg</a>
             </p>
-        </div>
+        </footer>
 
     </div>
 
@@ -1408,13 +1651,14 @@
         // ============================================================
         const phrases = [
             "The browser that breaks so you don't have to.",
+            "Now with Stable v1.0.3 and PGloveCore!",
+            "Also available on Codeberg!",
             "Experimental. Daily updates. Built for the fearless.",
             "More unstable than your ex.",
             "Push code. Break things. Repeat.",
             "Warning: May contain bugs.",
             "A Browser With A New Generation.",
-            "Made in India with 💥 by Bro Gang.",
-            "Version 1.0.2-Nighty • Winget ready!"
+            "Made in India with 💥 by Bro Gang."
         ];
 
         let phraseIndex = 0,
@@ -1456,15 +1700,15 @@
                 this.classList.add('active');
                 const version = this.dataset.version;
                 const badge = heroBadge;
-                if (version === 'nighty') {
+                if (version === 'stable') {
+                    badge.textContent = '✅ Stable Release v1.0.3';
+                    badge.className = 'badge stable';
+                } else if (version === 'nighty') {
                     badge.textContent = '⚠️ Nighty Build – Expect Chaos';
                     badge.className = 'badge nighty';
                 } else if (version === 'beta') {
                     badge.textContent = '🧪 Pre-Beta – Almost There';
                     badge.className = 'badge beta';
-                } else if (version === 'stable') {
-                    badge.textContent = '✅ Stable – Coming Soon';
-                    badge.className = 'badge stable';
                 }
                 triggerGlitch();
             });
@@ -1602,18 +1846,12 @@
             });
         });
 
-        // ============================================================
-        // 9. DRIFT & ROLL LOGO SPEED CONTROL (optional)
-        // ============================================================
-        // You can adjust the animation speed by changing the 'animation-duration'
-        // in the .support-track CSS. Current: 25s.
-        // For slower: 35s, faster: 15s.
-
-        console.log('🧤 PGlove Browser – v1.0.2-Nighty');
+        console.log('🧤 PGlove Browser – Stable v1.0.3 Released!');
         console.log('📧 Email: pglove@atomicmail.io');
+        console.log('📦 NPM: npm install @techadityabro/pglove-stable --registry=https://npm.pkg.github.com');
+        console.log('🔷 NuGet: dotnet add package PGloveCore --version 1.0.3');
         console.log('📦 Winget: winget install TechAditya.PGlove');
-        console.log('🤝 Supported by: Cloudflare, Google, GitHub, Internet Archive, Deepseek, Tiny 11, InfinityFree, Winget, DNSExit');
-        console.log('🔄 Logos are drifting and rolling!');
+        console.log('🔷 Codeberg: https://codeberg.org/TechAditya/PGlove/');
     </script>
 
 </body>
