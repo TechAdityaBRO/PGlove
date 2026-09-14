@@ -1,2232 +1,803 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- ===== PRIMARY META TAGS ===== -->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PGlove – Experimental Browser for Developers | Nighty Build</title>
-    <meta name="description" content="Download PGlove, the experimental browser built for developers. Roadmap: Pokemon, Minecraft, GTA themes coming soon. Available via NPM, NuGet, Winget.">
-    <meta name="keywords" content="PGlove, experimental browser, developer browser, nightly build, web browser, open source browser, TechAdityaBRO, Bro Gang, Codeberg, Bitcoin donation, roadmap">
-    <meta name="author" content="TechAdityaBRO & Bro Gang">
-    <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
-    <link rel="canonical" href="https://pglove.jo3.org/">
-
-    <!-- ===== OPEN GRAPH ===== -->
-    <meta property="og:title" content="PGlove – Experimental Browser for Developers">
-    <meta property="og:description" content="Download PGlove. Roadmap: Pokemon, Minecraft, GTA themes coming soon. Support us with Bitcoin donations.">
-    <meta property="og:url" content="https://pglove.jo3.org/">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67">
-    <meta property="og:image:width" content="347">
-    <meta property="og:image:height" content="500">
-    <meta property="og:site_name" content="PGlove Browser">
-
-    <!-- ===== TWITTER CARD ===== -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="PGlove – Experimental Browser for Developers">
-    <meta name="twitter:description" content="Roadmap: Pokemon, Minecraft, GTA themes coming soon. Download PGlove today.">
-    <meta name="twitter:image" content="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67">
-    <meta name="twitter:site" content="@ProGroupBroGang">
-
-    <!-- ===== JSON-LD STRUCTURED DATA ===== -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "SoftwareApplication",
-      "name": "PGlove",
-      "applicationCategory": "BrowserApplication",
-      "operatingSystem": "Windows",
-      "description": "A browser with a new generation. Experimental features, daily updates, auto dark mode.",
-      "offers": {
-        "@type": "Offer",
-        "price": "0",
-        "priceCurrency": "USD"
-      },
-      "author": {
-        "@type": "Person",
-        "name": "TechAdityaBRO"
-      },
-      "creator": {
-        "@type": "Organization",
-        "name": "Bro Gang"
-      },
-      "downloadUrl": "https://archive.org/download/pglove-installers/PGlove-Installers.exe",
-      "softwareVersion": "1.0.3",
-      "releaseNotes": "https://github.com/TechAdityaBRO/PGlove/releases",
-      "codeRepository": "https://github.com/TechAdityaBRO/PGlove"
-    }
-    </script>
-
-    <!-- ===== PREVENT DUPLICATE CONTENT ===== -->
-    <meta name="googlebot" content="index, follow">
-    <meta name="bingbot" content="index, follow">
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧤</text></svg>">
-
-    <!-- ===== GOOGLE FONTS ===== -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
-
-    <style>
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: #0A0A0A;
-            color: #E5E7EB;
-            line-height: 1.7;
-            padding: 20px;
-            overflow-x: hidden;
-            cursor: default;
-        }
-
-        /* ===== CURSOR GLOW ===== */
-        #cursor-glow {
-            position: fixed;
-            width: 600px;
-            height: 600px;
-            border-radius: 50%;
-            background: radial-gradient(circle, rgba(255, 69, 0, 0.06) 0%, transparent 70%);
-            pointer-events: none;
-            z-index: 0;
-            transform: translate(-50%, -50%);
-            transition: opacity 0.3s ease;
-            will-change: transform;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* ===== PARTICLES ===== */
-        #particles-canvas {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 0;
-            pointer-events: none;
-        }
-
-        /* ===== TYPOGRAPHY ===== */
-        h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            letter-spacing: -0.03em;
-            line-height: 1.1;
-            background: linear-gradient(135deg, #FF4500, #FFD700);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-        }
-
-        h2 {
-            font-size: 2.8rem;
-            font-weight: 700;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            text-align: center;
-        }
-
-        h2 span.highlight {
-            color: #FF4500;
-            -webkit-text-fill-color: #FF4500;
-        }
-
-        h3 {
-            font-size: 1.3rem;
-            font-weight: 600;
-            letter-spacing: -0.01em;
-            margin-bottom: 8px;
-        }
-
-        .section-subhead {
-            text-align: center;
-            color: #9CA3AF;
-            font-size: 1.2rem;
-            max-width: 640px;
-            margin: 0 auto 60px;
-            font-weight: 400;
-        }
-
-        /* ===== BUTTONS ===== */
-        .btn {
-            display: inline-block;
-            background: #FF4500;
-            color: #0A0A0A;
-            font-weight: 600;
-            padding: 14px 36px;
-            border-radius: 50px;
-            text-decoration: none;
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            border: none;
-            font-size: 1rem;
-            cursor: pointer;
-            box-shadow: 0 0 20px rgba(255, 69, 0, 0.2);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .btn::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 215, 0, 0.25) 0%, transparent 60%);
-            transform: scale(0);
-            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .btn:hover::after {
-            transform: scale(1);
-        }
-
-        .btn:hover {
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(255, 69, 0, 0.4);
-            background: #FFD700;
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: #E5E7EB;
-            border: 2px solid rgba(255, 69, 0, 0.4);
-            box-shadow: none;
-        }
-
-        .btn-outline:hover {
-            background: rgba(255, 69, 0, 0.1);
-            border-color: #FF4500;
-            color: #E5E7EB;
-            transform: translateY(-3px) scale(1.02);
-            box-shadow: 0 12px 40px rgba(255, 69, 0, 0.15);
-        }
-
-        .btn-download {
-            background: #10B981;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
-        }
-
-        .btn-download:hover {
-            background: #34D399;
-            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.4);
-        }
-
-        .btn-small {
-            padding: 8px 20px;
-            font-size: 0.85rem;
-        }
-
-        .btn-stable {
-            background: #10B981;
-            box-shadow: 0 0 20px rgba(16, 185, 129, 0.3);
-        }
-
-        .btn-stable:hover {
-            background: #34D399;
-            box-shadow: 0 12px 40px rgba(16, 185, 129, 0.5);
-        }
-
-        .btn-nuget {
-            background: #004880;
-            color: white;
-            box-shadow: 0 0 20px rgba(0, 72, 128, 0.3);
-        }
-
-        .btn-nuget:hover {
-            background: #005A9E;
-            color: white;
-            box-shadow: 0 12px 40px rgba(0, 72, 128, 0.5);
-        }
-
-        .btn-codeberg {
-            background: #2185D0;
-            color: white;
-            box-shadow: 0 0 20px rgba(33, 133, 208, 0.3);
-        }
-
-        .btn-codeberg:hover {
-            background: #1A6FB0;
-            color: white;
-            box-shadow: 0 12px 40px rgba(33, 133, 208, 0.5);
-        }
-
-        .btn-donate {
-            background: #F7931A;
-            color: #0A0A0A;
-            box-shadow: 0 0 20px rgba(247, 147, 26, 0.3);
-        }
-
-        .btn-donate:hover {
-            background: #FFB347;
-            color: #0A0A0A;
-            box-shadow: 0 12px 40px rgba(247, 147, 26, 0.5);
-        }
-
-        /* ===== BADGE ===== */
-        .badge {
-            display: inline-block;
-            background: #FF4500;
-            color: #0A0A0A;
-            font-weight: 600;
-            font-size: 0.75rem;
-            padding: 6px 16px;
-            border-radius: 30px;
-            letter-spacing: 0.3px;
-            animation: pulse-badge 2.5s infinite;
-            text-transform: uppercase;
-        }
-
-        .badge.nighty {
-            background: #FF4500;
-            animation: pulse-badge 1.8s infinite, float-badge 3s ease-in-out infinite;
-        }
-        .badge.stable { background: #10B981; animation: pulse-badge 3s infinite; }
-        .badge.beta { background: #8B5CF6; animation: pulse-badge 2.5s infinite; }
-        .badge.nuget { background: #004880; color: white; animation: pulse-badge 3.5s infinite; }
-        .badge.codeberg { background: #2185D0; color: white; animation: pulse-badge 3.5s infinite; }
-        .badge.donate { background: #F7931A; color: #0A0A0A; animation: pulse-badge 2s infinite, float-badge 3s ease-in-out infinite; }
-        .badge.roadmap { background: #8B5CF6; color: white; animation: pulse-badge 2.5s infinite, float-badge 4s ease-in-out infinite; }
-
-        @keyframes pulse-badge {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.7; transform: scale(0.96); }
-        }
-
-        @keyframes float-badge {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-6px); }
-        }
-
-        /* ===== HEADER / NAV ===== */
-        .navbar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 18px 0;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-            margin-bottom: 40px;
-            flex-wrap: wrap;
-        }
-
-        .logo-wrapper {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            text-decoration: none;
-        }
-
-        .logo-icon {
-            width: 48px;
-            height: 48px;
-            display: inline-block;
-            animation: logo-rollout 2.2s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
-            transform-origin: center;
-            position: relative;
-        }
-
-        .logo-icon img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-
-        @keyframes logo-rollout {
-            0% { transform: rotate(-360deg) scale(0) skewX(20deg); opacity: 0; }
-            60% { transform: rotate(20deg) scale(1.15) skewX(-5deg); opacity: 1; }
-            100% { transform: rotate(0deg) scale(1) skewX(0deg); opacity: 1; }
-        }
-
-        .logo-icon::after {
-            content: '';
-            position: absolute;
-            top: -8px;
-            left: -8px;
-            right: -8px;
-            bottom: -8px;
-            border-radius: 16px;
-            border: 2px solid rgba(255, 69, 0, 0.2);
-            animation: logo-pulse-ring 3.5s ease-in-out infinite;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-        }
-
-        .logo-wrapper:hover .logo-icon::after { opacity: 1; }
-
-        @keyframes logo-pulse-ring {
-            0%, 100% { transform: scale(1); opacity: 0.2; }
-            50% { transform: scale(1.25); opacity: 0; }
-        }
-
-        .logo-text {
-            font-size: 1.8rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: #E5E7EB;
-            animation: logo-text-reveal 1.6s ease-out forwards;
-            opacity: 0;
-            transform: translateX(-20px);
-        }
-
-        @keyframes logo-text-reveal {
-            0% { opacity: 0; transform: translateX(-20px); }
-            100% { opacity: 1; transform: translateX(0); }
-        }
-
-        .logo-text span { color: #FF4500; }
-        .logo-sub {
-            font-size: 0.7rem;
-            color: #6B7280;
-            display: block;
-            font-weight: 400;
-            letter-spacing: 0.2px;
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-links a {
-            color: #9CA3AF;
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        .nav-links a::after {
-            content: '';
-            position: absolute;
-            bottom: -4px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: #FF4500;
-            transition: width 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .nav-links a:hover {
-            color: #E5E7EB;
-        }
-
-        .nav-links a:hover::after {
-            width: 100%;
-        }
-
-        /* ===== VERSION SELECTOR ===== */
-        .version-selector {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin: 20px 0 30px;
-            flex-wrap: wrap;
-        }
-
-        .version-btn {
-            padding: 8px 22px;
-            border-radius: 30px;
-            border: 2px solid rgba(255, 255, 255, 0.08);
-            background: transparent;
-            color: #9CA3AF;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            font-size: 0.9rem;
-        }
-
-        .version-btn:hover {
-            border-color: rgba(255, 69, 0, 0.4);
-            color: #E5E7EB;
-            transform: translateY(-2px);
-        }
-
-        .version-btn.active {
-            border-color: #FF4500;
-            background: #FF4500;
-            color: #0A0A0A;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(255, 69, 0, 0.25);
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            text-align: center;
-            padding: 50px 0 70px;
-            position: relative;
-        }
-
-        .hero .badge {
-            margin-bottom: 24px;
-        }
-
-        .typing-container {
-            display: inline-block;
-            margin: 12px 0;
-        }
-
-        .typing-text {
-            font-size: 1.3rem;
-            color: #9CA3AF;
-            border-right: 3px solid #FF4500;
-            padding-right: 6px;
-            animation: blink-caret 0.8s step-end infinite;
-            white-space: nowrap;
-            overflow: hidden;
-            font-weight: 400;
-        }
-
-        @keyframes blink-caret {
-            0%, 100% { border-color: #FF4500; }
-            50% { border-color: transparent; }
-        }
-
-        .hero .btn-group {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 16px;
-        }
-
-        .hero .warning-text {
-            font-size: 0.85rem;
-            color: #6B7280;
-            margin-top: 24px;
-        }
-
-        .hero .warning-text a {
-            color: #FF4500;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        .hero .warning-text a:hover {
-            color: #FFD700;
-        }
-
-        /* ===== TEXT REVEAL ===== */
-        .reveal-text {
-            opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .reveal-text.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-text-delay-1 { transition-delay: 0.1s; }
-        .reveal-text-delay-2 { transition-delay: 0.2s; }
-        .reveal-text-delay-3 { transition-delay: 0.3s; }
-        .reveal-text-delay-4 { transition-delay: 0.4s; }
-
-        /* ===== DOWNLOAD SECTION ===== */
-        .download-section {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 32px;
-            padding: 60px 50px;
-            margin: 60px 0;
-            border: 1px solid rgba(255, 69, 0, 0.15);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.5s ease;
-        }
-
-        .download-section:hover {
-            border-color: rgba(255, 69, 0, 0.4);
-        }
-
-        .download-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255, 69, 0, 0.03) 0%, transparent 70%);
-            animation: rotate-glow 30s linear infinite;
-        }
-
-        @keyframes rotate-glow {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
-
-        .download-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
-            margin-top: 35px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .download-card {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            padding: 28px 24px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .download-card:hover {
-            border-color: rgba(255, 215, 0, 0.2);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .download-card .method {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .download-card .desc {
-            color: #9CA3AF;
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-        }
-
-        .download-card .code-block {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            color: #FFD700;
-            word-break: break-all;
-            margin: 12px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .download-card .btn {
-            margin-top: 12px;
-            width: 100%;
-        }
-
-        .winget-badge {
-            display: inline-block;
-            background: #0078D4;
-            color: white;
-            padding: 3px 12px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .npm-badge {
-            display: inline-block;
-            background: #CB3837;
-            color: white;
-            padding: 3px 12px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .nuget-badge {
-            display: inline-block;
-            background: #004880;
-            color: white;
-            padding: 3px 12px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        .codeberg-badge {
-            display: inline-block;
-            background: #2185D0;
-            color: white;
-            padding: 3px 12px;
-            border-radius: 6px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            margin-bottom: 10px;
-        }
-
-        /* ===== CODEBERG REPO SECTION ===== */
-        .repo-section {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 32px;
-            padding: 50px 40px;
-            margin: 60px 0;
-            border: 1px solid rgba(33, 133, 208, 0.2);
-            text-align: center;
-            transition: border-color 0.5s ease;
-        }
-
-        .repo-section:hover {
-            border-color: rgba(33, 133, 208, 0.5);
-        }
-
-        .repo-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 28px;
-            margin-top: 35px;
-        }
-
-        .repo-card {
-            background: rgba(0, 0, 0, 0.4);
-            backdrop-filter: blur(10px);
-            padding: 28px 24px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .repo-card:hover {
-            border-color: rgba(33, 133, 208, 0.3);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-        }
-
-        .repo-card .method {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 4px;
-        }
-
-        .repo-card .desc {
-            color: #9CA3AF;
-            font-size: 0.9rem;
-            margin-bottom: 16px;
-        }
-
-        .repo-card .code-block {
-            background: rgba(0, 0, 0, 0.6);
-            padding: 12px 16px;
-            border-radius: 10px;
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            color: #FFD700;
-            word-break: break-all;
-            margin: 12px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        /* ===== ROADMAP SECTION (NEW) ===== */
-        .roadmap-section {
-            background: linear-gradient(145deg, rgba(139, 92, 246, 0.08), rgba(255, 69, 0, 0.04));
-            border-radius: 32px;
-            padding: 60px 50px;
-            margin: 60px 0;
-            border: 2px solid rgba(139, 92, 246, 0.2);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        .roadmap-section:hover {
-            border-color: rgba(139, 92, 246, 0.4);
-            box-shadow: 0 0 60px rgba(139, 92, 246, 0.05);
-        }
-
-        .roadmap-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(139, 92, 246, 0.03) 0%, transparent 70%);
-            animation: rotate-glow 30s linear infinite;
-        }
-
-        .roadmap-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-            margin-top: 35px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .roadmap-card {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            padding: 28px 22px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .roadmap-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #FF4500, #FFD700, #8B5CF6);
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-
-        .roadmap-card:hover::before {
-            opacity: 1;
-        }
-
-        .roadmap-card:hover {
-            border-color: rgba(139, 92, 246, 0.3);
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 60px rgba(139, 92, 246, 0.1);
-        }
-
-        .roadmap-card .version {
-            font-size: 1.8rem;
-            font-weight: 800;
-            color: #FFD700;
-            margin-bottom: 4px;
-        }
-
-        .roadmap-card .theme {
-            font-size: 2.5rem;
-            display: block;
-            margin: 8px 0;
-        }
-
-        .roadmap-card .title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
-
-        .roadmap-card .desc {
-            color: #9CA3AF;
-            font-size: 0.85rem;
-            font-weight: 400;
-        }
-
-        .roadmap-card .status {
-            display: inline-block;
-            margin-top: 12px;
-            padding: 4px 16px;
-            border-radius: 30px;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-        }
-
-        .status-current {
-            background: #10B981;
-            color: #0A0A0A;
-        }
-
-        .status-upcoming {
-            background: #8B5CF6;
-            color: white;
-        }
-
-        .status-planning {
-            background: #1F2937;
-            color: #9CA3AF;
-        }
-
-        /* ===== DONATION SECTION ===== */
-        .donation-section {
-            background: linear-gradient(145deg, rgba(247, 147, 26, 0.08), rgba(255, 69, 0, 0.04));
-            border-radius: 32px;
-            padding: 60px 50px;
-            margin: 60px 0;
-            border: 2px solid rgba(247, 147, 26, 0.2);
-            text-align: center;
-            position: relative;
-            overflow: hidden;
-            transition: border-color 0.5s ease, box-shadow 0.5s ease;
-        }
-
-        .donation-section:hover {
-            border-color: rgba(247, 147, 26, 0.4);
-            box-shadow: 0 0 60px rgba(247, 147, 26, 0.05);
-        }
-
-        .donation-section::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(247, 147, 26, 0.03) 0%, transparent 70%);
-            animation: rotate-glow 30s linear infinite;
-        }
-
-        .donation-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            margin-top: 35px;
-            position: relative;
-            z-index: 1;
-        }
-
-        .donation-card {
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(10px);
-            padding: 30px 24px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 215, 0, 0.1);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        .donation-card:hover {
-            border-color: rgba(247, 147, 26, 0.3);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(247, 147, 26, 0.1);
-        }
-
-        .donation-card .qr-code {
-            width: 180px;
-            height: 180px;
-            border-radius: 16px;
-            background: white;
-            padding: 8px;
-            margin-bottom: 16px;
-            transition: transform 0.4s ease;
-        }
-
-        .donation-card .qr-code img {
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            border-radius: 12px;
-        }
-
-        .donation-card:hover .qr-code {
-            transform: scale(1.03);
-        }
-
-        .donation-card .address-label {
-            font-size: 0.75rem;
-            color: #F7931A;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .donation-card .address {
-            font-family: 'Courier New', monospace;
-            font-size: 0.75rem;
-            color: #E5E7EB;
-            background: rgba(0, 0, 0, 0.4);
-            padding: 8px 12px;
-            border-radius: 8px;
-            word-break: break-all;
-            max-width: 100%;
-            margin: 8px 0 12px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
-
-        .donation-card .btn {
-            width: 100%;
-            margin-top: 4px;
-        }
-
-        .donation-note {
-            margin-top: 25px;
-            color: #9CA3AF;
-            font-size: 0.85rem;
-        }
-
-        .donation-note a {
-            color: #F7931A;
-            text-decoration: none;
-        }
-
-        .donation-note a:hover {
-            color: #FFD700;
-        }
-
-        /* ===== FEATURES CARDS ===== */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 32px;
-            margin: 60px 0;
-        }
-
-        .card {
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 24px;
-            padding: 32px 28px;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            opacity: 0;
-            transform: translateY(50px);
-            backdrop-filter: blur(5px);
-            cursor: default;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .card:nth-child(1) { transition-delay: 0.05s; }
-        .card:nth-child(2) { transition-delay: 0.12s; }
-        .card:nth-child(3) { transition-delay: 0.19s; }
-        .card:nth-child(4) { transition-delay: 0.26s; }
-        .card:nth-child(5) { transition-delay: 0.33s; }
-        .card:nth-child(6) { transition-delay: 0.40s; }
-
-        .card.visible {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .card:hover {
-            transform: translateY(-8px) scale(1.01);
-            border-color: rgba(255, 69, 0, 0.3);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.04);
-        }
-
-        .card .icon {
-            font-size: 2.8rem;
-            margin-bottom: 16px;
-            display: block;
-            animation: icon-float 4s ease-in-out infinite;
-        }
-
-        .card:nth-child(2) .icon { animation-delay: 0.4s; }
-        .card:nth-child(3) .icon { animation-delay: 0.8s; }
-        .card:nth-child(4) .icon { animation-delay: 1.2s; }
-        .card:nth-child(5) .icon { animation-delay: 1.6s; }
-        .card:nth-child(6) .icon { animation-delay: 2.0s; }
-
-        @keyframes icon-float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-10px) rotate(4deg); }
-        }
-
-        .card h3 {
-            font-size: 1.4rem;
-            font-weight: 700;
-            margin-bottom: 8px;
-            color: #E5E7EB;
-        }
-
-        .card p {
-            color: #9CA3AF;
-            font-size: 0.95rem;
-            font-weight: 400;
-        }
-
-        .card .tag {
-            display: inline-block;
-            background: rgba(255, 215, 0, 0.1);
-            color: #FFD700;
-            font-size: 0.7rem;
-            padding: 4px 14px;
-            border-radius: 30px;
-            margin-top: 16px;
-            font-weight: 500;
-            border: 1px solid rgba(255, 215, 0, 0.1);
-        }
-
-        /* ===== SUPPORTED BY ===== */
-        .support-section {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 32px;
-            padding: 50px 40px;
-            margin: 60px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-            overflow: hidden;
-            position: relative;
-        }
-
-        .support-track {
-            display: flex;
-            gap: 40px;
-            margin-top: 35px;
-            animation: driftRoll 25s linear infinite;
-            width: max-content;
-            will-change: transform;
-        }
-
-        .support-track:hover {
-            animation-play-state: paused;
-        }
-
-        .support-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 20px 30px;
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: #E5E7EB;
-            min-width: 140px;
-            min-height: 120px;
-            flex-shrink: 0;
-        }
-
-        .support-item:hover {
-            transform: scale(1.08) translateY(-6px);
-            border-color: rgba(255, 215, 0, 0.3);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
-            background: rgba(255, 255, 255, 0.06);
-        }
-
-        .support-item img {
-            max-width: 60px;
-            max-height: 60px;
-            width: auto;
-            height: auto;
-            object-fit: contain;
-            margin-bottom: 10px;
-            filter: brightness(0.85) grayscale(0.2);
-            transition: filter 0.4s ease, transform 0.4s ease;
-        }
-
-        .support-item:hover img {
-            filter: brightness(1.1) grayscale(0);
-            transform: scale(1.05) rotate(-2deg);
-        }
-
-        .support-item .name {
-            font-size: 0.75rem;
-            font-weight: 500;
-            color: #9CA3AF;
-            transition: color 0.3s ease;
-            text-align: center;
-        }
-
-        .support-item:hover .name {
-            color: #E5E7EB;
-        }
-
-        .support-item .name-only {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #E5E7EB;
-        }
-
-        @keyframes driftRoll {
-            0% { transform: translateX(0); }
-            100% { transform: translateX(-50%); }
-        }
-
-        .support-track-clone {
-            display: flex;
-            gap: 40px;
-            flex-shrink: 0;
-        }
-
-        /* ===== CREDITS / TEAM ===== */
-        .credits-section {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 32px;
-            padding: 50px 40px;
-            margin: 40px 0 60px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-        }
-
-        .credits-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 30px;
-            margin-top: 35px;
-        }
-
-        .credit-card {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 28px 24px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            text-align: left;
-        }
-
-        .credit-card:hover {
-            border-color: rgba(255, 69, 0, 0.25);
-            transform: translateY(-6px);
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
-            background: rgba(255, 255, 255, 0.03);
-        }
-
-        .credit-card .role {
-            color: #FF4500;
-            font-weight: 600;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        .credit-card .name {
-            font-size: 1.3rem;
-            font-weight: 700;
-            margin: 8px 0 4px;
-        }
-
-        .credit-card .desc {
-            color: #9CA3AF;
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-
-        .credit-card .link {
-            display: inline-block;
-            margin-top: 12px;
-            color: #FFD700;
-            text-decoration: none;
-            font-size: 0.85rem;
-            border-bottom: 1px solid transparent;
-            transition: border-color 0.3s ease;
-        }
-
-        .credit-card .link:hover {
-            border-color: #FFD700;
-        }
-
-        /* ===== SERVER SECTION ===== */
-        .server-section {
-            background: rgba(255, 255, 255, 0.02);
-            border-radius: 32px;
-            padding: 50px 40px;
-            margin: 60px 0;
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            text-align: center;
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .server-section:hover {
-            transform: translateY(-4px);
-            border-color: rgba(255, 69, 0, 0.15);
-            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.2);
-        }
-
-        .server-status-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin-top: 30px;
-        }
-
-        .status-item {
-            background: rgba(0, 0, 0, 0.3);
-            padding: 22px 20px;
-            border-radius: 16px;
-            border-left: 4px solid #FF4500;
-            transition: all 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .status-item:hover {
-            transform: scale(1.03);
-            border-left-color: #FFD700;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .status-item .label {
-            color: #6B7280;
-            font-size: 0.75rem;
-            text-transform: uppercase;
-            letter-spacing: 0.3px;
-            font-weight: 500;
-        }
-
-        .status-item .value {
-            font-size: 1.2rem;
-            font-weight: 700;
-            color: #FFD700;
-            margin-top: 4px;
-        }
-
-        .status-item .value.online {
-            color: #10B981;
-        }
-
-        /* ===== GITHUB / CODEBERG CALLOUT ===== */
-        .github-callout {
-            text-align: center;
-            background: linear-gradient(145deg, rgba(255, 69, 0, 0.06), rgba(255, 215, 0, 0.03));
-            border-radius: 32px;
-            padding: 55px 50px;
-            margin: 60px 0;
-            border: 1px solid rgba(255, 69, 0, 0.1);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.5s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-
-        .github-callout:hover {
-            border-color: rgba(255, 215, 0, 0.2);
-            box-shadow: 0 20px 60px rgba(255, 69, 0, 0.05);
-        }
-
-        .github-callout::before {
-            content: '';
-            position: absolute;
-            top: -2px;
-            left: -2px;
-            right: -2px;
-            bottom: -2px;
-            background: linear-gradient(45deg, #FF4500, transparent, #FFD700, transparent);
-            background-size: 400%;
-            border-radius: 32px;
-            z-index: -1;
-            animation: border-glow 8s linear infinite;
-            opacity: 0;
-            transition: opacity 0.6s ease;
-        }
-
-        .github-callout:hover::before {
-            opacity: 1;
-        }
-
-        @keyframes border-glow {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
-        .github-callout .btn {
-            margin-top: 20px;
-        }
-
-        /* ===== GLITCH OVERLAY ===== */
-        .glitch-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: 9999;
-            background: rgba(255, 0, 0, 0.015);
-            opacity: 0;
-            transition: opacity 0.1s;
-        }
-
-        .glitch-overlay.active {
-            opacity: 1;
-            animation: glitch-flash 0.25s ease-out;
-        }
-
-        @keyframes glitch-flash {
-            0% { opacity: 0.7; transform: translateX(-8px) skewX(3deg); }
-            100% { opacity: 0; transform: translateX(8px) skewX(-3deg); }
-        }
-
-        /* ===== SCROLL PROGRESS BAR ===== */
-        .progress-bar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #FF4500, #FFD700);
-            z-index: 999;
-            width: 0%;
-            transition: width 0.15s ease;
-        }
-
-        /* ===== FOOTER ===== */
-        .footer {
-            text-align: center;
-            padding: 45px 0 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 40px;
-            color: #6B7280;
-            font-size: 0.9rem;
-            font-weight: 400;
-        }
-
-        .footer a {
-            color: #FF4500;
-            text-decoration: none;
-            transition: color 0.3s ease;
-        }
-
-        .footer a:hover {
-            color: #FFD700;
-        }
-
-        .footer .email {
-            color: #FFD700;
-            font-family: 'Courier New', monospace;
-            font-weight: 500;
-        }
-
-        /* ===== RESPONSIVE ===== */
-        @media (max-width: 768px) {
-            h1 { font-size: 2.6rem; }
-            h2 { font-size: 2rem; }
-            .navbar { flex-direction: column; gap: 16px; }
-            .nav-links { justify-content: center; gap: 20px; }
-            .server-section,
-            .credits-section,
-            .download-section,
-            .support-section,
-            .repo-section,
-            .donation-section,
-            .roadmap-section { padding: 30px 20px; }
-            .github-callout { padding: 30px 20px; }
-            .typing-text { font-size: 1rem; white-space: normal; }
-            .logo-icon { width: 40px; height: 40px; }
-            .logo-text { font-size: 1.4rem; }
-            .credits-grid,
-            .download-grid,
-            .repo-grid,
-            .donation-grid,
-            .roadmap-grid { grid-template-columns: 1fr; }
-            .cards-grid { grid-template-columns: 1fr; }
-            #cursor-glow { display: none; }
-
-            .support-item {
-                min-width: 100px;
-                min-height: 90px;
-                padding: 15px 20px;
-            }
-            .support-item img {
-                max-width: 40px;
-                max-height: 40px;
-            }
-            .support-track {
-                gap: 20px;
-                animation-duration: 15s;
-            }
-            .support-track-clone {
-                gap: 20px;
-            }
-
-            .donation-card .qr-code {
-                width: 150px;
-                height: 150px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .support-item {
-                min-width: 80px;
-                min-height: 80px;
-                padding: 12px 15px;
-            }
-            .support-item img {
-                max-width: 32px;
-                max-height: 32px;
-            }
-            .support-item .name {
-                font-size: 0.6rem;
-            }
-            .support-track {
-                gap: 15px;
-                animation-duration: 12s;
-            }
-            .support-track-clone {
-                gap: 15px;
-            }
-
-            .donation-card .qr-code {
-                width: 130px;
-                height: 130px;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PGlove — A browser with a new generation. Stable v1.0.3, Nighty builds, Codeberg mirror, Bitcoin donations.">
+<meta name="theme-color" content="#0a0420">
+<title>PGlove — A Browser With A New Generation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+/* ============================================================
+   PGlove — Purple & Blue Theme · Complete Redesign
+   ============================================================ */
+:root {
+  --purple-100: #e6d9ff;
+  --purple-200: #c9aaff;
+  --purple-300: #ab7bff;
+  --purple-400: #8b4dff;
+  --purple-500: #6d28d9;
+  --purple-600: #5b21b6;
+  --purple-700: #4c1d95;
+  --blue-400: #60a5fa;
+  --blue-500: #3b82f6;
+  --blue-600: #2563eb;
+  --cyan-300: #67e8f9;
+  --cyan-400: #22d3ee;
+  --cyan-500: #06b6d4;
+  --bg-0: #05010f;
+  --bg-1: #0a0420;
+  --bg-2: #12063a;
+  --surface: #140a38;
+  --surface-2: #1e1054;
+  --border: rgba(139, 77, 255, 0.18);
+  --border-strong: rgba(139, 77, 255, 0.35);
+  --text: #e8e4f5;
+  --text-dim: #b8aee0;
+  --text-muted: #7a6fa5;
+  --green: #10b981;
+  --green-light: #34d399;
+  --yellow: #ffcb05;
+  --orange: #fb923c;
+  --pink: #f472b6;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: var(--bg-1);
+  color: var(--text);
+  line-height: 1.6;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at 20% 10%, rgba(109, 40, 217, 0.25), transparent 45%),
+    radial-gradient(circle at 80% 30%, rgba(37, 99, 235, 0.20), transparent 45%),
+    radial-gradient(circle at 50% 90%, rgba(6, 182, 212, 0.12), transparent 50%);
+  pointer-events: none;
+  z-index: 0;
+  animation: ambientShift 24s ease-in-out infinite alternate;
+}
+@keyframes ambientShift {
+  0%   { transform: scale(1) rotate(0deg); }
+  50%  { transform: scale(1.1) rotate(3deg); }
+  100% { transform: scale(1.05) rotate(-2deg); }
+}
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(139, 77, 255, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 77, 255, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  pointer-events: none;
+  z-index: 0;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.app { position: relative; z-index: 1; }
+
+/* ============ LOADER ============ */
+.loader {
+  position: fixed; inset: 0; background: var(--bg-0); z-index: 9999;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  transition: opacity 0.7s ease, visibility 0.7s ease;
+}
+.loader.hidden { opacity: 0; visibility: hidden; }
+.loader-orb {
+  width: 100px; height: 100px; border-radius: 50%;
+  background: conic-gradient(from 0deg, var(--purple-500), var(--blue-500), var(--cyan-400), var(--purple-500));
+  position: relative; animation: orbSpin 2s linear infinite;
+  box-shadow: 0 0 80px rgba(139, 77, 255, 0.5), 0 0 120px rgba(37, 99, 235, 0.3);
+}
+.loader-orb::after { content: ''; position: absolute; inset: 8px; background: var(--bg-0); border-radius: 50%; }
+.loader-orb::before { content: ''; position: absolute; inset: 30px; background: radial-gradient(circle, var(--purple-400), transparent 70%); border-radius: 50%; z-index: 1; animation: orbPulse 1.5s ease-in-out infinite; }
+@keyframes orbSpin { to { transform: rotate(360deg); } }
+@keyframes orbPulse { 0%,100% { opacity: 0.5; } 50% { opacity: 1; } }
+.loader-text { margin-top: 2rem; font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 500; letter-spacing: 8px; color: var(--purple-200); text-transform: uppercase; }
+.loader-progress { margin-top: 1.5rem; width: 240px; height: 2px; background: rgba(139, 77, 255, 0.15); overflow: hidden; border-radius: 2px; }
+.loader-progress-inner { height: 100%; width: 0; background: linear-gradient(90deg, var(--purple-400), var(--blue-400), var(--cyan-400)); animation: loadFill 1.8s var(--ease) forwards; box-shadow: 0 0 20px rgba(139, 77, 255, 0.8); }
+@keyframes loadFill { to { width: 100%; } }
+
+/* ============ NAVBAR ============ */
+.navbar {
+  position: sticky; top: 0; z-index: 100; padding: 1rem 2rem;
+  background: rgba(10, 4, 32, 0.75); backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid var(--border);
+  transition: box-shadow 0.3s var(--ease);
+}
+.navbar-inner { max-width: 1280px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; gap: 2rem; }
+.nav-brand { display: flex; align-items: center; gap: 12px; font-family: 'Space Grotesk', sans-serif; font-weight: 700; font-size: 1.25rem; letter-spacing: -0.02em; color: var(--text); text-decoration: none; }
+.brand-mark { width: 34px; height: 34px; border-radius: 10px; background: linear-gradient(135deg, var(--purple-500), var(--blue-500)); display: flex; align-items: center; justify-content: center; font-size: 1rem; color: white; box-shadow: 0 4px 20px rgba(109, 40, 217, 0.5); transition: transform 0.5s var(--ease); }
+.nav-brand:hover .brand-mark { transform: rotate(-10deg) scale(1.1); }
+.nav-links { display: flex; gap: 1.8rem; align-items: center; flex-wrap: wrap; }
+.nav-links a { color: var(--text-dim); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.25s ease; position: relative; }
+.nav-links a:hover { color: var(--purple-200); }
+.nav-links a::after { content: ''; position: absolute; bottom: -6px; left: 0; width: 0; height: 1.5px; background: linear-gradient(90deg, var(--purple-400), var(--cyan-400)); transition: width 0.3s var(--ease); }
+.nav-links a:hover::after { width: 100%; }
+.nav-cta { background: linear-gradient(135deg, var(--purple-500), var(--blue-600)); color: white !important; padding: 0.55rem 1.3rem; border-radius: 10px; font-weight: 600; font-size: 0.85rem !important; box-shadow: 0 4px 20px rgba(109, 40, 217, 0.4); transition: transform 0.25s var(--ease); }
+.nav-cta:hover { transform: translateY(-2px); color: white !important; }
+.nav-cta::after { display: none; }
+
+/* ============ HERO ============ */
+.hero { padding: 6rem 2rem 4rem; text-align: center; position: relative; }
+.hero-inner { max-width: 900px; margin: 0 auto; }
+.hero-badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 18px; border-radius: 999px; background: rgba(139, 77, 255, 0.1); border: 1px solid var(--border-strong); font-size: 0.75rem; font-weight: 500; color: var(--purple-200); margin-bottom: 2rem; backdrop-filter: blur(10px); }
+.hero-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green-light); box-shadow: 0 0 12px var(--green-light); animation: liveDot 2s ease-in-out infinite; }
+@keyframes liveDot { 0%,100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.5; transform: scale(1.4); } }
+.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(2.5rem, 6vw, 5rem); font-weight: 700; line-height: 1.05; letter-spacing: -0.04em; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 0%, var(--purple-200) 40%, var(--cyan-300) 100%); -webkit-background-clip: text; background-clip: text; color: transparent; filter: drop-shadow(0 0 40px rgba(139, 77, 255, 0.3)); }
+.hero h1 .italic { font-style: italic; font-weight: 300; background: linear-gradient(135deg, var(--purple-300), var(--cyan-400)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.hero-sub { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--text-dim); max-width: 620px; margin: 0 auto 2rem; font-weight: 400; }
+.hero-buttons { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; margin-bottom: 1.8rem; }
+.hero-meta { display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; font-size: 0.8rem; color: var(--text-muted); }
+.hero-meta a { color: var(--purple-300); text-decoration: none; transition: color 0.25s ease; }
+.hero-meta a:hover { color: var(--cyan-300); }
+.hero-meta span { display: flex; align-items: center; gap: 6px; }
+
+/* ============ BUTTONS ============ */
+.btn { display: inline-flex; align-items: center; gap: 10px; padding: 0.95rem 1.8rem; border-radius: 12px; font-size: 0.9rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; transition: all 0.3s var(--ease); }
+.btn-primary { background: linear-gradient(135deg, var(--purple-500), var(--blue-600)); color: white; box-shadow: 0 8px 30px rgba(109, 40, 217, 0.4); }
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(109, 40, 217, 0.6); }
+.btn-secondary { background: rgba(139, 77, 255, 0.08); color: var(--purple-200); border: 1px solid var(--border-strong); backdrop-filter: blur(10px); }
+.btn-secondary:hover { background: rgba(139, 77, 255, 0.15); border-color: var(--purple-400); transform: translateY(-3px); }
+.btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
+.btn-ghost:hover { color: var(--purple-200); border-color: var(--purple-400); background: rgba(139, 77, 255, 0.08); }
+.btn-orange { background: linear-gradient(135deg, var(--orange), #ea580c); color: white; box-shadow: 0 8px 30px rgba(251, 146, 60, 0.3); }
+.btn-orange:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(251, 146, 60, 0.5); }
+.btn-green { background: linear-gradient(135deg, var(--green), #059669); color: white; box-shadow: 0 8px 30px rgba(16, 185, 129, 0.3); }
+.btn-green:hover { transform: translateY(-3px); box-shadow: 0 14px 40px rgba(16, 185, 129, 0.5); }
+.btn-sm { padding: 0.65rem 1.2rem; font-size: 0.8rem; }
+
+/* ============ SECTIONS ============ */
+.section { padding: 5rem 2rem; position: relative; }
+.section-inner { max-width: 1280px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-tag { display: inline-flex; align-items: center; gap: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; font-weight: 500; letter-spacing: 2px; text-transform: uppercase; color: var(--purple-300); margin-bottom: 1rem; padding: 4px 12px; background: rgba(139, 77, 255, 0.08); border: 1px solid var(--border); border-radius: 6px; }
+.section-title { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.8rem, 3.5vw, 2.6rem); font-weight: 700; letter-spacing: -0.03em; line-height: 1.15; margin-bottom: 1rem; color: var(--text); }
+.section-title .grad { background: linear-gradient(135deg, var(--purple-300), var(--cyan-400)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.section-sub { color: var(--text-dim); font-size: 1rem; max-width: 640px; margin: 0 auto; }
+
+/* ============ GET PGlove / DOWNLOAD GRID ============ */
+.download-section { background: linear-gradient(180deg, transparent, rgba(30, 16, 84, 0.3) 50%, transparent); }
+.versions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; margin-bottom: 2.5rem; }
+.version-card { background: linear-gradient(160deg, rgba(30, 16, 84, 0.7) 0%, rgba(20, 10, 56, 0.9) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 1.8rem 1.6rem; transition: all 0.4s var(--ease); backdrop-filter: blur(10px); display: flex; flex-direction: column; }
+.version-card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: 0 20px 50px rgba(109, 40, 217, 0.2); }
+.version-card.featured { border-color: var(--green); box-shadow: 0 0 40px rgba(16, 185, 129, 0.15); }
+.version-card.nuget-card { border-color: rgba(96, 165, 250, 0.4); }
+.version-card.nighty-card { border-color: rgba(251, 146, 60, 0.4); }
+.version-card.winget-card { border-color: rgba(103, 232, 249, 0.4); }
+.version-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; padding: 4px 10px; border-radius: 6px; display: inline-block; margin-bottom: 1rem; }
+.v-stable { background: rgba(16, 185, 129, 0.15); color: var(--green-light); border: 1px solid rgba(52, 211, 153, 0.3); }
+.v-nighty { background: rgba(251, 146, 60, 0.15); color: var(--orange); border: 1px solid rgba(251, 146, 60, 0.3); }
+.v-nuget { background: rgba(59, 130, 246, 0.15); color: var(--blue-400); border: 1px solid rgba(96, 165, 250, 0.3); }
+.v-winget { background: rgba(6, 182, 212, 0.15); color: var(--cyan-300); border: 1px solid rgba(103, 232, 249, 0.3); }
+.version-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.35rem; font-weight: 700; color: var(--text); letter-spacing: -0.02em; margin-bottom: 0.35rem; }
+.version-desc { color: var(--text-dim); font-size: 0.82rem; margin-bottom: 1rem; }
+.code-block { background: rgba(0, 0, 0, 0.5); border: 1px solid var(--border); border-radius: 10px; padding: 0.8rem 1rem; font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--cyan-300); margin-bottom: 1rem; overflow-x: auto; white-space: nowrap; }
+.code-block::-webkit-scrollbar { height: 4px; }
+.code-block::-webkit-scrollbar-thumb { background: var(--purple-500); border-radius: 4px; }
+.version-actions { display: flex; flex-direction: column; gap: 0.55rem; margin-top: auto; }
+.footer-note { text-align: center; color: var(--text-muted); font-size: 0.82rem; margin-top: 1rem; }
+.footer-note a { color: var(--cyan-300); text-decoration: none; }
+.footer-note a:hover { color: var(--purple-200); }
+
+/* ============ ROADMAP ============ */
+.roadmap { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.3rem; margin-bottom: 1.5rem; }
+.roadmap-item { background: linear-gradient(160deg, rgba(30, 16, 84, 0.5) 0%, rgba(20, 10, 56, 0.8) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 1.6rem 1.4rem; transition: all 0.4s var(--ease); backdrop-filter: blur(10px); display: flex; flex-direction: column; }
+.roadmap-item.active { border-color: var(--purple-400); background: linear-gradient(160deg, rgba(109, 40, 217, 0.15) 0%, rgba(30, 16, 84, 0.8) 100%); }
+.roadmap-item:hover { transform: translateY(-6px); border-color: var(--purple-400); box-shadow: 0 20px 50px rgba(109, 40, 217, 0.2); }
+.roadmap-v { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; font-weight: 600; letter-spacing: 1.5px; color: var(--purple-300); margin-bottom: 0.7rem; }
+.roadmap-title { font-family: 'Space Grotesk', sans-serif; font-size: 1.05rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+.roadmap-item p { color: var(--text-dim); font-size: 0.85rem; line-height: 1.6; flex-grow: 1; margin-bottom: 1rem; }
+.roadmap-status { display: inline-flex; align-items: center; gap: 5px; font-size: 0.68rem; font-weight: 600; letter-spacing: 0.5px; padding: 5px 10px; border-radius: 6px; align-self: flex-start; }
+.rs-dev { background: rgba(109, 40, 217, 0.2); color: var(--purple-200); border: 1px solid var(--purple-400); }
+.rs-upcoming { background: rgba(37, 99, 235, 0.15); color: #93c5fd; border: 1px solid rgba(96, 165, 250, 0.4); }
+.rs-planning { background: rgba(122, 111, 165, 0.15); color: var(--text-muted); border: 1px solid rgba(122, 111, 165, 0.3); }
+.roadmap-link { display: inline-flex; align-items: center; gap: 6px; margin-top: 0.8rem; font-size: 0.78rem; font-weight: 600; color: var(--cyan-300); text-decoration: none; transition: gap 0.3s var(--ease), color 0.3s ease; }
+.roadmap-link:hover { gap: 10px; color: var(--purple-200); }
+.center-note { text-align: center; color: var(--text-muted); font-size: 0.82rem; }
+.center-note a { color: var(--cyan-300); text-decoration: none; }
+
+/* ============ CODEBERG ============ */
+.codeberg-section { background: linear-gradient(180deg, transparent, rgba(37, 99, 235, 0.05) 50%, transparent); }
+.codeberg-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.3rem; margin-bottom: 1rem; }
+.codeberg-card { background: linear-gradient(160deg, rgba(30, 16, 84, 0.6) 0%, rgba(20, 10, 56, 0.85) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 1.6rem 1.5rem; transition: all 0.4s var(--ease); backdrop-filter: blur(10px); }
+.codeberg-card:hover { transform: translateY(-6px); border-color: var(--border-strong); box-shadow: 0 20px 50px rgba(109, 40, 217, 0.15); }
+.codeberg-card h4 { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; display: flex; align-items: center; gap: 8px; }
+.codeberg-card h4 i { color: var(--purple-300); }
+.codeberg-card p { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 1rem; }
+.codeberg-card .code-block { font-size: 0.68rem; margin-bottom: 1rem; }
+.codeberg-note { text-align: center; color: var(--text-muted); font-size: 0.78rem; margin-top: 1rem; }
+
+/* ============ BITCOIN DONATE ============ */
+.donate-section { background: linear-gradient(180deg, transparent, rgba(251, 146, 60, 0.05) 50%, transparent); }
+.donate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.8rem; margin-bottom: 1.5rem; }
+.donate-card { background: linear-gradient(160deg, rgba(251, 146, 60, 0.08) 0%, rgba(30, 16, 84, 0.85) 100%); border: 1px solid rgba(251, 146, 60, 0.3); border-radius: 20px; padding: 2rem 1.6rem; text-align: center; transition: all 0.4s var(--ease); }
+.donate-card:hover { transform: translateY(-6px); border-color: var(--orange); box-shadow: 0 20px 50px rgba(251, 146, 60, 0.2); }
+.qr-wrapper { background: white; border-radius: 12px; padding: 1rem; display: inline-block; margin-bottom: 1.2rem; box-shadow: 0 10px 40px rgba(251, 146, 60, 0.3); }
+.qr-wrapper img { display: block; width: 180px; height: 180px; }
+.btc-address { font-family: 'JetBrains Mono', monospace; font-size: 0.72rem; color: var(--orange); word-break: break-all; padding: 0.6rem 1rem; background: rgba(0, 0, 0, 0.4); border: 1px solid rgba(251, 146, 60, 0.3); border-radius: 8px; margin-bottom: 1rem; line-height: 1.5; }
+.donate-hint { text-align: center; color: var(--text-muted); font-size: 0.8rem; }
+.donate-hint a { color: var(--orange); text-decoration: none; }
+
+/* ============ SUPPORTED BY ============ */
+.supported-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-bottom: 1rem; }
+.supported-item { background: linear-gradient(160deg, rgba(30, 16, 84, 0.5) 0%, rgba(20, 10, 56, 0.75) 100%); border: 1px solid var(--border); border-radius: 16px; padding: 1.5rem 1rem; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem; text-decoration: none; color: var(--text-dim); transition: all 0.4s var(--ease); min-height: 130px; backdrop-filter: blur(10px); }
+.supported-item:hover { transform: translateY(-6px); border-color: var(--border-strong); background: rgba(139, 77, 255, 0.08); box-shadow: 0 15px 40px rgba(109, 40, 217, 0.2); }
+.supported-item img { max-width: 52px; max-height: 52px; object-fit: contain; filter: brightness(0.9) grayscale(0.15); transition: filter 0.4s ease, transform 0.4s var(--ease); }
+.supported-item:hover img { filter: brightness(1.15) grayscale(0); transform: scale(1.1); }
+.supported-item .icon-fallback { font-size: 2.2rem; color: var(--purple-300); }
+.supported-item .name { font-size: 0.72rem; font-weight: 500; color: var(--text-dim); text-align: center; transition: color 0.3s ease; }
+.supported-item:hover .name { color: var(--purple-200); }
+
+/* ============ FEATURES ============ */
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.feature-card { background: linear-gradient(160deg, rgba(30, 16, 84, 0.6) 0%, rgba(20, 10, 56, 0.8) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 1.8rem 1.6rem; position: relative; overflow: hidden; transition: all 0.4s var(--ease); backdrop-filter: blur(10px); }
+.feature-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, transparent, var(--purple-400), var(--cyan-400), transparent); opacity: 0; transition: opacity 0.4s ease; }
+.feature-card:hover { transform: translateY(-8px); border-color: var(--border-strong); box-shadow: 0 20px 50px rgba(109, 40, 217, 0.25); }
+.feature-card:hover::before { opacity: 1; }
+.feature-icon { width: 50px; height: 50px; border-radius: 14px; background: linear-gradient(135deg, rgba(139, 77, 255, 0.15), rgba(37, 99, 235, 0.15)); border: 1px solid var(--border-strong); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 1.2rem; transition: transform 0.5s var(--ease); }
+.feature-card:hover .feature-icon { transform: scale(1.1) rotate(-6deg); background: linear-gradient(135deg, rgba(139, 77, 255, 0.3), rgba(37, 99, 235, 0.3)); }
+.feature-card h3 { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 600; color: var(--text); margin-bottom: 0.5rem; }
+.feature-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.65; }
+
+/* ============ TEAM ============ */
+.team-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+.team-card { background: linear-gradient(160deg, rgba(30, 16, 84, 0.6) 0%, rgba(20, 10, 56, 0.85) 100%); border: 1px solid var(--border); border-radius: 20px; padding: 2rem 1.6rem; text-align: center; transition: all 0.4s var(--ease); backdrop-filter: blur(10px); text-decoration: none; color: inherit; display: block; }
+.team-card:hover { transform: translateY(-6px); border-color: var(--purple-400); box-shadow: 0 20px 50px rgba(109, 40, 217, 0.25); }
+.team-avatar { width: 62px; height: 62px; border-radius: 18px; background: linear-gradient(135deg, var(--purple-500), var(--blue-500)); display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: white; margin: 0 auto 1.2rem; box-shadow: 0 8px 30px rgba(109, 40, 217, 0.4); transition: transform 0.5s var(--ease); }
+.team-card:hover .team-avatar { transform: scale(1.1) rotate(-8deg); }
+.team-role { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--purple-300); margin-bottom: 0.5rem; }
+.team-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.1rem; font-weight: 700; color: var(--text); margin-bottom: 0.5rem; }
+.team-desc { color: var(--text-dim); font-size: 0.83rem; line-height: 1.6; }
+.team-note { text-align: center; color: var(--text-muted); font-size: 0.8rem; margin-top: 1.5rem; }
+.team-note a { color: var(--purple-300); text-decoration: none; }
+
+/* ============ SERVER ============ */
+.server-section { background: linear-gradient(180deg, transparent, rgba(16, 185, 129, 0.05) 50%, transparent); }
+.server-header { text-align: center; margin-bottom: 2rem; }
+.server-status-pill { display: inline-flex; align-items: center; gap: 8px; padding: 6px 14px; background: rgba(16, 185, 129, 0.15); border: 1px solid rgba(52, 211, 153, 0.3); border-radius: 999px; font-size: 0.75rem; font-weight: 600; color: var(--green-light); margin-bottom: 1rem; }
+.server-status-pill .live-dot { width: 6px; height: 6px; background: var(--green-light); border-radius: 50%; box-shadow: 0 0 10px var(--green-light); animation: liveDot 2s ease-in-out infinite; }
+.server-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1.2rem; margin-bottom: 2rem; }
+.server-card { background: rgba(0, 0, 0, 0.35); border: 1px solid var(--border); border-left: 4px solid var(--purple-400); border-radius: 14px; padding: 1.4rem 1.3rem; transition: all 0.35s var(--ease); }
+.server-card:hover { transform: translateY(-4px); border-left-color: var(--cyan-400); box-shadow: 0 12px 35px rgba(109, 40, 217, 0.2); }
+.server-label { font-family: 'JetBrains Mono', monospace; font-size: 0.68rem; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 0.5rem; }
+.server-value { font-family: 'Space Grotesk', sans-serif; font-size: 1rem; font-weight: 600; color: var(--text); margin-bottom: 0.3rem; word-break: break-all; }
+.server-value.online { color: var(--green-light); }
+.server-meta { font-size: 0.75rem; color: var(--text-muted); }
+
+/* ============ CTA ============ */
+.cta-box { background: linear-gradient(135deg, rgba(109, 40, 217, 0.2), rgba(37, 99, 235, 0.15)); border: 1px solid var(--border-strong); border-radius: 24px; padding: 3rem 2rem; text-align: center; position: relative; overflow: hidden; backdrop-filter: blur(20px); }
+.cta-box::before { content: ''; position: absolute; inset: 0; background: radial-gradient(circle at 50% 0%, rgba(139, 77, 255, 0.25), transparent 60%); pointer-events: none; }
+.cta-box > * { position: relative; }
+.cta-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+.cta-box h2 { font-family: 'Space Grotesk', sans-serif; font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; letter-spacing: -0.03em; margin-bottom: 1rem; }
+.cta-box h2 .grad { background: linear-gradient(135deg, var(--purple-300), var(--cyan-400)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.cta-box p { color: var(--text-dim); max-width: 560px; margin: 0 auto 1.8rem; font-size: 0.95rem; }
+.cta-buttons { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.cta-stats { display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--text-muted); }
+
+/* ============ FOOTER ============ */
+.footer { padding: 3rem 2rem 2rem; border-top: 1px solid var(--border); background: rgba(5, 1, 15, 0.6); backdrop-filter: blur(20px); margin-top: 4rem; }
+.footer-inner { max-width: 1280px; margin: 0 auto; text-align: center; }
+.footer-links { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; margin-bottom: 1.5rem; }
+.footer-links a { color: var(--text-dim); text-decoration: none; font-size: 0.85rem; transition: color 0.25s ease; }
+.footer-links a:hover { color: var(--purple-200); }
+.footer-copy { font-family: 'JetBrains Mono', monospace; font-size: 0.7rem; color: var(--text-muted); line-height: 2; }
+.footer-copy .accent { color: var(--purple-300); }
+.footer-copy a { color: var(--cyan-300); text-decoration: none; }
+
+/* ============ REVEAL ============ */
+.reveal { opacity: 0; transform: translateY(40px); transition: opacity 0.9s var(--ease), transform 0.9s var(--ease); }
+.reveal.visible { opacity: 1; transform: translateY(0); }
+
+/* ============ RESPONSIVE ============ */
+@media (max-width: 768px) {
+  .navbar { padding: 0.9rem 1rem; }
+  .nav-links { gap: 1rem; }
+  .nav-links a { font-size: 0.8rem; }
+  .nav-brand { font-size: 1rem; }
+  .hero { padding: 4rem 1.2rem 3rem; }
+  .section { padding: 3.5rem 1.2rem; }
+  .btn { padding: 0.85rem 1.5rem; font-size: 0.85rem; }
+  .qr-wrapper img { width: 150px; height: 150px; }
+  .cta-stats { gap: 1rem; font-size: 0.72rem; }
+}
+</style>
 </head>
 <body>
 
-    <!-- ===== CURSOR GLOW ===== -->
-    <div id="cursor-glow"></div>
+<!-- LOADER -->
+<div class="loader" id="loader">
+  <div class="loader-orb"></div>
+  <div class="loader-text">PGlove</div>
+  <div class="loader-progress"><div class="loader-progress-inner"></div></div>
+</div>
 
-    <!-- ===== PROGRESS BAR ===== -->
-    <div class="progress-bar" id="progressBar"></div>
+<div class="app">
 
-    <!-- ===== GLITCH OVERLAY ===== -->
-    <div class="glitch-overlay" id="glitchOverlay"></div>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="#" class="nav-brand">
+      <span class="brand-mark"><i class="fas fa-globe"></i></span>
+      <span>PGlove</span>
+    </a>
+    <div class="nav-links">
+      <a href="#download">Download</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#codeberg">Codeberg</a>
+      <a href="#donate">Donate</a>
+      <a href="#supported">Support</a>
+      <a href="#team">Team</a>
+      <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener">GitHub</a>
+    </div>
+  </div>
+</nav>
 
-    <!-- ===== PARTICLES ===== -->
-    <canvas id="particles-canvas"></canvas>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div class="hero-badge">
+      <span class="dot"></span>
+      <span>v1.0.3 Stable · Available Now</span>
+    </div>
+    <h1>A Browser With<br>A <span class="italic">New Generation.</span></h1>
+    <p class="hero-sub">
+      The browser that breaks so you don't have to. Experimental, daily updates,
+      and built for developers, gamers, and the fearless. Made in India.
+    </p>
+    <div class="hero-buttons">
+      <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Download Stable</a>
+      <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener" class="btn btn-secondary"><i class="fab fa-github"></i> View on GitHub</a>
+      <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-ghost"><i class="fas fa-code-branch"></i> View on Codeberg</a>
+    </div>
+    <div class="hero-meta">
+      <span><i class="fas fa-tag"></i> Stable v1.0.3</span>
+      <span><a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener"><i class="fas fa-box"></i> NPM Package</a></span>
+      <span><a href="https://github.com/microsoft/winget-pkgs/pull/421311" target="_blank" rel="noopener"><i class="fas fa-terminal"></i> Winget PR #421311</a></span>
+      <span><a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener"><i class="fas fa-cube"></i> NuGet Package</a></span>
+    </div>
+  </div>
+</section>
 
-    <div class="container">
+<!-- GET PGLOVE / DOWNLOAD -->
+<section class="section download-section" id="download">
+  <div class="section-inner reveal">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-download"></i> Get PGlove</div>
+      <h2 class="section-title">Choose your <span class="grad">build.</span></h2>
+      <p class="section-sub">Choose between the stable release, experimental builds, or the core library.</p>
+    </div>
 
-        <!-- ===== NAVIGATION ===== -->
-        <nav class="navbar">
-            <a href="#" class="logo-wrapper">
-                <span class="logo-icon">
-                    <img src="https://camo.githubusercontent.com/1bafcada72bfea6fc0274970de5e02df362776ca2ea3a36c4ab38fc5adba5f3f/68747470733a2f2f696d672e697463682e7a6f6e652f6157316e4c7a49354d7a6b794e7a45334c6e42755a773d3d2f333437783530302f50536a3567392e706e67" alt="PGlove Logo - Experimental Browser" loading="lazy">
-                </span>
-                <span class="logo-text">
-                    P<span>Glove</span>
-                    <span class="logo-sub">by ProGroupco & Bro Gang</span>
-                </span>
-            </a>
-            <div class="nav-links">
-                <a href="#features">Features</a>
-                <a href="#download">Download</a>
-                <a href="#roadmap">Roadmap</a>
-                <a href="#codeberg">Codeberg</a>
-                <a href="#donate">Donate</a>
-                <a href="#support">Support</a>
-                <a href="#credits">Team</a>
-                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" rel="noopener">GitHub</a>
-            </div>
-        </nav>
+    <div class="versions-grid">
 
-        <!-- ===== HERO ===== -->
-        <section class="hero">
-            <span class="badge stable">✅ Stable Release v1.0.3</span>
-            <h1>A Browser With A New Generation</h1>
-            <div class="typing-container">
-                <span class="typing-text" id="typingText"></span>
-            </div>
-
-            <div class="version-selector" id="versions">
-                <button class="version-btn active" data-version="stable">✅ Stable (v1.0.3)</button>
-                <button class="version-btn" data-version="nighty">🌙 Nighty (Unstable)</button>
-                <button class="version-btn" data-version="beta">🧪 Pre-Beta</button>
-            </div>
-
-            <div class="btn-group">
-                <a href="#download" class="btn btn-stable">⬇️ Download Stable</a>
-                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" rel="noopener" class="btn btn-outline">🛠️ View on GitHub</a>
-                <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-codeberg">🔷 View on Codeberg</a>
-            </div>
-            <p class="warning-text">
-                <span style="color: #10B981;">Stable v1.0.3</span> •
-                <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener">NPM Package</a> •
-                <a href="https://github.com/microsoft/winget-pkgs/pull/421311/" target="_blank" rel="noopener">Winget PR #421311</a> •
-                <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener">NuGet Package</a> •
-                <a href="https://codeberg.org/TechAditya/PGlove/releases" target="_blank" rel="noopener">Codeberg Releases</a>
-            </p>
-        </section>
-
-        <!-- ===== DOWNLOAD SECTION ===== -->
-        <section class="download-section reveal-text" id="download" aria-labelledby="download-heading">
-            <span class="badge" style="background: #10B981;">⬇️ Download PGlove</span>
-            <h2 id="download-heading" style="margin-top: 20px;">Get <span class="highlight">PGlove</span></h2>
-            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
-                Choose between the stable release, experimental builds, or the core library.
-            </p>
-
-            <div class="download-grid">
-                <!-- STABLE CARD -->
-                <div class="download-card" style="border-color: rgba(16, 185, 129, 0.3);">
-                    <span class="badge stable" style="margin-bottom: 10px;">✅ Stable</span>
-                    <div class="method">📦 Stable Release</div>
-                    <div class="desc">Version 1.0.3 • Production ready</div>
-                    <div class="code-block" style="font-size:0.7rem;">
-                        npm install @techadityabro/pglove-stable --registry=https://npm.pkg.github.com
-                    </div>
-                    <div style="font-size:0.7rem; color:#6B7280; margin:10px 0;">
-                        Package: @techadityabro/pglove-stable • Registry: GitHub Packages
-                    </div>
-                    <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener" class="btn btn-stable">📦 View NPM Package</a>
-                    <a href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener" class="btn btn-small" style="margin-top:8px; background: #1F2937; color: #E5E7EB;">🔗 View Releases</a>
-                </div>
-
-                <!-- NUGET CARD -->
-                <div class="download-card" style="border-color: rgba(0, 72, 128, 0.3);">
-                    <span class="badge nuget" style="margin-bottom: 10px;">🔷 NuGet</span>
-                    <div class="method">📦 PGloveCore</div>
-                    <div class="desc">Version 1.0.3 • Core metadata helpers</div>
-                    <div class="code-block" style="font-size:0.7rem;">
-                        dotnet add package PGloveCore --version 1.0.3
-                    </div>
-                    <div style="font-size:0.7rem; color:#6B7280; margin:10px 0;">
-                        Package: PGloveCore • .NET Library
-                    </div>
-                    <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener" class="btn btn-nuget">📦 View NuGet Package</a>
-                    <a href="https://www.nuget.org/" target="_blank" rel="noopener" class="btn btn-small" style="margin-top:8px; background: #1F2937; color: #E5E7EB;">🔗 About NuGet</a>
-                </div>
-
-                <!-- NIGHTY CARD -->
-                <div class="download-card">
-                    <span class="badge nighty" style="margin-bottom: 10px;">🌙 Nighty</span>
-                    <div class="method">⚡ Nighty Build</div>
-                    <div class="desc">Version 1.0.2-Nighty • Unstable & experimental</div>
-                    <div class="code-block">PGlove-Installers.exe (8.7 MB)</div>
-                    <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" class="btn btn-download" download>⬇️ Download from Archive</a>
-                    <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener" class="btn btn-small" style="margin-top:8px; background: #8B5CF6;">🎮 Also on Itch.io</a>
-                </div>
-
-                <!-- WINGET CARD -->
-                <div class="download-card">
-                    <span class="badge beta" style="margin-bottom: 10px;">🪟 Winget</span>
-                    <div class="method">⚡ Winget</div>
-                    <div class="desc">Windows Package Manager (CLI)</div>
-                    <span class="winget-badge">winget</span>
-                    <div class="code-block">winget install TechAditya.PGlove</div>
-                    <div style="font-size:0.7rem; color:#6B7280; margin:10px 0;">
-                        Silent: /s • SilentWithProgress: /SILENT
-                    </div>
-                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/" target="_blank" rel="noopener" class="btn btn-small" style="background: #0078D4;">🔍 View Winget PR</a>
-                </div>
-            </div>
-
-            <p style="margin-top: 28px; color: #6B7280; font-size:0.85rem;">
-                💾 <strong>Stable Mirror:</strong> <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" style="color:#10B981;" target="_blank" rel="noopener">GitHub Packages (NPM)</a> •
-                🔷 <strong>NuGet:</strong> <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" style="color:#004880;" target="_blank" rel="noopener">PGloveCore</a> •
-                📧 <strong>Support:</strong> <a href="mailto:pglove@atomicmail.io" style="color:#FFD700;">pglove@atomicmail.io</a>
-            </p>
-        </section>
-
-        <!-- ========================================================== -->
-        <!-- ===== ROADMAP SECTION (NEW) ===== -->
-        <!-- ========================================================== -->
-        <section class="roadmap-section reveal-text" id="roadmap">
-            <span class="badge roadmap" style="margin-bottom: 10px;">🗺️ Roadmap</span>
-            <h2 style="margin-top: 20px;">What's <span class="highlight">Next</span> for PGlove?</h2>
-            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
-                We're constantly evolving. Here's what we're working on for future releases.
-            </p>
-
-            <div class="roadmap-grid">
-                <!-- v1.0.4 - Pokemon Theme -->
-                <div class="roadmap-card">
-                    <div class="version">v1.0.4</div>
-                    <span class="theme">⚡</span>
-                    <div class="title">Pokémon Theme</div>
-                    <div class="desc">
-                        Bug fixes + Gotta catch 'em all!<br>
-                        Pokémon-inspired UI, custom icons, and nostalgic sounds.
-                    </div>
-                    <span class="status status-current">🔴 In Development</span>
-                </div>
-
-                <!-- v1.0.5 - Minecraft Style -->
-                <div class="roadmap-card">
-                    <div class="version">v1.0.5</div>
-                    <span class="theme">⛏️</span>
-                    <div class="title">Minecraft Style</div>
-                    <div class="desc">
-                        Blocky interface, pixel-perfect design,<br>
-                        ambient sound effects, and crafting-inspired menus.
-                    </div>
-                    <span class="status status-upcoming">🟣 Upcoming</span>
-                </div>
-
-                <!-- v1.0.6 - GTA 6 Style -->
-                <div class="roadmap-card">
-                    <div class="version">v1.0.6</div>
-                    <span class="theme">🏎️</span>
-                    <div class="title">GTA 6 Style</div>
-                    <div class="desc">
-                        Vice City vibes with neon accents,<br>
-                        dynamic UI, and high-energy animations.
-                    </div>
-                    <span class="status status-planning">⚪ Planning</span>
-                </div>
-
-                <!-- v1.0.7 - GTA Vice City Style -->
-                <div class="roadmap-card">
-                    <div class="version">v1.0.7</div>
-                    <span class="theme">🌴</span>
-                    <div class="title">GTA Vice City Style</div>
-                    <div class="desc">
-                        Retro 80s Miami aesthetic, pastel colors,<br>
-                        synthwave vibes, and classic nostalgia.
-                    </div>
-                    <span class="status status-planning">⚪ Planning</span>
-                </div>
-            </div>
-
-            <p style="color: #6B7280; font-size: 0.8rem; margin-top: 25px;">
-                🚀 <strong>Want to influence the roadmap?</strong> 
-                <a href="https://github.com/TechAdityaBRO/PGlove/issues" target="_blank" rel="noopener" style="color: #8B5CF6;">Open an issue</a> 
-                or <a href="https://github.com/TechAdityaBRO/PGlove/discussions" target="_blank" rel="noopener" style="color: #8B5CF6;">start a discussion</a> on GitHub!
-            </p>
-        </section>
-
-        <!-- ===== CODEBERG REPOSITORY SECTION ===== -->
-        <section class="repo-section reveal-text" id="codeberg">
-            <span class="badge codeberg" style="margin-bottom: 10px;">🔷 Codeberg Mirror</span>
-            <h2 style="margin-top: 20px;">PGlove on <span class="highlight">Codeberg</span></h2>
-            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto 10px; font-weight: 400;">
-                PGlove is also available on Codeberg, a free and open-source Git platform. Mirror repository and releases.
-            </p>
-
-            <div class="repo-grid">
-                <div class="repo-card">
-                    <div class="method">📂 Repository</div>
-                    <div class="desc">Browse the source code</div>
-                    <span class="codeberg-badge">codeberg.org</span>
-                    <div class="code-block" style="font-size:0.7rem;">
-                        https://codeberg.org/TechAditya/PGlove/
-                    </div>
-                    <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-codeberg">🔷 View Repository</a>
-                </div>
-
-                <div class="repo-card">
-                    <div class="method">🔑 SSH Clone</div>
-                    <div class="desc">Clone via SSH</div>
-                    <span class="codeberg-badge">git clone</span>
-                    <div class="code-block" style="font-size:0.65rem;">
-                        git clone git@codeberg.org:TechAditya/PGlove.git
-                    </div>
-                    <a href="https://codeberg.org/TechAditya/PGlove.git" target="_blank" rel="noopener" class="btn btn-codeberg">🔗 SSH URL</a>
-                </div>
-
-                <div class="repo-card">
-                    <div class="method">📦 Releases</div>
-                    <div class="desc">Download stable and nightly builds</div>
-                    <span class="codeberg-badge">Releases</span>
-                    <div class="code-block" style="font-size:0.7rem;">
-                        https://codeberg.org/TechAditya/PGlove/releases
-                    </div>
-                    <a href="https://codeberg.org/TechAditya/PGlove/releases" target="_blank" rel="noopener" class="btn btn-codeberg">📥 View Releases</a>
-                </div>
-            </div>
-
-            <p style="color: #6B7280; font-size: 0.8rem; margin-top: 25px;">
-                ⚠️ <strong>Note:</strong> Codeberg may occasionally rate-limit requests. If you see a "429 Too Many Requests" error, please try again later.
-            </p>
-        </section>
-
-        <!-- ===== DONATION SECTION ===== -->
-        <section class="donation-section reveal-text" id="donate">
-            <span class="badge donate" style="margin-bottom: 10px;">₿ Support PGlove</span>
-            <h2 style="margin-top: 20px;">Donate <span class="highlight">Bitcoin</span></h2>
-            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
-                Your support helps keep PGlove development alive. Every satoshi counts! 🙏
-            </p>
-
-            <div class="donation-grid">
-                <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w&bgcolor=ffffff&color=000000&margin=10" alt="Bitcoin QR Code for bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w" loading="lazy">
-                    </div>
-                    <span class="address-label">Bitcoin Address 1</span>
-                    <div class="address">bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w</div>
-                    <a href="bitcoin:bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w" target="_blank" class="btn btn-donate">₿ Donate with Bitcoin</a>
-                </div>
-
-                <div class="donation-card">
-                    <div class="qr-code">
-                        <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh&bgcolor=ffffff&color=000000&margin=10" alt="Bitcoin QR Code for bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh" loading="lazy">
-                    </div>
-                    <span class="address-label">Bitcoin Address 2</span>
-                    <div class="address">bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh</div>
-                    <a href="bitcoin:bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh" target="_blank" class="btn btn-donate">₿ Donate with Bitcoin</a>
-                </div>
-            </div>
-
-            <p class="donation-note">
-                💡 <strong>How to donate:</strong> Scan the QR code with your Bitcoin wallet, or click the "Donate with Bitcoin" button.
-                <br>
-                📧 For other donation methods, contact us at <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a>
-            </p>
-        </section>
-
-        <!-- ===== FEATURES ===== -->
-        <h2 class="reveal-text reveal-text-delay-1">Why <span class="highlight">PGlove</span>?</h2>
-        <p class="section-subhead reveal-text reveal-text-delay-2">Built for the brave. Breaks beautifully.</p>
-
-        <div class="cards-grid" id="features">
-            <div class="card">
-                <span class="icon" role="img" aria-label="Lightning bolt icon">⚡</span>
-                <h3>Daily Updates</h3>
-                <p>We push code every 12-24 hours. You get new features before we even test them.</p>
-                <span class="tag">Experimental</span>
-            </div>
-            <div class="card">
-                <span class="icon" role="img" aria-label="Bug icon">🐞</span>
-                <h3>Built-in Bug Reporter</h3>
-                <p>One-click to file an issue on GitHub. You <em>will</em> find bugs.</p>
-                <span class="tag">Report & Fix</span>
-            </div>
-            <div class="card">
-                <span class="icon" role="img" aria-label="Microscope icon">🔬</span>
-                <h3>Experimental APIs</h3>
-                <p>Try WebGPU, new CSS features, and Chrome flags months before stable.</p>
-                <span class="tag">Bleeding Edge</span>
-            </div>
-            <div class="card">
-                <span class="icon" role="img" aria-label="Explosion icon">💥</span>
-                <h3>Crash Recovery</h3>
-                <p>Recovers your tabs 80% of the time. The other 20%? Adventure.</p>
-                <span class="tag">Mostly Works</span>
-            </div>
-            <div class="card">
-                <span class="icon" role="img" aria-label="Test tube icon">🧪</span>
-                <h3>A/B Test Features</h3>
-                <p>Half get Feature X, half get Y. You're part of the experiment.</p>
-                <span class="tag">You're a Tester</span>
-            </div>
-            <div class="card">
-                <span class="icon" role="img" aria-label="Moon icon">🌙</span>
-                <h3>Auto Dark Mode</h3>
-                <p>Even websites without dark mode get forced into it. Eyes will thank you.</p>
-                <span class="tag">Always On</span>
-            </div>
+      <!-- Stable -->
+      <div class="version-card featured">
+        <span class="version-label v-stable">✅ Stable</span>
+        <div class="version-name">📦 Stable Release</div>
+        <div class="version-desc">Version 1.0.3 • Production ready</div>
+        <div class="code-block">npm install @techadityabro/pglove-stable</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:1rem;">Package: @techadityabro/pglove-stable • Registry: GitHub Packages</div>
+        <div class="version-actions">
+          <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener" class="btn btn-green btn-sm"><i class="fas fa-box"></i> View NPM Package</a>
+          <a href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener" class="btn btn-ghost btn-sm"><i class="fas fa-link"></i> View Releases</a>
         </div>
+      </div>
 
-        <!-- ===== SUPPORTED BY ===== -->
-        <div class="support-section reveal-text" id="support">
-            <span class="badge" style="background: #FFD700; color: #0A0A0A;">🤝 Supported By</span>
-            <h2 style="margin-top: 20px;">Driven by the <span class="highlight">Best</span> in Tech</h2>
-            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto 10px; font-weight: 400;">
-                PGlove is built and maintained using tools and services from these amazing companies.
-            </p>
-
-            <div class="support-track" id="supportTrack">
-                <div class="support-track-clone">
-                    <a href="https://www.cloudflare.com/products/workers/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiSs7Dt3UesAUyL30xDYKlVrGjMJ8GzMEY8GgaBNH31g&s=10" alt="Cloudflare Workers logo" loading="lazy">
-                        <span class="name">Cloudflare</span>
-                    </a>
-                    <a href="https://fonts.google.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://icon2.cleanpng.com/lnd/20241121/sc/bd7ce03eb1225083f951fc01171835.webp" alt="Google Fonts logo" loading="lazy">
-                        <span class="name">Google Fonts</span>
-                    </a>
-                    <a href="https://www.github.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://icon2.cleanpng.com/20181207/bhh/kisspng-scalable-vector-graphics-github-computer-icons-com-5c0ac2894a1370.0378836315442090333034.jpg" alt="GitHub logo" loading="lazy">
-                        <span class="name">GitHub</span>
-                    </a>
-                    <a href="https://archive.org/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://icon2.cleanpng.com/20180414/cpe/kisspng-internet-archive-web-archiving-library-library-5ad1ac9173f669.199070121523690641475.jpg" alt="Internet Archive logo" loading="lazy">
-                        <span class="name">Archive.org</span>
-                    </a>
-                    <a href="https://chat.deepseek.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://icon2.cleanpng.com/lnd/20250227/gc/3d4d03b9c16ed9db460c58685ab5e2.webp" alt="Deepseek logo" loading="lazy">
-                        <span class="name">Deepseek</span>
-                    </a>
-                    <a href="https://archive.org/details/tiny-11-NTDEV" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjFlKUjDn6eFxvtrz-1hotgeOofPSTZPU8_JHk4rYTg&s=10" alt="Tiny 11 logo" loading="lazy">
-                        <span class="name">Tiny 11</span>
-                    </a>
-                    <a href="https://dash.infinityfree.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://vpassets.infinityfree.net/welcome2024/logo-header.png" alt="InfinityFree logo" loading="lazy">
-                        <span class="name">InfinityFree</span>
-                    </a>
-                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/" target="_blank" rel="noopener" class="support-item">
-                        <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🪟</span>
-                        <span class="name">Winget</span>
-                    </a>
-                    <a href="https://dnsexit.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://dnsexit.com/ihome/images/dns-logo-2.png" alt="DNSExit logo" loading="lazy">
-                        <span class="name">DNSExit</span>
-                    </a>
-                    <a href="https://codeberg.org/" target="_blank" rel="noopener" class="support-item">
-                        <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🔷</span>
-                        <span class="name">Codeberg</span>
-                    </a>
-                </div>
-                <div class="support-track-clone" aria-hidden="true">
-                    <a href="https://www.cloudflare.com/products/workers/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiSs7Dt3UesAUyL30xDYKlVrGjMJ8GzMEY8GgaBNH31g&s=10" alt="Cloudflare Workers logo" loading="lazy">
-                        <span class="name">Cloudflare</span>
-                    </a>
-                    <a href="https://fonts.google.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://icon2.cleanpng.com/lnd/20241121/sc/bd7ce03eb1225083f951fc01171835.webp" alt="Google Fonts logo" loading="lazy">
-                        <span class="name">Google Fonts</span>
-                    </a>
-                    <a href="https://www.github.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://icon2.cleanpng.com/20181207/bhh/kisspng-scalable-vector-graphics-github-computer-icons-com-5c0ac2894a1370.0378836315442090333034.jpg" alt="GitHub logo" loading="lazy">
-                        <span class="name">GitHub</span>
-                    </a>
-                    <a href="https://archive.org/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://icon2.cleanpng.com/20180414/cpe/kisspng-internet-archive-web-archiving-library-library-5ad1ac9173f669.199070121523690641475.jpg" alt="Internet Archive logo" loading="lazy">
-                        <span class="name">Archive.org</span>
-                    </a>
-                    <a href="https://chat.deepseek.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://icon2.cleanpng.com/lnd/20250227/gc/3d4d03b9c16ed9db460c58685ab5e2.webp" alt="Deepseek logo" loading="lazy">
-                        <span class="name">Deepseek</span>
-                    </a>
-                    <a href="https://archive.org/details/tiny-11-NTDEV" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQYjFlKUjDn6eFxvtrz-1hotgeOofPSTZPU8_JHk4rYTg&s=10" alt="Tiny 11 logo" loading="lazy">
-                        <span class="name">Tiny 11</span>
-                    </a>
-                    <a href="https://dash.infinityfree.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://vpassets.infinityfree.net/welcome2024/logo-header.png" alt="InfinityFree logo" loading="lazy">
-                        <span class="name">InfinityFree</span>
-                    </a>
-                    <a href="https://github.com/microsoft/winget-pkgs/pull/421311/" target="_blank" rel="noopener" class="support-item">
-                        <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🪟</span>
-                        <span class="name">Winget</span>
-                    </a>
-                    <a href="https://dnsexit.com/" target="_blank" rel="noopener" class="support-item">
-                        <img src="https://dnsexit.com/ihome/images/dns-logo-2.png" alt="DNSExit logo" loading="lazy">
-                        <span class="name">DNSExit</span>
-                    </a>
-                    <a href="https://codeberg.org/" target="_blank" rel="noopener" class="support-item">
-                        <span style="font-size: 2.5rem; display: block; margin-bottom: 6px;">🔷</span>
-                        <span class="name">Codeberg</span>
-                    </a>
-                </div>
-            </div>
-
-            <p style="color: #6B7280; font-size: 0.8rem; margin-top: 30px;">
-                Logos are property of their respective owners. We're grateful for their support!
-            </p>
+      <!-- NuGet -->
+      <div class="version-card nuget-card">
+        <span class="version-label v-nuget">🔷 NuGet</span>
+        <div class="version-name">📦 PGloveCore</div>
+        <div class="version-desc">Version 1.0.3 • Core metadata helpers</div>
+        <div class="code-block">dotnet add package PGloveCore</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:1rem;">Package: PGloveCore • .NET Library</div>
+        <div class="version-actions">
+          <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener" class="btn btn-primary btn-sm"><i class="fas fa-cube"></i> View NuGet Package</a>
+          <a href="https://www.nuget.org/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm"><i class="fas fa-info-circle"></i> About NuGet</a>
         </div>
+      </div>
 
-        <!-- ===== CREDITS ===== -->
-        <div class="credits-section reveal-text" id="credits">
-            <span class="badge" style="background: #FFD700; color: #0A0A0A;">🌟 The Team Behind PGlove</span>
-            <h2 style="margin-top: 20px;">Made with 💥 by <span class="highlight">Bro Gang</span></h2>
-            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto 10px; font-weight: 400;">
-                A group of passionate developers, gamers, and tech enthusiasts from India.
-            </p>
-
-            <div class="credits-grid">
-                <div class="credit-card">
-                    <div class="role">🏢 Organization</div>
-                    <div class="name">ProGroupco</div>
-                    <div class="desc">The parent group behind PGlove and other projects.</div>
-                    <a href="https://www.github.com/ProGroupco" target="_blank" rel="noopener" class="link">🔗 GitHub (404?) →</a>
-                </div>
-
-                <div class="credit-card">
-                    <div class="role">👨‍💻 Lead Developer</div>
-                    <div class="name">Aditya (TechAdityaBRO)</div>
-                    <div class="desc">Student from India • Creator of PGlove • Full-stack dev</div>
-                    <a href="https://github.com/TechAdityaBRO/" target="_blank" rel="noopener" class="link">🔗 github.com/TechAdityaBRO</a>
-                </div>
-
-                <div class="credit-card">
-                    <div class="role">🤝 Community</div>
-                    <div class="name">Bro Gang</div>
-                    <div class="desc">The squad • Testers • Idea generators • Support system</div>
-                    <a href="https://brogang.mooo.com/" target="_blank" rel="noopener" class="link">🔗 brogang.mooo.com</a>
-                </div>
-            </div>
-
-            <p style="color: #6B7280; font-size: 0.85rem; margin-top: 28px; font-weight: 400;">
-                ⚠️ <strong>ProGroupco's GitHub</strong> returns a 404, but the team lives on!
-                Follow <a href="https://github.com/TechAdityaBRO/" style="color: #FF4500;" target="_blank" rel="noopener">TechAdityaBRO</a> for active development.
-            </p>
+      <!-- Nighty -->
+      <div class="version-card nighty-card">
+        <span class="version-label v-nighty">🌙 Nighty</span>
+        <div class="version-name">⚡ Nighty Build</div>
+        <div class="version-desc">Version 1.0.2-Nighty • Unstable & experimental</div>
+        <div class="code-block">PGlove-Installers.exe (8.7 MB)</div>
+        <div class="version-actions">
+          <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" target="_blank" rel="noopener" class="btn btn-orange btn-sm"><i class="fas fa-download"></i> Download from Archive</a>
+          <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener" class="btn btn-ghost btn-sm"><i class="fab fa-itch-io"></i> Also on Itch.io</a>
         </div>
+      </div>
 
-        <!-- ===== SERVER ===== -->
-        <div class="server-section reveal-text" id="server">
-            <span class="badge stable">🟢 Server Online</span>
-            <h2 style="margin-top: 20px;">⚔️ BroGangMC <span class="highlight">Server</span></h2>
-            <p style="color: #9CA3AF; font-weight: 400;">Survival • Community • Fun • 24/7 Online</p>
-
-            <div class="server-status-grid">
-                <div class="status-item">
-                    <div class="label">Java Edition</div>
-                    <div class="value">brogangmc.minefort.com</div>
-                    <div style="color: #6B7280; font-size:0.8rem;">Port: 25565</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Bedrock Edition</div>
-                    <div class="value">brogangmc.minefort.com</div>
-                    <div style="color: #6B7280; font-size:0.8rem;">Port: 19132</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Version</div>
-                    <div class="value">1.26.1.2</div>
-                    <div style="color: #6B7280; font-size:0.8rem;">Spigot</div>
-                </div>
-                <div class="status-item">
-                    <div class="label">Players</div>
-                    <div class="value online">0 / 100</div>
-                    <div style="color: #6B7280; font-size:0.8rem;">Next Event: Saturday, 8 PM EST</div>
-                </div>
-            </div>
-            <p style="margin-top: 30px;">
-                <a href="#" class="btn">▶️ Join the BroGang</a>
-            </p>
+      <!-- Winget -->
+      <div class="version-card winget-card">
+        <span class="version-label v-winget">⚡ Winget</span>
+        <div class="version-name">⚡ Winget</div>
+        <div class="version-desc">Windows Package Manager (CLI)</div>
+        <div class="code-block">winget install TechAditya.PGlove</div>
+        <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:1rem;">Silent: /s • SilentWithProgress: /SILENT</div>
+        <div class="version-actions">
+          <a href="https://github.com/microsoft/winget-pkgs/pull/421311" target="_blank" rel="noopener" class="btn btn-secondary btn-sm"><i class="fas fa-terminal"></i> View Winget PR</a>
         </div>
-
-        <!-- ===== GITHUB / CODEBERG CALLOUT ===== -->
-        <div class="github-callout reveal-text">
-            <span style="font-size: 3rem; display: block; margin-bottom: 8px;" role="img" aria-label="Tools icon">🛠️</span>
-            <h2 style="margin-bottom: 12px;">Help Us Build <span class="highlight">PGlove</span></h2>
-            <p style="color: #9CA3AF; max-width: 600px; margin: 0 auto; font-weight: 400;">
-                PGlove is open-source and lives on GitHub and Codeberg. Report bugs, request features, or submit pull requests – we accept all chaos.
-            </p>
-            <div style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-top: 20px;">
-                <a href="https://github.com/TechAdityaBRO/PGlove/" target="_blank" rel="noopener" class="btn">🚀 GitHub</a>
-                <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-codeberg">🔷 Codeberg</a>
-            </div>
-            <div style="margin-top: 20px; color: #6B7280; font-size: 0.9rem; font-weight: 400;">
-                <span>⭐ Open Issues: 47</span> • <span>🔄 Pull Requests: 12</span> • <span>📦 Commits: 89</span>
-            </div>
-        </div>
-
-        <!-- ===== FOOTER ===== -->
-        <footer class="footer">
-            <p>
-                Built with 💥 by <a href="https://github.com/TechAdityaBRO/" target="_blank" rel="noopener">Aditya (TechAdityaBRO)</a> •
-                <a href="https://www.github.com/ProGroupco" target="_blank" rel="noopener">ProGroupco</a> •
-                <a href="https://brogang.mooo.com/" target="_blank" rel="noopener">Bro Gang</a>
-            </p>
-            <p style="margin-top: 6px; font-size: 0.8rem;">
-                PGlove – A Browser With A New Generation • Made in India 🇮🇳
-            </p>
-            <p style="margin-top: 6px; font-size: 0.8rem;">
-                📧 <span class="email">pglove@atomicmail.io</span> •
-                <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener">Itch.io</a> •
-                <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" target="_blank" rel="noopener">Archive Mirror</a> •
-                <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener">NPM Stable</a> •
-                <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener">NuGet</a> •
-                <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener">Codeberg</a>
-            </p>
-            <p style="margin-top: 6px; font-size: 0.8rem; color: #6B7280;">
-                ₿ Donate: <span style="font-family: 'Courier New', monospace; color: #F7931A;">bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w</span>
-            </p>
-        </footer>
+      </div>
 
     </div>
 
-    <script>
-        // ============================================================
-        // 1. CURSOR GLOW
-        // ============================================================
-        const glow = document.getElementById('cursor-glow');
+    <p class="footer-note">
+      💾 <strong>Stable Mirror:</strong> <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener">GitHub Packages (NPM)</a> •
+      🔷 <strong>NuGet:</strong> <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener">PGloveCore</a> •
+      📧 <strong>Support:</strong> <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a>
+    </p>
+  </div>
+</section>
 
-        document.addEventListener('mousemove', (e) => {
-            const x = e.clientX;
-            const y = e.clientY;
-            glow.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
-        });
+<!-- ROADMAP -->
+<section class="section" id="roadmap">
+  <div class="section-inner reveal">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-road"></i> What's Next</div>
+      <h2 class="section-title">What's <span class="grad">Next</span> for PGlove?</h2>
+      <p class="section-sub">We're constantly evolving. Here's what we're working on for future releases.</p>
+    </div>
 
-        document.addEventListener('mouseleave', () => {
-            glow.style.opacity = '0';
-        });
+    <div class="roadmap">
+      <div class="roadmap-item active">
+        <div class="roadmap-v">v1.0.4</div>
+        <div class="roadmap-title">⚡ Pokémon Theme</div>
+        <p>Bug fixes + Gotta catch 'em all! Pokémon-inspired UI, custom icons, and nostalgic sounds.</p>
+        <span class="roadmap-status rs-dev">🔴 In Development</span>
+        <a href="pglovev1.0.4.html" class="roadmap-link">View Preview <i class="fas fa-arrow-right"></i></a>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-v">v1.0.5</div>
+        <div class="roadmap-title">⛏️ Minecraft Style</div>
+        <p>Blocky interface, pixel-perfect design, ambient sound effects, and crafting-inspired menus.</p>
+        <span class="roadmap-status rs-upcoming">🟣 Upcoming</span>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-v">v1.0.6</div>
+        <div class="roadmap-title">🏎️ GTA 6 Style</div>
+        <p>Vice City vibes with neon accents, dynamic UI, and high-energy animations.</p>
+        <span class="roadmap-status rs-planning">⚪ Planning</span>
+      </div>
+      <div class="roadmap-item">
+        <div class="roadmap-v">v1.0.7</div>
+        <div class="roadmap-title">🌴 GTA Vice City Style</div>
+        <p>Retro 80s Miami aesthetic, pastel colors, synthwave vibes, and classic nostalgia.</p>
+        <span class="roadmap-status rs-planning">⚪ Planning</span>
+      </div>
+    </div>
 
-        document.addEventListener('mouseenter', () => {
-            glow.style.opacity = '1';
-        });
+    <p class="center-note">🚀 Want to influence the roadmap? <a href="https://github.com/TechAdityaBRO/PGlove/issues" target="_blank" rel="noopener">Open an issue</a> or start a discussion on GitHub!</p>
+  </div>
+</section>
 
-        // ============================================================
-        // 2. TYPING TEXT
-        // ============================================================
-        const phrases = [
-            "The browser that breaks so you don't have to.",
-            "Now with Stable v1.0.3 and PGloveCore!",
-            "Pokémon Theme coming in v1.0.4!",
-            "Minecraft Style coming in v1.0.5!",
-            "GTA 6 Style in v1.0.6!",
-            "Vice City vibes in v1.0.7!",
-            "Also available on Codeberg!",
-            "Support us with Bitcoin donations!",
-            "Experimental. Daily updates. Built for the fearless.",
-            "A Browser With A New Generation.",
-            "Made in India with 💥 by Bro Gang."
-        ];
+<!-- CODEBERG -->
+<section class="section codeberg-section" id="codeberg">
+  <div class="section-inner reveal">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-code-branch"></i> Mirror</div>
+      <h2 class="section-title">PGlove on <span class="grad">Codeberg.</span></h2>
+      <p class="section-sub">PGlove is also available on Codeberg, a free and open-source Git platform. Mirror repository and releases.</p>
+    </div>
 
-        let phraseIndex = 0,
-            charIndex = 0,
-            isDeleting = false;
-        const typingElement = document.getElementById('typingText');
+    <div class="codeberg-grid">
+      <div class="codeberg-card">
+        <h4><i class="fas fa-folder-open"></i> 📂 Repository</h4>
+        <p>Browse the source code</p>
+        <div class="code-block">codeberg.org/TechAditya/PGlove</div>
+        <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-primary btn-sm"><i class="fas fa-code-branch"></i> View Repository</a>
+      </div>
+      <div class="codeberg-card">
+        <h4><i class="fas fa-key"></i> 🔑 SSH Clone</h4>
+        <p>Clone via SSH</p>
+        <div class="code-block">git clone git@codeberg.org:TechAditya/PGlove.git</div>
+        <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm"><i class="fas fa-link"></i> SSH URL</a>
+      </div>
+      <div class="codeberg-card">
+        <h4><i class="fas fa-box-open"></i> 📦 Releases</h4>
+        <p>Download stable and nightly builds</p>
+        <div class="code-block">codeberg.org/TechAditya/PGlove/releases</div>
+        <a href="https://codeberg.org/TechAditya/PGlove/releases" target="_blank" rel="noopener" class="btn btn-secondary btn-sm"><i class="fas fa-download"></i> View Releases</a>
+      </div>
+    </div>
 
-        function typeEffect() {
-            const currentPhrase = phrases[phraseIndex];
-            if (isDeleting) {
-                typingElement.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-            } else {
-                typingElement.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-            }
-            let speed = isDeleting ? 40 : 80;
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                speed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                speed = 500;
-            }
-            setTimeout(typeEffect, speed);
-        }
-        typeEffect();
+    <p class="codeberg-note">⚠️ <strong>Note:</strong> Codeberg may occasionally rate-limit requests. If you see a "429 Too Many Requests" error, please try again later.</p>
+  </div>
+</section>
 
-        // ============================================================
-        // 3. VERSION SELECTOR
-        // ============================================================
-        const versionBtns = document.querySelectorAll('.version-btn');
-        const heroBadge = document.querySelector('.hero .badge');
+<!-- BITCOIN DONATE -->
+<section class="section donate-section" id="donate">
+  <div class="section-inner reveal">
+    <div class="section-header">
+      <div class="section-tag"><i class="fab fa-bitcoin"></i> Support</div>
+      <h2 class="section-title">Donate <span class="grad">Bitcoin.</span></h2>
+      <p class="section-sub">Your support helps keep PGlove development alive. Every satoshi counts! 🙏</p>
+    </div>
 
-        versionBtns.forEach(btn => {
-            btn.addEventListener('click', function() {
-                versionBtns.forEach(b => b.classList.remove('active'));
-                this.classList.add('active');
-                const version = this.dataset.version;
-                const badge = heroBadge;
-                if (version === 'stable') {
-                    badge.textContent = '✅ Stable Release v1.0.3';
-                    badge.className = 'badge stable';
-                } else if (version === 'nighty') {
-                    badge.textContent = '⚠️ Nighty Build – Expect Chaos';
-                    badge.className = 'badge nighty';
-                } else if (version === 'beta') {
-                    badge.textContent = '🧪 Pre-Beta – Almost There';
-                    badge.className = 'badge beta';
-                }
-                triggerGlitch();
-            });
-        });
+    <div class="donate-grid">
 
-        // ============================================================
-        // 4. SCROLL PROGRESS
-        // ============================================================
-        window.addEventListener('scroll', () => {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            document.getElementById('progressBar').style.width = (scrollTop / scrollHeight * 100) + '%';
-        });
+      <!-- Address 1 -->
+      <div class="donate-card">
+        <div class="qr-wrapper">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w&bgcolor=ffffff&color=000000&margin=10" alt="Bitcoin QR Code 1" loading="lazy">
+        </div>
+        <div class="btc-address">bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w</div>
+        <a href="bitcoin:bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w" class="btn btn-orange btn-sm"><i class="fab fa-bitcoin"></i> Donate with Bitcoin</a>
+      </div>
 
-        // ============================================================
-        // 5. GLITCH
-        // ============================================================
-        const glitchOverlay = document.getElementById('glitchOverlay');
+      <!-- Address 2 -->
+      <div class="donate-card">
+        <div class="qr-wrapper">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh&bgcolor=ffffff&color=000000&margin=10" alt="Bitcoin QR Code 2" loading="lazy">
+        </div>
+        <div class="btc-address">bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh</div>
+        <a href="bitcoin:bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh" class="btn btn-orange btn-sm"><i class="fab fa-bitcoin"></i> Donate with Bitcoin</a>
+      </div>
 
-        function triggerGlitch() {
-            glitchOverlay.classList.add('active');
-            setTimeout(() => glitchOverlay.classList.remove('active'), 250);
-        }
+    </div>
 
-        setInterval(() => {
-            if (Math.random() < 0.35) triggerGlitch();
-        }, 10000);
+    <p class="donate-hint">💡 <strong>How to donate:</strong> Scan the QR code with your Bitcoin wallet, or click the "Donate with Bitcoin" button. 📧 For other donation methods, contact us at <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a></p>
+  </div>
+</section>
 
-        document.querySelectorAll('.card').forEach(card => {
-            card.addEventListener('click', () => {
-                triggerGlitch();
-                card.style.transform = 'translateX(8px) rotate(1.5deg)';
-                setTimeout(() => card.style.transform = '', 250);
-            });
-        });
+<!-- WHY PGLOVE / FEATURES -->
+<section class="section">
+  <div class="section-inner reveal">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-star"></i> Features</div>
+      <h2 class="section-title">Why <span class="grad">PGlove?</span></h2>
+      <p class="section-sub">Built for the brave. Breaks beautifully.</p>
+    </div>
 
-        // ============================================================
-        // 6. PARTICLES
-        // ============================================================
-        const canvas = document.getElementById('particles-canvas');
-        const ctx = canvas.getContext('2d');
-        let particles = [];
+    <div class="features-grid">
+      <div class="feature-card">
+        <div class="feature-icon">⚡</div>
+        <h3>Daily Updates</h3>
+        <p>We push code every 12-24 hours. You get new features before we even test them.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🐞</div>
+        <h3>Built-in Bug Reporter</h3>
+        <p>One-click to file an issue on GitHub. You <em>will</em> find bugs.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🔬</div>
+        <h3>Experimental APIs</h3>
+        <p>Try WebGPU, new CSS features, and Chrome flags months before stable.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">💥</div>
+        <h3>Crash Recovery</h3>
+        <p>Recovers your tabs 80% of the time. The other 20%? Adventure.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🧪</div>
+        <h3>A/B Test Features</h3>
+        <p>Half get Feature X, half get Y. You're part of the experiment.</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🌙</div>
+        <h3>Auto Dark Mode</h3>
+        <p>Even websites without dark mode get forced into it. Eyes will thank you.</p>
+      </div>
+    </div>
+  </div>
+</section>
 
-        function resizeCanvas() {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        }
-        resizeCanvas();
-        window.addEventListener('resize', resizeCanvas);
+<!-- SUPPORTED BY -->
+<section class="section" id="supported">
+  <div class="section-inner reveal">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-handshake"></i> Supported By</div>
+      <h2 class="section-title">Driven by the <span class="grad">Best in Tech.</span></h2>
+      <p class="section-sub">PGlove is built and maintained using tools and services from these amazing companies.</p>
+    </div>
 
-        class Particle {
-            constructor() {
-                this.x = Math.random() * canvas.width;
-                this.y = Math.random() * canvas.height;
-                this.size = Math.random() * 2 + 0.5;
-                this.speedX = (Math.random() - 0.5) * 0.4;
-                this.speedY = (Math.random() - 0.5) * 0.4;
-                this.opacity = Math.random() * 0.4 + 0.05;
-            }
-            update() {
-                this.x += this.speedX;
-                this.y += this.speedY;
-                if (this.x > canvas.width) this.x = 0;
-                if (this.x < 0) this.x = canvas.width;
-                if (this.y > canvas.height) this.y = 0;
-                if (this.y < 0) this.y = canvas.height;
-            }
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
-                ctx.fillStyle = `rgba(255, 69, 0, ${this.opacity})`;
-                ctx.fill();
-            }
-        }
+    <div class="supported-grid">
+      <a href="https://www.cloudflare.com/products/workers/" target="_blank" rel="noopener" class="supported-item">
+        <img src="https://www.cloudflare.com/img/logo-cloudflare-dark.svg" alt="Cloudflare" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+        <span class="icon-fallback" style="display:none;">☁️</span>
+        <span class="name">Cloudflare</span>
+      </a>
+      <a href="https://fonts.google.com/" target="_blank" rel="noopener" class="supported-item">
+        <span class="icon-fallback">🔤</span>
+        <span class="name">Google Fonts</span>
+      </a>
+      <a href="https://www.github.com/" target="_blank" rel="noopener" class="supported-item">
+        <span class="icon-fallback"><i class="fab fa-github"></i></span>
+        <span class="name">GitHub</span>
+      </a>
+      <a href="https://archive.org/" target="_blank" rel="noopener" class="supported-item">
+        <span class="icon-fallback"><i class="fas fa-landmark"></i></span>
+        <span class="name">Archive.org</span>
+      </a>
+      <a href="https://chat.deepseek.com/" target="_blank" rel="noopener" class="supported-item">
+        <span class="icon-fallback">🐋</span>
+        <span class="name">DeepSeek</span>
+      </a>
+      <a href="https://codeberg.org/" target="_blank" rel="noopener" class="supported-item">
+        <span class="icon-fallback"><i class="fas fa-code-branch"></i></span>
+        <span class="name">Codeberg</span>
+      </a>
+      <a href="https://dnsexit.com/" target="_blank" rel="noopener" class="supported-item">
+        <span class="icon-fallback">🌐</span>
+        <span class="name">DNSExit</span>
+      </a>
+      <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener" class="supported-item">
+        <span class="icon-fallback"><i class="fab fa-itch-io"></i></span>
+        <span class="name">Itch.io</span>
+      </a>
+    </div>
 
-        for (let i = 0; i < 60; i++) particles.push(new Particle());
+    <p class="center-note">Logos are property of their respective owners. We're grateful for their support!</p>
+  </div>
+</section>
 
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            particles.forEach(p => { p.update();
-                p.draw(); });
-            for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
-                    const dx = particles[i].x - particles[j].x;
-                    const dy = particles[i].y - particles[j].y;
-                    const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 150) {
-                        ctx.beginPath();
-                        ctx.strokeStyle = `rgba(255, 69, 0, ${0.05 * (1 - distance/150)})`;
-                        ctx.lineWidth = 0.5;
-                        ctx.moveTo(particles[i].x, particles[i].y);
-                        ctx.lineTo(particles[j].x, particles[j].y);
-                        ctx.stroke();
-                    }
-                }
-            }
-            requestAnimationFrame(animateParticles);
-        }
-        animateParticles();
+<!-- TEAM -->
+<section class="section" id="team">
+  <div class="section-inner reveal">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-users"></i> The Team</div>
+      <h2 class="section-title">Made with 💥 by <span class="grad">Bro Gang.</span></h2>
+      <p class="section-sub">A group of passionate developers, gamers, and tech enthusiasts from India.</p>
+    </div>
 
-        // ============================================================
-        // 7. SCROLL REVEAL
-        // ============================================================
-        const revealElements = document.querySelectorAll('.reveal-text');
-        const cards = document.querySelectorAll('.card');
+    <div class="team-grid">
+      <a href="https://github.com/TechAdityaBRO" target="_blank" rel="noopener" class="team-card">
+        <div class="team-avatar"><i class="fas fa-code"></i></div>
+        <div class="team-role">👨‍💻 Lead Developer</div>
+        <div class="team-name">Aditya (TechAdityaBRO)</div>
+        <div class="team-desc">Student from India • Creator of PGlove • Full-stack dev</div>
+      </a>
+      <a href="https://github.com/BRO-GANG" target="_blank" rel="noopener" class="team-card">
+        <div class="team-avatar"><i class="fas fa-users"></i></div>
+        <div class="team-role">🤝 Community</div>
+        <div class="team-name">Bro Gang</div>
+        <div class="team-desc">The squad • Testers • Idea generators • Support system</div>
+      </a>
+      <a href="https://github.com/TechAdityaBRO" target="_blank" rel="noopener" class="team-card">
+        <div class="team-avatar"><i class="fas fa-building"></i></div>
+        <div class="team-role">🏢 Organization</div>
+        <div class="team-name">ProGroupco</div>
+        <div class="team-desc">The parent group behind PGlove and other projects</div>
+      </a>
+    </div>
 
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    <p class="team-note">⚠️ <strong>ProGroupco's GitHub</strong> returns a 404, but the team lives on! Follow <a href="https://github.com/TechAdityaBRO/" target="_blank" rel="noopener">TechAdityaBRO</a> for active development.</p>
+  </div>
+</section>
 
-        revealElements.forEach(el => observer.observe(el));
+<!-- SERVER -->
+<section class="section server-section">
+  <div class="section-inner reveal">
+    <div class="server-header">
+      <div class="server-status-pill"><span class="live-dot"></span> Server Online</div>
+      <h2 class="section-title">⚔️ BroGangMC <span class="grad">Server</span></h2>
+      <p class="section-sub">Survival • Community • Fun • 24/7 Online</p>
+    </div>
 
-        cards.forEach(card => {
-            observer.observe(card);
-            const rect = card.getBoundingClientRect();
-            if (rect.top < (window.innerHeight || document.documentElement.clientHeight) - 80) {
-                card.classList.add('visible');
-            }
-        });
+    <div class="server-grid">
+      <div class="server-card">
+        <div class="server-label">Java Edition</div>
+        <div class="server-value">brogangmc.minefort.com</div>
+        <div class="server-meta">Port: 25565</div>
+      </div>
+      <div class="server-card">
+        <div class="server-label">Bedrock Edition</div>
+        <div class="server-value">brogangmc.minefort.com</div>
+        <div class="server-meta">Port: 19132</div>
+      </div>
+      <div class="server-card">
+        <div class="server-label">Version</div>
+        <div class="server-value">1.26.1.2</div>
+        <div class="server-meta">Spigot</div>
+      </div>
+      <div class="server-card">
+        <div class="server-label">Players</div>
+        <div class="server-value online">0 / 100</div>
+        <div class="server-meta">Next Event: Saturday, 8 PM EST</div>
+      </div>
+    </div>
 
-        // ============================================================
-        // 8. SMOOTH ANCHOR SCROLL
-        // ============================================================
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    e.preventDefault();
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
+    <div style="text-align:center;">
+      <a href="https://brogangsmp.site.je/" target="_blank" rel="noopener" class="btn btn-green"><i class="fas fa-play"></i> Join the BroGang</a>
+    </div>
+  </div>
+</section>
 
-        console.log('🧤 PGlove Browser – Stable v1.0.3 Released!');
-        console.log('📧 Email: pglove@atomicmail.io');
-        console.log('📦 NPM: npm install @techadityabro/pglove-stable --registry=https://npm.pkg.github.com');
-        console.log('🔷 NuGet: dotnet add package PGloveCore --version 1.0.3');
-        console.log('📦 Winget: winget install TechAditya.PGlove');
-        console.log('🔷 Codeberg: https://codeberg.org/TechAditya/PGlove/');
-        console.log('🗺️ Roadmap: v1.0.4 (Pokémon), v1.0.5 (Minecraft), v1.0.6 (GTA 6), v1.0.7 (Vice City)');
-    </script>
+<!-- CTA -->
+<section class="section">
+  <div class="section-inner reveal">
+    <div class="cta-box">
+      <span class="cta-icon">🛠️</span>
+      <h2>Help Us Build <span class="grad">PGlove.</span></h2>
+      <p>PGlove is open-source and lives on GitHub and Codeberg. Report bugs, request features, or submit pull requests — we accept all chaos.</p>
+      <div class="cta-buttons">
+        <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener" class="btn btn-primary"><i class="fab fa-github"></i> Visit the Repo</a>
+        <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" class="btn btn-secondary"><i class="fas fa-code-branch"></i> Codeberg Mirror</a>
+      </div>
+      <div class="cta-stats">
+        <span>⭐ Open Issues: 47</span>
+        <span>🔄 Pull Requests: 12</span>
+        <span>📦 Commits: 89</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-links">
+      <a href="#download">Download</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#codeberg">Codeberg</a>
+      <a href="#donate">Donate</a>
+      <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener">Codeberg</a>
+      <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener">Itch.io</a>
+      <a href="mailto:pglove@atomicmail.io">Contact</a>
+    </div>
+    <p class="footer-copy">
+      Built with 💥 by <a href="https://github.com/TechAdityaBRO/" target="_blank" rel="noopener">Aditya (TechAdityaBRO)</a> • <a href="https://github.com/BRO-GANG" target="_blank" rel="noopener">Bro Gang</a><br>
+      PGlove — <span class="accent">A Browser With A New Generation</span> • Made in India 🇮🇳<br>
+      📧 <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a> • 💾 <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" target="_blank" rel="noopener">Archive Mirror</a> • 📦 <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener">NPM Stable</a> • 🔷 <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener">NuGet</a>
+    </p>
+  </div>
+</footer>
+
+</div><!-- /app -->
+
+<script>
+// Loader fade out
+window.addEventListener('load', () => {
+  setTimeout(() => {
+    document.getElementById('loader').classList.add('hidden');
+  }, 1800);
+});
+
+// Scroll reveal
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) entry.target.classList.add('visible');
+  });
+}, { threshold: 0.1 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+// Smooth anchor scroll
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      e.preventDefault();
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+});
+
+// Navbar scroll shadow
+const navbar = document.querySelector('.navbar');
+window.addEventListener('scroll', () => {
+  navbar.style.boxShadow = window.scrollY > 20 ? '0 4px 30px rgba(109, 40, 217, 0.15)' : 'none';
+});
+
+console.log('%c⚡ PGlove', 'color: #8b4dff; font-size: 20px; font-weight: bold;');
+console.log('%cA Browser With A New Generation', 'color: #22d3ee; font-size: 12px;');
+</script>
 
 </body>
 </html>
