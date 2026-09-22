@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="PGlove — A browser with a new generation. Stable v1.0.3, Nighty builds, Codeberg mirror, Bitcoin donations.">
 <meta name="theme-color" content="#0a0420">
-<title>PGlove — Home</title>
+<title>PGlove — A Browser With A New Generation</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
@@ -27,36 +27,20 @@ html { scroll-behavior: smooth; }
 body { background: var(--bg-0); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
 .bg-grid { position: fixed; inset: 0; background-image: linear-gradient(rgba(139,77,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,77,255,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
 .bg-glow { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(109,40,217,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(96,165,250,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(10,4,32,0.88); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(10,4,32,0.9); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
 nav .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-300), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-nav .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; transition: color 0.3s; }
+nav .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 1.25rem; font-size: 0.85rem; transition: color 0.3s; }
 nav .nav-links a:hover { color: var(--purple-300); }
 nav .nav-links a.active { color: var(--purple-200); border-bottom: 2px solid var(--purple-400); padding-bottom: 2px; }
-.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 4rem; z-index: 1; }
-.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4.2rem; font-weight: 800; background: linear-gradient(135deg, var(--purple-200), var(--blue-400), var(--cyan-300)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; line-height: 1.1; }
-.hero .tagline { font-size: 1.2rem; color: var(--text-dim); max-width: 650px; margin-bottom: 2rem; }
-.hero-badge { display: inline-block; background: rgba(109,40,217,0.2); border: 1px solid rgba(139,77,255,0.3); border-radius: 999px; padding: 0.4rem 1.2rem; font-size: 0.85rem; color: var(--purple-200); margin-bottom: 2rem; font-weight: 600; }
-.hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-.btn { padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 0.5rem; border: none; cursor: pointer; }
-.btn-primary { background: var(--purple-500); color: #fff; }
-.btn-primary:hover { background: var(--purple-600); transform: translateY(-2px); }
-.btn-outline { background: transparent; color: var(--purple-300); border: 1px solid var(--purple-500); }
-.btn-outline:hover { background: rgba(109,40,217,0.1); transform: translateY(-2px); }
-.btn-green { background: var(--green); color: #fff; }
-.btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
-.btn-ghost:hover { border-color: var(--purple-400); color: var(--purple-300); }
-.btn-orange { background: var(--orange); color: #fff; }
-.btn-secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
-section.section { position: relative; z-index: 1; padding: 4rem 2rem; }
-.section-inner { max-width: 1100px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 3rem; }
-.section-tag { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--purple-300); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
-.section-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.section-sub { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+section.panel { position: relative; z-index: 1; min-height: 100vh; padding: 6rem 2rem; display: flex; flex-direction: column; justify-content: center; }
+.panel-inner { max-width: 1000px; margin: 0 auto; width: 100%; }
+.panel-tag { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--purple-300); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+.panel-title { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.panel-sub { color: var(--text-dim); font-size: 1.15rem; max-width: 650px; margin-bottom: 2rem; }
 .grad { background: linear-gradient(135deg, var(--purple-300), var(--cyan-300)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .download-section { background: linear-gradient(180deg, transparent, rgba(30,16,84,0.3) 50%, transparent); }
 .versions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.version-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; transition: all 0.3s var(--ease); position: relative; overflow: hidden; }
+.version-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s var(--ease); position: relative; overflow: hidden; }
 .version-card:hover { border-color: var(--purple-400); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(139,77,255,0.15); }
 .version-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
 .version-card.featured::before { background: linear-gradient(90deg, var(--blue-500), var(--cyan-400)); }
@@ -69,10 +53,39 @@ section.section { position: relative; z-index: 1; padding: 4rem 2rem; }
 .version-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
 .code-block { background: var(--bg-1); padding: 0.75rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 0.5rem; border: 1px solid var(--border); }
 .version-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+.btn { padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 0.5rem; border: none; cursor: pointer; }
+.btn-primary { background: var(--purple-500); color: #fff; } .btn-primary:hover { background: var(--purple-600); transform: translateY(-2px); }
+.btn-outline { background: transparent; color: var(--purple-300); border: 1px solid var(--purple-500); } .btn-outline:hover { background: rgba(109,40,217,0.1); transform: translateY(-2px); }
+.btn-green { background: var(--green); color: #fff; } .btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); } .btn-ghost:hover { border-color: var(--purple-400); color: var(--purple-300); }
+.btn-orange { background: var(--orange); color: #fff; } .btn-secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
+.ext-grid { display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: center; }
+.ext-card { display: flex; align-items: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem 1.75rem; color: var(--text); text-decoration: none; transition: all 0.3s var(--ease); font-weight: 500; min-width: 300px; }
+.ext-card:hover { border-color: var(--purple-400); transform: translateY(-4px); background: var(--surface-2); }
+.ext-card i { font-size: 1.5rem; }
+.ext-card span { font-size: 0.75rem; color: var(--text-muted); background: var(--bg-1); padding: 0.2rem 0.6rem; border-radius: 4px; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; text-align: center; transition: all 0.3s var(--ease); }
+.feature-card:hover { border-color: var(--purple-400); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(139,77,255,0.15); }
+.feature-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
+.feature-card h3 { color: var(--text); font-size: 1.3rem; margin-bottom: 0.75rem; }
+.feature-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; }
+.quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.quick-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; text-decoration: none; color: var(--text); transition: all 0.3s var(--ease); }
+.quick-card:hover { border-color: var(--purple-400); transform: translateY(-4px); }
+.quick-card i { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
+.quick-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
+.quick-card p { color: var(--text-dim); font-size: 0.9rem; }
+.donate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.donate-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s; }
+.donate-card:hover { border-color: var(--purple-400); transform: translateY(-4px); }
+.donate-card h3 { color: var(--text); font-size: 1.15rem; margin-bottom: 0.75rem; }
+.donate-card p, .donate-card address { color: var(--text-dim); font-size: 0.9rem; line-height: 1.8; }
+.donate-card a { color: var(--purple-300); text-decoration: none; }
+.donate-address { background: var(--bg-1); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim); word-break: break-all; }
 footer { position: relative; z-index: 1; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
 footer a { color: var(--purple-300); text-decoration: none; }
-footer a:hover { text-decoration: underline; }
-@media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .section-title { font-size: 1.8rem; } nav .nav-links a { margin-left: 0.8rem; font-size: 0.8rem; } }
+footer .footer-links { margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
+@media (max-width: 768px) { .panel-title { font-size: 2rem; } nav .nav-links a { margin-left: 0.8rem; font-size: 0.8rem; } }
 </style>
 </head>
 <body>
@@ -81,33 +94,38 @@ footer a:hover { text-decoration: underline; }
 <nav>
   <div class="logo">PGlove</div>
   <div class="nav-links">
-    <a href="index.html" class="active">Home</a>
-    <a href="extensions.html">Extensions</a>
-    <a href="features.html">Features</a>
-    <a href="v1.0.4.html">v1.0.4</a>
-    <a href="roadmap.html">Roadmap</a>
-    <a href="support.html">Support</a>
+    <a href="#home" class="active">Home</a>
+    <a href="#download">Download</a>
+    <a href="#extensions">Extensions</a>
+    <a href="#features">Features</a>
+    <a href="#v1.0.4">v1.0.4</a>
+    <a href="#roadmap">Roadmap</a>
+    <a href="#support">Support</a>
+    <a href="https://brogang.techaditya.workers.dev" target="_blank">Bro Gang</a>
     <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank"><i class="fab fa-github"></i></a>
   </div>
 </nav>
 
-<section class="hero">
-  <span class="hero-badge">🟢 Stable v1.0.3 • Made in India 🇮🇳</span>
-  <h1>PGlove —<br>A Browser With<br>A New Generation</h1>
-  <p class="tagline">The experimental browser by <strong>Bro Gang</strong>. Built for developers, gamers, and the fearless. Download now, break beautifully.</p>
-  <div class="hero-buttons">
-    <a href="extensions.html" class="btn btn-primary"><i class="fas fa-download"></i> Download Stable</a>
-    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-github"></i> View on GitHub</a>
+<!-- HOME PANEL -->
+<section class="panel" id="home">
+  <div class="panel-inner">
+    <span class="panel-tag">🟢 Stable v1.0.3 • Made in India 🇮🇳</span>
+    <h1 class="panel-title">PGlove —<br>A Browser With<br>A New Generation</h1>
+    <p class="panel-sub">The experimental browser by <strong>Bro Gang</strong>. Built for developers, gamers, and the fearless.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;">
+      <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Download Stable</a>
+      <a href="https://brogang.techaditya.workers.dev" target="_blank" class="btn btn-outline"><i class="fas fa-globe"></i> Visit Bro Gang</a>
+      <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+    </div>
   </div>
 </section>
 
-<section class="section download-section">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag"><i class="fas fa-download"></i> Get PGlove</div>
-      <h2 class="section-title">Choose your <span class="grad">build.</span></h2>
-      <p class="section-sub">Stable release, experimental builds, or the core library.</p>
-    </div>
+<!-- DOWNLOAD PANEL -->
+<section class="panel download-section" id="download">
+  <div class="panel-inner">
+    <span class="panel-tag"><i class="fas fa-download"></i> Get PGlove</span>
+    <h2 class="panel-title">Choose your <span class="grad">build.</span></h2>
+    <p class="panel-sub">Stable release, experimental builds, or the core library.</p>
     <div class="versions-grid">
       <div class="version-card featured">
         <span class="version-label v-stable">✅ Stable</span>
@@ -116,7 +134,7 @@ footer a:hover { text-decoration: underline; }
         <div class="code-block">npm install @techadityabro/pglove-stable</div>
         <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:1rem;">Package: @techadityabro/pglove-stable • GitHub Packages</div>
         <div class="version-actions">
-          <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener" class="btn btn-green btn-sm"><i class="fas fa-box"></i> View NPM</a>
+          <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener" class="btn btn-green btn-sm"><i class="fas fa-box"></i> NPM</a>
           <a href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener" class="btn btn-ghost btn-sm"><i class="fas fa-link"></i> Releases</a>
         </div>
       </div>
@@ -125,10 +143,8 @@ footer a:hover { text-decoration: underline; }
         <div class="version-name">📦 PGloveCore</div>
         <div class="version-desc">Version 1.0.3 • Core metadata helpers</div>
         <div class="code-block">dotnet add package PGloveCore</div>
-        <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:1rem;">Package: PGloveCore • .NET Library</div>
         <div class="version-actions">
           <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener" class="btn btn-primary btn-sm"><i class="fas fa-cube"></i> NuGet</a>
-          <a href="https://www.nuget.org/" target="_blank" rel="noopener" class="btn btn-ghost btn-sm"><i class="fas fa-info-circle"></i> About</a>
         </div>
       </div>
       <div class="version-card nighty-card">
@@ -146,7 +162,6 @@ footer a:hover { text-decoration: underline; }
         <div class="version-name">⚡ Winget</div>
         <div class="version-desc">Windows Package Manager (CLI)</div>
         <div class="code-block">winget install TechAditya.PGlove</div>
-        <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:1rem;">Silent: /s • /SILENT</div>
         <div class="version-actions">
           <a href="https://github.com/microsoft/winget-pkgs/pull/421311" target="_blank" rel="noopener" class="btn btn-secondary btn-sm"><i class="fas fa-terminal"></i> Winget PR</a>
         </div>
@@ -155,39 +170,117 @@ footer a:hover { text-decoration: underline; }
   </div>
 </section>
 
-<section class="section" style="background:linear-gradient(135deg,rgba(109,40,217,0.08),transparent);">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag"><i class="fas fa-compass"></i> Quick Links</div>
-      <h2 class="section-title">Explore <span class="grad">PGlove</span></h2>
-      <p class="section-sub">Jump to any section or page below.</p>
+<!-- EXTENSIONS PANEL -->
+<section class="panel" id="extensions">
+  <div class="panel-inner">
+    <span class="panel-tag"><i class="fas fa-puzzle-piece"></i> Extensions</span>
+    <h2 class="panel-title">Browser <span class="grad">Extensions</span> v1.0.4</h2>
+    <p class="panel-sub">Download for your browser.</p>
+    <div class="ext-grid">
+      <a href="PGlove-v1.0.4-Chrome-Edge-Opera.crx" class="ext-card" download><i class="fab fa-chrome" style="color:#4285f4;"></i> Chrome / Edge / Opera <span>.crx</span></a>
+      <a href="PGlove-v1.0.4-Chrome-Edge-Opera-Firefox.zip" class="ext-card" download><i class="fas fa-box" style="color:var(--cyan-400);"></i> Full Package <span>.zip</span></a>
+      <a href="PGlove-v1.0.4-Firefox-AMO.xpi" class="ext-card" download><i class="fab fa-firefox" style="color:#ff7139;"></i> Firefox AMO <span>.xpi</span></a>
+      <a href="PGlove-v1.0.4-Firefox-Pale-Moon.xpi" class="ext-card" download><i class="fab fa-firefox" style="color:#ff7139;"></i> Firefox (Pale Moon) <span>.xpi</span></a>
+      <a href="PGlove-v1.0.4-Pale-Moon.zip" class="ext-card" download><i class="fas fa-archive" style="color:var(--purple-300);"></i> Pale Moon <span>.zip</span></a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
-      <a href="extensions.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
-        <i class="fas fa-puzzle-piece" style="font-size:2.5rem;color:var(--purple-300);"></i>
-        <h3 style="margin-top:1rem;">Extensions</h3>
-        <p style="color:var(--text-dim);font-size:0.85rem;">Download for your browser</p>
-      </a>
-      <a href="features.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
-        <i class="fas fa-star" style="font-size:2.5rem;color:var(--blue-400);"></i>
-        <h3 style="margin-top:1rem;">Features</h3>
-        <p style="color:var(--text-dim);font-size:0.85rem;">Why PGlove?</p>
-      </a>
-      <a href="v1.0.4.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
-        <i class="fas fa-hat-wizard" style="font-size:2.5rem;color:var(--pink);"></i>
-        <h3 style="margin-top:1rem;">v1.0.4</h3>
-        <p style="color:var(--text-dim);font-size:0.85rem;">Pokémon Theme</p>
-      </a>
-      <a href="roadmap.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
-        <i class="fas fa-road" style="font-size:2.5rem;color:var(--orange);"></i>
-        <h3 style="margin-top:1rem;">Roadmap</h3>
-        <p style="color:var(--text-dim);font-size:0.85rem;">What's next?</p>
-      </a>
-      <a href="support.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
-        <i class="fas fa-heart" style="font-size:2.5rem;color:var(--green);"></i>
-        <h3 style="margin-top:1rem;">Support</h3>
-        <p style="color:var(--text-dim);font-size:0.85rem;">Donate, contact</p>
-      </a>
+  </div>
+</section>
+
+<!-- FEATURES PANEL -->
+<section class="panel" id="features">
+  <div class="panel-inner">
+    <span class="panel-tag"><i class="fas fa-star"></i> Features</span>
+    <h2 class="panel-title">Why <span class="grad">PGlove?</span></h2>
+    <p class="panel-sub">Built for the brave. Breaks beautifully.</p>
+    <div class="features-grid">
+      <div class="feature-card"><span class="feature-icon">⚡</span><h3>Daily Updates</h3><p>Code pushed every 12-24h. New features before we even test them.</p></div>
+      <div class="feature-card"><span class="feature-icon">🐛</span><h3>Bug Reporter</h3><p>One-click to file issues on GitHub. You will find bugs.</p></div>
+      <div class="feature-card"><span class="feature-icon">🔬</span><h3>Experimental APIs</h3><p>WebGPU, new CSS, Chrome flags — months before stable.</p></div>
+      <div class="feature-card"><span class="feature-icon">💥</span><h3>Crash Recovery</h3><p>Recovers tabs 80% of the time. The other 20%? Adventure.</p></div>
+      <div class="feature-card"><span class="feature-icon">🌙</span><h3>Auto Dark Mode</h3><p>Forces dark mode everywhere. Eyes will thank you.</p></div>
+      <div class="feature-card"><span class="feature-icon">🧪</span><h3>A/B Testing</h3><p>Half get Feature X, half get Y. You're part of the experiment.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- v1.0.4 PANEL -->
+<section class="panel" id="v1.0.4" style="background:linear-gradient(135deg,rgba(238,21,21,0.08),rgba(59,76,202,0.08),transparent);">
+  <div class="panel-inner">
+    <span class="panel-tag" style="color:var(--pink);">⚡ v1.0.4</span>
+    <h2 class="panel-title">Pokémon <span class="grad">Theme</span></h2>
+    <p class="panel-sub">Gotta catch 'em all. Pokémon-inspired UI, custom icons, nostalgic 8-bit sounds.</p>
+    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;">
+      <a href="https://pglove.jo3.org/v1.0.4" target="_blank" class="btn btn-primary"><i class="fas fa-hat-wizard"></i> View v1.0.4</a>
+      <a href="https://brogang.techaditya.workers.dev" target="_blank" class="btn btn-outline"><i class="fas fa-globe"></i> Bro Gang</a>
+    </div>
+    <div style="max-width:600px;margin:2rem auto 0;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;">
+      <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><strong style="color:var(--pink);">v1.0.4 Progress</strong><span style="color:var(--green);">72%</span></div>
+      <div style="background:var(--bg-1);border-radius:999px;height:12px;overflow:hidden;"><div style="background:linear-gradient(90deg,var(--pink),var(--purple-400));height:100%;border-radius:999px;width:72%;"></div></div>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-top:1rem;">▸ CATCHING BUGS · TESTING UI · ADDING SOUNDS</p>
+    </div>
+  </div>
+</section>
+
+<!-- ROADMAP PANEL -->
+<section class="panel" id="roadmap">
+  <div class="panel-inner">
+    <span class="panel-tag"><i class="fas fa-road"></i> Roadmap</span>
+    <h2 class="panel-title">What's <span class="grad">Next</span>?</h2>
+    <p class="panel-sub">We're constantly evolving. Here's what we're working on.</p>
+    <div style="max-width:600px;margin:0 auto;">
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.5rem;">
+        <span style="background:#ff4444;color:#fff;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.4</span>
+        <div style="flex:1;"><strong>⚡ Pokémon Theme</strong><p style="color:var(--text-dim);font-size:0.85rem;">Pokémon-inspired UI, custom icons, nostalgic sounds.</p></div>
+        <span style="color:#ff4444;font-size:0.8rem;font-weight:600;">🔴 In Dev</span>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.5rem;">
+        <span style="background:var(--purple-500);color:#fff;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.5</span>
+        <div style="flex:1;"><strong>⛏️ Minecraft Style</strong><p style="color:var(--text-dim);font-size:0.85rem;">Blocky interface, pixel-perfect design.</p></div>
+        <span style="color:var(--purple-300);font-size:0.8rem;font-weight:600;">🟣 Upcoming</span>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.5rem;">
+        <span style="background:var(--surface-2);color:var(--text-muted);padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.6</span>
+        <div style="flex:1;"><strong>🏎️ GTA 6 Style</strong><p style="color:var(--text-dim);font-size:0.85rem;">Vice City vibes, neon accents, dynamic UI.</p></div>
+        <span style="color:var(--text-muted);font-size:0.8rem;font-weight:600;">⚪ Planning</span>
+      </div>
+      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;">
+        <span style="background:var(--surface-2);color:var(--text-muted);padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.7</span>
+        <div style="flex:1;"><strong>🌴 Vice City Style</strong><p style="color:var(--text-dim);font-size:0.85rem;">Retro 80s Miami, pastel colors, synthwave.</p></div>
+        <span style="color:var(--text-muted);font-size:0.8rem;font-weight:600;">⚪ Planning</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SUPPORT PANEL -->
+<section class="panel" id="support">
+  <div class="panel-inner">
+    <span class="panel-tag"><i class="fas fa-heart"></i> Support</span>
+    <h2 class="panel-title">Help Us <span class="grad">Build</span></h2>
+    <p class="panel-sub">Open-source by Bro Gang, funded by community.</p>
+    <div class="donate-grid">
+      <div class="donate-card">
+        <h3>💰 Donate Bitcoin</h3>
+        <p>Every satoshi counts!</p>
+        <div class="donate-address">bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w</div>
+        <div class="donate-address" style="margin-top:0.5rem;">bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh</div>
+      </div>
+      <div class="donate-card">
+        <h3>📦 Codeberg</h3>
+        <p>Free & open-source Git platform.</p>
+        <a href="https://codeberg.org/TechAditya/PGlove">View on Codeberg →</a>
+      </div>
+      <div class="donate-card">
+        <h3>📧 Contact</h3>
+        <p>Donations, partnerships, support:</p>
+        <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a>
+      </div>
+      <div class="donate-card">
+        <h3>📜 Legal</h3>
+        <p>Terms & Conditions & Privacy:</p>
+        <a href="t&c.html">Terms & Conditions →</a>
+        <a href="privacy-policy.html" style="margin-left:0.75rem;">Privacy Policy →</a>
+      </div>
     </div>
   </div>
 </section>
@@ -195,6 +288,16 @@ footer a:hover { text-decoration: underline; }
 <footer>
   <p>Built with 💥 by <strong>Aditya (TechAdityaBRO)</strong> • Bro Gang • East 2022</p>
   <p style="margin-top:0.5rem;">PGlove — A Browser With A New Generation • Made in India 🇮🇳</p>
+  <div class="footer-links">
+    <a href="https://brogang.techaditya.workers.dev">Bro Gang Website</a>
+    <a href="https://github.com/TechAdityaBRO/PGlove">GitHub</a>
+    <a href="https://codeberg.org/TechAditya/PGlove">Codeberg</a>
+    <a href="https://progroupco.itch.io/pglove">Itch.io</a>
+    <a href="https://pglove.jo3.org/v1.0.4">v1.0.4</a>
+    <a href="t&c.html">T&C</a>
+    <a href="privacy-policy.html">Privacy</a>
+    <a href="mailto:pglove@atomicmail.io">Email</a>
+  </div>
 </footer>
 </body>
 </html>

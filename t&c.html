@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PGlove Terms & Conditions">
+<meta name="theme-color" content="#0a0420">
+<title>PGlove — Terms & Conditions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --purple-100: #e6d9ff; --purple-200: #c9aaff; --purple-300: #ab7bff;
+  --purple-400: #8b4dff; --purple-500: #6d28d9;
+  --bg-0: #05010f; --bg-1: #0a0420; --bg-2: #12063a;
+  --surface: #140a38; --surface-2: #1e1054;
+  --border: rgba(139, 77, 255, 0.18);
+  --text: #e8e4f5; --text-dim: #b8aee0; --text-muted: #7a6fa5;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-0); color: var(--text); font-family: 'Inter', sans-serif; }
+.bg-grid { position: fixed; inset: 0; background-image: linear-gradient(rgba(139,77,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,77,255,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+.bg-glow { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(109,40,217,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(96,165,250,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(10,4,32,0.9); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; display: flex; justify-content: space-between; }
+nav .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-300), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; }
+nav .nav-links a:hover { color: var(--purple-300); }
+nav .nav-links a.active { color: var(--purple-200); border-bottom: 2px solid var(--purple-400); padding-bottom: 2px; }
+.content { position: relative; z-index: 1; padding: 6rem 2rem; max-width: 900px; margin: 0 auto; }
+.content h1 { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 2rem; }
+.content h2 { font-size: 1.4rem; color: var(--purple-300); margin-top: 2rem; margin-bottom: 1rem; }
+.content p, .content li { color: var(--text-dim); font-size: 0.95rem; line-height: 1.8; }
+.content ul { padding-left: 1.5rem; margin-bottom: 1rem; }
+.content li { margin-bottom: 0.5rem; }
+.back { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--purple-300); text-decoration: none; margin-bottom: 1.5rem; font-size: 0.9rem; }
+.back:hover { text-decoration: underline; }
+footer { position: relative; z-index: 1; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
+footer a { color: var(--purple-300); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<nav>
+  <div class="logo">PGlove</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="extensions.html">Extensions</a>
+    <a href="features.html">Features</a>
+    <a href="v1.0.4.html">v1.0.4</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="support.html">Support</a>
+    <a href="https://brogang.techaditya.workers.dev" target="_blank">Bro Gang</a>
+    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+</nav>
+
+<section class="content">
+  <a href="index.html" class="back"><i class="fas fa-arrow-left"></i> Back to Home</a>
+  <h1><i class="fas fa-file-contract"></i> Terms & Conditions</h1>
+
+  <h2>1. Introduction</h2>
+  <p>Welcome to PGlove, a browser developed by Aditya (TechAdityaBRO) and the Bro Gang community. These Terms & Conditions govern your use of PGlove, its website, and all associated services.</p>
+
+  <h2>2. Acceptance of Terms</h2>
+  <p>By accessing or using PGlove, you agree to be bound by these Terms & Conditions. If you do not agree to all of these terms, you may not access or use the service.</p>
+
+  <h2>3. Description of Service</h2>
+  <ul>
+    <li>PGlove is an experimental web browser built using Tauri and web technologies.</li>
+    <li>It is provided on an "as-is" basis without warranties of any kind.</li>
+    <li>PGlove includes experimental features such as WebGPU support, experimental CSS, and Chrome flags.</li>
+    <li>Features are updated frequently, and changes may occur without notice.</li>
+  </ul>
+
+  <h2>4. User Responsibilities</h2>
+  <ul>
+    <li>You are responsible for maintaining the security of your account and device.</li>
+    <li>You agree not to use PGlove for any illegal or unauthorized purposes.</li>
+    <li>You are responsible for any activity that occurs under your device while using PGlove.</li>
+  </ul>
+
+  <h2>5. Disclaimer of Warranties</h2>
+  <p>PGlove is provided "as is" and "as available" without warranties of any kind, whether express or implied. We do not warrant that the service will be uninterrupted, secure, or error-free.</p>
+
+  <h2>6. Limitation of Liability</h2>
+  <p>In no event shall the Bro Gang or its contributors be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of profits, data, or use, arising out of or in connection with the use of PGlove.</p>
+
+  <h2>7. Changes to Terms</h2>
+  <p>We reserve the right to modify or replace these Terms & Conditions at any time. Changes will be effective immediately upon posting on this page.</p>
+
+  <h2>8. Governing Law</h2>
+  <p>These Terms & Conditions shall be governed by and construed in accordance with the laws of India.</p>
+
+  <h2>9. Contact</h2>
+  <p>If you have any questions about these Terms & Conditions, please contact us at <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a>.</p>
+</section>
+
+<footer>
+  <p>Built with 💥 by <strong>Bro Gang</strong> • Made in India 🇮🇳</p>
+</footer>
+</body>
+</html>
