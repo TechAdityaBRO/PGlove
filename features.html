@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PGlove Features — Daily updates, bug reporter, experimental APIs, crash recovery, auto dark mode, A/B testing.">
+<meta name="theme-color" content="#0a0420">
+<title>PGlove — Features</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --purple-100: #e6d9ff; --purple-200: #c9aaff; --purple-300: #ab7bff;
+  --purple-400: #8b4dff; --purple-500: #6d28d9;
+  --blue-400: #60a5fa; --blue-500: #3b82f6; --cyan-300: #67e8f9; --cyan-400: #22d3ee;
+  --bg-0: #05010f; --bg-1: #0a0420; --bg-2: #12063a;
+  --surface: #140a38; --surface-2: #1e1054;
+  --border: rgba(139, 77, 255, 0.18);
+  --text: #e8e4f5; --text-dim: #b8aee0; --text-muted: #7a6fa5;
+  --green: #10b981; --orange: #fb923c; --pink: #f472b6; --yellow: #ffcb05;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { background: var(--bg-0); color: var(--text); font-family: 'Inter', sans-serif; }
+.bg-grid { position: fixed; inset: 0; background-image: linear-gradient(rgba(139,77,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,77,255,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+.bg-glow { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(109,40,217,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(96,165,250,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(10,4,32,0.88); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; display: flex; justify-content: space-between; }
+nav .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-300), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; }
+nav .nav-links a:hover { color: var(--purple-300); }
+nav .nav-links a.active { color: var(--purple-200); border-bottom: 2px solid var(--purple-400); padding-bottom: 2px; }
+.hero { position: relative; min-height: 50vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 3rem; z-index: 1; }
+.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+.section { position: relative; z-index: 1; padding: 4rem 2rem; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-tag { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--purple-300); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+.section-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.grad { background: linear-gradient(135deg, var(--purple-300), var(--cyan-300)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2.25rem; text-align: center; transition: all 0.3s; }
+.feature-card:hover { border-color: var(--purple-400); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(139,77,255,0.15); }
+.feature-icon { font-size: 2.8rem; margin-bottom: 1rem; display: block; }
+.feature-card h3 { color: var(--text); font-size: 1.25rem; margin-bottom: 0.75rem; }
+.feature-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; }
+footer { position: relative; z-index: 1; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
+footer a { color: var(--purple-300); text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<nav>
+  <div class="logo">PGlove</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="extensions.html">Extensions</a>
+    <a href="features.html" class="active">Features</a>
+    <a href="v1.0.4.html">v1.0.4</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="support.html">Support</a>
+    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+</nav>
+
+<section class="hero">
+  <span class="hero-badge">✨ Next-Gen Features</span>
+  <h1>Why <span class="grad">PGlove?</span></h1>
+  <p class="section-sub">Built for the brave. Breaks beautifully.</p>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-star"></i> All Features</div>
+      <h2 class="section-title">Every <span class="grad">Feature</span> You Need</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card">
+        <span class="feature-icon">⚡</span>
+        <h3>Daily Updates</h3>
+        <p>Code pushed every 12-24h. New features before we even test them. You get the bleeding edge, always.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🐛</span>
+        <h3>Built-in Bug Reporter</h3>
+        <p>One-click to file an issue on GitHub. You will find bugs — we want you to.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🔬</span>
+        <h3>Experimental APIs</h3>
+        <p>Try WebGPU, new CSS features, and Chrome flags months before stable browsers.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">💥</span>
+        <h3>Crash Recovery</h3>
+        <p>Recovers your tabs 80% of the time. The other 20%? Adventure.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🧪</span>
+        <h3>A/B Testing</h3>
+        <p>Half get Feature X, half get Y. You're part of the experiment. Help shape the future.</p>
+      </div>
+      <div class="feature-card">
+        <span class="feature-icon">🌙</span>
+        <h3>Auto Dark Mode</h3>
+        <p>Even websites without dark mode get forced into it. Eyes will thank you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with 💥 by <strong>Bro Gang</strong> • Made in India 🇮🇳</p>
+</footer>
+</body>
+</html>

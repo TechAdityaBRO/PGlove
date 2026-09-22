@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="PGlove Extensions — Download browser extensions for Chrome, Firefox, Edge, Opera, Pale Moon.">
+<meta name="theme-color" content="#0a0420">
+<title>PGlove — Extensions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root {
+  --purple-100: #e6d9ff; --purple-200: #c9aaff; --purple-300: #ab7bff;
+  --purple-400: #8b4dff; --purple-500: #6d28d9; --purple-600: #5b21b6;
+  --blue-400: #60a5fa; --blue-500: #3b82f6; --cyan-300: #67e8f9; --cyan-400: #22d3ee;
+  --bg-0: #05010f; --bg-1: #0a0420; --bg-2: #12063a;
+  --surface: #140a38; --surface-2: #1e1054;
+  --border: rgba(139, 77, 255, 0.18); --border-strong: rgba(139, 77, 255, 0.35);
+  --text: #e8e4f5; --text-dim: #b8aee0; --text-muted: #7a6fa5;
+  --green: #10b981; --orange: #fb923c; --pink: #f472b6; --yellow: #ffcb05;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg-0); color: var(--text); font-family: 'Inter', sans-serif; }
+.bg-grid { position: fixed; inset: 0; background-image: linear-gradient(rgba(139,77,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,77,255,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+.bg-glow { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(109,40,217,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(96,165,250,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(10,4,32,0.88); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+nav .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-300), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; transition: color 0.3s; }
+nav .nav-links a:hover { color: var(--purple-300); }
+nav .nav-links a.active { color: var(--purple-200); border-bottom: 2px solid var(--purple-400); padding-bottom: 2px; }
+.hero { position: relative; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 3rem; z-index: 1; }
+.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; }
+.section { position: relative; z-index: 1; padding: 4rem 2rem; }
+.section-inner { max-width: 900px; margin: 0 auto; }
+.section-header { text-align: center; margin-bottom: 3rem; }
+.section-tag { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--purple-300); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+.section-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.2rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.section-sub { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
+.grad { background: linear-gradient(135deg, var(--purple-300), var(--cyan-300)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+.ext-grid { display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: center; }
+.ext-card { display: flex; align-items: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem 1.75rem; color: var(--text); text-decoration: none; transition: all 0.3s var(--ease); font-weight: 500; min-width: 300px; }
+.ext-card:hover { border-color: var(--purple-400); transform: translateY(-4px); background: var(--surface-2); box-shadow: 0 8px 32px rgba(139,77,255,0.15); }
+.ext-card i { font-size: 1.5rem; }
+.ext-card span { font-size: 0.75rem; color: var(--text-muted); background: var(--bg-1); padding: 0.2rem 0.6rem; border-radius: 4px; }
+.ext-card .ext-desc { font-size: 0.85rem; color: var(--text-dim); margin-top: 0.25rem; }
+footer { position: relative; z-index: 1; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
+footer a { color: var(--purple-300); text-decoration: none; }
+@media (max-width: 768px) { .hero h1 { font-size: 2rem; } .section-title { font-size: 1.6rem; } nav .nav-links a { margin-left: 0.8rem; font-size: 0.8rem; } }
+</style>
+</head>
+<body>
+<div class="bg-grid"></div>
+<div class="bg-glow"></div>
+<nav>
+  <div class="logo">PGlove</div>
+  <div class="nav-links">
+    <a href="index.html">Home</a>
+    <a href="extensions.html" class="active">Extensions</a>
+    <a href="features.html">Features</a>
+    <a href="v1.0.4.html">v1.0.4</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="support.html">Support</a>
+    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank"><i class="fab fa-github"></i></a>
+  </div>
+</nav>
+
+<section class="hero">
+  <span class="hero-badge">🧩 Browser Extensions</span>
+  <h1>PGlove <span class="grad">Extensions</span></h1>
+  <p class="section-sub" style="max-width:500px;margin:0 auto;">Download the browser extension for your browser. Available for Chrome, Edge, Opera, Firefox, and Pale Moon.</p>
+</section>
+
+<section class="section" style="background:linear-gradient(180deg,transparent,rgba(30,16,84,0.3),transparent);">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-puzzle-piece"></i> Available</div>
+      <h2 class="section-title">Download <span class="grad">Extensions</span></h2>
+      <p class="section-sub">Pick your browser.</p>
+    </div>
+    <div class="ext-grid">
+      <a href="PGlove-v1.0.4-Chrome-Edge-Opera-Firefox.zip" class="ext-card" download>
+        <i class="fab fa-chrome" style="color:#4285f4;"></i>
+        <div><div>Chrome / Edge / Opera</div><div class="ext-desc">.zip archive • 10.2 KB</div></div>
+      </a>
+      <a href="PGlove-v1.0.4-Chrome-Edge-Opera.crx" class="ext-card" download>
+        <i class="fab fa-chrome" style="color:#4285f4;"></i>
+        <div><div>Chrome / Edge / Opera (.crx)</div><div class="ext-desc">Direct install • 10.5 KB</div></div>
+      </a>
+      <a href="PGlove-v1.0.4-Firefox-AMO.xpi" class="ext-card" download>
+        <i class="fab fa-firefox" style="color:#ff7139;"></i>
+        <div><div>Firefox (AMO)</div><div class="ext-desc">Add-on Manager • 10.0 KB</div></div>
+      </a>
+      <a href="PGlove-v1.0.4-Firefox-Pale-Moon.xpi" class="ext-card" download>
+        <i class="fab fa-firefox" style="color:#ff7139;"></i>
+        <div><div>Firefox (Pale Moon)</div><div class="ext-desc">Add-on Manager • 9.9 KB</div></div>
+      </a>
+      <a href="PGlove-v1.0.4-Pale-Moon.zip" class="ext-card" download>
+        <i class="fas fa-archive" style="color:var(--purple-300);"></i>
+        <div><div>Pale Moon</div><div class="ext-desc">.zip archive • 9.9 KB</div></div>
+      </a>
+      <a href="PGlove-v1.0.4-Chrome-Edge-Opera-Firefox.zip" class="ext-card" download>
+        <i class="fas fa-box" style="color:var(--cyan-400);"></i>
+        <div><div>Full Package (All Browsers)</div><div class="ext-desc">.zip archive • 10.2 KB</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-info-circle"></i> Info</div>
+      <h2 class="section-title">Extension <span class="grad">Details</span></h2>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;">
+      <p style="color:var(--text-dim);line-height:1.8;">
+        PGlove extension v1.0.4 brings a new generation of browser customization. All extensions are built with WebGPU support, experimental CSS features, and Chrome flags enabled by default. The extension works across all major browsers with consistent functionality.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Built with 💥 by <strong>Bro Gang</strong> • Made in India 🇮🇳</p>
+</footer>
+</body>
+</html>

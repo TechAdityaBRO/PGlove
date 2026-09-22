@@ -5,308 +5,103 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="PGlove — A browser with a new generation. Stable v1.0.3, Nighty builds, Codeberg mirror, Bitcoin donations.">
 <meta name="theme-color" content="#0a0420">
-<title>PGlove — A Browser With A New Generation</title>
+<title>PGlove — Home</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <style>
-/* ============================================================ */
-/*   PGlove — Purple & Blue Theme · Next-Gen Graphics         */
-/* ============================================================ */
 :root {
-  --purple-100: #e6d9ff;
-  --purple-200: #c9aaff;
-  --purple-300: #ab7bff;
-  --purple-400: #8b4dff;
-  --purple-500: #6d28d9;
-  --purple-600: #5b21b6;
-  --purple-700: #4c1d95;
-  --blue-400: #60a5fa;
-  --blue-500: #3b82f6;
-  --blue-600: #2563eb;
-  --cyan-300: #67e8f9;
-  --cyan-400: #22d3ee;
-  --cyan-500: #06b6d4;
-  --bg-0: #05010f;
-  --bg-1: #0a0420;
-  --bg-2: #12063a;
-  --surface: #140a38;
-  --surface-2: #1e1054;
-  --border: rgba(139, 77, 255, 0.18);
-  --border-strong: rgba(139, 77, 255, 0.35);
-  --text: #e8e4f5;
-  --text-dim: #b8aee0;
-  --text-muted: #7a6fa5;
-  --green: #10b981;
-  --green-light: #34d399;
-  --yellow: #ffcb05;
-  --orange: #fb923c;
-  --pink: #f472b6;
+  --purple-100: #e6d9ff; --purple-200: #c9aaff; --purple-300: #ab7bff;
+  --purple-400: #8b4dff; --purple-500: #6d28d9; --purple-600: #5b21b6;
+  --blue-400: #60a5fa; --blue-500: #3b82f6; --cyan-300: #67e8f9; --cyan-400: #22d3ee;
+  --bg-0: #05010f; --bg-1: #0a0420; --bg-2: #12063a;
+  --surface: #140a38; --surface-2: #1e1054;
+  --border: rgba(139, 77, 255, 0.18); --border-strong: rgba(139, 77, 255, 0.35);
+  --text: #e8e4f5; --text-dim: #b8aee0; --text-muted: #7a6fa5;
+  --green: #10b981; --orange: #fb923c; --pink: #f472b6; --yellow: #ffcb05;
   --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
-
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
-
-/* Animated background */
-body {
-  background: var(--bg-0);
-  color: var(--text);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-}
-
-.bg-grid {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background-image:
-    linear-gradient(rgba(139,77,255,0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(139,77,255,0.05) 1px, transparent 1px);
-  background-size: 60px 60px;
-  pointer-events: none; z-index: 0;
-}
-
-.bg-glow {
-  position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-  background: radial-gradient(ellipse at 20% 50%, rgba(109,40,217,0.15) 0%, transparent 50%),
-              radial-gradient(ellipse at 80% 50%, rgba(96,165,250,0.1) 0%, transparent 50%);
-  pointer-events: none; z-index: 0;
-}
-
-/* Navigation */
-nav {
-  position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-  backdrop-filter: blur(20px); background: rgba(10,4,32,0.85);
-  border-bottom: 1px solid var(--border);
-  padding: 0.75rem 2rem;
-  display: flex; justify-content: space-between; align-items: center;
-}
-nav .logo {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.5rem; font-weight: 700;
-  background: linear-gradient(135deg, var(--purple-300), var(--blue-400));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
-nav .nav-links a {
-  color: var(--text-dim); text-decoration: none; margin-left: 2rem;
-  font-size: 0.9rem; transition: color 0.3s;
-}
+body { background: var(--bg-0); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
+.bg-grid { position: fixed; inset: 0; background-image: linear-gradient(rgba(139,77,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,77,255,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
+.bg-glow { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(109,40,217,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(96,165,250,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
+nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(10,4,32,0.88); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
+nav .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-300), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+nav .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 1.5rem; font-size: 0.9rem; transition: color 0.3s; }
 nav .nav-links a:hover { color: var(--purple-300); }
-
-/* Hero Section */
-.hero {
-  position: relative; min-height: 100vh;
-  display: flex; flex-direction: column;
-  justify-content: center; align-items: center;
-  text-align: center; padding: 6rem 2rem 4rem;
-  z-index: 1;
-}
-.hero h1 {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 4rem; font-weight: 800;
-  background: linear-gradient(135deg, var(--purple-200), var(--blue-400), var(--cyan-300));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-  margin-bottom: 1rem; line-height: 1.1;
-}
-.hero .tagline {
-  font-size: 1.25rem; color: var(--text-dim); max-width: 600px; margin-bottom: 2rem;
-}
-.hero .tagline strong { color: var(--purple-300); }
-.hero-badge {
-  display: inline-block; background: rgba(109,40,217,0.2);
-  border: 1px solid rgba(139,77,255,0.3); border-radius: 999px;
-  padding: 0.4rem 1.2rem; font-size: 0.85rem; color: var(--purple-200);
-  margin-bottom: 2rem; font-weight: 600;
-}
+nav .nav-links a.active { color: var(--purple-200); border-bottom: 2px solid var(--purple-400); padding-bottom: 2px; }
+.hero { position: relative; min-height: 100vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 4rem; z-index: 1; }
+.hero h1 { font-family: 'Space Grotesk', sans-serif; font-size: 4.2rem; font-weight: 800; background: linear-gradient(135deg, var(--purple-200), var(--blue-400), var(--cyan-300)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 1rem; line-height: 1.1; }
+.hero .tagline { font-size: 1.2rem; color: var(--text-dim); max-width: 650px; margin-bottom: 2rem; }
+.hero-badge { display: inline-block; background: rgba(109,40,217,0.2); border: 1px solid rgba(139,77,255,0.3); border-radius: 999px; padding: 0.4rem 1.2rem; font-size: 0.85rem; color: var(--purple-200); margin-bottom: 2rem; font-weight: 600; }
 .hero-buttons { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
-.btn {
-  padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none;
-  font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease);
-  display: inline-flex; align-items: center; gap: 0.5rem;
-  border: none; cursor: pointer;
-}
+.btn { padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 0.5rem; border: none; cursor: pointer; }
 .btn-primary { background: var(--purple-500); color: #fff; }
 .btn-primary:hover { background: var(--purple-600); transform: translateY(-2px); }
 .btn-outline { background: transparent; color: var(--purple-300); border: 1px solid var(--purple-500); }
 .btn-outline:hover { background: rgba(109,40,217,0.1); transform: translateY(-2px); }
 .btn-green { background: var(--green); color: #fff; }
-.btn-green:hover { background: #059669; }
 .btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); }
 .btn-ghost:hover { border-color: var(--purple-400); color: var(--purple-300); }
 .btn-orange { background: var(--orange); color: #fff; }
-.btn-orange:hover { background: #ea580c; }
 .btn-secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
-.btn-secondary:hover { border-color: var(--purple-400); }
-
-/* Floating particles */
-.particles {
-  position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-  pointer-events: none; overflow: hidden; z-index: -1;
-}
-.particle {
-  position: absolute; width: 4px; height: 4px; border-radius: 50%;
-  background: rgba(139,77,255,0.4);
-  animation: float 15s infinite ease-in-out;
-}
-@keyframes float {
-  0%, 100% { transform: translateY(0) translateX(0); opacity: 0.3; }
-  25% { transform: translateY(-100px) translateX(50px); opacity: 0.8; }
-  50% { transform: translateY(-200px) translateX(-30px); opacity: 0.4; }
-  75% { transform: translateY(-300px) translateX(70px); opacity: 0.6; }
-}
-
-/* Section base */
 section.section { position: relative; z-index: 1; padding: 4rem 2rem; }
-.section-inner { max-width: 1000px; margin: 0 auto; }
+.section-inner { max-width: 1100px; margin: 0 auto; }
 .section-header { text-align: center; margin-bottom: 3rem; }
-.section-tag {
-  display: inline-block; font-size: 0.8rem; font-weight: 600;
-  color: var(--purple-300); text-transform: uppercase; letter-spacing: 2px;
-  margin-bottom: 0.75rem;
-}
-.section-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem;
-  background: linear-gradient(135deg, var(--purple-200), var(--blue-400));
-  -webkit-background-clip: text; -webkit-text-fill-color: transparent;
-}
+.section-tag { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--purple-300); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
+.section-title { font-family: 'Space Grotesk', sans-serif; font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
 .section-sub { color: var(--text-dim); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
 .grad { background: linear-gradient(135deg, var(--purple-300), var(--cyan-300)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-
-/* Download Section */
-.download-section {
-  background: linear-gradient(180deg, transparent, rgba(30,16,84,0.3) 50%, transparent);
-}
-.versions-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem;
-}
-.version-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-  padding: 1.75rem; transition: all 0.3s var(--ease); position: relative; overflow: hidden;
-}
+.download-section { background: linear-gradient(180deg, transparent, rgba(30,16,84,0.3) 50%, transparent); }
+.versions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
+.version-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 1.75rem; transition: all 0.3s var(--ease); position: relative; overflow: hidden; }
 .version-card:hover { border-color: var(--purple-400); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(139,77,255,0.15); }
-.version-card::before {
-  content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
-}
+.version-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
 .version-card.featured::before { background: linear-gradient(90deg, var(--blue-500), var(--cyan-400)); }
 .version-card.nuget-card::before { background: linear-gradient(90deg, var(--purple-500), var(--purple-300)); }
 .version-card.nighty-card::before { background: linear-gradient(90deg, var(--pink), var(--purple-400)); }
 .version-card.winget-card::before { background: linear-gradient(90deg, var(--orange), var(--yellow)); }
 .version-label { font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
-.v-stable { color: var(--green-light); }
-.v-nuget { color: var(--purple-300); }
-.v-nighty { color: var(--pink); }
-.v-winget { color: var(--orange); }
+.v-stable { color: var(--green-light); } .v-nuget { color: var(--purple-300); } .v-nighty { color: var(--pink); } .v-winget { color: var(--orange); }
 .version-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
 .version-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
-.code-block {
-  background: var(--bg-1); padding: 0.75rem; border-radius: 8px;
-  font-family: 'JetBrains Mono', monospace; font-size: 0.85rem;
-  margin-bottom: 0.5rem; border: 1px solid var(--border);
-}
+.code-block { background: var(--bg-1); padding: 0.75rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 0.5rem; border: 1px solid var(--border); }
 .version-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
-
-/* Extensions Section */
-.extensions-block {
-  background: var(--bg-1); border-radius: 16px; padding: 3rem 2rem;
-  max-width: 900px; margin: 0 auto; border: 1px solid var(--border);
-}
-.extensions-block h2 {
-  text-align: center; font-family: 'Space Grotesk', sans-serif;
-  font-size: 1.8rem; margin-bottom: 2rem; color: var(--purple-200);
-}
-.ext-grid { display: flex; flex-wrap: wrap; gap: 1rem; justify-content: center; }
-.ext-card {
-  display: flex; align-items: center; gap: 0.75rem;
-  background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
-  padding: 0.85rem 1.5rem; color: var(--text); text-decoration: none;
-  transition: all 0.3s var(--ease); font-weight: 500;
-}
-.ext-card:hover { border-color: var(--purple-400); transform: translateY(-3px); background: var(--surface-2); }
-.ext-card i { font-size: 1.2rem; }
-.ext-card span { font-size: 0.75rem; color: var(--text-muted); background: var(--bg-1); padding: 0.2rem 0.5rem; border-radius: 4px; }
-
-/* Features Section */
-.features-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.5rem;
-}
-.feature-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
-  padding: 2rem; text-align: center; transition: all 0.3s var(--ease);
-}
-.feature-card:hover { border-color: var(--purple-400); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(139,77,255,0.15); }
-.feature-icon { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-.feature-card h3 { color: var(--text); font-size: 1.2rem; margin-bottom: 0.5rem; }
-.feature-card p { color: var(--text-dim); font-size: 0.9rem; line-height: 1.6; }
-
-/* Support Section */
-.support-section { background: linear-gradient(135deg, var(--bg-1), var(--bg-2)); border-radius: 20px; padding: 3rem; max-width: 1000px; margin: 0 auto; border: 1px solid var(--border); }
-.support-grid {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 2rem;
-}
-.support-card {
-  background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.75rem; transition: all 0.3s var(--ease);
-}
-.support-card:hover { border-color: var(--purple-400); transform: translateY(-4px); }
-.support-card h3 { color: var(--text); font-size: 1.1rem; margin-bottom: 0.75rem; }
-.support-card p, .support-card address { color: var(--text-dim); font-size: 0.9rem; line-height: 1.7; }
-.support-card a { color: var(--purple-300); text-decoration: none; }
-.support-card a:hover { text-decoration: underline; }
-
-/* Footer */
-footer {
-  position: relative; z-index: 1; text-align: center; padding: 3rem 2rem;
-  border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem;
-}
+footer { position: relative; z-index: 1; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
 footer a { color: var(--purple-300); text-decoration: none; }
 footer a:hover { text-decoration: underline; }
-
-/* Responsive */
-@media (max-width: 768px) {
-  .hero h1 { font-size: 2.5rem; }
-  .section-title { font-size: 1.8rem; }
-  nav .nav-links a { margin-left: 1rem; font-size: 0.8rem; }
-}
+@media (max-width: 768px) { .hero h1 { font-size: 2.5rem; } .section-title { font-size: 1.8rem; } nav .nav-links a { margin-left: 0.8rem; font-size: 0.8rem; } }
 </style>
 </head>
 <body>
-
 <div class="bg-grid"></div>
 <div class="bg-glow"></div>
-
-<!-- Navigation -->
 <nav>
   <div class="logo">PGlove</div>
   <div class="nav-links">
-    <a href="#download">Download</a>
-    <a href="#extensions">Extensions</a>
-    <a href="#features">Features</a>
-    <a href="#support">Support</a>
-    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+    <a href="index.html" class="active">Home</a>
+    <a href="extensions.html">Extensions</a>
+    <a href="features.html">Features</a>
+    <a href="v1.0.4.html">v1.0.4</a>
+    <a href="roadmap.html">Roadmap</a>
+    <a href="support.html">Support</a>
+    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank"><i class="fab fa-github"></i></a>
   </div>
 </nav>
 
-<!-- Hero Section -->
 <section class="hero">
-  <div class="particles">
-    <div class="particle" style="left:10%;animation-delay:0s;width:6px;height:6px;"></div>
-    <div class="particle" style="left:25%;animation-delay:2s;width:4px;height:4px;"></div>
-    <div class="particle" style="left:40%;animation-delay:4s;width:5px;height:5px;"></div>
-    <div class="particle" style="left:60%;animation-delay:1s;width:3px;height:3px;"></div>
-    <div class="particle" style="left:75%;animation-delay:3s;width:6px;height:6px;"></div>
-    <div class="particle" style="left:90%;animation-delay:5s;width:4px;height:4px;"></div>
-  </div>
   <span class="hero-badge">🟢 Stable v1.0.3 • Made in India 🇮🇳</span>
   <h1>PGlove —<br>A Browser With<br>A New Generation</h1>
   <p class="tagline">The experimental browser by <strong>Bro Gang</strong>. Built for developers, gamers, and the fearless. Download now, break beautifully.</p>
   <div class="hero-buttons">
-    <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Download Stable</a>
+    <a href="extensions.html" class="btn btn-primary"><i class="fas fa-download"></i> Download Stable</a>
     <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener" class="btn btn-outline"><i class="fab fa-github"></i> View on GitHub</a>
   </div>
 </section>
 
-<!-- Download Section -->
-<section class="section download-section" id="download">
+<section class="section download-section">
   <div class="section-inner">
     <div class="section-header">
       <div class="section-tag"><i class="fas fa-download"></i> Get PGlove</div>
@@ -360,142 +155,46 @@ footer a:hover { text-decoration: underline; }
   </div>
 </section>
 
-<!-- Extensions Section -->
-<section class="section" id="extensions">
+<section class="section" style="background:linear-gradient(135deg,rgba(109,40,217,0.08),transparent);">
   <div class="section-inner">
     <div class="section-header">
-      <div class="section-tag"><i class="fas fa-puzzle-piece"></i> Extensions</div>
-      <h2 class="section-title">Browser <span class="grad">Extensions</span> v1.0.4</h2>
-      <p class="section-sub">Download for your browser.</p>
+      <div class="section-tag"><i class="fas fa-compass"></i> Quick Links</div>
+      <h2 class="section-title">Explore <span class="grad">PGlove</span></h2>
+      <p class="section-sub">Jump to any section or page below.</p>
     </div>
-    <div class="ext-grid">
-      <a href="PGlove-v1.0.4-Chrome-Edge-Opera.crx" class="ext-card" download><i class="fab fa-chrome" style="color:#4285f4;"></i> Chrome / Edge / Opera <span>.crx</span></a>
-      <a href="PGlove-v1.0.4-Firefox-AMO.xpi" class="ext-card" download><i class="fab fa-firefox" style="color:#ff7139;"></i> Firefox AMO <span>.xpi</span></a>
-      <a href="PGlove-v1.0.4-Firefox-Pale-Moon.xpi" class="ext-card" download><i class="fab fa-firefox" style="color:#ff7139;"></i> Firefox (Pale Moon) <span>.xpi</span></a>
-      <a href="PGlove-v1.0.4-Pale-Moon.zip" class="ext-card" download><i class="fas fa-archive" style="color:var(--purple-300);"></i> Pale Moon <span>.zip</span></a>
-      <a href="PGlove-v1.0.4-Chrome-Edge-Opera-Firefox.zip" class="ext-card" download><i class="fas fa-box" style="color:var(--cyan-400);"></i> Full Package <span>.zip</span></a>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1.5rem;">
+      <a href="extensions.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
+        <i class="fas fa-puzzle-piece" style="font-size:2.5rem;color:var(--purple-300);"></i>
+        <h3 style="margin-top:1rem;">Extensions</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem;">Download for your browser</p>
+      </a>
+      <a href="features.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
+        <i class="fas fa-star" style="font-size:2.5rem;color:var(--blue-400);"></i>
+        <h3 style="margin-top:1rem;">Features</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem;">Why PGlove?</p>
+      </a>
+      <a href="v1.0.4.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
+        <i class="fas fa-hat-wizard" style="font-size:2.5rem;color:var(--pink);"></i>
+        <h3 style="margin-top:1rem;">v1.0.4</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem;">Pokémon Theme</p>
+      </a>
+      <a href="roadmap.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
+        <i class="fas fa-road" style="font-size:2.5rem;color:var(--orange);"></i>
+        <h3 style="margin-top:1rem;">Roadmap</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem;">What's next?</p>
+      </a>
+      <a href="support.html" style="background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:2rem;text-align:center;text-decoration:none;color:var(--text);transition:all 0.3s;">
+        <i class="fas fa-heart" style="font-size:2.5rem;color:var(--green);"></i>
+        <h3 style="margin-top:1rem;">Support</h3>
+        <p style="color:var(--text-dim);font-size:0.85rem;">Donate, contact</p>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- Features Section -->
-<section class="section" id="features">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag"><i class="fas fa-star"></i> Features</div>
-      <h2 class="section-title">Why <span class="grad">PGlove?</span></h2>
-      <p class="section-sub">Built for the brave. Breaks beautifully.</p>
-    </div>
-    <div class="features-grid">
-      <div class="feature-card">
-        <span class="feature-icon">⚡</span>
-        <h3>Daily Updates</h3>
-        <p>Code pushed every 12-24h. New features before we even test them.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🐛</span>
-        <h3>Bug Reporter</h3>
-        <p>One-click to file issues on GitHub. You will find bugs.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🔬</span>
-        <h3>Experimental APIs</h3>
-        <p>WebGPU, new CSS, Chrome flags — months before stable.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">💥</span>
-        <h3>Crash Recovery</h3>
-        <p>Recovers tabs 80% of the time. The other 20%? Adventure.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🌙</span>
-        <h3>Auto Dark Mode</h3>
-        <p>Forces dark mode everywhere. Eyes will thank you.</p>
-      </div>
-      <div class="feature-card">
-        <span class="feature-icon">🧪</span>
-        <h3>A/B Testing</h3>
-        <p>Half get Feature X, half get Y. You're part of the experiment.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Roadmap Section -->
-<section class="section" id="roadmap">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag"><i class="fas fa-road"></i> Roadmap</div>
-      <h2 class="section-title">What's <span class="grad">Next</span> for PGlove?</h2>
-      <p class="section-sub">We're constantly evolving. Here's what we're working on.</p>
-    </div>
-    <div style="max-width:600px;margin:0 auto;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;">
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
-        <span style="background:#ff4444;color:#fff;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.4</span>
-        <div><strong style="color:var(--text);">⚡ Pokémon Theme</strong><p style="color:var(--text-dim);font-size:0.85rem;">Pokémon-inspired UI, custom icons, nostalgic sounds.</p></div>
-        <span style="margin-left:auto;color:#ff4444;font-size:0.8rem;">🔴 In Dev</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem;padding-bottom:1rem;border-bottom:1px solid var(--border);">
-        <span style="background:var(--purple-500);color:#fff;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.5</span>
-        <div><strong style="color:var(--text);">⛏️ Minecraft Style</strong><p style="color:var(--text-dim);font-size:0.85rem;">Blocky interface, pixel-perfect design, crafting menus.</p></div>
-        <span style="margin-left:auto;color:var(--purple-300);font-size:0.8rem;">🟣 Upcoming</span>
-      </div>
-      <div style="display:flex;align-items:center;gap:1rem;margin-bottom:0;padding-bottom:0;">
-        <span style="background:var(--surface-2);color:var(--text-muted);padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.6</span>
-        <div><strong style="color:var(--text);">🏎️ GTA 6 Style</strong><p style="color:var(--text-dim);font-size:0.85rem;">Vice City vibes, neon accents, dynamic UI.</p></div>
-        <span style="margin-left:auto;color:var(--text-muted);font-size:0.8rem;">⚪ Planning</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Support Section -->
-<section class="section" id="support">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag"><i class="fas fa-heart"></i> Support</div>
-      <h2 class="section-title">Help Us <span class="grad">Build</span> the Future</h2>
-      <p class="section-sub">Open-source by Bro Gang, funded by community.</p>
-    </div>
-    <div class="support-grid">
-      <div class="support-card">
-        <h3>💰 Donate Bitcoin</h3>
-        <p>Support development. Every satoshi counts!</p>
-        <address style="margin-top:0.5rem;">
-          bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w<br>
-          bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh
-        </address>
-      </div>
-      <div class="support-card">
-        <h3>📦 Codeberg Mirror</h3>
-        <p>Free & open-source Git platform.</p>
-        <a href="https://codeberg.org/TechAditya/PGlove" style="display:inline-block;margin-top:0.75rem;background:var(--purple-500);color:#fff;padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;">View on Codeberg</a>
-      </div>
-      <div class="support-card">
-        <h3>📧 Contact</h3>
-        <p>For donations, partnerships, or support:</p>
-        <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a>
-      </div>
-      <div class="support-card">
-        <h3>🛠️ Contribute</h3>
-        <p>Open-source on GitHub & Codeberg. Report bugs, request features, submit PRs.</p>
-        <a href="https://github.com/TechAdityaBRO/PGlove" style="display:inline-block;margin-top:0.75rem;background:var(--surface-2);color:var(--text);padding:0.6rem 1.2rem;border-radius:6px;text-decoration:none;font-weight:600;border:1px solid var(--border);">GitHub Repo</a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Footer -->
 <footer>
   <p>Built with 💥 by <strong>Aditya (TechAdityaBRO)</strong> • Bro Gang • East 2022</p>
   <p style="margin-top:0.5rem;">PGlove — A Browser With A New Generation • Made in India 🇮🇳</p>
-  <p style="margin-top:1rem;">
-    <a href="https://github.com/TechAdityaBRO/PGlove">GitHub</a> •
-    <a href="https://codeberg.org/TechAditya/PGlove">Codeberg</a> •
-    <a href="https://progroupco.itch.io/pglove">Itch.io</a> •
-    <a href="mailto:pglove@atomicmail.io">Email</a>
-  </p>
 </footer>
-
 </body>
 </html>
