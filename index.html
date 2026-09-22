@@ -49,46 +49,6 @@
 * { margin: 0; padding: 0; box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
-/* Extensions Section */
-.extension-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  margin-top: 2rem;
-  padding: 1.5rem;
-  background: var(--bg-2);
-  border-radius: 12px;
-  border: 1px solid var(--border-strong);
-}
-.extension-item {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-  font-family: 'Inter', sans-serif;
-  color: var(--text);
-}
-.extension-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-size: 1.2rem;
-}
-.extension-name {
-  font-weight: 600;
-  font-size: 0.95rem;
-}
-.extension-badge {
-  font-size: 0.7rem;
-  padding: 0.3rem 0.6rem;
-  border-radius: 999px;
-  background: var(--purple-500);
-  color: #fff;
-  font-weight: 600;
-}
-
 /* Download Section */
 .download-section { background: linear-gradient(180deg, transparent, rgba(30, 16, 84, 0.3) 50%, transparent); }
 
@@ -171,28 +131,14 @@ footer-note { margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--b
     </div>
   </div>
 
-  <!-- Extensions Section -->
-  <section class="extension-list">
-    <h2 class="section-title">Available Extensions</h2>
-    <div class="extension-item">
-      <div class="extension-icon"><i class="fas fa-chrome"></i></div>
-      <span class="extension-name">Chrome / Edge / Opera</span>
-      <span class="extension-badge">🖥️</span>
-    </div>
-    <div class="extension-item">
-      <div class="extension-icon"><i class="fas fa-firefox"></i></div>
-      <span class="extension-name">Firefox</span>
-      <span class="extension-badge">🌍</span>
-    </div>
-    <div class="extension-item">
-      <div class="extension-icon"><i class="fas fa-pale-moon"></i></div>
-      <span class="extension-name">Firefox (Pale Moon)</span>
-      <span class="extension-badge">🎨</span>
-    </div>
-    <div class="extension-item">
-      <div class="extension-icon"><i class="fas fa-windmill"></i></div>
-      <span class="extension-name">Winget (Windows Package Manager)</span>
-      <span class="extension-badge">💨</span>
+<section id="extensions" style="padding:2rem;max-width:900px;margin:0 auto;">
+    <h2>Browser Extensions v1.0.4</h2>
+    <div style="display:flex;flex-wrap:wrap;gap:1rem;margin-top:1rem;">
+      <a href="PGlove-v1.0.4-Chrome-Edge-Opera.crx" style="padding:0.75rem 1rem;border:1px solid #6d28d9;border-radius:8px;color:#e8e4f5;text-decoration:none;background:#140a38;" download>⬇ Chrome / Edge / Opera .crx</a>
+      <a href="PGlove-v1.0.4-Firefox-AMO.xpi" style="padding:0.75rem 1rem;border:1px solid #6d28d9;border-radius:8px;color:#e8e4f5;text-decoration:none;background:#140a38;" download>⬇ Firefox AMO .xpi</a>
+      <a href="PGlove-v1.0.4-Firefox-Pale-Moon.xpi" style="padding:0.75rem 1rem;border:1px solid #6d28d9;border-radius:8px;color:#e8e4f5;text-decoration:none;background:#140a38;" download>⬇ Firefox Pale Moon .xpi</a>
+      <a href="PGlove-v1.0.4-Pale-Moon.zip" style="padding:0.75rem 1rem;border:1px solid #6d28d9;border-radius:8px;color:#e8e4f5;text-decoration:none;background:#140a38;" download>⬇ Pale Moon .zip</a>
+      <a href="PGlove-v1.0.4-Chrome-Edge-Opera-Firefox.zip" style="padding:0.75rem 1rem;border:1px solid #6d28d9;border-radius:8px;color:#e8e4f5;text-decoration:none;background:#140a38;" download>⬇ Full Package .zip</a>
     </div>
   </section>
 
