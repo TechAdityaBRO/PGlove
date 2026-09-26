@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PGlove v1.0.4 — Pokémon Theme (Archived) | PGlove Browser</title>
+<meta name="description" content="PGlove v1.0.4 — the archived Pokémon-themed release. Pokéball UI, 151 hand-drawn 8-bit icons, nostalgic sounds, and type-based colour themes. Built with Tauri 2, Rust and WebView2 by Aditya Kumar Sethi and Darshil Sharma. Pokemon trademarks belong to The Pokémon Company.">
+<meta name="keywords" content="PGlove v1.0.4, PGlove Pokemon theme, Pokemon browser theme, Tauri 2, Rust, WebView2, BRO GANG, D1M Studios, archived release">
+<meta name="author" content="Aditya Kumar Sethi (TechAdityaBRO)">
+<meta name="robots" content="index, follow, max-image-preview:large">
+<meta name="theme-color" content="#0f0f0f">
+<link rel="canonical" href="https://pglove.jo3.org/v1.0.4/">
+
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="PGlove">
+<meta property="og:title" content="PGlove v1.0.4 — Pokémon Theme (Archived)">
+<meta property="og:description" content="The archived Pokémon-themed PGlove release. Pokéball UI, 8-bit icons, nostalgic sounds, type-based themes.">
+<meta property="og:url" content="https://pglove.jo3.org/v1.0.4/">
+<meta property="og:image" content="https://pglove.jo3.org/og-image.png">
+<meta property="og:locale" content="en_US">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PGlove v1.0.4 — Pokémon Theme (Archived)">
+<meta name="twitter:description" content="The archived Pokémon-themed PGlove release.">
+<meta name="twitter:image" content="https://pglove.jo3.org/og-image.png">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Press+Start+2P&family=JetBrains+Mono:wght@400;600&family=Noto+Sans+Devanagari:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+:root{
+  --pk-red:#ee1515; --pk-yellow:#ffcb05; --pk-blue:#3b4cca; --pk-dark:#1a1a1a; --pk-darker:#0f0f0f;
+  --pk-gray:#2a2a2a; --pk-gray-light:#4a4a4a; --pk-white:#fff; --pk-cream:#f5f0e1;
+  --hp-green:#78c850; --hp-red:#f08030; --psychic:#f85888;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{font-family:'Inter',sans-serif;background:var(--pk-darker);color:var(--pk-white);line-height:1.65;overflow-x:hidden;
+  background-image:radial-gradient(circle at 20% 10%,rgba(238,21,21,.08) 0%,transparent 40%),
+                   radial-gradient(circle at 80% 80%,rgba(59,76,202,.08) 0%,transparent 40%)}
+img{max-width:100%}
+a{color:var(--pk-yellow)}
+::selection{background:var(--pk-red);color:#fff}
+
+.loader{position:fixed;inset:0;background:var(--pk-darker);z-index:9999;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;transition:opacity .6s ease,visibility .6s ease}
+.loader.hidden{opacity:0;visibility:hidden}
+.pokeball{width:90px;height:90px;border-radius:50%;
+  background:linear-gradient(to bottom,var(--pk-red) 0%,var(--pk-red) 48%,#000 48%,#000 52%,var(--pk-white) 52%,var(--pk-white) 100%);
+  border:5px solid #000;position:relative;animation:ballWiggle 1.4s ease-in-out infinite;box-shadow:0 0 60px rgba(238,21,21,.5)}
+.pokeball::after{content:'';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:30px;height:30px;
+  border-radius:50%;background:var(--pk-white);border:3px solid #000}
+@keyframes ballWiggle{0%,100%{transform:rotate(-10deg)}50%{transform:rotate(10deg)}}
+.loader-word{margin-top:1.5rem;color:var(--pk-yellow);font-family:'Press Start 2P',cursive;font-size:.7rem}
+
+.back-link{display:inline-flex;align-items:center;gap:.5rem;padding:.6rem 1.1rem;border-radius:8px;
+  background:rgba(238,21,21,.12);border:1px solid var(--pk-red);color:var(--pk-yellow);
+  text-decoration:none;font-size:.82rem;font-weight:600;margin-bottom:1.6rem;
+  transition:all .3s var(--ease)}
+.back-link:hover{background:rgba(238,21,21,.24);transform:translateX(-3px)}
+
+nav{position:fixed;top:0;left:0;width:100%;z-index:100;backdrop-filter:blur(20px);
+  background:rgba(15,15,15,.9);border-bottom:2px solid var(--pk-red);padding:.75rem 2rem;
+  display:flex;justify-content:space-between;align-items:center;gap:1rem}
+nav .logo{font-family:'Press Start 2P',cursive;font-size:1.1rem;color:var(--pk-red);text-decoration:none}
+.nav-links{display:flex;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--pk-gray-light);text-decoration:none;margin-left:1.4rem;font-size:.85rem;transition:color .3s;white-space:nowrap}
+.nav-links a:hover{color:var(--pk-yellow)}
+.nav-links a.active{color:var(--pk-yellow)}
+
+.hero{position:relative;min-height:74vh;display:flex;flex-direction:column;justify-content:center;align-items:center;
+  text-align:center;padding:7rem 2rem 3rem;z-index:1}
+.hero h1{font-family:'Press Start 2P',cursive;font-size:clamp(1.3rem,4.2vw,2.2rem);color:var(--pk-yellow);
+  margin-bottom:1rem;line-height:1.45;text-shadow:0 0 20px rgba(255,203,5,.5)}
+.catch{font-family:'Press Start 2P',cursive;font-size:.85rem;color:var(--pk-red);margin-bottom:1.5rem}
+.hero .section-sub{max-width:640px;margin:0 auto;color:var(--pk-gray-light);font-size:1.05rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:2rem}
+.btn{padding:.85rem 1.8rem;border-radius:8px;text-decoration:none;font-weight:600;font-size:.9rem;
+  display:inline-flex;align-items:center;gap:.5rem;transition:all .3s var(--ease);border:none;cursor:pointer;font-family:inherit}
+.btn-red{background:var(--pk-red);color:#fff;box-shadow:0 8px 26px rgba(238,21,21,.4)}
+.btn-red:hover{transform:translateY(-3px);box-shadow:0 12px 34px rgba(238,21,21,.55)}
+.btn-yellow{background:transparent;color:var(--pk-yellow);border:1px solid var(--pk-yellow)}
+.btn-yellow:hover{background:rgba(255,203,5,.12);transform:translateY(-3px)}
+
+.archived-banner{display:flex;gap:1rem;align-items:flex-start;text-align:left;max-width:800px;margin:0 auto;
+  padding:1.4rem 1.6rem;border-radius:16px;background:linear-gradient(135deg,rgba(251,146,60,.12),rgba(255,203,5,.05));
+  border:1px solid rgba(251,146,60,.35)}
+.archived-banner .ico{font-size:1.6rem;line-height:1}
+.archived-banner h3{font-size:1rem;color:#fdba74;margin-bottom:.35rem;font-family:'Inter',sans-serif}
+.archived-banner p{color:var(--pk-gray-light);font-size:.9rem}
+
+.section{position:relative;z-index:1;padding:4.5rem 2rem}
+.section-inner{max-width:1000px;margin:0 auto}
+.section-header{text-align:center;margin-bottom:3rem}
+.section-tag{display:inline-block;font-size:.78rem;font-weight:600;color:var(--pk-red);text-transform:uppercase;
+  letter-spacing:2px;margin-bottom:.75rem}
+.section-title{font-family:'Press Start 2P',cursive;font-size:clamp(.95rem,2.6vw,1.35rem);color:var(--pk-yellow);
+  margin-bottom:1rem;line-height:1.6}
+.accent{color:var(--pk-red)}
+.section-sub{color:var(--pk-gray-light);font-size:1rem;max-width:620px;margin:0 auto}
+
+.feature-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.5rem}
+.feature-card{background:var(--pk-gray);border:1px solid var(--pk-gray-light);border-radius:12px;padding:2rem;
+  transition:all .3s var(--ease)}
+.feature-card:hover{border-color:var(--pk-red);transform:translateY(-4px)}
+.feature-card h3{color:var(--pk-yellow);margin-bottom:.5rem;font-size:1.05rem}
+.feature-card p{color:var(--pk-gray-light);font-size:.9rem}
+
+.status-box{background:var(--pk-gray);border:1px solid var(--pk-gray-light);border-radius:16px;padding:2rem;max-width:620px;margin:0 auto}
+.status-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;gap:1rem}
+.status-row strong{color:var(--pk-yellow);font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:1px}
+.status-row span{color:var(--hp-green);font-family:'JetBrains Mono',monospace;font-weight:600}
+.progress-bar{background:#111;border-radius:999px;height:12px;overflow:hidden;margin:.4rem 0 .9rem}
+.progress-fill{background:linear-gradient(90deg,var(--pk-red),var(--pk-yellow));height:100%;border-radius:999px;width:100%}
+.status-note{color:var(--pk-gray-light);font-size:.85rem;font-family:'JetBrains Mono',monospace}
+
+.type-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1rem}
+.type-card{background:var(--pk-gray);border:1px solid var(--pk-gray-light);border-radius:12px;padding:1.5rem;text-align:center}
+.type-card.fire{border-color:var(--hp-red)} .type-card.water{border-color:var(--pk-blue)}
+.type-card.electric{border-color:var(--pk-yellow)} .type-card.grass{border-color:var(--hp-green)}
+.type-card.psychic{border-color:var(--psychic)} .type-card.dark{border-color:var(--pk-gray-light)}
+.type-card h3{font-size:.95rem;margin-bottom:.35rem}
+.type-card p{font-size:.78rem;color:var(--pk-gray-light)}
+.tc-fire h3{color:var(--hp-red)} .tc-water h3{color:#6b8cff} .tc-electric h3{color:var(--pk-yellow)}
+.tc-grass h3{color:var(--hp-green)} .tc-psychic h3{color:var(--psychic)} .tc-dark h3{color:var(--pk-gray-light)}
+
+.dl-list{display:grid;gap:.9rem;max-width:720px;margin:0 auto}
+.dl-row{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;justify-content:space-between;
+  background:var(--pk-gray);border:1px solid var(--pk-gray-light);border-radius:12px;padding:1.1rem 1.3rem}
+.dl-row .name{display:flex;align-items:center;gap:.7rem;font-weight:600;font-size:.92rem}
+.dl-row .name i{color:var(--pk-yellow)}
+.dl-row .size{font-family:'JetBrains Mono',monospace;font-size:.72rem;color:var(--pk-gray-light)}
+
+.credit-strip{max-width:720px;margin:0 auto;background:rgba(0,0,0,.3);border:1px solid var(--pk-gray-light);
+  border-radius:14px;padding:1.4rem 1.6rem;font-size:.86rem;color:var(--pk-gray-light)}
+.credit-strip strong{color:var(--pk-yellow)}
+
+footer{position:relative;z-index:1;text-align:center;padding:3rem 2rem;border-top:2px solid var(--pk-red);
+  color:var(--pk-gray-light);font-size:.85rem}
+footer a{color:var(--pk-red);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.footer-links{display:flex;justify-content:center;gap:1.3rem;flex-wrap:wrap;margin-top:1rem}
+.social-row{display:flex;justify-content:center;gap:.8rem;flex-wrap:wrap;margin:1.2rem 0}
+.social-row a{width:40px;height:40px;border-radius:10px;background:rgba(238,21,21,.1);border:1px solid var(--pk-red);
+  display:flex;align-items:center;justify-content:center;color:var(--pk-yellow);transition:all .3s var(--ease)}
+.social-row a:hover{background:rgba(238,21,21,.25);transform:translateY(-3px);text-decoration:none}
+
+.tr{position:relative;display:inline-block}
+.tr .hi{position:absolute;top:-2.4em;left:50%;transform:translateX(-50%) translateY(8px) scale(.9);
+  background:var(--pk-red);color:#fff;font-family:'Noto Sans Devanagari',sans-serif;font-size:.82rem;font-weight:500;
+  padding:8px 18px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease;z-index:100;box-shadow:0 0 20px rgba(238,21,21,.55)}
+.tr .hi::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);
+  border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid var(--pk-red)}
+.tr:hover .hi{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
+.tr .hi-long{white-space:normal;width:max-content;max-width:min(78vw,320px);text-align:center;line-height:1.5}
+@media (hover:none){.tr .hi{display:none}}
+
+@media (max-width:860px){
+  nav{padding:.7rem 1.1rem}
+  .nav-links a{margin-left:.8rem;font-size:.8rem}
+  .section{padding:3.5rem 1.15rem}
+  .hero{padding:6rem 1.15rem 2.5rem}
+}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.01ms!important;transition-duration:.01ms!important;html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+
+<div class="loader" id="loader">
+  <div class="pokeball"></div>
+  <p class="loader-word">CATCHING...</p>
+</div>
+
+<nav>
+  <a href="/" class="logo">PGlove</a>
+  <div class="nav-links">
+    <a href="/"><span class="tr">Home<span class="hi">होम</span></span></a>
+    <a href="/#download"><span class="tr">Download<span class="hi">डाउनलोड</span></span></a>
+    <a href="/#features"><span class="tr">Features<span class="hi">विशेषताएँ</span></span></a>
+    <a href="/v1.0.4/" class="active"><span class="tr">v1.0.4<span class="hi">v1.0.4</span></span></a>
+    <a href="/#roadmap"><span class="tr">Roadmap<span class="hi">रोडमैप</span></span></a>
+    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener"><i class="fab fa-github"></i></a>
+  </div>
+</nav>
+
+<section class="hero">
+  <a href="/" class="back-link"><i class="fas fa-arrow-left"></i> <span class="tr">Back to PGlove<span class="hi">पीग्लव पर वापस</span></span></a>
+  <span class="catch">⚡ v1.0.4 · ARCHIVED ⚡</span>
+  <h1>POKÉMON THEME</h1>
+  <p class="section-sub">
+    <span class="tr">
+      Gotta catch 'em all. Pokémon-inspired UI, custom Pokéball icons, and nostalgic 8-bit sounds.
+      Built with Tauri 2, Rust and WebView2 by Aditya Kumar Sethi and Darshil Sharma.
+    <span class="hi hi-long">
+      सब पकड़ो। पोकेमॉन-प्रेरित UI, कस्टम पोकेबॉल आइकन और नॉस्टैल्जिक 8-बिट ध्वनियाँ।
+      Tauri 2, Rust और WebView2 के साथ आदित्य कुमार सेठी और दर्शील शर्मा द्वारा निर्मित।
+    </span></span>
+  </p>
+  <div class="hero-cta">
+    <a href="https://github.com/TechAdityaBRO/PGlove-Pokemon-Rust" class="btn btn-red" target="_blank" rel="noopener">
+      <i class="fab fa-github"></i> <span class="tr">View Source<span class="hi">सोर्स देखें</span></span>
+    </a>
+    <a href="/#download" class="btn btn-yellow">
+      <i class="fas fa-download"></i> <span class="tr">Get Stable v1.0.3<span class="hi">स्थिर v1.0.3 लें</span></span>
+    </a>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="archived-banner">
+      <div class="ico">📦</div>
+      <div>
+        <h3><span class="tr">This release is archived<span class="hi">यह रिलीज़ आर्काइव की गई है</span></span></h3>
+        <p>
+          <span class="tr">
+            v1.0.4 shipped and was then archived so the source stays available forever.
+            Development on v1.0.5 – v1.0.7 is paused pending funding. The archives below are
+            preserved as-is and no longer receive updates.
+          <span class="hi hi-long">
+            v1.0.4 जारी हुई और फिर आर्काइव कर दी गई ताकि सोर्स हमेशा उपलब्ध रहे।
+            v1.0.5 – v1.0.7 का विकास फंडिंग की प्रतीक्षा में रुका हुआ है। नीचे दिए संग्रह
+            ज्यों के त्यों सुरक्षित हैं और अब अपडेट नहीं होते।
+          </span></span>
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-box"></i> <span class="tr">What's In It<span class="hi">इसमें क्या है</span></span></div>
+      <h2 class="section-title">v1.0.4 <span class="accent">Features</span></h2>
+    </div>
+    <div class="feature-list">
+      <div class="feature-card">
+        <h3>🔴 <span class="tr">Pokéball UI<span class="hi">पोकेबॉल UI</span></span></h3>
+        <p><span class="tr">Every icon reimagined. Tabs become Pokéballs, buttons snap like the original red-and-white design, and menus have that classic catch animation.<span class="hi">हर आइकन का नया रूप। टैब पोकेबॉल बन जाते हैं, बटन मूल लाल-सफ़ेद डिज़ाइन की तरह क्लिक होते हैं, और मेन्यू में वह क्लासिक कैच एनिमेशन है।</span></span></p>
+      </div>
+      <div class="feature-card">
+        <h3>🎨 <span class="tr">Custom Icons<span class="hi">कस्टम आइकन</span></span></h3>
+        <p><span class="tr">A complete icon set inspired by the original 151 Pokémon. Each one hand-drawn in the 8-bit pixel style, ready for every action in the browser.<span class="hi hi-long">मूल 151 पोकेमॉन से प्रेरित पूरा आइकन सेट। हर एक 8-बिट पिक्सल शैली में हाथ से बनाया गया, ब्राउज़र की हर क्रिया के लिए तैयार।</span></span></p>
+      </div>
+      <div class="feature-card">
+        <h3>🎵 <span class="tr">Nostalgic Sounds<span class="hi">नॉस्टैल्जिक ध्वनियाँ</span></span></h3>
+        <p><span class="tr">Level-up chimes on new tabs, a catch jingle on searches, a heal sound when a page loads. Optional but unforgettable.<span class="hi">नए टैब पर लेवल-अप चाइम, सर्च पर कैच जिंगल, पेज लोड होने पर हील साउंड। वैकल्पिक, पर भुलाई न जाने वाली।</span></span></p>
+      </div>
+      <div class="feature-card">
+        <h3>⚡ <span class="tr">Type-Based Themes<span class="hi">टाइप-आधारित थीम</span></span></h3>
+        <p><span class="tr">Switch between Fire, Water, Grass, Electric, and Psychic colour schemes. Your browser, your typing, your style.<span class="hi">फायर, वाटर, ग्रास, इलेक्ट्रिक और साइकिक कलर स्कीम के बीच बदलें। आपका ब्राउज़र, आपकी टाइपिंग, आपकी स्टाइल।</span></span></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-chart-line"></i> <span class="tr">Status<span class="hi">स्थिति</span></span></div>
+      <h2 class="section-title">v1.0.4 <span class="accent">Progress</span></h2>
+    </div>
+    <div class="status-box">
+      <div class="status-row">
+        <strong><span class="tr">BUILD STATUS<span class="hi">बिल्ड स्थिति</span></span></strong>
+        <span>100% · ARCHIVED</span>
+      </div>
+      <div class="progress-bar"><div class="progress-fill"></div></div>
+      <p class="status-note">▸ SHIPPED ▸ ARCHIVED ▸ SOURCE PRESERVED ON GITHUB</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-palette"></i> <span class="tr">Pick Your Type<span class="hi">अपना टाइप चुनें</span></span></div>
+      <h2 class="section-title">Theme <span class="accent">Colours</span></h2>
+      <p class="section-sub"><span class="tr">Every Pokéball has a type. v1.0.4 shipped with all six.<span class="hi">हर पोकेबॉल का एक टाइप होता है। v1.0.4 सभी छह के साथ जारी हुई।</span></span></p>
+    </div>
+    <div class="type-grid">
+      <div class="type-card fire tc-fire"><h3>🔥 <span class="tr">Fire<span class="hi">फायर</span></span></h3><p><span class="tr">Default<span class="hi">डिफ़ॉल्ट</span></span></p></div>
+      <div class="type-card water tc-water"><h3>💧 <span class="tr">Water<span class="hi">वाटर</span></span></h3><p><span class="tr">Squirtle vibes<span class="hi">स्क्वर्टल वाइब्स</span></span></p></div>
+      <div class="type-card electric tc-electric"><h3>⚡ <span class="tr">Electric<span class="hi">इलेक्ट्रिक</span></span></h3><p><span class="tr">Pikachu mode<span class="hi">पिकाचू मोड</span></span></p></div>
+      <div class="type-card grass tc-grass"><h3>🌿 <span class="tr">Grass<span class="hi">ग्रास</span></span></h3><p><span class="tr">Bulbasaur base<span class="hi">बुलबासुर बेस</span></span></p></div>
+      <div class="type-card psychic tc-psychic"><h3>🧠 <span class="tr">Psychic<span class="hi">साइकिक</span></span></h3><p><span class="tr">Mewtwo pink<span class="hi">म्यूटू पिंक</span></span></p></div>
+      <div class="type-card dark tc-dark"><h3>🌑 <span class="tr">Dark<span class="hi">डार्क</span></span></h3><p><span class="tr">Midnight mode<span class="hi">मिडनाइट मोड</span></span></p></div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <div class="section-tag"><i class="fas fa-box-archive"></i> <span class="tr">Archives<span class="hi">संग्रह</span></span></div>
+      <h2 class="section-title">v1.0.4 <span class="accent">Downloads</span></h2>
+      <p class="section-sub">
+        <span class="tr">
+          Preserved extension packages. Unverified by us — install only if you understand what you
+          are running. For a maintained build, use stable v1.0.3.
+        <span class="hi hi-long">
+          सुरक्षित रखी गई एक्सटेंशन पैकेज। हमारे द्वारा सत्यापित नहीं — केवल तभी इंस्टॉल करें जब आप
+          जानते हैं कि क्या चला रहे हैं। अनुरक्षित बिल्ड के लिए स्थिर v1.0.3 का उपयोग करें।
+        </span></span>
+      </p>
+    </div>
+    <div class="dl-list">
+      <div class="dl-row">
+        <span class="name"><i class="fas fa-file-zipper"></i> Chrome / Edge / Opera / Firefox</span>
+        <span class="size">10 KB</span>
+        <a href="/PGlove-v1.0.4-Chrome-Edge-Opera-Firefox.zip" class="btn btn-red" style="padding:.5rem 1rem;font-size:.8rem" download>ZIP</a>
+      </div>
+      <div class="dl-row">
+        <span class="name"><i class="fas fa-file-zipper"></i> Chrome / Edge / Opera</span>
+        <span class="size">11 KB</span>
+        <a href="/PGlove-v1.0.4-Chrome-Edge-Opera.crx" class="btn btn-red" style="padding:.5rem 1rem;font-size:.8rem" download>CRX</a>
+      </div>
+      <div class="dl-row">
+        <span class="name"><i class="fab fa-firefox"></i> Firefox (AMO)</span>
+        <span class="size">10 KB</span>
+        <a href="/PGlove-v1.0.4-Firefox-AMO.xpi" class="btn btn-red" style="padding:.5rem 1rem;font-size:.8rem" download>XPI</a>
+      </div>
+      <div class="dl-row">
+        <span class="name"><i class="fas fa-firefox"></i> Firefox (Pale Moon)</span>
+        <span class="size">10 KB</span>
+        <a href="/PGlove-v1.0.4-Firefox-Pale-Moon.xpi" class="btn btn-red" style="padding:.5rem 1rem;font-size:.8rem" download>XPI</a>
+      </div>
+      <div class="dl-row">
+        <span class="name"><i class="fas fa-file-zipper"></i> Pale Moon</span>
+        <span class="size">10 KB</span>
+        <a href="/PGlove-v1.0.4-Pale-Moon.zip" class="btn btn-red" style="padding:.5rem 1rem;font-size:.8rem" download>ZIP</a>
+      </div>
+    </div>
+    <div class="credit-strip" style="margin-top:2rem">
+      <span class="tr">
+        <strong>Pokémon Extension Dev Team:</strong> Aditya Kumar Sethi &amp; Darshil Sharma ·
+        <strong>Production:</strong> BRO GANG Studios &amp; D1M Studios ·
+        <strong>Source:</strong> <a href="https://github.com/TechAdityaBRO/PGlove-Pokemon-Rust" target="_blank" rel="noopener">github.com/TechAdityaBRO/PGlove-Pokemon-Rust</a>
+      <span class="hi hi-long">
+        <strong>पोकेमॉन एक्सटेंशन डेव टीम:</strong> आदित्य कुमार सेठी और दर्शील शर्मा ·
+        <strong>निर्माण:</strong> ब्रो गैंग स्टूडियोज़ और D1M स्टूडियोज़ ·
+        <strong>सोर्स:</strong> <a href="https://github.com/TechAdityaBRO/PGlove-Pokemon-Rust" target="_blank" rel="noopener">github.com/TechAdityaBRO/PGlove-Pokemon-Rust</a>
+      </span></span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p><span class="tr">The PGlove Browser by Aditya Kumar Sethi &amp; Team (BRO GANG &amp; D1M Studios)<span class="hi hi-long">पीग्लव ब्राउज़र — आदित्य कुमार सेठी और टीम (ब्रो गैंग और D1M स्टूडियोज़)</span></span></p>
+  <p style="margin-top:.4rem"><span class="tr">Made in India 🇮🇳 for the world<span class="hi">भारत में बना, दुनिया के लिए</span></span></p>
+  <div class="social-row">
+    <a href="https://github.com/TechAdityaBRO/PGlove-Pokemon-Rust" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+    <a href="https://matrix.to/#/#pglove:matrix.org" target="_blank" rel="noopener" aria-label="Matrix"><i class="fas fa-comments"></i></a>
+    <a href="https://brogang.techaditya.workers.dev" target="_blank" rel="noopener" aria-label="BRO GANG"><i class="fas fa-bolt"></i></a>
+    <a href="mailto:pglove@atomicmail.io" aria-label="Email"><i class="fas fa-envelope"></i></a>
+  </div>
+  <nav class="footer-links" aria-label="Footer">
+    <a href="/"><span class="tr">Home<span class="hi">होम</span></span></a>
+    <a href="/#download"><span class="tr">Download<span class="hi">डाउनलोड</span></span></a>
+    <a href="/#roadmap"><span class="tr">Roadmap<span class="hi">रोडमैप</span></span></a>
+    <a href="/privacy/"><span class="tr">Privacy Policy<span class="hi">गोपनीयता नीति</span></span></a>
+    <a href="/terms/"><span class="tr">Terms &amp; Conditions<span class="hi">नियम एवं शर्तें</span></span></a>
+  </nav>
+  <p style="margin-top:1rem;font-size:.76rem">
+    <span class="tr">Pokemon and all related trademarks belong to The Pokémon Company. Unaffiliated fan project.<span class="hi">पोकेमॉन और उससे जुड़े सभी ट्रेडमार्क The Pokémon Company के हैं। कोई अधिकारधारक द्वारा समर्थित नहीं।</span></span>
+  </p>
+</footer>
+
+<script>
+(function () {
+  'use strict';
+  function hide() {
+    var el = document.getElementById('loader');
+    if (el && !el.classList.contains('hidden')) el.classList.add('hidden');
+  }
+  window.addEventListener('load', function () { setTimeout(hide, 450); });
+  setTimeout(hide, 3000);
+})();
+</script>
+
+</body>
+</html>

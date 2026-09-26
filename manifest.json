@@ -1,0 +1,75 @@
+{
+  "name": "PGlove - A Browser With A New Generation",
+  "short_name": "PGlove",
+  "description": "PGlove is an experimental browser built with a real Tauri 2 and Rust core, per-tab WebView2 isolation, and no telemetry. Made in India for the world, for next zen internet exploration.",
+  "id": "/",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
+  "background_color": "#05010f",
+  "theme_color": "#0a0420",
+  "lang": "en",
+  "dir": "ltr",
+  "categories": ["utilities", "productivity", "development"],
+  "prefer_related_applications": false,
+  "icons": [
+    {
+      "src": "/favicon.png",
+      "sizes": "64x64",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Download",
+      "short_name": "Download",
+      "description": "Get the latest stable PGlove build",
+      "url": "/#download"
+    },
+    {
+      "name": "Features",
+      "short_name": "Features",
+      "description": "Why PGlove is different",
+      "url": "/#features"
+    },
+    {
+      "name": "Extensions",
+      "short_name": "Extensions",
+      "description": "Pokemon, Minecraft, GTA 6 and Vice City themes",
+      "url": "/#extensions"
+    },
+    {
+      "name": "Roadmap",
+      "short_name": "Roadmap",
+      "description": "Release status and what is paused",
+      "url": "/#roadmap"
+    },
+    {
+      "name": "Community",
+      "short_name": "Community",
+      "description": "Join the PGlove community",
+      "url": "/#community"
+    }
+  ]
+}

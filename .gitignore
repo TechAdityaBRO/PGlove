@@ -1,0 +1,14 @@
+# OS / editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# Windows
+$RECYCLE.BIN/
+
+# Nothing in this repo needs building.
+# The generators in tools/ write their output straight into the repo root and
+# the output is committed on purpose, so there is nothing to ignore here.

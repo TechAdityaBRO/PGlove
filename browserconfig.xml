@@ -2,11 +2,11 @@
 <browserconfig>
   <msapplication>
     <tile>
-      <square70x70logo src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧤</text></svg>"/>
-      <square150x150logo src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧤</text></svg>"/>
-      <square310x310logo src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧤</text></svg>"/>
-      <TileColor>#FF4500</TileColor>
-      <TileImage src="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🧤</text></svg>"/>
+      <square70x70logo src="/icon-192.png"/>
+      <square150x150logo src="/icon-192.png"/>
+      <square310x310logo src="/icon-512.png"/>
+      <TileColor>#0a0420</TileColor>
+      <TileImage src="/icon-512.png"/>
     </tile>
   </msapplication>
 </browserconfig>

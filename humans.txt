@@ -1,38 +1,85 @@
-# ============================================
-# PGlove Browser – Humans.txt
-# ============================================
+/* ============================================
+   PGlove Browser - humans.txt
+   Made in India for the world, for next zen
+   internet exploration.
+   https://pglove.jo3.org/
+   ============================================ */
 
 /* TEAM */
 
-Lead Developer: Aditya (TechAdityaBRO)
+Chief Developer: Aditya Kumar Sethi (TechAdityaBRO)
   GitHub: https://github.com/TechAdityaBRO/
+  Email: pglove@atomicmail.io
   Location: India
 
-Organization: ProGroupco
-  GitHub: https://github.com/ProGroupco
+Production: BRO GANG Studios & D1M Studios
+  Website: https://brogang.techaditya.workers.dev/
 
-Community: Bro Gang
-  Website: https://brogang.mooo.com/
+Pokémon Extension Dev Team: Aditya Kumar Sethi & Darshil Sharma
+  Source: https://github.com/TechAdityaBRO/PGlove-Pokemon-Rust
+
+/* SITE */
+
+Site: https://pglove.jo3.org/
+Source: https://github.com/TechAdityaBRO/PGlove/
+Mirror: https://codeberg.org/TechAditya/PGlove/
+License: BSD 3-Clause - https://github.com/TechAdityaBRO/PGlove/blob/main/LICENSE
+Do Not Track: honoured - PGlove sends no telemetry, analytics or tracking pixels
+Language: English (primary), Hindi (hover translations)
 
 /* TECHNOLOGY */
 
-Browser Engine: Custom
-Hosting: GitHub Pages + DnsExit (custom domain)
-Version Control: GitHub & Codeberg
-Package Managers: NPM, NuGet, Winget
+Browser Engine: Custom Tauri 2 + Rust, per-tab WebView2
+Frontend Tooling: OpenCode by Anomalyco (https://opencode.ai)
+Version Control: Git (https://git-scm.com) - GitHub & Codeberg
+Hosting: GitHub Pages
+Domain DNS: Cloudflare
+CDN & Security: Cloudflare
+Authentication: Auth0
+Package Managers: NPM, NuGet, Winget (pending), itch.io, Internet Archive
+Browserconfig: https://pglove.jo3.org/browserconfig.xml
+Manifest: https://pglove.jo3.org/manifest.json
+Security Policy: https://pglove.jo3.org/.well-known/security.txt
+Sitemap: https://pglove.jo3.org/sitemap.xml
+Robots: https://pglove.jo3.org/robots.txt
+
+/* SITE STATUS */
+
+Stable Release: v1.0.3
+Archived Release: v1.0.4 (Pokémon Theme)
+Paused: v1.0.5 (Minecraft), v1.0.6 (GTA 6), v1.0.7 (Vice City) - awaiting funding
+
+/* COMMUNITY */
+
+Matrix: https://matrix.to/#/#pglove:matrix.org
+Slack: https://join.slack.com/t/pglovebrowser/shared_invite/zt-4b78o71fo-LvyQ3u8uNQJjGd7M0Hoqqw
+Proton Meet: https://meet.proton.me/join/id-2TF92J77T0#pwd-i3LWO2keD76H
+Itch.io: https://progroupco.itch.io/pglove
+Contact: pglove@atomicmail.io
+
+/* ECOSYSTEM */
+
+BRO GANG AI: https://brogang.techaditya.workers.dev
+BRO GANG: https://brogang.techaditya.workers.dev
+Pro AI: https://progroupai.created.app/
+PGlove: https://pglove.jo3.org/
+PGlove Extensions: https://pglove.jo3.org/extensions.html
+Nexa Search: https://nexasearch.pages.dev/
 
 /* THANKS */
 
-Cloudflare Workers
-Google Fonts
-Internet Archive
-Deepseek
-DNSExit
-Microsoft Winget
-Codeberg
+Google Fonts - Inter, Space Grotesk, JetBrains Mono, Noto Sans Devanagari, Press Start 2P
+Font Awesome - icon set
+Anomalyco - OpenCode, used for debugging and frontend work
+The Pokémon Company - Pokémon trademarks (unaffiliated fan project)
+Everyone who filed an issue, tested a Nighty build, or donated a Bitcoin.
+
+/* BUILD NOTE */
+
+This site is hand-written HTML, CSS and JavaScript.
+No frameworks, no trackers, no cookies, no analytics, no ad network.
+Small hardware can make big changes.
 
 /* LAST UPDATED */
 
-2026-08-30
-
-/* THIS IS A BROWSER WITH A NEW GENERATION */
+2026-09-26

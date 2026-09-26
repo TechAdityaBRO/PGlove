@@ -3,301 +3,1263 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PGlove — A browser with a new generation. Stable v1.0.3, Nighty builds, Codeberg mirror, Bitcoin donations.">
+<title>PGlove — A Browser With A New Generation | Experimental Browser for Developers</title>
+<meta name="description" content="PGlove is an experimental desktop browser built with Tauri 2 (Rust + WebView2). Stable v1.0.3 available. Pokemon theme v1.0.4 archived. Made in India for the world for next zen internet exploration by BRO GANG and D1M Studios.">
+<meta name="keywords" content="PGlove, PGlove Browser, Tauri Browser, Rust Browser, WebView2, BRO GANG, D1M Studios, Aditya Kumar Sethi, Darshil Sharma, Nimay Ahirwar, experimental browser, developer browser, Nexa Search, Made in India">
+<meta name="author" content="Aditya Kumar Sethi (TechAdityaBRO)">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="language" content="English">
+<meta name="revisit-after" content="7 days">
 <meta name="theme-color" content="#0a0420">
-<title>PGlove — A Browser With A New Generation</title>
+<meta name="copyright" content="Copyright (c) 2022-2026 BRO GANG Studios and D1M Studios. Pokemon and all related trademarks belong to The Pokemon Company.">
+
+<link rel="canonical" href="https://pglove.jo3.org/">
+<link rel="alternate" hreflang="en" href="https://pglove.jo3.org/">
+<link rel="alternate" hreflang="hi" href="https://pglove.jo3.org/hi/">
+<link rel="alternate" hreflang="x-default" href="https://pglove.jo3.org/">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="PGlove">
+<meta property="og:title" content="PGlove — A Browser With A New Generation">
+<meta property="og:description" content="Experimental desktop browser built with Tauri 2. Made in India for the world.">
+<meta property="og:url" content="https://pglove.jo3.org/">
+<meta property="og:image" content="https://pglove.jo3.org/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="PGlove Browser">
+<meta property="og:locale" content="en_US">
+<meta property="og:locale:alternate" content="hi_IN">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PGlove — A Browser With A New Generation">
+<meta name="twitter:description" content="Experimental desktop browser built with Tauri 2.">
+<meta name="twitter:image" content="https://pglove.jo3.org/og-image.png">
+<meta name="twitter:image:alt" content="PGlove Browser">
+<meta name="twitter:site" content="@TechAdityaBRO">
+<meta name="twitter:creator" content="@TechAdityaBRO">
+
+<link rel="icon" type="image/png" href="/favicon.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.json">
+<link rel="sitemap" type="application/xml" href="/sitemap.xml">
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="dns-prefetch" href="https://github.com">
+<link rel="dns-prefetch" href="https://codeberg.org">
+<link rel="dns-prefetch" href="https://archive.org">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Noto+Sans+Devanagari:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-<style>
-:root {
-  --purple-100: #e6d9ff; --purple-200: #c9aaff; --purple-300: #ab7bff;
-  --purple-400: #8b4dff; --purple-500: #6d28d9; --purple-600: #5b21b6;
-  --blue-400: #60a5fa; --blue-500: #3b82f6; --cyan-300: #67e8f9; --cyan-400: #22d3ee;
-  --bg-0: #05010f; --bg-1: #0a0420; --bg-2: #12063a;
-  --surface: #140a38; --surface-2: #1e1054;
-  --border: rgba(139, 77, 255, 0.18); --border-strong: rgba(139, 77, 255, 0.35);
-  --text: #e8e4f5; --text-dim: #b8aee0; --text-muted: #7a6fa5;
-  --green: #10b981; --orange: #fb923c; --pink: #f472b6; --yellow: #ffcb05;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "SoftwareApplication",
+      "@id": "https://pglove.jo3.org/#software",
+      "name": "PGlove",
+      "alternateName": "PGlove Browser",
+      "applicationCategory": "BrowserApplication",
+      "operatingSystem": "Windows 10, Windows 11",
+      "softwareVersion": "1.0.3",
+      "description": "Experimental desktop browser built with Tauri 2 (Rust + WebView2).",
+      "url": "https://pglove.jo3.org/",
+      "downloadUrl": "https://archive.org/download/pglove-installers/PGlove-Installers.exe",
+      "license": "https://github.com/TechAdityaBRO/PGlove/blob/main/LICENSE",
+      "author": { "@id": "https://pglove.jo3.org/#org" },
+      "offers": { "@type": "Offer", "price": "0", "priceCurrency": "USD" }
+    },
+    {
+      "@type": "Organization",
+      "@id": "https://pglove.jo3.org/#org",
+      "name": "BRO GANG Studios",
+      "alternateName": ["D1M Studios", "BRO GANG", "ProGroupco"],
+      "url": "https://pglove.jo3.org/",
+      "foundingDate": "2022",
+      "founder": [
+        { "@type": "Person", "name": "Aditya Kumar Sethi", "url": "https://github.com/TechAdityaBRO" },
+        { "@type": "Person", "name": "Nimay Ahirwar" },
+        { "@type": "Person", "name": "Darshil Sharma" }
+      ],
+      "sameAs": [
+        "https://github.com/TechAdityaBRO/PGlove",
+        "https://codeberg.org/TechAditya/PGlove/",
+        "https://progroupco.itch.io/pglove",
+        "https://brogang.techaditya.workers.dev",
+        "https://progroupai.created.app/"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "email": "pglove@atomicmail.io",
+        "contactType": "customer support"
+      }
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://pglove.jo3.org/#website",
+      "url": "https://pglove.jo3.org/",
+      "name": "PGlove",
+      "publisher": { "@id": "https://pglove.jo3.org/#org" },
+      "inLanguage": "en-US"
+    },
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pglove.jo3.org/" },
+        { "@type": "ListItem", "position": 2, "name": "Download", "item": "https://pglove.jo3.org/#download" },
+        { "@type": "ListItem", "position": 3, "name": "Roadmap", "item": "https://pglove.jo3.org/#roadmap" },
+        { "@type": "ListItem", "position": 4, "name": "Ecosystem", "item": "https://pglove.jo3.org/#ecosystem" },
+        { "@type": "ListItem", "position": 5, "name": "Credits", "item": "https://pglove.jo3.org/#credits" }
+      ]
+    }
+  ]
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { background: var(--bg-0); color: var(--text); font-family: 'Inter', sans-serif; overflow-x: hidden; }
-.bg-grid { position: fixed; inset: 0; background-image: linear-gradient(rgba(139,77,255,0.04) 1px, transparent 1px), linear-gradient(90deg, rgba(139,77,255,0.04) 1px, transparent 1px); background-size: 60px 60px; pointer-events: none; z-index: 0; }
-.bg-glow { position: fixed; inset: 0; background: radial-gradient(ellipse at 20% 50%, rgba(109,40,217,0.12) 0%, transparent 50%), radial-gradient(ellipse at 80% 50%, rgba(96,165,250,0.08) 0%, transparent 50%); pointer-events: none; z-index: 0; }
-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(10,4,32,0.9); border-bottom: 1px solid var(--border); padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-nav .logo { font-family: 'Space Grotesk', sans-serif; font-size: 1.6rem; font-weight: 700; background: linear-gradient(135deg, var(--purple-300), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-nav .nav-links a { color: var(--text-dim); text-decoration: none; margin-left: 1.25rem; font-size: 0.85rem; transition: color 0.3s; }
-nav .nav-links a:hover { color: var(--purple-300); }
-nav .nav-links a.active { color: var(--purple-200); border-bottom: 2px solid var(--purple-400); padding-bottom: 2px; }
-section.panel { position: relative; z-index: 1; min-height: 100vh; padding: 6rem 2rem; display: flex; flex-direction: column; justify-content: center; }
-.panel-inner { max-width: 1000px; margin: 0 auto; width: 100%; }
-.panel-tag { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--purple-300); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
-.panel-title { font-family: 'Space Grotesk', sans-serif; font-size: 3rem; font-weight: 700; margin-bottom: 1rem; background: linear-gradient(135deg, var(--purple-200), var(--blue-400)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.panel-sub { color: var(--text-dim); font-size: 1.15rem; max-width: 650px; margin-bottom: 2rem; }
-.grad { background: linear-gradient(135deg, var(--purple-300), var(--cyan-300)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-.download-section { background: linear-gradient(180deg, transparent, rgba(30,16,84,0.3) 50%, transparent); }
-.versions-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.version-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s var(--ease); position: relative; overflow: hidden; }
-.version-card:hover { border-color: var(--purple-400); transform: translateY(-4px); box-shadow: 0 8px 32px rgba(139,77,255,0.15); }
-.version-card::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px; }
-.version-card.featured::before { background: linear-gradient(90deg, var(--blue-500), var(--cyan-400)); }
-.version-card.nuget-card::before { background: linear-gradient(90deg, var(--purple-500), var(--purple-300)); }
-.version-card.nighty-card::before { background: linear-gradient(90deg, var(--pink), var(--purple-400)); }
-.version-card.winget-card::before { background: linear-gradient(90deg, var(--orange), var(--yellow)); }
-.version-label { font-size: 0.8rem; font-weight: 600; margin-bottom: 0.5rem; }
-.v-stable { color: var(--green-light); } .v-nuget { color: var(--purple-300); } .v-nighty { color: var(--pink); } .v-winget { color: var(--orange); }
-.version-name { font-family: 'Space Grotesk', sans-serif; font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; }
-.version-desc { color: var(--text-dim); font-size: 0.9rem; margin-bottom: 1rem; }
-.code-block { background: var(--bg-1); padding: 0.75rem; border-radius: 8px; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; margin-bottom: 0.5rem; border: 1px solid var(--border); }
-.version-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
-.btn { padding: 0.85rem 2rem; border-radius: 8px; text-decoration: none; font-weight: 600; font-size: 1rem; transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 0.5rem; border: none; cursor: pointer; }
-.btn-primary { background: var(--purple-500); color: #fff; } .btn-primary:hover { background: var(--purple-600); transform: translateY(-2px); }
-.btn-outline { background: transparent; color: var(--purple-300); border: 1px solid var(--purple-500); } .btn-outline:hover { background: rgba(109,40,217,0.1); transform: translateY(-2px); }
-.btn-green { background: var(--green); color: #fff; } .btn-ghost { background: transparent; color: var(--text-dim); border: 1px solid var(--border); } .btn-ghost:hover { border-color: var(--purple-400); color: var(--purple-300); }
-.btn-orange { background: var(--orange); color: #fff; } .btn-secondary { background: var(--surface-2); color: var(--text); border: 1px solid var(--border); }
-.ext-grid { display: flex; flex-wrap: wrap; gap: 1.25rem; justify-content: center; }
-.ext-card { display: flex; align-items: center; gap: 1rem; background: var(--surface); border: 1px solid var(--border); border-radius: 14px; padding: 1.25rem 1.75rem; color: var(--text); text-decoration: none; transition: all 0.3s var(--ease); font-weight: 500; min-width: 300px; }
-.ext-card:hover { border-color: var(--purple-400); transform: translateY(-4px); background: var(--surface-2); }
-.ext-card i { font-size: 1.5rem; }
-.ext-card span { font-size: 0.75rem; color: var(--text-muted); background: var(--bg-1); padding: 0.2rem 0.6rem; border-radius: 4px; }
-.features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.feature-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2.5rem; text-align: center; transition: all 0.3s var(--ease); }
-.feature-card:hover { border-color: var(--purple-400); transform: translateY(-6px); box-shadow: 0 12px 40px rgba(139,77,255,0.15); }
-.feature-icon { font-size: 3rem; margin-bottom: 1rem; display: block; }
-.feature-card h3 { color: var(--text); font-size: 1.3rem; margin-bottom: 0.75rem; }
-.feature-card p { color: var(--text-dim); font-size: 0.95rem; line-height: 1.7; }
-.quick-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-.quick-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; text-align: center; text-decoration: none; color: var(--text); transition: all 0.3s var(--ease); }
-.quick-card:hover { border-color: var(--purple-400); transform: translateY(-4px); }
-.quick-card i { font-size: 2.5rem; margin-bottom: 1rem; display: block; }
-.quick-card h3 { font-size: 1.2rem; margin-bottom: 0.5rem; }
-.quick-card p { color: var(--text-dim); font-size: 0.9rem; }
-.donate-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
-.donate-card { background: var(--surface); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; transition: all 0.3s; }
-.donate-card:hover { border-color: var(--purple-400); transform: translateY(-4px); }
-.donate-card h3 { color: var(--text); font-size: 1.15rem; margin-bottom: 0.75rem; }
-.donate-card p, .donate-card address { color: var(--text-dim); font-size: 0.9rem; line-height: 1.8; }
-.donate-card a { color: var(--purple-300); text-decoration: none; }
-.donate-address { background: var(--bg-1); border: 1px solid var(--border); border-radius: 10px; padding: 1rem; margin-top: 0.5rem; font-family: 'JetBrains Mono', monospace; font-size: 0.85rem; color: var(--text-dim); word-break: break-all; }
-footer { position: relative; z-index: 1; text-align: center; padding: 3rem 2rem; border-top: 1px solid var(--border); color: var(--text-muted); font-size: 0.85rem; }
-footer a { color: var(--purple-300); text-decoration: none; }
-footer .footer-links { margin-top: 1rem; display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap; }
-@media (max-width: 768px) { .panel-title { font-size: 2rem; } nav .nav-links a { margin-left: 0.8rem; font-size: 0.8rem; } }
+</script>
+
+<style>
+:root{
+  --purple-100:#e6d9ff; --purple-200:#c9aaff; --purple-300:#ab7bff;
+  --purple-400:#8b4dff; --purple-500:#6d28d9; --purple-600:#5b21b6;
+  --blue-400:#60a5fa; --blue-500:#3b82f6; --blue-600:#2563eb;
+  --cyan-300:#67e8f9; --cyan-400:#22d3ee;
+  --bg-0:#05010f; --bg-1:#0a0420; --bg-2:#12063a;
+  --surface:#140a38; --surface-2:#1e1054;
+  --border:rgba(139,77,255,.18); --border-strong:rgba(139,77,255,.35);
+  --text:#e8e4f5; --text-dim:#b8aee0; --text-muted:#7a6fa5;
+  --green:#10b981; --green-light:#6ee7b7;
+  --orange:#fb923c; --pink:#f472b6; --yellow:#ffcb05;
+  --matrix:#0dbd8b;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:5rem}
+body{background:var(--bg-0);color:var(--text);font-family:'Inter',system-ui,sans-serif;overflow-x:hidden;line-height:1.6}
+img{max-width:100%}
+a{color:var(--purple-300)}
+::selection{background:var(--purple-500);color:#fff}
+
+/* ---------- decorative background ---------- */
+.bg-grid{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:linear-gradient(rgba(139,77,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(139,77,255,.04) 1px,transparent 1px);
+  background-size:60px 60px}
+.bg-glow{position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(ellipse at 20% 50%,rgba(109,40,217,.14) 0%,transparent 50%),
+             radial-gradient(ellipse at 80% 50%,rgba(59,130,246,.10) 0%,transparent 50%)}
+.bg-glow.alt{background:radial-gradient(ellipse at 50% 0%,rgba(34,211,238,.10) 0%,transparent 55%),
+             radial-gradient(ellipse at 50% 100%,rgba(109,40,217,.12) 0%,transparent 55%)}
+
+/* ---------- loading screen ---------- */
+#loader{position:fixed;inset:0;z-index:9999;background:var(--bg-0);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;
+  transition:opacity .5s var(--ease),visibility .5s}
+#loader.done{opacity:0;visibility:hidden}
+.loader-logo{width:120px;height:120px;object-fit:contain;
+  filter:drop-shadow(0 0 40px rgba(139,77,255,.6));animation:logoBounce 1.4s ease-in-out infinite}
+@keyframes logoBounce{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-10px) scale(1.05)}}
+.loader-text{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;letter-spacing:.14em;
+  background:linear-gradient(135deg,var(--purple-200),var(--blue-400));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.loader-bar{width:190px;height:3px;border-radius:99px;background:rgba(139,77,255,.18);overflow:hidden}
+.loader-bar span{display:block;height:100%;width:40%;border-radius:99px;
+  background:linear-gradient(90deg,var(--purple-400),var(--cyan-400));animation:slide 1.1s ease-in-out infinite}
+@keyframes slide{0%{transform:translateX(-100%)}100%{transform:translateX(350%)}}
+
+/* ---------- nav ---------- */
+.nav{position:fixed;top:0;left:0;width:100%;z-index:100;
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  background:rgba(10,4,32,.82);border-bottom:1px solid var(--border);
+  padding:.75rem 2rem;display:flex;justify-content:space-between;align-items:center;gap:1rem}
+.nav-brand{display:flex;align-items:center;gap:.6rem;text-decoration:none;
+  font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;
+  background:linear-gradient(135deg,var(--purple-200),var(--blue-400));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.brand-mark{width:34px;height:34px;object-fit:contain}
+.nav-links{display:flex;align-items:center;flex-wrap:wrap}
+.nav-links a{color:var(--text-dim);text-decoration:none;margin-left:1.25rem;font-size:.85rem;transition:color .3s;white-space:nowrap}
+.nav-links a:hover{color:var(--purple-200)}
+.nav-links a.active{color:var(--purple-200);border-bottom:2px solid var(--purple-400);padding-bottom:2px}
+.nav-cta{margin-left:1.25rem!important;padding:.45rem 1rem;border-radius:99px;
+  background:linear-gradient(135deg,var(--purple-500),var(--blue-500));color:#fff!important;font-weight:600}
+.nav-cta:hover{filter:brightness(1.12)}
+.nav-toggle{display:none;background:none;border:1px solid var(--border);color:var(--text);
+  border-radius:10px;padding:.4rem .6rem;font-size:1.1rem;cursor:pointer}
+
+/* ---------- layout ---------- */
+section.panel{position:relative;z-index:1;padding:6rem 2rem}
+section.panel.tall{min-height:100vh;display:flex;flex-direction:column;justify-content:center}
+.panel-inner{max-width:1060px;margin:0 auto;width:100%}
+.panel-head{text-align:center;max-width:760px;margin:0 auto 3rem}
+.panel-tag{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.72rem;font-weight:600;
+  color:var(--purple-300);text-transform:uppercase;letter-spacing:2px;margin-bottom:.85rem;
+  padding:.3rem .8rem;border:1px solid var(--border);border-radius:99px;background:rgba(139,77,255,.07)}
+.panel-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2rem,5.2vw,3.2rem);font-weight:700;
+  line-height:1.12;margin-bottom:1rem;
+  background:linear-gradient(135deg,var(--purple-100),var(--blue-400));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.panel-sub{color:var(--text-dim);font-size:1.05rem;max-width:660px;margin:0 auto}
+.grad{background:linear-gradient(135deg,var(--purple-300),var(--cyan-300));
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.center{text-align:center}
+
+/* ---------- buttons ---------- */
+.btn{padding:.85rem 1.8rem;border-radius:10px;text-decoration:none;font-weight:600;font-size:.92rem;
+  transition:all .3s var(--ease);display:inline-flex;align-items:center;gap:.5rem;border:none;cursor:pointer;font-family:inherit}
+.btn-primary{background:linear-gradient(135deg,var(--purple-500),var(--blue-500));color:#fff;
+  box-shadow:0 8px 30px rgba(109,40,217,.35)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 14px 40px rgba(109,40,217,.5)}
+.btn-outline{background:rgba(139,77,255,.07);color:var(--purple-200);border:1px solid var(--purple-500)}
+.btn-outline:hover{background:rgba(109,40,217,.16);transform:translateY(-3px)}
+.btn-green{background:var(--green);color:#fff}
+.btn-green:hover{transform:translateY(-3px);filter:brightness(1.1)}
+.btn-orange{background:linear-gradient(135deg,var(--orange),var(--yellow));color:#1a1200}
+.btn-orange:hover{transform:translateY(-3px);filter:brightness(1.08)}
+.btn-ghost{background:transparent;color:var(--text-dim);border:1px solid var(--border)}
+.btn-ghost:hover{border-color:var(--purple-400);color:var(--purple-200)}
+.btn-sm{padding:.55rem 1.1rem;font-size:.82rem}
+
+/* ---------- hero ---------- */
+.hero-badge{display:inline-flex;align-items:center;gap:.55rem;padding:.4rem 1rem;border-radius:99px;
+  background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.32);color:var(--green-light);
+  font-size:.8rem;font-weight:600;margin-bottom:1.5rem}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--green);box-shadow:0 0 12px var(--green);
+  animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+.hero-title{font-family:'Space Grotesk',sans-serif;font-size:clamp(2.6rem,8vw,5rem);font-weight:800;
+  line-height:1.04;letter-spacing:-.02em;margin-bottom:1.4rem;
+  background:linear-gradient(135deg,#fff 0%,var(--purple-200) 45%,var(--cyan-300) 100%);
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.hero-tagline{font-family:'Space Grotesk',sans-serif;font-size:clamp(1.1rem,3vw,1.5rem);font-weight:600;
+  color:var(--purple-200);margin-bottom:1.2rem}
+.hero-sub{color:var(--text-dim);font-size:1.1rem;max-width:620px;margin:0 auto 2.2rem}
+.hero-cta{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+.hero-stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:3.5rem;text-align:center}
+.stat{padding:1.1rem .8rem;border:1px solid var(--border);border-radius:14px;background:rgba(20,10,56,.55)}
+.stat-num{font-family:'Space Grotesk',sans-serif;font-size:1.5rem;font-weight:700;color:var(--purple-200)}
+.stat-label{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:1.2px;
+  text-transform:uppercase;color:var(--text-muted);margin-top:.25rem}
+
+/* ---------- notice ---------- */
+.notice{display:flex;gap:1.1rem;align-items:flex-start;padding:1.4rem 1.6rem;border-radius:18px;
+  background:linear-gradient(135deg,rgba(251,146,60,.1),rgba(255,203,5,.05));
+  border:1px solid rgba(251,146,60,.3);text-align:left;max-width:820px;margin:0 auto}
+.notice-icon{font-size:1.7rem;line-height:1}
+.notice h3{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;margin-bottom:.35rem;color:#fdba74}
+.notice p{color:var(--text-dim);font-size:.9rem;margin-bottom:.7rem}
+
+/* ---------- feature / download / cards ---------- */
+.grid{display:grid;gap:1.4rem}
+.g-auto{grid-template-columns:repeat(auto-fit,minmax(270px,1fr))}
+.g-wide{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
+.card{background:linear-gradient(160deg,rgba(30,16,84,.6) 0%,rgba(20,10,56,.88) 100%);
+  border:1px solid var(--border);border-radius:18px;padding:1.8rem 1.5rem;
+  transition:all .4s var(--ease);backdrop-filter:blur(10px);position:relative;overflow:hidden}
+.card:hover{transform:translateY(-5px);border-color:var(--border-strong);
+  box-shadow:0 18px 45px rgba(109,40,217,.22)}
+.card h3{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.55rem}
+.card p{color:var(--text-dim);font-size:.9rem}
+.card-icon{font-size:1.9rem;margin-bottom:.85rem;display:block}
+.card-actions{display:flex;gap:.7rem;flex-wrap:wrap;margin-top:1.1rem}
+.card::after{content:'';position:absolute;top:0;left:0;width:100%;height:3px;opacity:.85}
+.card.v-stable::after{background:linear-gradient(90deg,var(--green),var(--cyan-400))}
+.card.v-nuget::after{background:linear-gradient(90deg,var(--purple-500),var(--purple-300))}
+.card.v-nighty::after{background:linear-gradient(90deg,var(--pink),var(--purple-400))}
+.card.v-winget::after{background:linear-gradient(90deg,var(--orange),var(--yellow))}
+.card.v-github::after{background:linear-gradient(90deg,#555,#aaa)}
+.card.v-codeberg::after{background:linear-gradient(90deg,#2185d0,#4a90d9)}
+.card.v-itch::after{background:linear-gradient(90deg,#fa5c5c,#ff8a65)}
+.badge{display:inline-block;font-family:'JetBrains Mono',monospace;font-size:.64rem;font-weight:600;
+  letter-spacing:1px;text-transform:uppercase;padding:.22rem .6rem;border-radius:5px;margin-bottom:.7rem}
+.b-green{background:rgba(16,185,129,.14);color:var(--green-light);border:1px solid rgba(16,185,129,.3)}
+.b-purple{background:rgba(139,77,255,.14);color:var(--purple-200);border:1px solid var(--border)}
+.b-pink{background:rgba(244,114,182,.14);color:#f9a8d4;border:1px solid rgba(244,114,182,.3)}
+.b-orange{background:rgba(251,146,60,.14);color:#fdba74;border:1px solid rgba(251,146,60,.3)}
+.b-cyan{background:rgba(34,211,238,.12);color:var(--cyan-300);border:1px solid rgba(34,211,238,.3)}
+.b-grey{background:rgba(122,111,165,.14);color:var(--text-muted);border:1px solid var(--border)}
+.code-block{background:var(--bg-1);border:1px solid var(--border);border-radius:10px;padding:.8rem .95rem;
+  font-family:'JetBrains Mono',monospace;font-size:.8rem;color:var(--cyan-300);
+  overflow-x:auto;white-space:nowrap;margin-bottom:.6rem}
+
+/* ---------- nex ---------- */
+.nex-box{display:flex;gap:1.5rem;align-items:center;flex-wrap:wrap;text-align:left;
+  padding:2rem;border-radius:22px;
+  background:linear-gradient(135deg,rgba(34,211,238,.09),rgba(59,130,246,.06));
+  border:1px solid rgba(34,211,238,.28)}
+.nex-box .card-icon{font-size:2.6rem;margin:0}
+.nex-body{flex:1 1 320px}
+.nex-body h3{font-family:'Space Grotesk',sans-serif;font-size:1.3rem;margin-bottom:.4rem;color:var(--cyan-300)}
+.nex-body p{color:var(--text-dim);font-size:.95rem;margin-bottom:.9rem}
+
+/* ---------- roadmap ---------- */
+.road{position:relative;padding-left:2.2rem}
+.road::before{content:'';position:absolute;left:.55rem;top:.4rem;bottom:.4rem;width:2px;
+  background:linear-gradient(180deg,var(--green),var(--purple-500),rgba(139,77,255,.15))}
+.road-item{position:relative;margin-bottom:1.5rem}
+.road-item::before{content:'';position:absolute;left:-2.05rem;top:.45rem;width:14px;height:14px;
+  border-radius:50%;background:var(--bg-0);border:2px solid var(--purple-400)}
+.road-item.done::before{background:var(--green);border-color:var(--green);box-shadow:0 0 12px rgba(16,185,129,.6)}
+.road-item.arch::before{background:var(--orange);border-color:var(--orange)}
+.road-item.paused::before{background:var(--bg-1);border-color:var(--text-muted)}
+.road-head{display:flex;gap:.7rem;align-items:center;flex-wrap:wrap;margin-bottom:.3rem}
+.road-ver{font-family:'JetBrains Mono',monospace;font-size:.9rem;font-weight:600;color:var(--purple-200)}
+.road-name{font-family:'Space Grotesk',sans-serif;font-weight:600}
+.road-item p{color:var(--text-dim);font-size:.9rem}
+
+/* ---------- codeberg ---------- */
+.repo-line{display:flex;align-items:center;gap:.6rem;font-family:'JetBrains Mono',monospace;
+  font-size:.85rem;color:var(--text-dim);background:var(--bg-1);border:1px solid var(--border);
+  border-radius:10px;padding:.7rem .9rem;margin-bottom:.6rem;overflow-x:auto;white-space:nowrap}
+.repo-line b{color:var(--text)}
+
+/* ---------- community ---------- */
+.community-card{display:block;text-decoration:none;color:inherit;position:relative;overflow:hidden}
+.community-card::before{content:'';position:absolute;top:0;left:0;width:100%;height:3px}
+.community-card.proton::before{background:linear-gradient(90deg,#6d4aff,#a06bff)}
+.community-card.slack::before{background:linear-gradient(90deg,#e01e5a,#36c5f0)}
+.community-card.matrix::before{background:linear-gradient(90deg,#0dbd8b,#1a9e74)}
+.community-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;
+  justify-content:center;font-size:1.3rem;margin-bottom:.9rem}
+.community-card.proton .community-icon{background:linear-gradient(135deg,rgba(109,74,255,.2),rgba(160,107,255,.2));
+  border:1px solid rgba(109,74,255,.4);color:#a06bff}
+.community-card.slack .community-icon{background:linear-gradient(135deg,rgba(224,30,90,.2),rgba(54,197,240,.2));
+  border:1px solid rgba(224,30,90,.4);color:#e01e5a}
+.community-card.matrix .community-icon{background:linear-gradient(135deg,rgba(13,189,139,.2),rgba(26,158,116,.2));
+  border:1px solid rgba(13,189,139,.4);color:var(--matrix)}
+.community-card.matrix:hover{border-color:rgba(13,189,139,.5);box-shadow:0 18px 45px rgba(13,189,139,.18)}
+.community-link{display:inline-flex;align-items:center;gap:.4rem;margin-top:1rem;
+  font-size:.85rem;font-weight:600;color:var(--purple-300)}
+.community-card.matrix .community-link{color:var(--matrix)}
+
+/* ---------- donate ---------- */
+.donate-address{background:var(--bg-1);border:1px solid var(--border);border-radius:10px;
+  padding:.85rem 1rem;margin-top:.6rem;font-family:'JetBrains Mono',monospace;font-size:.78rem;
+  color:var(--text-dim);word-break:break-all}
+.donate-qr{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.qr{width:104px;height:104px;border-radius:12px;background:#fff;padding:6px;flex-shrink:0}
+.qr img{width:100%;height:100%;display:block}
+
+/* ---------- ecosystem ---------- */
+.eco-card{display:block;text-decoration:none;color:inherit}
+.eco-card:hover{border-color:var(--purple-400);box-shadow:0 20px 50px rgba(109,40,217,.25)}
+.eco-icon{font-size:1.8rem;margin-bottom:.8rem;display:block}
+.eco-link{display:block;margin-top:.8rem;font-family:'JetBrains Mono',monospace;
+  font-size:.72rem;color:var(--cyan-300)}
+
+/* ---------- credits ---------- */
+.credits-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:1.3rem;margin-bottom:2.5rem}
+.credit-role{font-family:'JetBrains Mono',monospace;font-size:.66rem;letter-spacing:1px;
+  text-transform:uppercase;color:var(--purple-300);margin-bottom:.6rem}
+.credit-name{font-family:'Space Grotesk',sans-serif;font-size:1rem;font-weight:700;
+  line-height:1.4;margin-bottom:.3rem}
+.credit-meta{font-size:.78rem;color:var(--text-muted)}
+.hardware-box{padding:2.2rem 1.8rem;border-radius:22px;text-align:center;margin-bottom:2rem;
+  background:linear-gradient(135deg,rgba(139,77,255,.12),rgba(37,99,235,.08));
+  border:1px solid var(--border-strong)}
+.hardware-icon{font-size:2.6rem;margin-bottom:.8rem}
+.hardware-title{font-family:'Space Grotesk',sans-serif;font-size:1.2rem;font-weight:700;margin-bottom:.8rem}
+.hardware-story{color:var(--text-dim);font-size:.95rem;line-height:1.75;max-width:680px;margin:0 auto}
+.hardware-story strong{color:var(--purple-200)}
+.hardware-story em{color:var(--cyan-300);font-style:italic}
+.infra-box{background:rgba(0,0,0,.3);border:1px solid var(--border);border-radius:16px;
+  padding:1.5rem;margin-bottom:2rem;text-align:left}
+.infra-row{display:flex;justify-content:space-between;gap:.6rem;flex-wrap:wrap;
+  padding:.6rem 0;border-bottom:1px dashed rgba(139,77,255,.15);font-size:.85rem}
+.infra-row:last-child{border-bottom:none}
+.infra-label{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:1px;
+  text-transform:uppercase;color:var(--text-muted)}
+.infra-value{color:var(--text-dim)}
+.infra-value a{color:var(--cyan-300);text-decoration:none}
+.infra-value a:hover{text-decoration:underline}
+.legal-box{text-align:center;padding:1.6rem;border-radius:16px;
+  background:rgba(0,0,0,.25);border:1px solid var(--border)}
+.legal-text{font-size:.83rem;color:var(--text-muted);line-height:1.75;margin-bottom:.9rem}
+.legal-text strong{color:var(--text-dim)}
+.legal-tagline{font-family:'Space Grotesk',sans-serif;font-size:1.05rem;font-weight:600;
+  color:var(--purple-200);letter-spacing:.4px}
+
+/* ---------- supported by ---------- */
+.supported{display:flex;gap:1.6rem;flex-wrap:wrap;justify-content:center;align-items:center}
+.supported-item{display:flex;align-items:center;gap:.5rem;color:var(--text-muted);
+  font-size:.85rem;transition:color .3s}
+.supported-item i{font-size:1.15rem;color:var(--purple-300)}
+.supported-item:hover{color:var(--text-dim)}
+
+/* ---------- team / server ---------- */
+.team-card{text-align:center}
+.team-avatar{width:66px;height:66px;border-radius:50%;margin:0 auto 1rem;
+  display:flex;align-items:center;justify-content:center;font-size:1.5rem;
+  background:linear-gradient(135deg,var(--purple-500),var(--blue-500));color:#fff;font-weight:700}
+.server-box{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:1.3rem;text-align:left}
+.server-row{padding:1.2rem 1.3rem;border-radius:14px;background:rgba(20,10,56,.6);
+  border:1px solid var(--border)}
+.server-row h4{font-family:'JetBrains Mono',monospace;font-size:.7rem;letter-spacing:1px;
+  text-transform:uppercase;color:var(--text-muted);margin-bottom:.4rem}
+.server-row .val{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;color:var(--purple-200)}
+
+/* ---------- CTA ---------- */
+.cta-box{padding:3rem 2rem;border-radius:24px;text-align:center;
+  background:linear-gradient(135deg,rgba(109,40,217,.18),rgba(37,99,235,.1));
+  border:1px solid var(--border-strong)}
+.cta-actions{display:flex;gap:.9rem;flex-wrap:wrap;justify-content:center;margin-top:1.8rem}
+
+/* ---------- footer ---------- */
+footer{position:relative;z-index:1;text-align:center;padding:3rem 2rem 2rem;
+  border-top:1px solid var(--border);color:var(--text-muted);font-size:.85rem}
+footer a{color:var(--purple-300);text-decoration:none}
+footer a:hover{text-decoration:underline}
+.footer-links{display:flex;justify-content:center;gap:1.4rem;flex-wrap:wrap;margin:1.2rem 0}
+.social-row{display:flex;justify-content:center;gap:.85rem;flex-wrap:wrap;margin:1.4rem 0}
+.social-row a{width:42px;height:42px;border-radius:12px;background:rgba(139,77,255,.08);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+  color:var(--purple-300);font-size:1.05rem;transition:all .3s var(--ease)}
+.social-row a:hover{background:rgba(139,77,255,.2);transform:translateY(-3px);color:var(--cyan-300);
+  text-decoration:none;box-shadow:0 8px 20px rgba(109,40,217,.3)}
+.social-row a.fab-github:hover{color:#fff}
+.social-row a.fab-slack:hover{color:#e01e5a}
+.social-row a.fab-itch-io:hover{color:#fa5c5c}
+.social-row a.fa-code-branch:hover{color:#60a5fa}
+.social-row a.fa-comments:hover{color:var(--matrix)}
+.social-row a.fa-bolt:hover{color:var(--yellow)}
+.social-row a.fa-robot:hover{color:var(--cyan-300)}
+.social-row a.fa-envelope:hover{color:#6ee7b7}
+.commit-badge{display:inline-flex;align-items:center;gap:.6rem;flex-wrap:wrap;justify-content:center;
+  padding:.5rem 1rem;background:rgba(0,0,0,.4);border:1px solid var(--border);border-radius:99px;
+  font-family:'JetBrains Mono',monospace;font-size:.68rem;color:var(--text-muted);margin:.5rem auto 0}
+.commit-label{text-transform:uppercase;letter-spacing:1px}
+.commit-badge code{background:rgba(139,77,255,.15);padding:2px 6px;border-radius:4px;color:var(--purple-200)}
+.commit-msg{color:var(--text-dim)}
+.footer-legal{margin-top:1.2rem;font-size:.74rem;color:var(--text-muted);max-width:760px;
+  margin-left:auto;margin-right:auto;line-height:1.7}
+.footer-legal strong{color:var(--text-dim)}
+
+/* ---------- reveal ---------- */
+.reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.reveal.in{opacity:1;transform:none}
+
+/* ---------- i18n hover tooltips ---------- */
+.tr{position:relative;display:inline-block}
+.tr .hi{position:absolute;top:-2.4em;left:50%;
+  transform:translateX(-50%) translateY(8px) scale(.9);
+  background:var(--purple-500);color:#fff;
+  font-family:'Noto Sans Devanagari',sans-serif;font-size:.82rem;font-weight:500;
+  padding:8px 18px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;
+  transition:opacity .3s ease,transform .3s ease;z-index:100;
+  box-shadow:0 0 20px rgba(109,40,217,.5)}
+.tr .hi::after{content:'';position:absolute;bottom:-5px;left:50%;transform:translateX(-50%);
+  border-left:5px solid transparent;border-right:5px solid transparent;border-top:5px solid var(--purple-500)}
+.tr:hover .hi{opacity:1;transform:translateX(-50%) translateY(0) scale(1)}
+.tr .hi-long{white-space:normal;width:max-content;max-width:min(78vw,320px);text-align:center;line-height:1.5}
+@media (hover:none){.tr .hi{display:none}}
+
+/* ---------- responsive ---------- */
+@media (max-width:900px){
+  .nav{padding:.7rem 1.1rem}
+  .nav-links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;
+    align-items:flex-start;background:rgba(10,4,32,.97);border-bottom:1px solid var(--border);
+    padding:1rem 1.1rem;gap:.2rem}
+  .nav-links.open{display:flex}
+  .nav-links a{margin-left:0;width:100%;padding:.5rem 0}
+  .nav-cta{margin-left:0!important;width:auto!important}
+  .nav-toggle{display:block}
+  section.panel{padding:5rem 1.15rem}
+  .nex-box{padding:1.5rem}
+}
+@media (max-width:520px){
+  .hero-cta{flex-direction:column;align-items:stretch}
+  .hero-cta .btn{justify-content:center}
+  .btn{padding:.8rem 1.3rem}
+  .card{padding:1.4rem 1.15rem}
+  .footer-links{gap:1rem;font-size:.8rem}
+}
+@media (prefers-reduced-motion:reduce){
+  *{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  html{scroll-behavior:auto}
+}
 </style>
 </head>
 <body>
-<div class="bg-grid"></div>
-<div class="bg-glow"></div>
-<nav>
-  <div class="logo">PGlove</div>
-  <div class="nav-links">
-    <a href="#home" class="active">Home</a>
-    <a href="#download">Download</a>
-    <a href="#extensions">Extensions</a>
-    <a href="#features">Features</a>
-    <a href="#v1.0.4">v1.0.4</a>
-    <a href="#roadmap">Roadmap</a>
-    <a href="#support">Support</a>
-    <a href="https://brogang.techaditya.workers.dev" target="_blank">Bro Gang</a>
-    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank"><i class="fab fa-github"></i></a>
+
+<div id="loader">
+  <img src="/logo.gif" alt="PGlove" class="loader-logo" width="120" height="120" onerror="this.src='/logo.png'">
+  <div class="loader-text">PGlove</div>
+  <div class="loader-bar"><span></span></div>
+</div>
+
+<div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-glow" aria-hidden="true"></div>
+
+<nav class="nav">
+  <a href="/" class="nav-brand">
+    <img src="/logo.gif" alt="" width="34" height="34" class="brand-mark" onerror="this.src='/logo.png'">
+    <span>PGlove</span>
+  </a>
+  <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false"><i class="fas fa-bars"></i></button>
+  <div class="nav-links" id="navLinks">
+    <a href="#home" class="active"><span class="tr">Home<span class="hi">होम</span></span></a>
+    <a href="#download"><span class="tr">Download<span class="hi">डाउनलोड</span></span></a>
+    <a href="#extensions"><span class="tr">Extensions<span class="hi">एक्सटेंशन</span></span></a>
+    <a href="#features"><span class="tr">Features<span class="hi">विशेषताएँ</span></span></a>
+    <a href="#roadmap"><span class="tr">Roadmap<span class="hi">रोडमैप</span></span></a>
+    <a href="#community"><span class="tr">Community<span class="hi">समुदाय</span></span></a>
+    <a href="#ecosystem"><span class="tr">Ecosystem<span class="hi">पारिस्थितिकी तंत्र</span></span></a>
+    <a href="#credits"><span class="tr">Credits<span class="hi">श्रेय</span></span></a>
+    <a href="#support"><span class="tr">Support<span class="hi">सहायता</span></span></a>
+    <a href="https://brogang.techaditya.workers.dev" target="_blank" rel="noopener"><i class="fas fa-bolt"></i> <span class="tr">Bro Gang<span class="hi">ब्रो गैंग</span></span></a>
+    <a href="https://github.com/TechAdityaBRO/PGlove" class="nav-cta" target="_blank" rel="noopener"><i class="fab fa-github"></i> <span class="tr">GitHub<span class="hi">गिटहब</span></span></a>
   </div>
 </nav>
 
-<!-- HOME PANEL -->
-<section class="panel" id="home">
-  <div class="panel-inner">
-    <span class="panel-tag">🟢 Stable v1.0.3 • Made in India 🇮🇳</span>
-    <h1 class="panel-title">PGlove —<br>A Browser With<br>A New Generation</h1>
-    <p class="panel-sub">The experimental browser by <strong>Bro Gang</strong>. Built for developers, gamers, and the fearless.</p>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;">
-      <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> Download Stable</a>
-      <a href="https://brogang.techaditya.workers.dev" target="_blank" class="btn btn-outline"><i class="fas fa-globe"></i> Visit Bro Gang</a>
-      <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" class="btn btn-outline"><i class="fab fa-github"></i> GitHub</a>
+<!-- ============ 1. HERO ============ -->
+<section class="panel tall" id="home">
+  <div class="panel-inner center">
+    <div class="hero-badge"><span class="dot"></span> <span class="tr">Stable v1.0.3 · Made in India 🇮🇳<span class="hi">स्थिर v1.0.3 · भारत में निर्मित 🇮🇳</span></span></div>
+    <h1 class="hero-title">PGlove<br><span class="tr">A Browser With A New Generation<span class="hi">एक नई पीढ़ी का ब्राउज़र</span></span></h1>
+    <p class="hero-tagline grad"><span class="tr">Search the web. Find the signal.<span class="hi">वेब खोजें। संकेत खोजें।</span></span></p>
+    <p class="hero-sub">
+      <span class="tr">
+        The experimental browser by <strong>Aditya Kumar Sethi &amp; Team</strong>
+        (BRO GANG &amp; D1M Studios). Built for developers, gamers, and the fearless —
+        on hardware nobody expected.
+      <span class="hi hi-long">
+        आदित्य कुमार सेठी और टीम (ब्रो गैंग और D1M स्टूडियोज़) द्वारा बनाया गया प्रयोगात्मक ब्राउज़र।
+        डेवलपरों, गेमर्स और बहादुरों के लिए — उस हार्डवेयर पर जिसकी किसी ने उम्मीद नहीं की थी।
+      </span></span>
+    </p>
+    <div class="hero-cta">
+      <a href="#download" class="btn btn-primary"><i class="fas fa-download"></i> <span class="tr">Get PGlove<span class="hi">पीग्लव प्राप्त करें</span></span></a>
+      <a href="https://github.com/TechAdityaBRO/PGlove" class="btn btn-outline" target="_blank" rel="noopener"><i class="fab fa-github"></i> <span class="tr">View on GitHub<span class="hi">GitHub पर देखें</span></span></a>
+      <a href="https://codeberg.org/TechAditya/PGlove/" class="btn btn-outline" target="_blank" rel="noopener"><i class="fas fa-code-branch"></i> <span class="tr">View on Codeberg<span class="hi">Codeberg पर देखें</span></span></a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><div class="stat-num">v1.0.3</div><div class="stat-label"><span class="tr">Stable<span class="hi">स्थिर</span></span></div></div>
+      <div class="stat"><div class="stat-num">8</div><div class="stat-label"><span class="tr">Extensions<span class="hi">एक्सटेंशन</span></span></div></div>
+      <div class="stat"><div class="stat-num">4 GB</div><div class="stat-label"><span class="tr">RAM to build<span class="hi">बनाने के लिए रैम</span></span></div></div>
+      <div class="stat"><div class="stat-num">0 ₹</div><div class="stat-label"><span class="tr">Forever<span class="hi">हमेशा</span></span></div></div>
     </div>
   </div>
 </section>
 
-<!-- DOWNLOAD PANEL -->
-<section class="panel download-section" id="download">
+<!-- ============ 2. v1.0.4 ARCHIVED NOTICE ============ -->
+<section class="panel" id="archive">
   <div class="panel-inner">
-    <span class="panel-tag"><i class="fas fa-download"></i> Get PGlove</span>
-    <h2 class="panel-title">Choose your <span class="grad">build.</span></h2>
-    <p class="panel-sub">Stable release, experimental builds, or the core library.</p>
-    <div class="versions-grid">
-      <div class="version-card featured">
-        <span class="version-label v-stable">✅ Stable</span>
-        <div class="version-name">📦 Stable Release</div>
-        <div class="version-desc">Version 1.0.3 • Production ready</div>
+    <div class="panel-head">
+      <span class="panel-tag"><span class="tr">Archive Notice<span class="hi">संग्रह सूचना</span></span></span>
+      <h2 class="panel-title"><span class="tr">v1.0.4 — Pokemon Theme (Archived)<span class="hi">v1.0.4 — पोकेमॉन थीम (संग्रहीत)</span></span></h2>
+    </div>
+    <div class="notice reveal">
+      <div class="notice-icon">📦</div>
+      <div>
+        <h3><span class="tr">Development paused due to funding constraints<span class="hi">फंडिंग की कमी के कारण विकास रुका हुआ</span></span></h3>
+        <p>
+          <span class="tr">
+            The Pokemon-themed v1.0.4 was built with Tauri 2, Rust, and WebView2, then archived
+            so the full source stays available forever. v1.0.5, v1.0.6, and v1.0.7 are paused
+            until funding returns. Bitcoin donations are welcome.
+          <span class="hi hi-long">
+            पोकेमॉन थीम वाला v1.0.4 Tauri 2, Rust और WebView2 के साथ बनाया गया था, फिर पूरा सोर्स
+            हमेशा उपलब्ध रहे इसलिए आर्काइव कर दिया गया। v1.0.5, v1.0.6 और v1.0.7 फंडिंग लौटने तक रुके हैं।
+            बिटकॉइन दान स्वागत है।
+          </span></span>
+        </p>
+        <div class="card-actions" style="margin-top:0">
+          <a href="/v1.0.4/" class="btn btn-orange btn-sm"><i class="fas fa-box-archive"></i> <span class="tr">View v1.0.4 archive<span class="hi">v1.0.4 आर्काइव देखें</span></span></a>
+          <a href="https://github.com/TechAdityaBRO/PGlove-Pokemon-Rust" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fab fa-github"></i> <span class="tr">Source on GitHub<span class="hi">गिटहब पर सोर्स</span></span></a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. NEXA SEARCH ============ -->
+<section class="panel" id="nexa">
+  <div class="panel-inner">
+    <div class="nex-box reveal">
+      <div class="card-icon">🔎</div>
+      <div class="nex-body">
+        <h3><span class="tr">Nexa Search<span class="hi">नेक्सा सर्च</span></span></h3>
+        <p>
+          <span class="tr">
+            Our privacy-first search engine. Fast, clean results with no tracking —
+            built by the same hands as PGlove.
+          <span class="hi hi-long">
+            हमारा प्राइवेसी-फर्स्ट सर्च इंजन। तेज़, साफ़ परिणाम, कोई ट्रैकिंग नहीं —
+            वही टीम जिसने PGlove बनाया।
+          </span></span>
+        </p>
+      </div>
+      <a href="https://nexasearch.pages.dev/" class="btn btn-green" target="_blank" rel="noopener"><i class="fas fa-arrow-right"></i> <span class="tr">Open Nexa Search<span class="hi">नेक्सा सर्च खोलें</span></span></a>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. DOWNLOAD ============ -->
+<section class="panel" id="download">
+  <div class="panel-inner">
+    <div class="panel-head">
+      <span class="panel-tag"><span class="tr">Download<span class="hi">डाउनलोड</span></span></span>
+      <h2 class="panel-title"><span class="tr">Get PGlove<span class="hi">पीग्लव प्राप्त करें</span></span></h2>
+      <p class="panel-sub"><span class="tr">Free and open source. Pick your channel.<span class="hi">मुफ़्त और ओपन सोर्स। अपना तरीका चुनें।</span></span></p>
+    </div>
+    <div class="grid g-wide">
+
+      <div class="card v-stable reveal">
+        <span class="badge b-green"><span class="tr">Stable Release<span class="hi">स्थिर रिलीज़</span></span></span>
+        <span class="card-icon">📦</span>
+        <h3>NPM</h3>
+        <p><span class="tr">Recommended for most users. Ships the stable v1.0.3 build.<span class="hi">अधिकांश उपयोगकर्ताओं के लिए अनुशंसित। स्थिर v1.0.3 बिल्ड।</span></span></p>
         <div class="code-block">npm install @techadityabro/pglove-stable</div>
-        <div style="font-size:0.7rem;color:var(--text-muted);margin-bottom:1rem;">Package: @techadityabro/pglove-stable • GitHub Packages</div>
-        <div class="version-actions">
-          <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" target="_blank" rel="noopener" class="btn btn-green btn-sm"><i class="fas fa-box"></i> NPM</a>
-          <a href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener" class="btn btn-ghost btn-sm"><i class="fas fa-link"></i> Releases</a>
+        <div class="card-actions">
+          <a href="https://www.npmjs.com/package/@techadityabro/pglove-stable" class="btn btn-green btn-sm" target="_blank" rel="noopener"><i class="fas fa-npm"></i> NPM</a>
+          <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/npm/pglove-stable" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-box"></i> Packages</a>
         </div>
       </div>
-      <div class="version-card nuget-card">
-        <span class="version-label v-nuget">🔷 NuGet</span>
-        <div class="version-name">📦 PGloveCore</div>
-        <div class="version-desc">Version 1.0.3 • Core metadata helpers</div>
+
+      <div class="card v-nuget reveal">
+        <span class="badge b-purple"><span class="tr">For .NET<span class="hi">.NET के लिए</span></span></span>
+        <span class="card-icon">📚</span>
+        <h3>NuGet</h3>
+        <p><span class="tr">PGloveCore package for .NET developers and CI pipelines.<span class="hi">.NET डेवलपरों और CI पाइपलाइन के लिए PGloveCore पैकेज।</span></span></p>
         <div class="code-block">dotnet add package PGloveCore</div>
-        <div class="version-actions">
-          <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" target="_blank" rel="noopener" class="btn btn-primary btn-sm"><i class="fas fa-cube"></i> NuGet</a>
+        <div class="card-actions">
+          <a href="https://www.nuget.org/packages/PGloveCore" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fas fa-download"></i> NuGet</a>
+          <a href="https://github.com/TechAdityaBRO/PGlove/pkgs/nuget/PGloveCore" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-box"></i> Packages</a>
         </div>
       </div>
-      <div class="version-card nighty-card">
-        <span class="version-label v-nighty">🌙 Nighty</span>
-        <div class="version-name">⚡ Nighty Build</div>
-        <div class="version-desc">Version 1.0.2-Nighty • Unstable & experimental</div>
-        <div class="code-block">PGlove-Installers.exe (8.7 MB)</div>
-        <div class="version-actions">
-          <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" target="_blank" rel="noopener" class="btn btn-orange btn-sm"><i class="fas fa-download"></i> Archive</a>
-          <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener" class="btn btn-ghost btn-sm"><i class="fab fa-itch-io"></i> Itch.io</a>
+
+      <div class="card v-nighty reveal">
+        <span class="badge b-pink"><span class="tr">Nighty Build<span class="hi">नाइटी बिल्ड</span></span></span>
+        <span class="card-icon">🌙</span>
+        <h3><span class="tr">Nighty EXE<span class="hi">नाइटी EXE</span></span></h3>
+        <p><span class="tr">Latest unreleased Windows build. Expect bugs — that is the point.<span class="hi">नवीनतम अप्र-released विंडोज़ बिल्ड। बग की उम्मीद रखें — यही उद्देश्य है।</span></span></p>
+        <div class="card-actions">
+          <a href="https://archive.org/download/pglove-installers/PGlove-Installers.exe" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fas fa-download"></i> <span class="tr">Download .exe<span class="hi">.exe डाउनलोड करें</span></span></a>
+          <a href="https://archive.org/details/pglove-installers" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-archive"></i> Archive.org</a>
         </div>
       </div>
-      <div class="version-card winget-card">
-        <span class="version-label v-winget">⚡ Winget</span>
-        <div class="version-name">⚡ Winget</div>
-        <div class="version-desc">Windows Package Manager (CLI)</div>
+
+      <div class="card v-winget reveal">
+        <span class="badge b-orange"><span class="tr">Package Manager<span class="hi">पैकेज मैनेजर</span></span></span>
+        <span class="card-icon">🪶</span>
+        <h3>Winget</h3>
+        <p><span class="tr">Windows Package Manager. The community manifest PR is under review.<span class="hi">विंडोज़ पैकेज मैनेजर। कम्युनिटी मैनिफेस्ट PR रिव्यू में है।</span></span></p>
         <div class="code-block">winget install TechAditya.PGlove</div>
-        <div class="version-actions">
-          <a href="https://github.com/microsoft/winget-pkgs/pull/421311" target="_blank" rel="noopener" class="btn btn-secondary btn-sm"><i class="fas fa-terminal"></i> Winget PR</a>
+        <div class="card-actions">
+          <a href="https://github.com/microsoft/winget-pkgs/pull/421311" class="btn btn-orange btn-sm" target="_blank" rel="noopener"><i class="fas fa-code-pull-request"></i> <span class="tr">Track the PR<span class="hi">PR ट्रैक करें</span></span></a>
         </div>
       </div>
+
+      <div class="card v-github reveal">
+        <span class="badge b-grey"><span class="tr">Source<span class="hi">सोर्स</span></span></span>
+        <span class="card-icon"><i class="fab fa-github"></i></span>
+        <h3><span class="tr">GitHub<span class="hi">गिटहब</span></span></h3>
+        <p><span class="tr">Main repository. Build from source, open issues, or star the project.<span class="hi">मुख्य रिपॉज़िटरी। सोर्स से बनाएँ, इश्यू खोलें, या प्रोजेक्ट स्टार करें।</span></span></p>
+        <div class="card-actions">
+          <a href="https://github.com/TechAdityaBRO/PGlove" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fab fa-github"></i> Repository</a>
+          <a href="https://github.com/TechAdityaBRO/PGlove/releases" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-tags"></i> <span class="tr">Releases<span class="hi">रिलीज़</span></span></a>
+        </div>
+      </div>
+
+      <div class="card v-itch reveal">
+        <span class="badge b-pink">itch.io</span>
+        <span class="card-icon">🎮</span>
+        <h3>Itch.io</h3>
+        <p><span class="tr">Playable demo and browser-game distribution.<span class="hi">प्लेएबल डेमो और ब्राउज़र गेम वितरण।</span></span></p>
+        <div class="card-actions">
+          <a href="https://progroupco.itch.io/pglove" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fas fa-gamepad"></i> itch.io</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- EXTENSIONS PANEL -->
+<!-- ============ 5. EXTENSIONS ============ -->
 <section class="panel" id="extensions">
   <div class="panel-inner">
-    <span class="panel-tag"><i class="fas fa-puzzle-piece"></i> Extensions</span>
-    <h2 class="panel-title">Browser <span class="grad">Extensions</span> v1.0.4</h2>
-    <p class="panel-sub">Download for your browser.</p>
-    <div class="ext-grid">
-      <a href="PGlove-v1.0.4-Chrome-Edge-Opera.crx" class="ext-card" download><i class="fab fa-chrome" style="color:#4285f4;"></i> Chrome / Edge / Opera <span>.crx</span></a>
-      <a href="PGlove-v1.0.4-Chrome-Edge-Opera-Firefox.zip" class="ext-card" download><i class="fas fa-box" style="color:var(--cyan-400);"></i> Full Package <span>.zip</span></a>
-      <a href="PGlove-v1.0.4-Firefox-AMO.xpi" class="ext-card" download><i class="fab fa-firefox" style="color:#ff7139;"></i> Firefox AMO <span>.xpi</span></a>
-      <a href="PGlove-v1.0.4-Firefox-Pale-Moon.xpi" class="ext-card" download><i class="fab fa-firefox" style="color:#ff7139;"></i> Firefox (Pale Moon) <span>.xpi</span></a>
-      <a href="PGlove-v1.0.4-Pale-Moon.zip" class="ext-card" download><i class="fas fa-archive" style="color:var(--purple-300);"></i> Pale Moon <span>.zip</span></a>
+    <div class="panel-head">
+      <span class="panel-tag"><span class="tr">Extensions<span class="hi">एक्सटेंशन</span></span></span>
+      <h2 class="panel-title"><span class="tr">PGlove Extensions<span class="hi">पीग्लव एक्सटेंशन</span></span></h2>
+      <p class="panel-sub"><span class="tr">Themes and add-ons for every engine we ship.<span class="hi">हर इंजन के लिए थीम और ऐड-ऑन।</span></span></p>
+    </div>
+    <div class="grid g-auto">
+      <a class="card reveal" href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener">
+        <span class="card-icon">🐲</span>
+        <h3><span class="tr">Pokemon Theme<span class="hi">पोकेमॉन थीम</span></span></h3>
+        <p><span class="tr">The archived v1.0.4 signature theme. Pokemon trademarks belong to The Pokemon Company.<span class="hi hi-long">आर्काइव किया गया v1.0.4 सिग्नेचर थीम। पोकेमॉन ट्रेडमार्क The Pokémon Company के हैं।</span></span></p>
+        <span class="badge b-grey" style="margin-top:1rem"><span class="tr">Archived<span class="hi">संग्रहीत</span></span></span>
+      </a>
+      <a class="card reveal" href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener">
+        <span class="card-icon">⛏️</span>
+        <h3>Minecraft</h3>
+        <p><span class="tr">Blocky green theme. Planned for v1.0.5.<span class="hi">ब्लॉकी हरी थीम। v1.0.5 के लिए योजित।</span></span></p>
+        <span class="badge b-purple" style="margin-top:1rem"><span class="tr">In Development<span class="hi">विकास में</span></span></span>
+      </a>
+      <a class="card reveal" href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener">
+        <span class="card-icon">🌆</span>
+        <h3>Vice City</h3>
+        <p><span class="tr">Neon-soaked retro theme. Planned for v1.0.7.<span class="hi">नीयन-युक्त रेट्रो थीम। v1.0.7 के लिए योजित।</span></span></p>
+        <span class="badge b-grey" style="margin-top:1rem"><span class="tr">Paused<span class="hi">रुका हुआ</span></span></span>
+      </a>
+      <a class="card reveal" href="https://github.com/TechAdityaBRO/PGlove/releases" target="_blank" rel="noopener">
+        <span class="card-icon">🏙️</span>
+        <h3>GTA 6</h3>
+        <p><span class="tr">Leonida-inspired theme. Planned for v1.0.6.<span class="hi">लियोनिडा से प्रेरित थीम। v1.0.6 के लिए योजित।</span></span></p>
+        <span class="badge b-grey" style="margin-top:1rem"><span class="tr">Paused<span class="hi">रुका हुआ</span></span></span>
+      </a>
     </div>
   </div>
 </section>
 
-<!-- FEATURES PANEL -->
+<!-- ============ 6. WHY PGLOVE ============ -->
 <section class="panel" id="features">
   <div class="panel-inner">
-    <span class="panel-tag"><i class="fas fa-star"></i> Features</span>
-    <h2 class="panel-title">Why <span class="grad">PGlove?</span></h2>
-    <p class="panel-sub">Built for the brave. Breaks beautifully.</p>
-    <div class="features-grid">
-      <div class="feature-card"><span class="feature-icon">⚡</span><h3>Daily Updates</h3><p>Code pushed every 12-24h. New features before we even test them.</p></div>
-      <div class="feature-card"><span class="feature-icon">🐛</span><h3>Bug Reporter</h3><p>One-click to file issues on GitHub. You will find bugs.</p></div>
-      <div class="feature-card"><span class="feature-icon">🔬</span><h3>Experimental APIs</h3><p>WebGPU, new CSS, Chrome flags — months before stable.</p></div>
-      <div class="feature-card"><span class="feature-icon">💥</span><h3>Crash Recovery</h3><p>Recovers tabs 80% of the time. The other 20%? Adventure.</p></div>
-      <div class="feature-card"><span class="feature-icon">🌙</span><h3>Auto Dark Mode</h3><p>Forces dark mode everywhere. Eyes will thank you.</p></div>
-      <div class="feature-card"><span class="feature-icon">🧪</span><h3>A/B Testing</h3><p>Half get Feature X, half get Y. You're part of the experiment.</p></div>
+    <div class="panel-head">
+      <span class="panel-tag"><span class="tr">Why PGlove<span class="hi">पीग्लव क्यों</span></span></span>
+      <h2 class="panel-title"><span class="tr">Built for the brave<span class="hi">बहादुरों के लिए बनाया गया</span></span></h2>
+      <p class="panel-sub"><span class="tr">Six reasons this browser is different.<span class="hi">छह कारण यह ब्राउज़र अलग है।</span></span></p>
+    </div>
+    <div class="grid g-auto">
+      <div class="card reveal"><span class="card-icon">⚡</span><h3><span class="tr">Real Tauri 2 Core<span class="hi">असली Tauri 2 कोर</span></span></h3><p><span class="tr">Rust backend, not an Electron wrapper. Small binary, fast startup.<span class="hi">Rust बैकएंड, Electron रैपर नहीं। छोटा बाइनरी, तेज़ स्टार्टअप।</span></span></p></div>
+      <div class="card reveal"><span class="card-icon">🗂</span><h3><span class="tr">Per-Tab Isolation<span class="hi">प्रति-टैब आइसोलेशन</span></span></h3><p><span class="tr">Every tab is its own WebView2 instance with genuine per-tab history.<span class="hi">हर टैब अपना WebView2 इंस्टेंस है, असली प्रति-टैब हिस्ट्री के साथ।</span></span></p></div>
+      <div class="card reveal"><span class="card-icon">🔒</span><h3><span class="tr">Privacy First<span class="hi">प्राइवेसी पहले</span></span></h3><p><span class="tr">No telemetry, no tracking pixels, no data sold. Ever.<span class="hi">कोई टेलीमेट्री नहीं, कोई ट्रैकिंग पिक्सेल नहीं, कोई डेटा बेचा नहीं जाता।</span></span></p></div>
+      <div class="card reveal"><span class="card-icon">🎨</span><h3><span class="tr">Themeable Core<span class="hi">थीम योग्य कोर</span></span></h3><p><span class="tr">The engine is the theme layer. Swap the whole look, not a CSS file.<span class="hi">इंजन ही थीम लेयर है। पूरा लुक बदलें, सिर्फ CSS नहीं।</span></span></p></div>
+      <div class="card reveal"><span class="card-icon">🪶</span><h3><span class="tr">Featherweight<span class="hi">पंखों जितनी हल्की</span></span></h3><p><span class="tr">Runs happily on 4 GB RAM and integrated Intel graphics.<span class="hi">4 GB रैम और इंटीग्रेटेड Intel ग्राफिक्स पर आराम से चलता है।</span></span></p></div>
+      <div class="card reveal"><span class="card-icon">🇮🇳</span><h3><span class="tr">Made in India<span class="hi">भारत में निर्मित</span></span></h3><p><span class="tr">Designed, written, and shipped from India for the whole world.<span class="hi">पूरी दुनिया के लिए भारत से डिज़ाइन, लिखा और रिलीज़ किया गया।</span></span></p></div>
     </div>
   </div>
 </section>
 
-<!-- v1.0.4 PANEL -->
-<section class="panel" id="v1.0.4" style="background:linear-gradient(135deg,rgba(238,21,21,0.08),rgba(59,76,202,0.08),transparent);">
-  <div class="panel-inner">
-    <span class="panel-tag" style="color:var(--pink);">⚡ v1.0.4</span>
-    <h2 class="panel-title">Pokémon <span class="grad">Theme</span></h2>
-    <p class="panel-sub">Gotta catch 'em all. Pokémon-inspired UI, custom icons, nostalgic 8-bit sounds.</p>
-    <div style="display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;">
-      <a href="https://pglove.jo3.org/v1.0.4" target="_blank" class="btn btn-primary"><i class="fas fa-hat-wizard"></i> View v1.0.4</a>
-      <a href="https://brogang.techaditya.workers.dev" target="_blank" class="btn btn-outline"><i class="fas fa-globe"></i> Bro Gang</a>
-    </div>
-    <div style="max-width:600px;margin:2rem auto 0;background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:2rem;">
-      <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><strong style="color:var(--pink);">v1.0.4 Progress</strong><span style="color:var(--green);">72%</span></div>
-      <div style="background:var(--bg-1);border-radius:999px;height:12px;overflow:hidden;"><div style="background:linear-gradient(90deg,var(--pink),var(--purple-400));height:100%;border-radius:999px;width:72%;"></div></div>
-      <p style="color:var(--text-muted);font-size:0.85rem;margin-top:1rem;">▸ CATCHING BUGS · TESTING UI · ADDING SOUNDS</p>
-    </div>
-  </div>
-</section>
-
-<!-- ROADMAP PANEL -->
+<!-- ============ 7. ROADMAP ============ -->
 <section class="panel" id="roadmap">
   <div class="panel-inner">
-    <span class="panel-tag"><i class="fas fa-road"></i> Roadmap</span>
-    <h2 class="panel-title">What's <span class="grad">Next</span>?</h2>
-    <p class="panel-sub">We're constantly evolving. Here's what we're working on.</p>
-    <div style="max-width:600px;margin:0 auto;">
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.5rem;">
-        <span style="background:#ff4444;color:#fff;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.4</span>
-        <div style="flex:1;"><strong>⚡ Pokémon Theme</strong><p style="color:var(--text-dim);font-size:0.85rem;">Pokémon-inspired UI, custom icons, nostalgic sounds.</p></div>
-        <span style="color:#ff4444;font-size:0.8rem;font-weight:600;">🔴 In Dev</span>
+    <div class="panel-head">
+      <span class="panel-tag"><span class="tr">Roadmap<span class="hi">रोडमैप</span></span></span>
+      <h2 class="panel-title"><span class="tr">Where PGlove is going<span class="hi">पीग्लव कहाँ जा रहा है</span></span></h2>
+      <p class="panel-sub"><span class="tr">Honest status. No fake dates.<span class="hi">ईमानदार स्थिति। कोई नकली तारीख नहीं।</span></span></p>
+    </div>
+    <div class="road reveal">
+      <div class="road-item done">
+        <div class="road-head"><span class="road-ver">v1.0.3</span><span class="road-name"><span class="tr">Stable<span class="hi">स्थिर</span></span></span><span class="badge b-green"><span class="tr">Live<span class="hi">लाइव</span></span></span></div>
+        <p><span class="tr">Current stable release on NPM, NuGet, and Archive.org.<span class="hi">NPM, NuGet और Archive.org पर वर्तमान स्थिर रिलीज़।</span></span></p>
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.5rem;">
-        <span style="background:var(--purple-500);color:#fff;padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.5</span>
-        <div style="flex:1;"><strong>⛏️ Minecraft Style</strong><p style="color:var(--text-dim);font-size:0.85rem;">Blocky interface, pixel-perfect design.</p></div>
-        <span style="color:var(--purple-300);font-size:0.8rem;font-weight:600;">🟣 Upcoming</span>
+      <div class="road-item arch">
+        <div class="road-head"><span class="road-ver">v1.0.4</span><span class="road-name"><span class="tr">Pokemon Theme<span class="hi">पोकेमॉन थीम</span></span></span><span class="badge b-orange"><span class="tr">Archived<span class="hi">संग्रहीत</span></span></span></div>
+        <p><span class="tr">Built, then archived. Source preserved forever on GitHub.<span class="hi">बनाया गया, फिर आर्काइव। सोर्स गिटहब पर हमेशा सुरक्षित।</span></span> <a href="/v1.0.4/">Open archive →</a></p>
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;margin-bottom:1rem;display:flex;align-items:center;gap:1.5rem;">
-        <span style="background:var(--surface-2);color:var(--text-muted);padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.6</span>
-        <div style="flex:1;"><strong>🏎️ GTA 6 Style</strong><p style="color:var(--text-dim);font-size:0.85rem;">Vice City vibes, neon accents, dynamic UI.</p></div>
-        <span style="color:var(--text-muted);font-size:0.8rem;font-weight:600;">⚪ Planning</span>
+      <div class="road-item paused">
+        <div class="road-head"><span class="road-ver">v1.0.5</span><span class="road-name">Minecraft</span><span class="badge b-grey"><span class="tr">Paused<span class="hi">रुका हुआ</span></span></span></div>
+        <p><span class="tr">Waiting on funding.<span class="hi">फंडिंग की प्रतीक्षा में।</span></span></p>
       </div>
-      <div style="background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:1.5rem 2rem;display:flex;align-items:center;gap:1.5rem;">
-        <span style="background:var(--surface-2);color:var(--text-muted);padding:0.3rem 0.8rem;border-radius:6px;font-size:0.8rem;font-weight:700;">v1.0.7</span>
-        <div style="flex:1;"><strong>🌴 Vice City Style</strong><p style="color:var(--text-dim);font-size:0.85rem;">Retro 80s Miami, pastel colors, synthwave.</p></div>
-        <span style="color:var(--text-muted);font-size:0.8rem;font-weight:600;">⚪ Planning</span>
+      <div class="road-item paused">
+        <div class="road-head"><span class="road-ver">v1.0.6</span><span class="road-name">GTA 6</span><span class="badge b-grey"><span class="tr">Paused<span class="hi">रुका हुआ</span></span></span></div>
+        <p><span class="tr">Waiting on funding.<span class="hi">फंडिंग की प्रतीक्षा में।</span></span></p>
+      </div>
+      <div class="road-item paused">
+        <div class="road-head"><span class="road-ver">v1.0.7</span><span class="road-name">Vice City</span><span class="badge b-grey"><span class="tr">Paused<span class="hi">रुका हुआ</span></span></span></div>
+        <p><span class="tr">Waiting on funding.<span class="hi">फंडिंग की प्रतीक्षा में।</span></span></p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- SUPPORT PANEL -->
-<section class="panel" id="support">
+<!-- ============ 8. CODEBERG MIRROR ============ -->
+<section class="panel" id="codeberg">
   <div class="panel-inner">
-    <span class="panel-tag"><i class="fas fa-heart"></i> Support</span>
-    <h2 class="panel-title">Help Us <span class="grad">Build</span></h2>
-    <p class="panel-sub">Open-source by Bro Gang, funded by community.</p>
-    <div class="donate-grid">
-      <div class="donate-card">
-        <h3>💰 Donate Bitcoin</h3>
-        <p>Every satoshi counts!</p>
-        <div class="donate-address">bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w</div>
-        <div class="donate-address" style="margin-top:0.5rem;">bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh</div>
+    <div class="panel-head">
+      <span class="panel-tag"><span class="tr">Independent Mirror<span class="hi">स्वतंत्र मिरर</span></span></span>
+      <h2 class="panel-title"><span class="tr">Also on Codeberg<span class="hi">Codeberg पर भी</span></span></h2>
+      <p class="panel-sub"><span class="tr">A free, open, independent Git host. If GitHub ever goes down, the source lives on.<span class="hi hi-long">एक मुफ़्त, खुला, स्वतंत्र गिट होस्ट। अगर GitHub कभी बंद हो, तो सोर्स यहाँ सुरक्षित रहेगा।</span></span></p>
+    </div>
+    <div class="grid g-wide">
+      <div class="card reveal">
+        <span class="card-icon"><i class="fas fa-code-branch"></i></span>
+        <h3><span class="tr">Repository<span class="hi">रिपॉज़िटरी</span></span></h3>
+        <div class="repo-line"><b>https://codeberg.org/TechAditya/PGlove/</b></div>
+        <div class="card-actions">
+          <a href="https://codeberg.org/TechAditya/PGlove/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-code-branch"></i> Open repo</a>
+          <a href="https://codeberg.org/TechAditya/PGlove/releases" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-tags"></i> <span class="tr">Releases<span class="hi">रिलीज़</span></span></a>
+        </div>
       </div>
-      <div class="donate-card">
-        <h3>📦 Codeberg</h3>
-        <p>Free & open-source Git platform.</p>
-        <a href="https://codeberg.org/TechAditya/PGlove">View on Codeberg →</a>
-      </div>
-      <div class="donate-card">
-        <h3>📧 Contact</h3>
-        <p>Donations, partnerships, support:</p>
-        <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a>
-      </div>
-      <div class="donate-card">
-        <h3>📜 Legal</h3>
-        <p>Terms & Conditions & Privacy:</p>
-        <a href="t&c.html">Terms & Conditions →</a>
-        <a href="privacy-policy.html" style="margin-left:0.75rem;">Privacy Policy →</a>
+      <div class="card reveal">
+        <span class="card-icon">🔑</span>
+        <h3><span class="tr">SSH Clone<span class="hi">SSH क्लोन</span></span></h3>
+        <div class="repo-line"><b>git@codeberg.org:TechAditya/PGlove.git</b></div>
+        <div class="code-block">git clone git@codeberg.org:TechAditya/PGlove.git</div>
+        <p style="font-size:.82rem"><span class="tr">Git itself: <a href="https://git-scm.com/" target="_blank" rel="noopener">git-scm.com</a><span class="hi"><a href="https://git-scm.com/" target="_blank" rel="noopener">git-scm.com</a></span></span></p>
       </div>
     </div>
   </div>
 </section>
 
+<!-- ============ 9. COMMUNITY ============ -->
+<section class="panel" id="community">
+  <div class="panel-inner">
+    <div class="panel-head">
+      <span class="panel-tag"><span class="tr">Community<span class="hi">समुदाय</span></span></span>
+      <h2 class="panel-title"><span class="tr">Join Room<span class="hi">कमरे में शामिल हों</span></span></h2>
+      <p class="panel-sub"><span class="tr">Live dev sessions, async discussions, and encrypted chat. Pick your room.<span class="hi">लाइव डेव सेशन, एसिंक चर्चा और एन्क्रिप्टेड चैट। अपना कमरा चुनें।</span></span></p>
+    </div>
+    <div class="grid g-auto">
+
+      <a href="https://meet.proton.me/join/id-2TF92J77T0#pwd-i3LWO2keD76H" target="_blank" rel="noopener" class="card community-card proton reveal">
+        <div class="community-icon"><i class="fas fa-video"></i></div>
+        <h3>Proton Meet</h3>
+        <p><span class="tr">Encrypted video room for live dev sessions.<span class="hi">लाइव डेव सेशन के लिए एन्क्रिप्टेड वीडियो रूम।</span></span></p>
+        <span class="community-link"><span class="tr">Join Room<span class="hi">कमरे में शामिल हों</span></span> <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://join.slack.com/t/pglovebrowser/shared_invite/zt-4b78o71fo-LvyQ3u8uNQJjGd7M0Hoqqw" target="_blank" rel="noopener" class="card community-card slack reveal">
+        <div class="community-icon"><i class="fab fa-slack"></i></div>
+        <h3>Slack</h3>
+        <p><span class="tr">Async discussions, bug reports, feature requests.<span class="hi">एसिंक चर्चा, बग रिपोर्ट, फीचर रिक्वेस्ट।</span></span></p>
+        <span class="community-link"><span class="tr">Join Workspace<span class="hi">वर्कस्पेस जॉइन करें</span></span> <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+      <a href="https://matrix.to/#/#pglove:matrix.org" target="_blank" rel="noopener" class="card community-card matrix reveal">
+        <div class="community-icon"><i class="fas fa-comments"></i></div>
+        <h3>Matrix</h3>
+        <p><span class="tr">Decentralized, encrypted chat. Join the room.<span class="hi">विकेंद्रीकृत, एन्क्रिप्टेड चैट। कमरे में शामिल हों।</span></span></p>
+        <span class="community-link"><span class="tr">Join Room<span class="hi">कमरे में शामिल हों</span></span> <i class="fas fa-arrow-right"></i></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. DONATE ============ -->
+<section class="panel" id="donate">
+  <div class="panel-inner">
+    <div class="panel-head">
+      <span class="panel-tag">₿ <span class="tr">Donate<span class="hi">दान करें</span></span></span>
+      <h2 class="panel-title"><span class="tr">Fund the next release<span class="hi">अगली रिलीज़ का फंड करें</span></span></h2>
+      <p class="panel-sub"><span class="tr">No ads, no sponsors, no paywall. Just people funding what they love.<span class="hi">कोई विज्ञापन नहीं, कोई स्पॉन्सर नहीं। बस लोग जो पसंद करते हैं उसका फंड करते हैं।</span></span></p>
+    </div>
+    <div class="grid g-wide">
+      <div class="card reveal">
+        <span class="card-icon">₿</span>
+        <h3><span class="tr">Bitcoin Address 1<span class="hi">बिटकॉइन पता 1</span></span></h3>
+        <div class="donate-qr">
+          <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w" alt="QR code for Bitcoin address 1" loading="lazy" width="200" height="200"></div>
+          <div class="donate-address">bc1q705nev4a38jg09kqxkljm7kn9xt4ntkvcxfe9w</div>
+        </div>
+      </div>
+      <div class="card reveal">
+        <span class="card-icon">₿</span>
+        <h3><span class="tr">Bitcoin Address 2<span class="hi">बिटकॉइन पता 2</span></span></h3>
+        <div class="donate-qr">
+          <div class="qr"><img src="https://api.qrserver.com/v1/create-qr-code/?size=200x200&amp;data=bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh" alt="QR code for Bitcoin address 2" loading="lazy" width="200" height="200"></div>
+          <div class="donate-address">bc1q85a6fdkkcd3m75lmx202acvswqmxpwl9j2pxwh</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. ECOSYSTEM ============ -->
+<section class="panel" id="ecosystem">
+  <div class="panel-inner">
+    <div class="panel-head">
+      <span class="panel-tag">🌐 <span class="tr">Ecosystem<span class="hi">पारिस्थितिकी तंत्र</span></span></span>
+      <h2 class="panel-title"><span class="tr">The PGlove Ecosystem<span class="hi">पीग्लव पारिस्थितिकी तंत्र</span></span></h2>
+      <p class="panel-sub"><span class="tr">Every project under the BRO GANG and D1M Studios umbrella.<span class="hi">ब्रो गैंग और D1M स्टूडियोज़ के अंतर्गत हर प्रोजेक्ट।</span></span></p>
+    </div>
+    <div class="grid g-auto">
+
+      <a href="https://brogang.techaditya.workers.dev" target="_blank" rel="noopener" class="card eco-card reveal">
+        <span class="eco-icon">⚡</span>
+        <h3>BRO GANG AI</h3>
+        <p><span class="tr">Next-gen AI assistant powered by Cloudflare Workers AI.<span class="hi">Cloudflare Workers AI द्वारा संचालित अगली पीढ़ी का AI सहायक।</span></span></p>
+        <span class="eco-link">brogang.techaditya.workers.dev</span>
+      </a>
+
+      <a href="https://brogang.techaditya.workers.dev" target="_blank" rel="noopener" class="card eco-card reveal">
+        <span class="eco-icon">👥</span>
+        <h3>BRO GANG</h3>
+        <p><span class="tr">Community founded in 2022. Gaming, tech, and culture.<span class="hi">2022 में स्थापित समुदाय। गेमिंग, टेक और संस्कृति।</span></span></p>
+        <span class="eco-link">brogang.techaditya.workers.dev</span>
+      </a>
+
+      <a href="https://progroupai.created.app/" target="_blank" rel="noopener" class="card eco-card reveal">
+        <span class="eco-icon">🤖</span>
+        <h3>Pro AI</h3>
+        <p><span class="tr">AI assistant for everyone, built by the team.<span class="hi">टीम द्वारा बनाया गया हर किसी के लिए AI सहायक।</span></span></p>
+        <span class="eco-link">progroupai.created.app</span>
+      </a>
+
+      <a href="https://pglove.jo3.org" target="_blank" rel="noopener" class="card eco-card reveal">
+        <span class="eco-icon">🌐</span>
+        <h3>PGlove</h3>
+        <p><span class="tr">The experimental browser. Stable v1.0.3 available.<span class="hi">प्रयोगात्मक ब्राउज़र। स्थिर v1.0.3 उपलब्ध।</span></span></p>
+        <span class="eco-link">pglove.jo3.org</span>
+      </a>
+
+      <a href="/v1.0.4/" class="card eco-card reveal">
+        <span class="eco-icon">📦</span>
+        <h3><span class="tr">PGlove Extensions<span class="hi">पीग्लव एक्सटेंशन</span></span></h3>
+        <p><span class="tr">Pokemon theme (archived) plus Minecraft, GTA 6, and Vice City (paused).<span class="hi hi-long">पोकेमॉन थीम (आर्काइव) के साथ Minecraft, GTA 6 और Vice City (रुके हुए)।</span></span></p>
+        <span class="eco-link"><span class="tr">View archive →<span class="hi">आर्काइव देखें →</span></span></span>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ 12. TEAM ============ -->
+<section class="panel" id="team">
+  <div class="panel-inner">
+    <div class="panel-head">
+      <span class="panel-tag"><span class="tr">Team<span class="hi">टीम</span></span></span>
+      <h2 class="panel-title"><span class="tr">The people behind PGlove<span class="hi">पीग्लव के पीछे लोग</span></span></h2>
+    </div>
+    <div class="grid g-auto">
+      <div class="card team-card reveal">
+        <div class="team-avatar">AK</div>
+        <h3>Aditya Kumar Sethi</h3>
+        <p><span class="tr">Chief Developer and Producer. BRO GANG Chairman.<span class="hi">मुख्य डेवलपर और निर्माता। ब्रो गैंग अध्यक्ष।</span></span></p>
+        <div class="card-actions" style="justify-content:center">
+          <a href="https://github.com/TechAdityaBRO" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fab fa-github"></i> TechAdityaBRO</a>
+        </div>
+      </div>
+      <div class="card team-card reveal">
+        <div class="team-avatar">NA</div>
+        <h3>Nimay Ahirwar</h3>
+        <p><span class="tr">BRO GANG Co-Chairman.<span class="hi">ब्रो गैंग सह-अध्यक्ष।</span></span></p>
+      </div>
+      <div class="card team-card reveal">
+        <div class="team-avatar">DS</div>
+        <h3>Darshil Sharma</h3>
+        <p><span class="tr">D1M Studios Chairman. Pokemon Extension Dev.<span class="hi">D1M स्टूडियोज़ अध्यक्ष। पोकेमॉन एक्सटेंशन डेव।</span></span></p>
+      </div>
+      <div class="card team-card reveal">
+        <div class="team-avatar">RS</div>
+        <h3>Rakesh Sarkar</h3>
+        <p><span class="tr">BRO GANG core team member.<span class="hi">ब्रो गैंग कोर टीम सदस्य।</span></span></p>
+      </div>
+      <div class="card team-card reveal">
+        <div class="team-avatar">BG</div>
+        <h3>BRO GANG</h3>
+        <p><span class="tr">The community behind every release.<span class="hi">हर रिलीज़ के पीछे का समुदाय।</span></span></p>
+        <div class="card-actions" style="justify-content:center">
+          <a href="https://brogang.techaditya.workers.dev" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-bolt"></i> Visit</a>
+        </div>
+      </div>
+      <div class="card team-card reveal">
+        <div class="team-avatar">PG</div>
+        <h3>ProGroupco</h3>
+        <p><span class="tr">Publisher and itch.io home for PGlove.<span class="hi">PGlove का प्रकाशक और itch.io परिवार।</span></span></p>
+        <div class="card-actions" style="justify-content:center">
+          <a href="https://progroupco.itch.io/pglove" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-gamepad"></i> itch.io</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 13. SERVER ============ -->
+<section class="panel" id="server">
+  <div class="panel-inner">
+    <div class="panel-head">
+      <span class="panel-tag">🛡 <span class="tr">Server<span class="hi">सर्वर</span></span></span>
+      <h2 class="panel-title"><span class="tr">BroGangMC Server<span class="hi">ब्रोगैंगMC सर्वर</span></span></h2>
+      <p class="panel-sub"><span class="tr">Play on Java and Bedrock. Same world, two editions.<span class="hi">Java और Bedrock दोनों पर खेलें। एक ही दुनिया, दो संस्करण।</span></span></p>
+    </div>
+    <div class="server-box reveal">
+      <div class="server-row"><h4><span class="tr">Java Edition<span class="hi">जावा एडिशन</span></span></h4><div class="val">Java 8+</div></div>
+      <div class="server-row"><h4><span class="tr">Bedrock Edition<span class="hi">बेड्रॉक एडिशन</span></span></h4><div class="val">1.21+</div></div>
+      <div class="server-row"><h4><span class="tr">Status<span class="hi">स्थिति</span></span></h4><div class="val" style="color:var(--green-light)"><span class="dot" style="display:inline-block;vertical-align:middle;margin-right:.4rem"></span><span class="tr">Online<span class="hi">ऑनलाइन</span></span></div></div>
+      <div class="server-row"><h4><span class="tr">Version<span class="hi">संस्करण</span></span></h4><div class="val">1.21.x</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 14. CREDITS ============ -->
+<section class="panel" id="credits">
+  <div class="panel-inner">
+    <div class="panel-head">
+      <span class="panel-tag">🎬 <span class="tr">Credits<span class="hi">श्रेय</span></span></span>
+      <h2 class="panel-title"><span class="tr">Credits<span class="hi">श्रेय</span></span></h2>
+      <p class="panel-sub">
+        <span class="tr">
+          The PGlove Browser by Aditya Kumar Sethi &amp; Team (BRO GANG &amp; D1M Studios)
+        <span class="hi hi-long">
+          पीग्लव ब्राउज़र — आदित्य कुमार सेठी और टीम (ब्रो गैंग और D1M स्टूडियोज़)
+        </span></span>
+      </p>
+    </div>
+
+    <div class="credits-grid">
+      <div class="card reveal">
+        <div class="credit-role">👨‍💻 <span class="tr">Chief Developer<span class="hi">मुख्य डेवलपर</span></span></div>
+        <div class="credit-name">Aditya Kumar Sethi</div>
+        <div class="credit-meta">BRO GANG · D1M Studios</div>
+      </div>
+      <div class="card reveal">
+        <div class="credit-role">⚡ <span class="tr">Pokemon Extension Dev Team<span class="hi">पोकेमॉन एक्सटेंशन डेव टीम</span></span></div>
+        <div class="credit-name">Aditya Kumar Sethi · Darshil Sharma</div>
+        <div class="credit-meta">v1.0.4 Pokemon Theme (archived)</div>
+      </div>
+      <div class="card reveal">
+        <div class="credit-role">🎬 <span class="tr">Production<span class="hi">निर्माण</span></span></div>
+        <div class="credit-name">BRO GANG Studios &amp; D1M Studios</div>
+        <div class="credit-meta">Joint production</div>
+      </div>
+      <div class="card reveal">
+        <div class="credit-role">🎥 <span class="tr">Producer<span class="hi">निर्माता</span></span></div>
+        <div class="credit-name">Aditya Kumar Sethi &amp; Team</div>
+        <div class="credit-meta">Executive producer</div>
+      </div>
+      <div class="card reveal">
+        <div class="credit-role">⚡ BRO GANG Team</div>
+        <div class="credit-name">Aditya Kumar Sethi · Nimay Ahirwar · Rakesh Sarkar</div>
+        <div class="credit-meta">Core team</div>
+      </div>
+      <div class="card reveal">
+        <div class="credit-role">🏛 D1M Studios Chairman</div>
+        <div class="credit-name">Darshil Sharma</div>
+        <div class="credit-meta">Founder &amp; Chairman</div>
+      </div>
+      <div class="card reveal">
+        <div class="credit-role">⚡ BRO GANG Chairmans</div>
+        <div class="credit-name">Aditya Kumar Sethi · Nimay Ahirwar</div>
+        <div class="credit-meta">Co-chairmen</div>
+      </div>
+      <div class="card reveal">
+        <div class="credit-role">🐛 <span class="tr">Debugging &amp; Frontend<span class="hi">डिबगिंग और फ्रंटएंड</span></span></div>
+        <div class="credit-name">OpenCode from Anomalyco</div>
+        <div class="credit-meta">AI-assisted development</div>
+      </div>
+    </div>
+
+    <div class="hardware-box reveal">
+      <div class="hardware-icon">💻</div>
+      <div class="hardware-title"><span class="tr">Built on Small Hardware<span class="hi">छोटे हार्डवेयर पर बना</span></span></div>
+      <p class="hardware-story">
+        <span class="tr">
+          This full project was made on just <strong>4 GB RAM</strong>, <strong>Tiny 10 LTSC</strong>,
+          some <strong>Intel UHD Graphics 600</strong>, and an <strong>Intel Celeron</strong> —
+          to say that <em>small hardware can make big changes.</em>
+        <span class="hi hi-long">
+          यह पूरा प्रोजेक्ट केवल 4 GB रैम, Tiny 10 LTSC, Intel UHD Graphics 600 और Intel Celeron
+          पर बनाया गया — यह कहने के लिए कि छोटा हार्डवेयर बड़े बदलाव ला सकता है।
+        </span></span>
+      </p>
+    </div>
+
+    <div class="infra-box reveal">
+      <div class="infra-row"><span class="infra-label"><span class="tr">Git Support<span class="hi">गिट सपोर्ट</span></span></span><span class="infra-value"><a href="https://git-scm.com/" target="_blank" rel="noopener">git-scm.com</a></span></div>
+      <div class="infra-row"><span class="infra-label"><span class="tr">Git Hosts<span class="hi">गिट होस्ट</span></span></span><span class="infra-value">Codeberg &amp; GitHub</span></div>
+      <div class="infra-row"><span class="infra-label"><span class="tr">Hosting<span class="hi">होस्टिंग</span></span></span><span class="infra-value">Cloudflare · GitHub Pages</span></div>
+      <div class="infra-row"><span class="infra-label"><span class="tr">Subdomain<span class="hi">सबडोमेन</span></span></span><span class="infra-value">DNSExit · Cloudflare Workers · Cloudflare Pages · GitHub Pages</span></div>
+      <div class="infra-row"><span class="infra-label"><span class="tr">Authentication<span class="hi">प्रमाणीकरण</span></span></span><span class="infra-value">Auth0</span></div>
+    </div>
+
+    <div class="legal-box reveal">
+      <p class="legal-text">
+        <span class="tr">
+          Pokemon and all related trademarks, characters, and imagery belong to
+          <strong>The Pokemon Company</strong>. All licenses and trademarks mentioned belong to
+          their respective companies and organisations.
+        <span class="hi hi-long">
+          पोकेमॉन और उससे जुड़े सभी ट्रेडमार्क, किरदार और चित्र The Pokémon Company के हैं।
+          उल्लिखित सभी लाइसेंस और ट्रेडमार्क उनके संबंधित कंपनियों और संगठनों के हैं।
+        </span></span>
+      </p>
+      <p class="legal-tagline">
+        <span class="tr">🇮🇳 Made in India for the world<span class="hi">भारत में बना, दुनिया के लिए</span></span><br>
+        <span class="tr">for next zen internet exploration<span class="hi">अगली पीढ़ी की इंटरनेट खोज के लिए</span></span>
+      </p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============ 15. SUPPORTED BY ============ -->
+<section class="panel" id="supported">
+  <div class="panel-inner center">
+    <h2 class="panel-title" style="font-size:1.5rem;margin-bottom:1.6rem"><span class="tr">Supported By<span class="hi">समर्थन</span></span></h2>
+    <div class="supported reveal">
+      <span class="supported-item"><i class="fab fa-cloudflare"></i> Cloudflare</span>
+      <span class="supported-item"><i class="fab fa-google"></i> Google Fonts</span>
+      <span class="supported-item"><i class="fab fa-github"></i> GitHub</span>
+      <span class="supported-item"><i class="fas fa-archive"></i> Internet Archive</span>
+      <span class="supported-item"><i class="fas fa-robot"></i> DeepSeek</span>
+      <span class="supported-item"><i class="fas fa-network-wired"></i> DNSExit</span>
+      <span class="supported-item"><i class="fas fa-code-branch"></i> Codeberg</span>
+      <span class="supported-item"><i class="fas fa-microsoft"></i> Microsoft Winget</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 16. CTA ============ -->
+<section class="panel" id="getstarted">
+  <div class="panel-inner">
+    <div class="cta-box reveal">
+      <h2 class="panel-title"><span class="tr">Built for the brave<span class="hi">बहादुरों के लिए बनाया गया</span></span></h2>
+      <p class="panel-sub" style="margin-bottom:0">
+        <span class="tr">Fork it, build it, break it, ship it. PGlove is yours.<span class="hi">फोर्क करें, बनाएँ, तोड़ें, रिलीज़ करें। पीग्लव आपका है।</span></span>
+      </p>
+      <div class="cta-actions">
+        <a href="https://github.com/TechAdityaBRO/PGlove" class="btn btn-primary" target="_blank" rel="noopener"><i class="fab fa-github"></i> <span class="tr">GitHub<span class="hi">गिटहब</span></span></a>
+        <a href="https://codeberg.org/TechAditya/PGlove/" class="btn btn-outline" target="_blank" rel="noopener"><i class="fas fa-code-branch"></i> <span class="tr">Codeberg<span class="hi">कोडबर्ग</span></span></a>
+        <a href="https://nexasearch.pages.dev/" class="btn btn-green" target="_blank" rel="noopener"><i class="fas fa-magnifying-glass"></i> <span class="tr">Nexa Search<span class="hi">नेक्सा सर्च</span></span></a>
+        <a href="/v1.0.4/" class="btn btn-orange" target="_blank" rel="noopener"><i class="fas fa-box-archive"></i> <span class="tr">v1.0.4 Archive<span class="hi">v1.0.4 आर्काइव</span></span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 17. FOOTER ============ -->
 <footer>
-  <p>Built with 💥 by <strong>Aditya (TechAdityaBRO)</strong> • Bro Gang • East 2022</p>
-  <p style="margin-top:0.5rem;">PGlove — A Browser With A New Generation • Made in India 🇮🇳</p>
-  <div class="footer-links">
-    <a href="https://brogang.techaditya.workers.dev">Bro Gang Website</a>
-    <a href="https://github.com/TechAdityaBRO/PGlove">GitHub</a>
-    <a href="https://codeberg.org/TechAditya/PGlove">Codeberg</a>
-    <a href="https://progroupco.itch.io/pglove">Itch.io</a>
-    <a href="https://pglove.jo3.org/v1.0.4">v1.0.4</a>
-    <a href="t&c.html">T&C</a>
-    <a href="privacy-policy.html">Privacy</a>
-    <a href="mailto:pglove@atomicmail.io">Email</a>
+  <div class="panel-inner">
+    <a href="/" class="nav-brand" style="justify-content:center;font-size:1.3rem">
+      <img src="/logo.gif" alt="PGlove" width="30" height="30" class="brand-mark" onerror="this.src='/logo.png'">
+      <span>PGlove</span>
+    </a>
+
+    <div class="social-row">
+      <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" rel="noopener" aria-label="GitHub" class="fab fa-github"></a>
+      <a href="https://codeberg.org/TechAditya/PGlove/" target="_blank" rel="noopener" aria-label="Codeberg" class="fa fa-code-branch"></a>
+      <a href="https://progroupco.itch.io/pglove" target="_blank" rel="noopener" aria-label="Itch.io" class="fab fa-itch-io"></a>
+      <a href="https://matrix.to/#/#pglove:matrix.org" target="_blank" rel="noopener" aria-label="Matrix" class="fa fa-comments"></a>
+      <a href="https://join.slack.com/t/pglovebrowser/shared_invite/zt-4b78o71fo-LvyQ3u8uNQJjGd7M0Hoqqw" target="_blank" rel="noopener" aria-label="Slack" class="fab fa-slack"></a>
+      <a href="https://brogang.techaditya.workers.dev" target="_blank" rel="noopener" aria-label="BRO GANG" class="fa fa-bolt"></a>
+      <a href="https://progroupai.created.app/" target="_blank" rel="noopener" aria-label="Pro AI" class="fa fa-robot"></a>
+      <a href="https://nexasearch.pages.dev/" target="_blank" rel="noopener" aria-label="Nexa Search" class="fa fa-magnifying-glass"></a>
+      <a href="mailto:pglove@atomicmail.io" aria-label="Email" class="fa fa-envelope"></a>
+    </div>
+
+    <nav class="footer-links" aria-label="Footer">
+      <a href="#home"><span class="tr">Home<span class="hi">होम</span></span></a>
+      <a href="#download"><span class="tr">Download<span class="hi">डाउनलोड</span></span></a>
+      <a href="#features"><span class="tr">Features<span class="hi">विशेषताएँ</span></span></a>
+      <a href="#ecosystem"><span class="tr">Ecosystem<span class="hi">पारिस्थितिकी तंत्र</span></span></a>
+      <a href="#credits"><span class="tr">Credits<span class="hi">श्रेय</span></span></a>
+      <a href="/v1.0.4/"><span class="tr">v1.0.4 Archive<span class="hi">v1.0.4 आर्काइव</span></span></a>
+      <a href="/privacy/"><span class="tr">Privacy Policy<span class="hi">गोपनीयता नीति</span></span></a>
+      <a href="/terms/"><span class="tr">Terms &amp; Conditions<span class="hi">नियम एवं शर्तें</span></span></a>
+      <a href="https://github.com/TechAdityaBRO/PGlove/issues" target="_blank" rel="noopener"><span class="tr">Support<span class="hi">सहायता</span></span></a>
+      <a href="mailto:pglove@atomicmail.io">pglove@atomicmail.io</a>
+    </nav>
+
+    <div class="commit-badge" id="commitBadge">
+      <span class="commit-label"><span class="tr">Latest build<span class="hi">नवीनतम बिल्ड</span></span></span>
+      <span id="commitInfo">Loading…</span>
+    </div>
+
+    <p class="footer-legal">
+      <span class="tr">
+        PGlove is free and open source, licensed under BSD 3-Clause. Pokemon and all related
+        trademarks belong to <strong>The Pokemon Company</strong>. All other licenses and
+        trademarks belong to their respective owners. <strong>Made in India 🇮🇳 for the world</strong>,
+        for next zen internet exploration.
+      <span class="hi hi-long">
+        पीग्लव मुफ़्त और ओपन सोर्स है, BSD 3-Clause के अंतर्गत लाइसेंस प्राप्त। पोकेमॉन और उससे जुड़े सभी
+        ट्रेडमार्क The Pokémon Company के हैं। अन्य सभी लाइसेंस और ट्रेडमार्क उनके संबंधित स्वामियों के हैं।
+        भारत में बना, दुनिया के लिए — अगली पीढ़ी की इंटरनेट खोज के लिए।
+      </span></span>
+    </p>
   </div>
 </footer>
+
+<script>
+(function () {
+  'use strict';
+
+  /* ---------- loading screen ---------- */
+  function hideLoader() {
+    var el = document.getElementById('loader');
+    if (el && !el.classList.contains('done')) el.classList.add('done');
+  }
+  window.addEventListener('load', function () { setTimeout(hideLoader, 550); });
+  setTimeout(hideLoader, 3500); // hard failsafe
+
+  /* ---------- mobile nav ---------- */
+  var toggle = document.getElementById('navToggle');
+  var links = document.getElementById('navLinks');
+  if (toggle && links) {
+    toggle.addEventListener('click', function () {
+      var open = links.classList.toggle('open');
+      toggle.setAttribute('aria-expanded', String(open));
+      toggle.innerHTML = open ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
+    });
+    links.addEventListener('click', function (e) {
+      if (e.target.closest('a')) {
+        links.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerHTML = '<i class="fas fa-bars"></i>';
+      }
+    });
+  }
+
+  /* ---------- scroll reveal ---------- */
+  var revealEls = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(function (el) { io.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in'); });
+  }
+
+  /* ---------- scrollspy ---------- */
+  var navAnchors = Array.prototype.slice.call(document.querySelectorAll('.nav-links a[href^="#"]'));
+  var sections = navAnchors
+    .map(function (a) { return document.querySelector(a.getAttribute('href')); })
+    .filter(Boolean);
+
+  function spy() {
+    var y = window.scrollY + 120;
+    var current = null;
+    sections.forEach(function (s) { if (s.offsetTop <= y) current = s.id; });
+    navAnchors.forEach(function (a) {
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current);
+    });
+  }
+  if (sections.length) {
+    window.addEventListener('scroll', spy, { passive: true });
+    spy();
+  }
+
+  /* ---------- latest commit badge (GitHub API) ---------- */
+  var info = document.getElementById('commitInfo');
+  if (info) {
+    fetch('https://api.github.com/repos/TechAdityaBRO/PGlove/commits/main')
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(new Error(r.status)); })
+      .then(function (data) {
+        var sha = (data.sha || '').slice(0, 7);
+        var msg = ((data.commit && data.commit.message) || '').split('\n')[0];
+        var date = '';
+        try {
+          date = new Date(data.commit.author.date).toISOString().slice(0, 10);
+        } catch (e) {}
+        var a = document.createElement('a');
+        a.href = 'https://github.com/TechAdityaBRO/PGlove/commit/' + data.sha;
+        a.target = '_blank';
+        a.rel = 'noopener';
+        var code = document.createElement('code');
+        code.textContent = sha;
+        a.appendChild(code);
+        info.appendChild(a);
+        if (msg) {
+          var m = document.createElement('span');
+          m.className = 'commit-msg';
+          m.textContent = ' ' + msg;
+          info.appendChild(m);
+        }
+        if (date) {
+          var d = document.createElement('span');
+          d.className = 'commit-date';
+          d.textContent = ' ' + date;
+          info.appendChild(d);
+        }
+      })
+      .catch(function () { info.textContent = 'Unavailable'; });
+  }
+})();
+</script>
+
 </body>
 </html>

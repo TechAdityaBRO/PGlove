@@ -1,54 +1,76 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
-  <!-- MAIN PAGE -->
+  <!--
+    Only canonical, indexable document URLs are listed.
+    Section anchors (#features, #download, #credits, ...) are fragments of the
+    home page and are deliberately omitted: they are not separate documents.
+    The retired .html paths (v1.0.4.html, privacy-policy.html, t&c.html, ...)
+    are noindex redirect stubs and are omitted too.
+  -->
+
+  <!-- HOME: download, features, extensions, roadmap, ecosystem, credits, community -->
   <url>
     <loc>https://pglove.jo3.org/</loc>
-    <lastmod>2026-08-30</lastmod>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="en" href="https://pglove.jo3.org/"/>
   </url>
 
   <!-- FEATURES -->
   <url>
-    <loc>https://pglove.jo3.org/#features</loc>
-    <lastmod>2026-08-30</lastmod>
+    <loc>https://pglove.jo3.org/features.html</loc>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
 
-  <!-- DOWNLOAD -->
+  <!-- EXTENSIONS / THEMES -->
   <url>
-    <loc>https://pglove.jo3.org/#download</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <loc>https://pglove.jo3.org/extensions.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- ROADMAP -->
+  <url>
+    <loc>https://pglove.jo3.org/roadmap.html</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- SUPPORT -->
   <url>
-    <loc>https://pglove.jo3.org/#support</loc>
-    <lastmod>2026-08-30</lastmod>
+    <loc>https://pglove.jo3.org/support.html</loc>
+    <lastmod>2026-09-26</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <priority>0.7</priority>
   </url>
 
-  <!-- TEAM -->
+  <!-- v1.0.4 POKEMON THEME ARCHIVE -->
   <url>
-    <loc>https://pglove.jo3.org/#credits</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>monthly</changefreq>
+    <loc>https://pglove.jo3.org/v1.0.4/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
 
-  <!-- BROGANGMC SERVER -->
+  <!-- PRIVACY POLICY -->
   <url>
-    <loc>https://pglove.jo3.org/#server</loc>
-    <lastmod>2026-08-30</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <loc>https://pglove.jo3.org/privacy/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <!-- TERMS AND CONDITIONS -->
+  <url>
+    <loc>https://pglove.jo3.org/terms/</loc>
+    <lastmod>2026-09-26</lastmod>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
   </url>
 
 </urlset>

@@ -3,145 +3,41 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="PGlove v1.0.4 — Pokémon Theme. Gotta catch 'em all.">
-<meta name="theme-color" content="#1a1a1a">
-<title>PGlove v1.0.4 — Pokémon Theme</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Press+Start+2P&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>PGlove v1.0.4 - Pokemon Theme</title>
+<meta name="description" content="This page has moved to a permanent address.">
+<meta name="robots" content="noindex, follow">
+<meta name="theme-color" content="#0a0420">
+<link rel="canonical" href="https://pglove.jo3.org/v1.0.4/">
+<meta http-equiv="refresh" content="0; url=https://pglove.jo3.org/v1.0.4/">
+<script>window.location.replace("https://pglove.jo3.org/v1.0.4/" + window.location.hash + window.location.search);</script>
 <style>
-:root {
-  --pk-red: #ee1515; --pk-yellow: #ffcb05; --pk-blue: #3b4cca; --pk-dark: #1a1a1a; --pk-darker: #0f0f0f;
-  --pk-gray: #2a2a2a; --pk-gray-light: #4a4a4a; --pk-white: #ffffff; --pk-cream: #f5f0e1;
-  --pk-hp-green: #78c850; --pk-hp-yellow: #f8d030; --pk-hp-red: #f08030; --pk-psychic: #f85888;
-  --ease: cubic-bezier(0.22, 1, 0.36, 1);
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body { font-family: 'Inter', sans-serif; background: var(--pk-darker); color: var(--pk-white); line-height: 1.6; overflow-x: hidden; background-image: radial-gradient(circle at 20% 10%, rgba(238,21,21,0.08), transparent 40%), radial-gradient(circle at 80% 80%, rgba(59,76,202,0.08), transparent 40%); }
-.loader { position: fixed; inset: 0; background: var(--pk-darker); z-index: 9999; display: flex; flex-direction: column; align-items: center; justify-content: center; transition: opacity 0.6s ease, visibility 0.6s ease; }
-.loader.hidden { opacity: 0; visibility: hidden; }
-.pokeball { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(to bottom, var(--pk-red) 0%, var(--pk-red) 48%, #000 48%, #000 52%, var(--pk-white) 52%, var(--pk-white) 100%); border: 5px solid #000; position: relative; animation: ballWiggle 1.4s ease-in-out infinite; box-shadow: 0 0 60px rgba(238,21,21,0.5); }
-.pokeball::after { content: ''; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 30px; height: 30px; border-radius: 50%; background: var(--pk-white); border: 3px solid #000; }
-@keyframes ballWiggle { 0%, 100% { transform: rotate(-10deg); } 50% { transform: rotate(10deg); } }
-nav { position: fixed; top: 0; left: 0; width: 100%; z-index: 100; backdrop-filter: blur(20px); background: rgba(15,15,15,0.9); border-bottom: 2px solid var(--pk-red); padding: 0.75rem 2rem; display: flex; justify-content: space-between; align-items: center; }
-nav .logo { font-family: 'Press Start 2P', cursive; font-size: 1.2rem; color: var(--pk-red); }
-nav .nav-links a { color: var(--pk-gray-light); text-decoration: none; margin-left: 1.5rem; font-size: 0.85rem; transition: color 0.3s; }
-nav .nav-links a:hover { color: var(--pk-yellow); }
-nav .nav-links a.active { color: var(--pk-yellow); }
-.hero { position: relative; min-height: 60vh; display: flex; flex-direction: column; justify-content: center; align-items: center; text-align: center; padding: 6rem 2rem 3rem; z-index: 1; }
-.hero h1 { font-family: 'Press Start 2P', cursive; font-size: 2.2rem; color: var(--pk-yellow); margin-bottom: 0.5rem; text-shadow: 0 0 20px rgba(255,203,5,0.5); }
-.hero .catch { font-family: 'Press Start 2P', cursive; font-size: 1rem; color: var(--pk-red); margin-bottom: 1.5rem; }
-.section { position: relative; z-index: 1; padding: 4rem 2rem; }
-.section-inner { max-width: 1000px; margin: 0 auto; }
-.section-header { text-align: center; margin-bottom: 3rem; }
-.section-tag { display: inline-block; font-size: 0.8rem; font-weight: 600; color: var(--pk-red); text-transform: uppercase; letter-spacing: 2px; margin-bottom: 0.75rem; }
-.section-title { font-family: 'Press Start 2P', cursive; font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; color: var(--pk-yellow); }
-.section-sub { color: var(--pk-gray-light); font-size: 1.1rem; max-width: 600px; margin: 0 auto; }
-.feature-list { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; }
-.feature-card { background: var(--pk-gray); border: 1px solid var(--pk-gray-light); border-radius: 12px; padding: 2rem; transition: all 0.3s; }
-.feature-card:hover { border-color: var(--pk-red); transform: translateY(-4px); }
-.feature-card h3 { color: var(--pk-yellow); margin-bottom: 0.5rem; }
-.feature-card p { color: var(--pk-gray-light); font-size: 0.9rem; }
-.progress-bar { background: var(--pk-gray); border-radius: 999px; height: 12px; overflow: hidden; margin-top: 0.5rem; }
-.progress-fill { background: linear-gradient(90deg, var(--pk-red), var(--pk-yellow)); height: 100%; border-radius: 999px; width: 72%; }
-.type-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem; }
-.type-card { background: var(--pk-gray); border: 1px solid var(--pk-gray-light); border-radius: 12px; padding: 1.5rem; text-align: center; cursor: pointer; transition: all 0.3s; }
-.type-card:hover { transform: translateY(-4px); }
-.type-card.fire { border-color: var(--pk-hp-red); } .type-card.water { border-color: var(--pk-blue); } .type-card.electric { border-color: var(--pk-yellow); } .type-card.grass { border-color: var(--pk-hp-green); } .type-card.psychic { border-color: var(--pk-psychic); } .type-card.dark { border-color: var(--pk-gray-light); }
-footer { position: relative; z-index: 1; text-align: center; padding: 3rem 2rem; border-top: 2px solid var(--pk-red); color: var(--pk-gray-light); font-size: 0.85rem; }
-footer a { color: var(--pk-red); text-decoration: none; }
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#05010f;color:#e8e4f5;font-family:'Inter',system-ui,sans-serif;min-height:100vh;
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:1.5rem;line-height:1.7}
+.box{max-width:520px}
+.img{width:72px;height:72px;object-fit:contain;margin:0 auto 1.4rem;display:block;
+  filter:drop-shadow(0 0 28px rgba(139,77,255,.55));animation:b 1.5s ease-in-out infinite}
+@keyframes b{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+h1{font-size:1.25rem;margin-bottom:.6rem;color:#c9aaff}
+p{font-size:.9rem;color:#b8aee0;margin-bottom:1.3rem}
+p code{font-family:'JetBrains Mono',monospace;background:rgba(139,77,255,.16);
+  padding:3px 8px;border-radius:5px;color:#67e8f9;font-size:.85em;word-break:break-all}
+a.btn{display:inline-block;padding:.8rem 1.7rem;border-radius:10px;text-decoration:none;font-weight:600;
+  font-size:.9rem;color:#fff;background:linear-gradient(135deg,#6d28d9,#3b82f6);
+  box-shadow:0 8px 26px rgba(109,40,217,.4)}
+a.btn:hover{filter:brightness(1.12)}
+.meta{margin-top:1.6rem;font-size:.72rem;color:#7a6fa5;font-family:'JetBrains Mono',monospace}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
 </style>
 </head>
 <body>
-<div class="loader" id="loader"><div class="pokeball"></div><p style="margin-top:1.5rem;color:var(--pk-yellow);font-family:'Press Start 2P',cursive;font-size:0.7rem;">CATCHING...</p></div>
-<div class="bg-grid"></div>
-<nav>
-  <div class="logo">PGlove</div>
-  <div class="nav-links">
-    <a href="index.html">Home</a>
-    <a href="extensions.html">Extensions</a>
-    <a href="features.html">Features</a>
-    <a href="v1.0.4.html" class="active">v1.0.4</a>
-    <a href="roadmap.html">Roadmap</a>
-    <a href="support.html">Support</a>
-    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank"><i class="fab fa-github"></i></a>
-  </div>
-</nav>
-
-<section class="hero">
-  <span class="catch">⚡ v1.0.4 · IN DEVELOPMENT ⚡</span>
-  <h1>POKÉMON THEME</h1>
-  <p class="section-sub" style="max-width:600px;margin:1.5rem auto 0;">Gotta catch 'em all. Pokémon-inspired UI, custom Pokéball icons, and nostalgic 8-bit sounds. Built by Bro Gang · Powered by the community.</p>
-  <div style="margin-top:2rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;">
-    <a href="roadmap.html" class="btn" style="background:var(--pk-red);color:#fff;padding:0.85rem 2rem;border-radius:8px;text-decoration:none;font-weight:600;">View Roadmap</a>
-    <a href="https://github.com/TechAdityaBRO/PGlove" target="_blank" class="btn" style="background:transparent;color:var(--pk-yellow);border:1px solid var(--pk-yellow);padding:0.85rem 2rem;border-radius:8px;text-decoration:none;">Follow Updates</a>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag"><i class="fas fa-box"></i> What's Coming</div>
-      <h2 class="section-title">v1.0.4 Features</h2>
-    </div>
-    <div class="feature-list">
-      <div class="feature-card">
-        <h3>🔴 Pokéball UI</h3>
-        <p>Every icon reimagined. Tabs become Pokéballs, buttons snap like the original red-and-white design, and menus have that classic catch animation.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🎨 Custom Icons</h3>
-        <p>A complete icon set inspired by the original 151 Pokémon. Each one hand-drawn in the 8-bit pixel style.</p>
-      </div>
-      <div class="feature-card">
-        <h3>🎵 Nostalgic Sounds</h3>
-        <p>Level-up chimes on new tabs, a catch jingle on searches, a heal sound when a page loads. Optional but unforgettable.</p>
-      </div>
-      <div class="feature-card">
-        <h3>⚡ Type-Based Themes</h3>
-        <p>Switch between Fire, Water, Grass, Electric, and Psychic color schemes. Your browser, your typing, your style.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag"><i class="fas fa-chart-line"></i> Progress</div>
-      <h2 class="section-title">v1.0.4 Progress</h2>
-    </div>
-    <div style="background:var(--pk-gray);border:1px solid var(--pk-gray-light);border-radius:16px;padding:2rem;max-width:600px;margin:0 auto;">
-      <div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;"><strong style="color:var(--pk-yellow);">BUILD STATUS</strong><span style="color:var(--pk-hp-green);">72%</span></div>
-      <div class="progress-bar"><div class="progress-fill"></div></div>
-      <p style="color:var(--pk-gray-light);font-size:0.85rem;margin-top:1rem;">▸ CATCHING BUGS · TESTING UI · ADDING SOUNDS</p>
-    </div>
-  </div>
-</section>
-
-<section class="section">
-  <div class="section-inner">
-    <div class="section-header">
-      <div class="section-tag"><i class="fas fa-palette"></i> Pick Your Type</div>
-      <h2 class="section-title">Theme <span style="color:var(--pk-yellow);">Colors</span></h2>
-      <p class="section-sub">Every Pokéball has a type. Choose yours.</p>
-    </div>
-    <div class="type-grid">
-      <div class="type-card fire" style="cursor:default;"><h3 style="color:var(--pk-hp-red);">🔥 Fire</h3><p style="font-size:0.8rem;color:var(--pk-gray-light);">Default</p></div>
-      <div class="type-card water" style="cursor:default;"><h3 style="color:var(--pk-blue);">💧 Water</h3><p style="font-size:0.8rem;color:var(--pk-gray-light);">Squirtle vibes</p></div>
-      <div class="type-card electric" style="cursor:default;"><h3 style="color:var(--pk-yellow);">⚡ Electric</h3><p style="font-size:0.8rem;color:var(--pk-gray-light);">Pikachu mode</p></div>
-      <div class="type-card grass" style="cursor:default;"><h3 style="color:var(--pk-hp-green);">🌿 Grass</h3><p style="font-size:0.8rem;color:var(--pk-gray-light);">Bulbasaur base</p></div>
-      <div class="type-card psychic" style="cursor:default;"><h3 style="color:var(--pk-psychic);">🧠 Psychic</h3><p style="font-size:0.8rem;color:var(--pk-gray-light);">Mewtwo pink</p></div>
-      <div class="type-card dark" style="cursor:default;"><h3 style="color:var(--pk-gray-light);">🌑 Dark</h3><p style="font-size:0.8rem;color:var(--pk-gray-light);">Midnight mode</p></div>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <p>Built with 💥 by <strong>Bro Gang</strong> • Made in India 🇮🇳</p>
-  <p style="margin-top:0.5rem;"><a href="https://github.com/TechAdityaBRO/PGlove">GitHub</a> • <a href="https://codeberg.org/TechAditya/PGlove">Codeberg</a></p>
-</footer>
-<script>window.addEventListener('load',()=>{document.getElementById('loader').classList.add('hidden');});</script>
+<div class="box">
+  <img src="/logo.gif" alt="PGlove" class="img" width="72" height="72" onerror="this.src='/logo.png'">
+  <h1>PGlove v1.0.4 - Pokemon Theme</h1>
+  <p>This page has moved to a permanent address.</p>
+  <p>Taking you to <code>https://pglove.jo3.org/v1.0.4/</code></p>
+  <a class="btn" href="https://pglove.jo3.org/v1.0.4/">Continue</a>
+  <p class="meta">PGlove &middot; pglove.jo3.org &middot; <a href="/" style="color:#ab7bff">Home</a></p>
+</div>
 </body>
 </html>
