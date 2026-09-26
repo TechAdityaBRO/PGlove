@@ -7,9 +7,23 @@
 <meta name="description" content="PGlove browser themes and add-ons. Pokemon theme (archived v1.0.4), Minecraft in development, GTA 6 and Vice City paused. Built for Tauri 2, Rust and WebView2.">
 <meta name="keywords" content="PGlove extensions, PGlove themes, Pokemon browser theme, Minecraft browser theme, GTA 6 browser theme, Vice City browser theme, BRO GANG">
 <meta name="author" content="Aditya Kumar Sethi (TechAdityaBRO)">
-<meta name="robots" content="index, follow, max-snippet:-1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#0a0420">
 <link rel="canonical" href="https://pglove.jo3.org/extensions.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "CollectionPage", "@id": "https://pglove.jo3.org/extensions.html#webpage", "url": "https://pglove.jo3.org/extensions.html", "name": "PGlove Extensions - Pokemon, Minecraft, GTA 6, Vice City Themes | PGlove", "description": "PGlove browser themes and add-ons. Pokemon theme (archived v1.0.4), Minecraft in development, GTA 6 and Vice City paused. Built for Tauri 2, Rust and WebView2.", "inLanguage": "en", "isPartOf": { "@id": "https://pglove.jo3.org/#website" }, "about": { "@id": "https://pglove.jo3.org/#app" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pglove.jo3.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Extensions", "item": "https://pglove.jo3.org/extensions.html" }
+    ] },
+    { "@type": "SoftwareVersion", "softwareVersion": "1.0.4", "softwareRequirements": "Windows 10 or later, 64-bit, with WebView2 Runtime", "url": "https://pglove.jo3.org/roadmap.html" }
+  ]
+}
+</script>
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PGlove">
@@ -251,6 +265,57 @@ footer a:hover{text-decoration:underline}
     <div class="card-actions">
       <a href="https://github.com/TechAdityaBRO/PGlove" class="btn btn-primary btn-sm" target="_blank" rel="noopener"><i class="fab fa-github"></i> Fork on GitHub</a>
       <a href="https://codeberg.org/TechAditya/PGlove/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-code-branch"></i> Codeberg</a>
+    </div>
+  </div>
+
+  <h2 class="block-title"><span class="tr">How a theme is put together<span class="hi">एक थीम कैसे बनती है</span></span></h2>
+  <p class="block-sub"><span class="tr">Every PGlove theme replaces the same four layers. This is why a new one is a focused job rather than a rewrite.<span class="hi">हर पीग्लव थीम एक ही चार परतें बदलती है। इसीलिए नई थीम एक दोबारा लिखना नहीं, एक सीमित काम है।</span></span></p>
+  <div class="grid">
+    <div class="card c-default">
+      <span class="card-ico">&#127912;</span>
+      <h3><span class="tr">Colour system<span class="hi">कलर सिस्टम</span></span></h3>
+      <p><span class="tr">A defined palette mapped onto the engine's CSS custom properties. This is the layer you see most, and the one that decides whether a theme feels coherent or noisy.<span class="hi">इंजन की CSS कस्टम प्रॉपर्टीज पर मैप किया गया तय पैलेट। यही वह परत है जो सबसे ज़्यादा दिखती है, और तय करती है कि थीम सुसंगत लगेगी या बेतरतीब।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <span class="card-ico">&#128444;</span>
+      <h3><span class="tr">Icon set<span class="hi">आइकन सेट</span></span></h3>
+      <p><span class="tr">A complete hand-drawn set covering every browser action, drawn in one consistent style. Gaps are the usual reason a theme looks unfinished, so this is the longest single task.<span class="hi">हर ब्राउज़र क्रिया के लिए एक पूरा हाथ से बना सेट, एक ही शैली में। कमी ही वह आम वजह है जिससे थीम अधूरी लगती है, इसलिए यही सबसे लंबा अकेला काम है।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <span class="card-ico">&#128266;</span>
+      <h3><span class="tr">Sound design<span class="hi">साउंड डिज़ाइन</span></span></h3>
+      <p><span class="tr">Optional audio for events like opening a tab or completing a search, kept off by default. Every theme ships its own rather than reusing a shared pack, so it has to be produced from scratch.<span class="hi">टैब खोलने या सर्च पूरी होने जैसी घटनाओं के लिए वैकल्पिक ऑडियो, जो डिफ़ॉल्ट रूप से बंद रहता है। हर थीम अपना साउंड लाती है, साझा पैक नहीं, इसलिए शुरू से बनाना पड़ता है।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <span class="card-ico">&#128202;</span>
+      <h3><span class="tr">Regression pass<span class="hi">रिग्रेशन पास</span></span></h3>
+      <p><span class="tr">Checking every screen against the new palette for contrast failures and unreadable states. Unglamorous, and the reason finished themes stay usable rather than merely pretty.<span class="hi">हर स्क्रीन को नई पैलेट के साथ कंट्रास्ट फेल्योर और अपठनीय स्थितियों के लिए जाँचना। निष्प्रभावी काम, लेकिन इसीलिए पूरी थीमें इस्तेमाल योग्य रहती हैं, सिर्फ सुंदर नहीं।</span></span></p>
+    </div>
+  </div>
+
+  <h2 class="block-title"><span class="tr">Choosing where to start<span class="hi">कहाँ से शुरू करें</span></span></h2>
+  <div class="grid narrow">
+    <div class="card c-live">
+      <h3><span class="tr">Just want a browser?<span class="hi">बस एक ब्राउज़र चाहिए?</span></span></h3>
+      <p><span class="tr">Install stable v1.0.3 and use it as your daily driver. It is the tested build and the one with no known data-loss issues.<span class="hi">स्थिर v1.0.3 इंस्टॉल करें और इसे रोज़ के ब्राउज़र की तरह इस्तेमाल करें। यह टेस्ट की गई बिल्ड है और इसमें डेटा-हानि की कोई ज्ञात समस्या नहीं है।</span></span></p>
+      <div class="card-actions">
+        <a href="/#download" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> <span class="tr">Get v1.0.3<span class="hi">v1.0.3 लें</span></span></a>
+      </div>
+    </div>
+    <div class="card c-archived">
+      <h3><span class="tr">Want the Pokemon theme?<span class="hi">पोकेमॉन थीम चाहिए?</span></span></h3>
+      <p><span class="tr">The v1.0.4 archive is permanently available with its source. Treat the packages as preserved artifacts rather than maintained releases.<span class="hi">v1.0.4 आर्काइव उसके सोर्स के साथ स्थायी रूप से उपलब्ध है। पैकेजों को अनुरक्षित रिलीज़ नहीं, सुरक्षित रखे गए कलाकृत मानें।</span></span></p>
+      <div class="card-actions">
+        <a href="/v1.0.4/" class="btn btn-outline btn-sm"><i class="fas fa-box-archive"></i> <span class="tr">Open archive<span class="hi">आर्काइव खोलें</span></span></a>
+      </div>
+    </div>
+    <div class="card c-paused">
+      <h3><span class="tr">Waiting on Minecraft, GTA 6 or Vice City?<span class="hi">Minecraft, GTA 6 या Vice City का इंतज़ार है?</span></span></h3>
+      <p><span class="tr">Those three are designed but paused pending funding. There is no schedule to wait for, so funding is the only real unblock.<span class="hi">तीनों डिज़ाइन किए जा चुके हैं लेकिन फंडिंग की प्रतीक्षा में रुके हैं। इंतज़ार करने के लिए कोई समय-सारणी नहीं है, इसलिए फंडिंग ही असली रुकावट है।</span></span></p>
+      <div class="card-actions">
+        <a href="/roadmap.html" class="btn btn-ghost btn-sm"><i class="fas fa-road"></i> <span class="tr">See roadmap<span class="hi">रोडमैप देखें</span></span></a>
+        <a href="/support.html" class="btn btn-ghost btn-sm"><i class="fas fa-heart"></i> <span class="tr">Support us<span class="hi">सहायता करें</span></span></a>
+      </div>
     </div>
   </div>
 </main>

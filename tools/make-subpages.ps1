@@ -18,9 +18,13 @@ $HEAD = @'
 <meta name="description" content="__DESC__">
 <meta name="keywords" content="__KEYS__">
 <meta name="author" content="Aditya Kumar Sethi (TechAdityaBRO)">
-<meta name="robots" content="index, follow, max-snippet:-1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#0a0420">
 <link rel="canonical" href="__CANON__">
+
+<script type="application/ld+json">
+__JSONLD__
+</script>
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PGlove">
@@ -257,6 +261,9 @@ $pages += @{
   desc    = "PGlove browser themes and add-ons. Pokemon theme (archived v1.0.4), Minecraft in development, GTA 6 and Vice City paused. Built for Tauri 2, Rust and WebView2."
   keys    = "PGlove extensions, PGlove themes, Pokemon browser theme, Minecraft browser theme, GTA 6 browser theme, Vice City browser theme, BRO GANG"
   active  = "/extensions.html"
+  crumb   = "Extensions"
+  schemaType = "CollectionPage"
+  aboutVersion = "1.0.4"
   tag     = "<span class=`"tr`">Extensions<span class=`"hi`">एक्सटेंशन</span></span>"
   h1      = "<span class=`"tr`">PGlove Extensions<span class=`"hi`">पीग्लव एक्सटेंशन</span></span>"
   sub     = "<span class=`"tr`">Themes and add-ons for every engine we ship. Status is honest - one shipped, one in development, two paused.<span class=`"hi hi-long`">हर इंजन के लिए थीम और ऐड-ऑन। स्थिति ईमानदार है — एक जारी, एक विकास में, दो रुके हुए।</span></span>"
@@ -316,6 +323,57 @@ $pages += @{
       <a href="https://codeberg.org/TechAditya/PGlove/" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fas fa-code-branch"></i> Codeberg</a>
     </div>
   </div>
+
+  <h2 class="block-title"><span class="tr">How a theme is put together<span class="hi">एक थीम कैसे बनती है</span></span></h2>
+  <p class="block-sub"><span class="tr">Every PGlove theme replaces the same four layers. This is why a new one is a focused job rather than a rewrite.<span class="hi">हर पीग्लव थीम एक ही चार परतें बदलती है। इसीलिए नई थीम एक दोबारा लिखना नहीं, एक सीमित काम है।</span></span></p>
+  <div class="grid">
+    <div class="card c-default">
+      <span class="card-ico">&#127912;</span>
+      <h3><span class="tr">Colour system<span class="hi">कलर सिस्टम</span></span></h3>
+      <p><span class="tr">A defined palette mapped onto the engine's CSS custom properties. This is the layer you see most, and the one that decides whether a theme feels coherent or noisy.<span class="hi">इंजन की CSS कस्टम प्रॉपर्टीज पर मैप किया गया तय पैलेट। यही वह परत है जो सबसे ज़्यादा दिखती है, और तय करती है कि थीम सुसंगत लगेगी या बेतरतीब।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <span class="card-ico">&#128444;</span>
+      <h3><span class="tr">Icon set<span class="hi">आइकन सेट</span></span></h3>
+      <p><span class="tr">A complete hand-drawn set covering every browser action, drawn in one consistent style. Gaps are the usual reason a theme looks unfinished, so this is the longest single task.<span class="hi">हर ब्राउज़र क्रिया के लिए एक पूरा हाथ से बना सेट, एक ही शैली में। कमी ही वह आम वजह है जिससे थीम अधूरी लगती है, इसलिए यही सबसे लंबा अकेला काम है।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <span class="card-ico">&#128266;</span>
+      <h3><span class="tr">Sound design<span class="hi">साउंड डिज़ाइन</span></span></h3>
+      <p><span class="tr">Optional audio for events like opening a tab or completing a search, kept off by default. Every theme ships its own rather than reusing a shared pack, so it has to be produced from scratch.<span class="hi">टैब खोलने या सर्च पूरी होने जैसी घटनाओं के लिए वैकल्पिक ऑडियो, जो डिफ़ॉल्ट रूप से बंद रहता है। हर थीम अपना साउंड लाती है, साझा पैक नहीं, इसलिए शुरू से बनाना पड़ता है।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <span class="card-ico">&#128202;</span>
+      <h3><span class="tr">Regression pass<span class="hi">रिग्रेशन पास</span></span></h3>
+      <p><span class="tr">Checking every screen against the new palette for contrast failures and unreadable states. Unglamorous, and the reason finished themes stay usable rather than merely pretty.<span class="hi">हर स्क्रीन को नई पैलेट के साथ कंट्रास्ट फेल्योर और अपठनीय स्थितियों के लिए जाँचना। निष्प्रभावी काम, लेकिन इसीलिए पूरी थीमें इस्तेमाल योग्य रहती हैं, सिर्फ सुंदर नहीं।</span></span></p>
+    </div>
+  </div>
+
+  <h2 class="block-title"><span class="tr">Choosing where to start<span class="hi">कहाँ से शुरू करें</span></span></h2>
+  <div class="grid narrow">
+    <div class="card c-live">
+      <h3><span class="tr">Just want a browser?<span class="hi">बस एक ब्राउज़र चाहिए?</span></span></h3>
+      <p><span class="tr">Install stable v1.0.3 and use it as your daily driver. It is the tested build and the one with no known data-loss issues.<span class="hi">स्थिर v1.0.3 इंस्टॉल करें और इसे रोज़ के ब्राउज़र की तरह इस्तेमाल करें। यह टेस्ट की गई बिल्ड है और इसमें डेटा-हानि की कोई ज्ञात समस्या नहीं है।</span></span></p>
+      <div class="card-actions">
+        <a href="/#download" class="btn btn-primary btn-sm"><i class="fas fa-download"></i> <span class="tr">Get v1.0.3<span class="hi">v1.0.3 लें</span></span></a>
+      </div>
+    </div>
+    <div class="card c-archived">
+      <h3><span class="tr">Want the Pokemon theme?<span class="hi">पोकेमॉन थीम चाहिए?</span></span></h3>
+      <p><span class="tr">The v1.0.4 archive is permanently available with its source. Treat the packages as preserved artifacts rather than maintained releases.<span class="hi">v1.0.4 आर्काइव उसके सोर्स के साथ स्थायी रूप से उपलब्ध है। पैकेजों को अनुरक्षित रिलीज़ नहीं, सुरक्षित रखे गए कलाकृत मानें।</span></span></p>
+      <div class="card-actions">
+        <a href="/v1.0.4/" class="btn btn-outline btn-sm"><i class="fas fa-box-archive"></i> <span class="tr">Open archive<span class="hi">आर्काइव खोलें</span></span></a>
+      </div>
+    </div>
+    <div class="card c-paused">
+      <h3><span class="tr">Waiting on Minecraft, GTA 6 or Vice City?<span class="hi">Minecraft, GTA 6 या Vice City का इंतज़ार है?</span></span></h3>
+      <p><span class="tr">Those three are designed but paused pending funding. There is no schedule to wait for, so funding is the only real unblock.<span class="hi">तीनों डिज़ाइन किए जा चुके हैं लेकिन फंडिंग की प्रतीक्षा में रुके हैं। इंतज़ार करने के लिए कोई समय-सारणी नहीं है, इसलिए फंडिंग ही असली रुकावट है।</span></span></p>
+      <div class="card-actions">
+        <a href="/roadmap.html" class="btn btn-ghost btn-sm"><i class="fas fa-road"></i> <span class="tr">See roadmap<span class="hi">रोडमैप देखें</span></span></a>
+        <a href="/support.html" class="btn btn-ghost btn-sm"><i class="fas fa-heart"></i> <span class="tr">Support us<span class="hi">सहायता करें</span></span></a>
+      </div>
+    </div>
+  </div>
 '@
 }
 
@@ -326,11 +384,16 @@ $pages += @{
   desc    = "PGlove browser features: real Tauri 2 and Rust core instead of an Electron wrapper, per-tab WebView2 isolation, no telemetry, themeable engine, featherweight 4 GB footprint, made in India."
   keys    = "PGlove features, Tauri 2 browser, Rust browser, WebView2 per-tab isolation, privacy browser, no telemetry, open source browser, Made in India"
   active  = "/features.html"
+  crumb   = "Features"
+  schemaType = "WebPage"
+  aboutVersion = ""
   tag     = "<span class=`"tr`">Features<span class=`"hi`">विशेषताएँ</span></span>"
   h1      = "<span class=`"tr`">Why PGlove<span class=`"hi`">पीग्लव क्यों</span></span>"
   sub     = "<span class=`"tr`">Six reasons this browser is different. No marketing fluff - just what is actually in the build.<span class=`"hi hi-long`">छह कारण यह ब्राउज़र अलग है। कोई मार्केटिंग नहीं — बस वही जो बिल्ड में सचमुच है।</span></span>"
   body    = @'
 
+  <h2 class="block-title"><span class="tr">Under the hood<span class="hi">अंदर से</span></span></h2>
+  <p class="block-sub"><span class="tr">The parts that make PGlove behave differently from the browsers it replaces.<span class="hi">वे हिस्से जो पीग्लव को उन ब्राउज़रों से अलग बनाते हैं जिनकी यह जगह लेता है।</span></span></p>
   <div class="grid">
     <div class="card c-default">
       <span class="card-ico">&#9889;</span>
@@ -341,33 +404,38 @@ $pages += @{
     <div class="card c-default">
       <span class="card-ico">&#128194;</span>
       <h3><span class="tr">Per-tab isolation<span class="hi">प्रति-टैब आइसोलेशन</span></span></h3>
-      <p><span class="tr">Every tab is its own WebView2 instance with genuine per-tab history, so one bad page cannot reach into another's session.<span class="hi">हर टैब अपना WebView2 इंस्टेंस है, असली प्रति-टैब हिस्ट्री के साथ, इसलिए कोई बुरा पेज दूसरे के सेशन तक नहीं पहुँच सकता।</span></span></p>
-    </div>
-    <div class="card c-live">
-      <span class="card-ico">&#128274;</span>
-      <h3><span class="tr">Privacy first<span class="hi">प्राइवेसी पहले</span></span></h3>
-      <p><span class="tr">No telemetry, no analytics, no tracking pixels, and no data sold. Your browsing history is written to your disk and never transmitted to us.<span class="hi">कोई टेलीमेट्री नहीं, कोई एनालिटिक्स नहीं, कोई ट्रैकिंग पिक्सेल नहीं, और डेटा बेचा नहीं जाता। आपकी हिस्ट्री आपकी डिस्क पर लिखी जाती है और हमें कभी नहीं भेजी जाती।</span></span></p>
-      <div class="card-actions">
-        <a href="/privacy/" class="btn btn-ghost btn-sm"><i class="fas fa-shield-halved"></i> <span class="tr">Privacy Policy<span class="hi">गोपनीयता नीति</span></span></a>
-      </div>
+      <p><span class="tr">Every tab is its own WebView2 instance with genuine per-tab history, so one bad page cannot reach into another tab's session.<span class="hi">हर टैब अपना WebView2 इंस्टेंस है, असली प्रति-टैब हिस्ट्री के साथ, इसलिए कोई बुरा पेज दूसरे टैब के सेशन तक नहीं पहुँच सकता।</span></span></p>
     </div>
     <div class="card c-dev">
       <span class="card-ico">&#127912;</span>
       <h3><span class="tr">Themeable core<span class="hi">थीम योग्य कोर</span></span></h3>
-      <p><span class="tr">The engine is the theme layer. Swap the whole look, not one stylesheet - which is how the Pokemon, Minecraft, GTA 6 and Vice City themes work.<span class="hi">इंजन ही थीम लेयर है। पूरा लुक बदलें, सिर्फ एक स्टाइलशीट नहीं — यही पोकेमॉन, Minecraft, GTA 6 और Vice City थीम का तरीका है।</span></span></p>
+      <p><span class="tr">The engine is the theme layer. Swap the whole look, not one stylesheet - which is how the Pokemon, Minecraft, GTA 6 and Vice City themes work.<span class="hi">इंजन ही थीम लेयर है। पूरा लुक बदलें, सिर्फ एक स्टाइलशीट नहीं - यही पोकेमॉन, Minecraft, GTA 6 और Vice City थीम का तरीका है।</span></span></p>
       <div class="card-actions">
         <a href="/extensions.html" class="btn btn-outline btn-sm"><i class="fas fa-palette"></i> <span class="tr">Extensions<span class="hi">एक्सटेंशन</span></span></a>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="block-title"><span class="tr">What you get<span class="hi">आपको क्या मिलता है</span></span></h2>
+  <p class="block-sub"><span class="tr">The practical side: what PGlove does with your data, and what hardware it asks of you.<span class="hi">व्यावहारिक पक्ष: पीग्लव आपके डेटा के साथ क्या करता है, और कितने हार्डवेयर की माँग करता है।</span></span></p>
+  <div class="grid">
+    <div class="card c-live">
+      <span class="card-ico">&#128274;</span>
+      <h3><span class="tr">Privacy first<span class="hi">प्राइवेसी पहले</span></span></h3>
+      <p><span class="tr">No telemetry, no analytics, no tracking pixels, and no data sold. Your browsing history is written to your own disk and never transmitted to us.<span class="hi">कोई टेलीमेट्री नहीं, कोई एनालिटिक्स नहीं, कोई ट्रैकिंग पिक्सेल नहीं, और डेटा बेचा नहीं जाता। आपकी हिस्ट्री आपकी डिस्क पर लिखी जाती है और हमें कभी नहीं भेजी जाती।</span></span></p>
+      <div class="card-actions">
+        <a href="/privacy/" class="btn btn-ghost btn-sm"><i class="fas fa-shield-halved"></i> <span class="tr">Privacy Policy<span class="hi">गोपनीयता नीति</span></span></a>
       </div>
     </div>
     <div class="card c-archived">
       <span class="card-ico">&#129718;</span>
       <h3><span class="tr">Featherweight<span class="hi">पंखों जितनी हल्की</span></span></h3>
-      <p><span class="tr">Runs happily on 4 GB RAM and integrated Intel UHD Graphics 600 - the same machine this project was written on.<span class="hi">4 GB रैम और इंटीग्रेटेड Intel UHD Graphics 600 पर आराम से चलती है — वही मशीन जिस पर यह प्रोजेक्ट लिखा गया।</span></span></p>
+      <p><span class="tr">Runs happily on 4 GB RAM and integrated Intel UHD Graphics 600 - the same machine this project was written on.<span class="hi">4 GB रैम और इंटीग्रेटेड Intel UHD Graphics 600 पर आराम से चलती है - वही मशीन जिस पर यह प्रोजेक्ट लिखा गया।</span></span></p>
     </div>
     <div class="card c-done">
       <span class="card-ico">&#127471;&#127479;</span>
       <h3><span class="tr">Made in India for the world<span class="hi">भारत में बना, दुनिया के लिए</span></span></h3>
-      <p><span class="tr">Designed, written, and shipped from India for everyone, for next zen internet exploration.<span class="hi">पूरी दुनिया के लिए भारत से डिज़ाइन, लिखा और रिलीज़ किया गया — अगली पीढ़ी की इंटरनेट खोज के लिए।</span></span></p>
+      <p><span class="tr">Designed, written, and shipped from India for everyone, for next zen internet exploration.<span class="hi">पूरी दुनिया के लिए भारत से डिज़ाइन, लिखा और रिलीज़ किया गया - अगली पीढ़ी की इंटरनेट खोज के लिए।</span></span></p>
     </div>
   </div>
 
@@ -389,11 +457,16 @@ $pages += @{
   desc    = "PGlove browser roadmap with honest status. v1.0.3 is the stable release, v1.0.4 Pokemon theme is archived, and v1.0.5, v1.0.6 and v1.0.7 are paused pending funding."
   keys    = "PGlove roadmap, PGlove v1.0.3, PGlove v1.0.4, PGlove v1.0.5, PGlove release history, browser funding"
   active  = "/roadmap.html"
+  crumb   = "Roadmap"
+  schemaType = "WebPage"
+  aboutVersion = "1.0.3"
   tag     = "<span class=`"tr`">Roadmap<span class=`"hi`">रोडमैप</span></span>"
   h1      = "<span class=`"tr`">Where PGlove is going<span class=`"hi`">पीग्लव कहाँ जा रहा है</span></span>"
   sub     = "<span class=`"tr`">Honest status. No fake dates, no vapourware. If a version is paused, it says paused.<span class=`"hi hi-long`">ईमानदार स्थिति। कोई नकली तारीख नहीं, कोई वेपरवेयर नहीं। यदि कोई संस्करण रुका हुआ है, तो यहाँ रुका हुआ लिखा है।</span></span>"
   body    = @'
 
+  <h2 class="block-title"><span class="tr">Release history<span class="hi">रिलीज़ इतिहास</span></span></h2>
+  <p class="block-sub"><span class="tr">Every version, what it did, and what happened to it. Nothing here is aspirational.<span class="hi">हर संस्करण, उसने क्या किया, और उसका क्या हुआ। यहाँ कुछ भी कल्पना नहीं है।</span></span></p>
   <div class="road">
     <div class="road-item done">
       <div class="road-head">
@@ -401,7 +474,7 @@ $pages += @{
         <span class="road-name"><span class="tr">Stable<span class="hi">स्थिर</span></span></span>
         <span class="badge b-green"><span class="tr">Live<span class="hi">लाइव</span></span></span>
       </div>
-      <p><span class="tr">The current stable release. Available on NPM, NuGet, Winget (pending), itch.io and the Internet Archive. <a href="/#download" style="color:#ab7bff">Download it &rarr;</a><span class="hi hi-long">वर्तमान स्थिर रिलीज़। NPM, NuGet, Winget (लंबित), itch.io और Internet Archive पर उपलब्ध। <a href="/#download" style="color:#ab7bff">डाउनलोड करें &rarr;</a></span></span></p>
+      <p><span class="tr">The current stable release and the one we recommend. Built on a real Tauri 2 and Rust core with per-tab WebView2 isolation, and the first build to ship without telemetry. Available on NPM, NuGet, Winget (pending), itch.io and the Internet Archive. <a href="/#download" style="color:#ab7bff">Download it &rarr;</a><span class="hi hi-long">वर्तमान स्थिर रिलीज़ और वही जिसकी हम सिफ़ारिश करते हैं। असली Tauri 2 और Rust कोर पर बनी, प्रति-टैब WebView2 आइसोलेशन के साथ, और टेलीमेट्री के बिना जाने वाली पहली बिल्ड। NPM, NuGet, Winget (लंबित), itch.io और Internet Archive पर उपलब्ध। <a href="/#download" style="color:#ab7bff">डाउनलोड करें &rarr;</a></span></span></p>
     </div>
     <div class="road-item arch">
       <div class="road-head">
@@ -409,7 +482,7 @@ $pages += @{
         <span class="road-name"><span class="tr">Pokemon Theme<span class="hi">पोकेमॉन थीम</span></span></span>
         <span class="badge b-orange"><span class="tr">Archived<span class="hi">संग्रहीत</span></span></span>
       </div>
-      <p><span class="tr">Built with Tauri 2, Rust and WebView2, then archived so the source stays available forever. <a href="/v1.0.4/" style="color:#ab7bff">Open the archive &rarr;</a><span class="hi hi-long">Tauri 2, Rust और WebView2 के साथ बनी, फिर सोर्स हमेशा उपलब्ध रहे इसलिए आर्काइव कर दी गई। <a href="/v1.0.4/" style="color:#ab7bff">आर्काइव खोलें &rarr;</a></span></span></p>
+      <p><span class="tr">The Pokemon theme shipped, then was archived so the source stays available permanently. Poke ball UI, 151 hand-drawn 8-bit icons, nostalgic sounds and six type-based colour schemes. Built with Tauri 2, Rust and WebView2 by Aditya Kumar Sethi and Darshil Sharma. <a href="/v1.0.4/" style="color:#ab7bff">Open the archive &rarr;</a><span class="hi hi-long">पोकेमॉन थीम जारी हुई, फिर आर्काइव कर दी गई ताकि सोर्स हमेशा के लिए उपलब्ध रहे। पोकेबॉल UI, 151 हाथ से बने 8-बिट आइकन, नॉस्टैल्जिक ध्वनियाँ और छह टाइप-आधारित कलर स्कीम। आदित्य कुमार सेठी और दर्शील शर्मा द्वारा Tauri 2, Rust और WebView2 के साथ निर्मित। <a href="/v1.0.4/" style="color:#ab7bff">आर्काइव खोलें &rarr;</a></span></span></p>
     </div>
     <div class="road-item paused">
       <div class="road-head">
@@ -417,7 +490,7 @@ $pages += @{
         <span class="road-name">Minecraft</span>
         <span class="badge b-grey"><span class="tr">Paused - Funding<span class="hi">रुका हुआ - फंडिंग</span></span></span>
       </div>
-      <p><span class="tr">Paused pending funding. Nothing in progress.<span class="hi">फंडिंग की प्रतीक्षा में रुका हुआ। कोई काम प्रगति पर नहीं।</span></span></p>
+      <p><span class="tr">Designed but not started. Blocky green palette, pixel-perfect chrome, and a crafting-flavoured sidebar. Nothing is in progress.<span class="hi">डिज़ाइन किए गए लेकिन शुरू नहीं किए। ब्लॉकी हरी पैलेट, पिक्सल-परफेक्ट क्रोम और क्राफ्टिंग-स्टाइल साइडबार। कोई काम प्रगति पर नहीं।</span></span></p>
     </div>
     <div class="road-item paused">
       <div class="road-head">
@@ -425,7 +498,7 @@ $pages += @{
         <span class="road-name">GTA 6</span>
         <span class="badge b-grey"><span class="tr">Paused - Funding<span class="hi">रुका हुआ - फंडिंग</span></span></span>
       </div>
-      <p><span class="tr">Paused pending funding. Nothing in progress.<span class="hi">फंडिंग की प्रतीक्षा में रुका हुआ। कोई काम प्रगति पर नहीं।</span></span></p>
+      <p><span class="tr">Designed but not started. Leonida-inspired neon and sunset palette. Nothing is in progress.<span class="hi">डिज़ाइन किए गए लेकिन शुरू नहीं किए। लियोनिडा से प्रेरित नियॉन और सनसेट पैलेट। कोई काम प्रगति पर नहीं।</span></span></p>
     </div>
     <div class="road-item paused">
       <div class="road-head">
@@ -433,7 +506,46 @@ $pages += @{
         <span class="road-name">Vice City</span>
         <span class="badge b-grey"><span class="tr">Paused - Funding<span class="hi">रुका हुआ - फंडिंग</span></span></span>
       </div>
-      <p><span class="tr">Paused pending funding. Nothing in progress.<span class="hi">फंडिंग की प्रतीक्षा में रुका हुआ। कोई काम प्रगति पर नहीं।</span></span></p>
+      <p><span class="tr">Designed but not started. Neon-soaked retro theme with synthwave chrome. Nothing is in progress.<span class="hi">डिज़ाइन किए गए लेकिन शुरू नहीं किए। सिंथवेव क्रोम के साथ नीयन-युक्त रेट्रो थीम। कोई काम प्रगति पर नहीं।</span></span></p>
+    </div>
+  </div>
+
+  <h2 class="block-title"><span class="tr">Why development stopped<span class="hi">विकास क्यों रुका</span></span></h2>
+  <p class="block-sub"><span class="tr">The honest answer, because vague roadmaps waste everyone's time.<span class="hi">सीधा जवाब, क्योंकि अस्पष्ट रोडमैप सबका समय बर्बाद करते हैं।</span></span></p>
+  <div class="grid">
+    <div class="card c-default">
+      <span class="card-ico">&#128176;</span>
+      <h3><span class="tr">No revenue, no sponsors<span class="hi">न आय, न स्पॉन्सर</span></span></h3>
+      <p><span class="tr">PGlove has no ads, no sponsor deals, no paid tier and no paywall. There is no income attached to the project, so the releases after v1.0.4 need money to exist at all.<span class="hi">पीग्लव में कोई विज्ञापन नहीं, कोई स्पॉन्सर डील नहीं, कोई पेड टियर नहीं और कोई पेवॉल नहीं। प्रोजेक्ट से कोई आय नहीं जुड़ी है, इसलिए v1.0.4 के बाद की रिलीज़ के लिए पैसा चाहिए।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <span class="card-ico">&#9203;</span>
+      <h3><span class="tr">Built on donated hardware<span class="hi">दान किए हार्डवेयर पर बना</span></span></h3>
+      <p><span class="tr">Development happens on a 4 GB machine with a Tiny 10 LTSC install and integrated Intel UHD Graphics 600. That is enough to build and test, but not enough to run everything at once.<span class="hi">विकास 4 GB मशीन पर होता है, जिसमें Tiny 10 LTSC इंस्टॉल और इंटीग्रेटेड Intel UHD Graphics 600 है। बनाने और जाँचने के लिए पर्याप्त, लेकिन सब कुछ एक साथ चलाने के लिए नहीं।</span></span></p>
+    </div>
+    <div class="card c-archived">
+      <span class="card-ico">&#9989;</span>
+      <h3><span class="tr">Paused, not abandoned<span class="hi">रुका हुआ, छोड़ा नहीं</span></span></h3>
+      <p><span class="tr">The source for every version is public and the v1.0.4 archive is permanent. If funding arrives, work resumes exactly where it stopped - nothing has to be rewritten.<span class="hi">हर संस्करण का सोर्स सार्वजनिक है और v1.0.4 आर्काइव स्थायी है। फंडिंग मिलने पर काम ठीक वहीं से शुरू होगा जहाँ रुका - कुछ भी दोबारा लिखने की ज़रूरत नहीं।</span></span></p>
+    </div>
+  </div>
+
+  <h2 class="block-title"><span class="tr">What funding would unlock<span class="hi">फंडिंग से क्या खुलेगा</span></span></h2>
+  <div class="grid">
+    <div class="card c-dev">
+      <span class="card-ico">&#128640;</span>
+      <h3><span class="tr">Theme production<span class="hi">थीम निर्माण</span></span></h3>
+      <p><span class="tr">Each theme needs a full icon set, sound design, colour system and regression pass. That is the single largest cost per release.<span class="hi">हर थीम के लिए पूरा आइकन सेट, साउंड डिज़ाइन, कलर सिस्टम और रिग्रेशन टेस्ट चाहिए। यही हर रिलीज़ की सबसे बड़ी लागत है।</span></span></p>
+    </div>
+    <div class="card c-dev">
+      <span class="card-ico">&#129438;</span>
+      <h3><span class="tr">Signed Windows builds<span class="hi">साइन किए Windows बिल्ड</span></span></h3>
+      <p><span class="tr">A code-signing certificate removes the SmartScreen warning that currently appears on first launch. This is a fixed annual fee.<span class="hi">कोड-साइनिंग सर्टिफिकेट वह SmartScreen चेतावनी हटा देता है जो पहली बार लॉन्च पर आती है। यह एक निश्चित वार्षिक शुल्क है।</span></span></p>
+    </div>
+    <div class="card c-dev">
+      <span class="card-ico">&#128187;</span>
+      <h3><span class="tr">Test hardware<span class="hi">टेस्ट हार्डवेयर</span></span></h3>
+      <p><span class="tr">Testing only on one machine hides bugs that appear on other GPUs, RAM configurations and screen sizes.<span class="hi">सिर्फ एक मशीन पर टेस्ट करने से दूसरे GPU, RAM कॉन्फ़िगरेशन और स्क्रीन साइज़ पर आने वाले बग छिप जाते हैं।</span></span></p>
     </div>
   </div>
 
@@ -455,6 +567,9 @@ $pages += @{
   desc    = "Get help with PGlove. Join the community on Proton Meet, Slack or Matrix, email pglove@atomicmail.io, open a GitHub issue, or support development with a Bitcoin donation."
   keys    = "PGlove support, PGlove help, PGlove community, PGlove Matrix, PGlove Slack, PGlove email support, PGlove donate"
   active  = "/support.html"
+  crumb   = "Support"
+  schemaType = "ContactPage"
+  aboutVersion = ""
   tag     = "<span class=`"tr`">Support<span class=`"hi`">सहायता</span></span>"
   h1      = "<span class=`"tr`">Get help<span class=`"hi`">मदद लें</span></span>"
   sub     = "<span class=`"tr`">Bug reports, build questions, funding questions - pick whichever channel suits you.<span class=`"hi hi-long`">बग रिपोर्ट, बिल्ड से जुड़े सवाल, फंडिंग - जो चैनल आपको ठीक लगे चुनें।</span></span>"
@@ -522,15 +637,109 @@ $pages += @{
   <div class="note info">
     <span class="tr">Both addresses are public and we cannot see, link, or trace a donation to you. Wallet addresses are for the project, not for individuals.<span class="hi hi-long">दोनों पते सार्वजनिक हैं और हम दान को आपसे जोड़ या ट्रेस नहीं कर सकते। वॉलेट पते प्रोजेक्ट के लिए हैं, व्यक्तियों के लिए नहीं।</span></span>
   </div>
+
+  <h2 class="block-title"><span class="tr">Before you ask<span class="hi">सवाल पूछने से पहले</span></span></h2>
+  <p class="block-sub"><span class="tr">The five questions that come up most often, answered properly instead of by a link.<span class="hi">सबसे ज़्यादा पूछे जाने वाले पाँच सवाल, लिंक भेजने के बजाय सही जवाब के साथ।</span></span></p>
+  <div class="grid">
+    <div class="card c-default">
+      <h3><span class="tr">What are the system requirements?<span class="hi">सिस्टम आवश्यकताएँ क्या हैं?</span></span></h3>
+      <p><span class="tr">Windows 10 or later, 64-bit, with the WebView2 Runtime. Most Windows 10 and 11 installs already ship it, but if the app opens to a blank window that is the first thing to check. Around 500 MB of free disk space is enough.<span class="hi">Windows 10 या बाद का, 64-बिट, WebView2 Runtime के साथ। अधिकांश Windows 10 और 11 इंस्टॉल में यह पहले से होता है, लेकिन ऐप खुलकर सफ़ेद स्क्रीन दिखे तो पहले यही देखें। लगभग 500 MB फ्री डिस्क स्पेस काफ़ी है।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <h3><span class="tr">Windows says SmartScreen blocked it. Is it safe?<span class="hi">Windows ने SmartScreen से रोका है। क्या यह सुरक्षित है?</span></span></h3>
+      <p><span class="tr">Yes. The builds are not code-signed yet, which is a known cost gap listed on the roadmap, not a malware signal. Choose More info then Run anyway. We would rather pay for a signing certificate than ask you to trust an unsigned binary blindly.<span class="hi">हाँ। बिल्ड्स अभी कोड-साइन नहीं हैं, जो रोडमैप में दर्ज एक ज्ञात लागत का अंतर है, मैलवेयर का संकेत नहीं। More info चुनें फिर Run anyway दबाएँ। हम अनसाइन्ड बाइनरी पर अंधेक्षे से भरोसा करने के बजाय साइनिंग सर्टिफिकेट खरीदना पसंद करते हैं।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <h3><span class="tr">Is Nighty safe to use?<span class="hi">क्या Nighty सुरक्षित है?</span></span></h3>
+      <p><span class="tr">Nighty builds are unstable by definition and can lose data. Use them for testing, never as your only browser. If you need something dependable, take stable v1.0.3.<span class="hi">Nighty बिल्ड स्वयं की परिभाषा से अस्थिर हैं और डेटा खो सकते हैं। इन्हें टेस्टिंग के लिए इस्तेमाल करें, अपना एकमात्र ब्राउज़र कभी नहीं। भरोसेमंद चाहिए तो स्थिर v1.0.3 लें।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <h3><span class="tr">What data does PGlove collect?<span class="hi">पीग्लव कौन-सा डेटा जुटाता है?</span></span></h3>
+      <p><span class="tr">None. No telemetry, no analytics, no crash reporting, no tracking pixels. Your history is stored on your own disk. The full breakdown is on the <a href="/privacy/">privacy policy</a> page.<span class="hi">कोई नहीं। न टेलीमेट्री, न एनालिटिक्स, न क्रैश रिपोर्टिंग, न ट्रैकिंग पिक्सेल। आपकी हिस्ट्री आपकी अपनी डिस्क पर रहती है। पूरी जानकारी <a href="/privacy/">गोपनीयता नीति</a> पेज पर है।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <h3><span class="tr">Can I build it myself?<span class="hi">क्या मैं इसे खुद बना सकता हूँ?</span></span></h3>
+      <p><span class="tr">Yes, and that is the point of the BSD 3-Clause licence. Clone the repository, follow the build instructions, and you own your build completely. Fork it, change the theme layer, open a pull request if you think others would want it.<span class="hi">हाँ, और यही BSD 3-Clause लाइसेंस का मकसद है। रिपॉज़िटरी क्लोन करें, बिल्ड निर्देशों का पालन करें, और आपका बिल्ड पूरी तरह आपका है। फोर्क करें, थीम लेयर बदलें, और अगर लगे कि दूसरों को भी चाहिए तो पुल रिक्वेस्ट खोलें।</span></span></p>
+    </div>
+    <div class="card c-default">
+      <h3><span class="tr">How do I report a bug properly?<span class="hi">बग सही तरीके से कैसे रिपोर्ट करें?</span></span></h3>
+      <p><span class="tr">Search the existing issues first, then open a new one with your PGlove version, Windows build, the exact steps to reproduce, and what you expected to happen. Logs and screenshots turn a two-week thread into a same-day fix.<span class="hi">पहले मौजूदा इश्यू देखें, फिर नया खोलें और उसमें अपना PGlove वर्जन, Windows बिल्ड, दोहराने के सटीक कदम, और आपकी अपेक्षा बताएं। लॉग और स्क्रीनशॉट दो हफ्ते की चर्चा को एक ही दिन में ठीक करा देते हैं।</span></span></p>
+    </div>
+  </div>
 '@
 }
 
 # ---------------------------------------------------------------------------
+# JSON-LD
+# Sub-pages previously shipped with no structured data at all, which is why
+# only the home page ever validated. Each page now emits a WebPage plus a
+# BreadcrumbList, and every page that discusses a specific release also
+# references the canonical SoftwareApplication on the home page rather than
+# redeclaring it.
+# ---------------------------------------------------------------------------
+function New-JsonLd {
+  param(
+    [string]$Url,
+    [string]$Title,
+    [string]$Desc,
+    [string]$Crumb,
+    [string]$Type = 'WebPage',
+    [string]$AboutVersion = ''
+  )
+
+  # JSON string escaping. Built by concatenation rather than -f: a .NET format
+  # string rejects bare "{" as an invalid format item, and PowerShell has no
+  # \" escape inside single-quoted strings, so -f was the wrong tool twice over.
+  function JEsc([string]$s) {
+    if ($null -eq $s) { return '' }
+    $s = $s.Replace('\', '\\')
+    $s = $s.Replace('"', '\"')
+    $s = $s.Replace("`r", '')
+    $s = $s.Replace("`n", '\n')
+    return $s
+  }
+
+  $nl = "`n"
+  $parts = @()
+
+  $parts += '    { "@type": "' + (JEsc $Type) + '",' +
+            ' "@id": "' + (JEsc $Url) + '#webpage",' +
+            ' "url": "' + (JEsc $Url) + '",' +
+            ' "name": "' + (JEsc $Title) + '",' +
+            ' "description": "' + (JEsc $Desc) + '",' +
+            ' "inLanguage": "en",' +
+            ' "isPartOf": { "@id": "https://pglove.jo3.org/#website" },' +
+            ' "about": { "@id": "https://pglove.jo3.org/#app" } }'
+
+  $c1 = '      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pglove.jo3.org/" }'
+  $c2 = '      { "@type": "ListItem", "position": 2, "name": "' + (JEsc $Crumb) + '", "item": "' + (JEsc $Url) + '" }'
+  $parts += '    { "@type": "BreadcrumbList", "itemListElement": [' + $nl + $c1 + ',' + $nl + $c2 + $nl + '    ] }'
+
+  if ($AboutVersion) {
+    $parts += '    { "@type": "SoftwareVersion",' +
+              ' "softwareVersion": "' + (JEsc $AboutVersion) + '",' +
+              ' "softwareRequirements": "Windows 10 or later, 64-bit, with WebView2 Runtime",' +
+              ' "url": "https://pglove.jo3.org/roadmap.html" }'
+  }
+
+  $body = $parts -join (',' + $nl)
+  return '{' + $nl +
+         '  "@context": "https://schema.org",' + $nl +
+         '  "@graph": [' + $nl +
+         $body + $nl +
+         '  ]' + $nl +
+         '}'
+}
+
+# ---------------------------------------------------------------------------
 foreach ($p in $pages) {
+  $jsonld = New-JsonLd -Url $p.canon -Title $p.title -Desc $p.desc -Crumb $p.crumb `
+                       -Type $p.schemaType -AboutVersion $p.aboutVersion
   $html = $HEAD.Replace("__TITLE__", $p.title).Replace("__DESC__", $p.desc).Replace("__KEYS__", $p.keys).
                 Replace("__CANON__", $p.canon).Replace("__ACTIVE__", $p.active).
                 Replace("__TAG__", $p.tag).Replace("__H1__", $p.h1).
-                Replace("__SUB__", $p.sub).Replace("__BODY__", $p.body)
+                Replace("__SUB__", $p.sub).Replace("__BODY__", $p.body).
+                Replace("__JSONLD__", $jsonld)
   $out = Join-Path $root $p.file
   [System.IO.File]::WriteAllText($out, $html, (New-Object System.Text.UTF8Encoding $false))
   Write-Output ("wrote {0,-18} {1,7} bytes" -f $p.file, (Get-Item $out).Length)

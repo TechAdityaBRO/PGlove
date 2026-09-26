@@ -7,9 +7,22 @@
 <meta name="description" content="PGlove browser features: real Tauri 2 and Rust core instead of an Electron wrapper, per-tab WebView2 isolation, no telemetry, themeable engine, featherweight 4 GB footprint, made in India.">
 <meta name="keywords" content="PGlove features, Tauri 2 browser, Rust browser, WebView2 per-tab isolation, privacy browser, no telemetry, open source browser, Made in India">
 <meta name="author" content="Aditya Kumar Sethi (TechAdityaBRO)">
-<meta name="robots" content="index, follow, max-snippet:-1">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
 <meta name="theme-color" content="#0a0420">
 <link rel="canonical" href="https://pglove.jo3.org/features.html">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    { "@type": "WebPage", "@id": "https://pglove.jo3.org/features.html#webpage", "url": "https://pglove.jo3.org/features.html", "name": "PGlove Features - A Real Tauri 2 Browser, Privacy First | PGlove", "description": "PGlove browser features: real Tauri 2 and Rust core instead of an Electron wrapper, per-tab WebView2 isolation, no telemetry, themeable engine, featherweight 4 GB footprint, made in India.", "inLanguage": "en", "isPartOf": { "@id": "https://pglove.jo3.org/#website" }, "about": { "@id": "https://pglove.jo3.org/#app" } },
+    { "@type": "BreadcrumbList", "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://pglove.jo3.org/" },
+      { "@type": "ListItem", "position": 2, "name": "Features", "item": "https://pglove.jo3.org/features.html" }
+    ] }
+  ]
+}
+</script>
 
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="PGlove">
@@ -199,6 +212,8 @@ footer a:hover{text-decoration:underline}
   <h1 class="page-title"><span class="tr">Why PGlove<span class="hi">पीग्लव क्यों</span></span></h1>
   <p class="page-sub"><span class="tr">Six reasons this browser is different. No marketing fluff - just what is actually in the build.<span class="hi hi-long">छह कारण यह ब्राउज़र अलग है। कोई मार्केटिंग नहीं — बस वही जो बिल्ड में सचमुच है।</span></span></p>
 
+  <h2 class="block-title"><span class="tr">Under the hood<span class="hi">अंदर से</span></span></h2>
+  <p class="block-sub"><span class="tr">The parts that make PGlove behave differently from the browsers it replaces.<span class="hi">वे हिस्से जो पीग्लव को उन ब्राउज़रों से अलग बनाते हैं जिनकी यह जगह लेता है।</span></span></p>
   <div class="grid">
     <div class="card c-default">
       <span class="card-ico">&#9889;</span>
@@ -209,33 +224,38 @@ footer a:hover{text-decoration:underline}
     <div class="card c-default">
       <span class="card-ico">&#128194;</span>
       <h3><span class="tr">Per-tab isolation<span class="hi">प्रति-टैब आइसोलेशन</span></span></h3>
-      <p><span class="tr">Every tab is its own WebView2 instance with genuine per-tab history, so one bad page cannot reach into another's session.<span class="hi">हर टैब अपना WebView2 इंस्टेंस है, असली प्रति-टैब हिस्ट्री के साथ, इसलिए कोई बुरा पेज दूसरे के सेशन तक नहीं पहुँच सकता।</span></span></p>
-    </div>
-    <div class="card c-live">
-      <span class="card-ico">&#128274;</span>
-      <h3><span class="tr">Privacy first<span class="hi">प्राइवेसी पहले</span></span></h3>
-      <p><span class="tr">No telemetry, no analytics, no tracking pixels, and no data sold. Your browsing history is written to your disk and never transmitted to us.<span class="hi">कोई टेलीमेट्री नहीं, कोई एनालिटिक्स नहीं, कोई ट्रैकिंग पिक्सेल नहीं, और डेटा बेचा नहीं जाता। आपकी हिस्ट्री आपकी डिस्क पर लिखी जाती है और हमें कभी नहीं भेजी जाती।</span></span></p>
-      <div class="card-actions">
-        <a href="/privacy/" class="btn btn-ghost btn-sm"><i class="fas fa-shield-halved"></i> <span class="tr">Privacy Policy<span class="hi">गोपनीयता नीति</span></span></a>
-      </div>
+      <p><span class="tr">Every tab is its own WebView2 instance with genuine per-tab history, so one bad page cannot reach into another tab's session.<span class="hi">हर टैब अपना WebView2 इंस्टेंस है, असली प्रति-टैब हिस्ट्री के साथ, इसलिए कोई बुरा पेज दूसरे टैब के सेशन तक नहीं पहुँच सकता।</span></span></p>
     </div>
     <div class="card c-dev">
       <span class="card-ico">&#127912;</span>
       <h3><span class="tr">Themeable core<span class="hi">थीम योग्य कोर</span></span></h3>
-      <p><span class="tr">The engine is the theme layer. Swap the whole look, not one stylesheet - which is how the Pokemon, Minecraft, GTA 6 and Vice City themes work.<span class="hi">इंजन ही थीम लेयर है। पूरा लुक बदलें, सिर्फ एक स्टाइलशीट नहीं — यही पोकेमॉन, Minecraft, GTA 6 और Vice City थीम का तरीका है।</span></span></p>
+      <p><span class="tr">The engine is the theme layer. Swap the whole look, not one stylesheet - which is how the Pokemon, Minecraft, GTA 6 and Vice City themes work.<span class="hi">इंजन ही थीम लेयर है। पूरा लुक बदलें, सिर्फ एक स्टाइलशीट नहीं - यही पोकेमॉन, Minecraft, GTA 6 और Vice City थीम का तरीका है।</span></span></p>
       <div class="card-actions">
         <a href="/extensions.html" class="btn btn-outline btn-sm"><i class="fas fa-palette"></i> <span class="tr">Extensions<span class="hi">एक्सटेंशन</span></span></a>
+      </div>
+    </div>
+  </div>
+
+  <h2 class="block-title"><span class="tr">What you get<span class="hi">आपको क्या मिलता है</span></span></h2>
+  <p class="block-sub"><span class="tr">The practical side: what PGlove does with your data, and what hardware it asks of you.<span class="hi">व्यावहारिक पक्ष: पीग्लव आपके डेटा के साथ क्या करता है, और कितने हार्डवेयर की माँग करता है।</span></span></p>
+  <div class="grid">
+    <div class="card c-live">
+      <span class="card-ico">&#128274;</span>
+      <h3><span class="tr">Privacy first<span class="hi">प्राइवेसी पहले</span></span></h3>
+      <p><span class="tr">No telemetry, no analytics, no tracking pixels, and no data sold. Your browsing history is written to your own disk and never transmitted to us.<span class="hi">कोई टेलीमेट्री नहीं, कोई एनालिटिक्स नहीं, कोई ट्रैकिंग पिक्सेल नहीं, और डेटा बेचा नहीं जाता। आपकी हिस्ट्री आपकी डिस्क पर लिखी जाती है और हमें कभी नहीं भेजी जाती।</span></span></p>
+      <div class="card-actions">
+        <a href="/privacy/" class="btn btn-ghost btn-sm"><i class="fas fa-shield-halved"></i> <span class="tr">Privacy Policy<span class="hi">गोपनीयता नीति</span></span></a>
       </div>
     </div>
     <div class="card c-archived">
       <span class="card-ico">&#129718;</span>
       <h3><span class="tr">Featherweight<span class="hi">पंखों जितनी हल्की</span></span></h3>
-      <p><span class="tr">Runs happily on 4 GB RAM and integrated Intel UHD Graphics 600 - the same machine this project was written on.<span class="hi">4 GB रैम और इंटीग्रेटेड Intel UHD Graphics 600 पर आराम से चलती है — वही मशीन जिस पर यह प्रोजेक्ट लिखा गया।</span></span></p>
+      <p><span class="tr">Runs happily on 4 GB RAM and integrated Intel UHD Graphics 600 - the same machine this project was written on.<span class="hi">4 GB रैम और इंटीग्रेटेड Intel UHD Graphics 600 पर आराम से चलती है - वही मशीन जिस पर यह प्रोजेक्ट लिखा गया।</span></span></p>
     </div>
     <div class="card c-done">
       <span class="card-ico">&#127471;&#127479;</span>
       <h3><span class="tr">Made in India for the world<span class="hi">भारत में बना, दुनिया के लिए</span></span></h3>
-      <p><span class="tr">Designed, written, and shipped from India for everyone, for next zen internet exploration.<span class="hi">पूरी दुनिया के लिए भारत से डिज़ाइन, लिखा और रिलीज़ किया गया — अगली पीढ़ी की इंटरनेट खोज के लिए।</span></span></p>
+      <p><span class="tr">Designed, written, and shipped from India for everyone, for next zen internet exploration.<span class="hi">पूरी दुनिया के लिए भारत से डिज़ाइन, लिखा और रिलीज़ किया गया - अगली पीढ़ी की इंटरनेट खोज के लिए।</span></span></p>
     </div>
   </div>
 

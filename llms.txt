@@ -1,0 +1,52 @@
+# PGlove
+
+> PGlove is a free, open-source, themeable browser for Windows built on a real Tauri 2 and Rust core with per-tab WebView2 isolation. No telemetry, no analytics, no tracking, no paid tier. Licensed BSD 3-Clause. Made in India for the world, for next zen internet exploration. Stable release v1.0.3.
+
+## Key Pages
+
+- [Homepage](https://pglove.jo3.org/): The whole product in one page — features, downloads, ecosystem, team, credits and support.
+- [v1.0.4 Archive](https://pglove.jo3.org/v1.0.4/): The archived Pokemon-themed release, with 151 hand-drawn 8-bit icons and type-based colour schemes. Permanently available with its source.
+- [Privacy Policy](https://pglove.jo3.org/privacy/): What PGlove collects (nothing), third-party services, cookies, and your data rights.
+- [Terms & Conditions](https://pglove.jo3.org/terms/): BSD 3-Clause licence, acceptable use, intellectual property, warranty disclaimer and liability.
+- [Security Policy](https://pglove.jo3.org/security.txt): Disclosure contact and supported versions, per RFC 9116.
+- [robots.txt](https://pglove.jo3.org/robots.txt): Crawler policy.
+
+## Features
+
+- [Features](https://pglove.jo3.org/#features): Real Tauri 2 core, per-tab isolation, themeable engine, no telemetry, runs on 4 GB RAM.
+- [Extensions](https://pglove.jo3.org/#extensions): Theme layer explained — Pokemon, Minecraft, GTA 6 and Vice City.
+- [Nexa Search](https://pglove.jo3.org/#nexa): Search the web, find the signal. Search integration built by the same team.
+
+## Releases
+
+- [Roadmap](https://pglove.jo3.org/roadmap.html): Every version, what it did, what happened to it, and why v1.0.5–1.0.7 are paused pending funding.
+- [Download](https://pglove.jo3.org/#download): Stable v1.0.3 via NPM, NuGet, Winget (pending), itch.io and the Internet Archive.
+
+## Project
+
+- [Source on GitHub](https://github.com/TechAdityaBRO/PGlove): Canonical repository, BSD 3-Clause, issues and releases.
+- [Mirror on Codeberg](https://codeberg.org/TechAditya/PGlove/): Independent mirror of the same repository.
+- [Pokemon theme source](https://github.com/TechAdityaBRO/PGlove-Pokemon-Rust): The Rust source behind the v1.0.4 Pokemon theme.
+- [Humans](https://pglove.jo3.org/humans.txt): Team roster with roles and contact details.
+
+## Ecosystem
+
+- [BRO GANG AI](https://brogang.techaditya.workers.dev): Next-generation AI assistant on Cloudflare Workers AI.
+- [BRO GANG](https://brogang.techaditya.workers.dev): Community founded in 2022 — gaming, tech and culture.
+- [Pro AI](https://progroupai.created.app/): AI assistant for everyone, built by the team.
+- [Nexa Search](https://nexasearch.pages.dev/): Search the web, find the signal.
+- [PGlove on itch.io](https://progroupco.itch.io/pglove): ProGroupco developer page.
+
+## Community
+
+- [Proton Meet](https://meet.proton.me/join/id-2TF92J77T0#pwd-i3LWO2keD76H): Encrypted video room for live dev sessions.
+- [Slack](https://join.slack.com/t/pglovebrowser/shared_invite/zt-4b78o71fo-LvyQ3u8uNQJjGd7M0Hoqqw): Async discussions, bug reports, feature requests.
+- [Matrix](https://matrix.to/#/#pglove:matrix.org): Decentralised encrypted chat.
+- [Contact](mailto:pglove@atomicmail.io): pglove@atomicmail.io.
+
+## Facts
+
+- Author: Aditya Kumar Sethi (TechAdityaBRO), with BRO GANG and D1M Studios.
+- Stack: Tauri 2, Rust, WebView2. Runs on Windows 10 or later, 64-bit.
+- Developed on 4 GB RAM, Tiny 10 LTSC, Intel UHD Graphics 600 and an Intel Celeron — small hardware can make big changes.
+- Pokémon and all related trademarks, characters and imagery belong to The Pokémon Company. PGlove is an unofficial fan project and is not affiliated with or endorsed by them.
