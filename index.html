@@ -79,7 +79,7 @@
       "foundingDate": "2022",
       "founder": [
         { "@type": "Person", "name": "Aditya Kumar Sethi", "url": "https://github.com/TechAdityaBRO" },
-        { "@type": "Person", "name": "Nimay Ahirwar", "url": "https://github.com/NimayTech", "email": "mailto:nimayahirwar@hotmail.com" },
+        { "@type": "Person", "name": "Nimay Ahirwar", "url": "https://github.com/NimayTech", "email": "mailto:nimayahirwal@hotmail.com" },
         { "@type": "Person", "name": "Darshil Sharma", "email": "mailto:charmendercharmender06@gmail.com" }
       ],
       "sameAs": [
@@ -253,7 +253,7 @@ section.panel.tall{min-height:100vh;display:flex;flex-direction:column;justify-c
 .g-wide{grid-template-columns:repeat(auto-fit,minmax(300px,1fr))}
 .card{background:linear-gradient(160deg,rgba(30,16,84,.6) 0%,rgba(20,10,56,.88) 100%);
   border:1px solid var(--border);border-radius:18px;padding:1.8rem 1.5rem;
-  transition:all .4s var(--ease);backdrop-filter:blur(10px);position:relative;overflow:hidden}
+  transition:all .4s var(--ease);backdrop-filter:blur(10px);position:relative;overflow:visible}
 .card:hover{transform:translateY(-5px);border-color:var(--border-strong);
   box-shadow:0 18px 45px rgba(109,40,217,.22)}
 .card h3{font-family:'Space Grotesk',sans-serif;font-size:1.1rem;font-weight:700;margin-bottom:.55rem}
@@ -436,6 +436,96 @@ footer a:hover{text-decoration:underline}
 .reveal{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.in{opacity:1;transform:none}
 
+/* ============================================================
+   NEXT-LEVEL MOTION
+   Everything below is progressive enhancement. Every effect is
+   gated behind a feature test in JS, and the whole block is
+   neutralised by prefers-reduced-motion at the end.
+   ============================================================ */
+
+/* --- scroll progress rail (sits above the nav) --- */
+.scroll-progress{position:fixed;top:0;left:0;width:100%;height:3px;z-index:200;pointer-events:none}
+.scroll-progress i{display:block;height:100%;width:0;background:
+    linear-gradient(90deg,var(--purple-400),var(--blue-400) 45%,var(--cyan-400));
+  box-shadow:0 0 16px rgba(139,77,255,.85);will-change:width}
+
+/* --- aurora orbs --- */
+.bg-aurora{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden;
+  filter:blur(64px);opacity:.5;contain:strict}
+.orb{position:absolute;border-radius:50%;will-change:transform;transform:translate3d(0,0,0)}
+.orb.o1{width:46vw;height:46vw;left:-10vw;top:-12vw;
+  background:radial-gradient(circle at 32% 32%,rgba(109,40,217,.9),transparent 68%);
+  animation:drift1 27s ease-in-out infinite}
+.orb.o2{width:40vw;height:40vw;right:-8vw;top:22vh;
+  background:radial-gradient(circle at 60% 40%,rgba(37,99,235,.8),transparent 68%);
+  animation:drift2 33s ease-in-out infinite}
+.orb.o3{width:34vw;height:34vw;left:26vw;bottom:-14vw;
+  background:radial-gradient(circle at 50% 50%,rgba(34,211,238,.55),transparent 66%);
+  animation:drift3 39s ease-in-out infinite}
+@keyframes drift1{0%,100%{transform:translate3d(0,0,0) scale(1)}33%{transform:translate3d(7vw,5vh,0) scale(1.12)}66%{transform:translate3d(-4vw,9vh,0) scale(.94)}}
+@keyframes drift2{0%,100%{transform:translate3d(0,0,0) scale(1)}40%{transform:translate3d(-8vw,-7vh,0) scale(1.14)}70%{transform:translate3d(5vw,8vh,0) scale(.92)}}
+@keyframes drift3{0%,100%{transform:translate3d(0,0,0) scale(1)}45%{transform:translate3d(9vw,-9vh,0) scale(1.08)}75%{transform:translate3d(-6vw,-4vh,0) scale(.96)}}
+
+/* --- cursor spotlight (fine pointers only) --- */
+.spot{position:fixed;top:0;left:0;width:560px;height:560px;margin:-280px 0 0 -280px;
+  border-radius:50%;pointer-events:none;z-index:0;opacity:0;transition:opacity .45s ease;
+  background:radial-gradient(circle,rgba(139,77,255,.15),transparent 62%);
+  will-change:transform;transition:opacity .45s ease}
+.spot.on{opacity:1}
+
+/* --- nav scrolled state --- */
+.nav.scrolled{background:rgba(10,4,32,.95);box-shadow:0 12px 44px rgba(0,0,0,.55);
+  border-bottom-color:var(--border-strong)}
+
+/* --- gradient shimmer on display type --- */
+.shimmer{background:linear-gradient(100deg,#fff 0%,var(--purple-200) 22%,var(--cyan-300) 42%,
+    var(--purple-200) 62%,#fff 84%);background-size:240% 100%;
+  -webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;
+  animation:shimmer 8s linear infinite}
+@keyframes shimmer{from{background-position:0% 50%}to{background-position:240% 50%}}
+
+/* --- panel tag light sweep --- */
+.panel-tag{position:relative;overflow:hidden}
+.panel-tag::after{content:'';position:absolute;inset:0;border-radius:99px;
+  background:linear-gradient(90deg,transparent,rgba(171,123,255,.4),transparent);
+  transform:translateX(-100%);animation:sweep 5.5s ease-in-out infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}55%,100%{transform:translateX(100%)}}
+
+/* --- card 3D tilt + pointer glare ---
+   .card::after already owns the 3px top border, so the glare is a
+   background layer rather than a pseudo-element, and the top border
+   gets its own radius now that overflow:hidden is gone. */
+.card{border-radius:18px 18px 18px 18px}
+.card::after{border-radius:18px 18px 0 0}
+.card.tilt{transition:transform .28s var(--ease),border-color .3s,box-shadow .3s;
+  background-image:radial-gradient(420px circle at var(--gx,50%) var(--gy,50%),rgba(139,77,255,.17),transparent 62%),
+    linear-gradient(160deg,rgba(30,16,84,.6) 0%,rgba(20,10,56,.88) 100%);
+  will-change:transform}
+.card.tilt.on{transform:perspective(900px) rotateX(var(--rx,0deg)) rotateY(var(--ry,0deg)) translateY(-5px)}
+
+/* --- magnetic buttons ---
+   No overflow:hidden anywhere near .btn: 45 Hindi tooltips live inside
+   cards and buttons and are positioned above their host, so clipping
+   would hide them. The sheen is a background-position sweep instead. */
+.btn{position:relative;background-size:220% 100%;background-position:0% 50%}
+.btn.magnet{transition:transform .3s var(--ease),box-shadow .3s,background-position .55s ease,filter .3s,color .3s,border-color .3s,background-color .3s}
+.btn.magnet:hover{background-position:100% 50%}
+
+/* --- stagger reveal (delay injected per-element as --d) --- */
+.reveal{transition-delay:var(--d,0ms)}
+
+/* --- count-up target --- */
+.stat-num.counting{font-variant-numeric:tabular-nums}
+
+/* --- reduced motion: hard neutraliser --- */
+@media (prefers-reduced-motion:reduce){
+  .orb,.scroll-progress i,.panel-tag::after,.shimmer,.dot,.loader-bar span{animation:none!important}
+  .card.tilt.on{transform:none!important}
+  .btn.magnet{transform:none!important}
+  .reveal{opacity:1!important;transform:none!important;transition:none!important}
+  .spot{display:none}
+}
+
 /* ---------- i18n hover tooltips ---------- */
 .tr{position:relative;display:inline-block}
 .tr .hi{position:absolute;top:-2.4em;left:50%;
@@ -479,6 +569,8 @@ footer a:hover{text-decoration:underline}
 </head>
 <body>
 
+<div class="scroll-progress" aria-hidden="true"><i id="sbar"></i></div>
+
 <div id="loader">
   <img src="/logo.gif" alt="PGlove" class="loader-logo" width="120" height="120" onerror="this.src='/logo.png'">
   <div class="loader-text">PGlove</div>
@@ -486,7 +578,13 @@ footer a:hover{text-decoration:underline}
 </div>
 
 <div class="bg-grid" aria-hidden="true"></div>
+<div class="bg-aurora" aria-hidden="true">
+  <div class="orb o1" data-par="0.05"></div>
+  <div class="orb o2" data-par="-0.08"></div>
+  <div class="orb o3" data-par="0.12"></div>
+</div>
 <div class="bg-glow" aria-hidden="true"></div>
+<div class="spot" id="spot" aria-hidden="true"></div>
 
 <nav class="nav">
   <a href="/" class="nav-brand">
@@ -926,7 +1024,7 @@ footer a:hover{text-decoration:underline}
         <p><span class="tr">BRO GANG Co-Chairman.<span class="hi">ब्रो गैंग सह-अध्यक्ष।</span></span></p>
         <div class="card-actions" style="justify-content:center">
           <a href="https://github.com/NimayTech" class="btn btn-ghost btn-sm" target="_blank" rel="noopener"><i class="fab fa-github"></i> NimayTech</a>
-          <a href="mailto:nimayahirwar@hotmail.com" class="btn btn-ghost btn-sm"><i class="fas fa-envelope"></i> Email</a>
+          <a href="mailto:nimayahirwal@hotmail.com" class="btn btn-ghost btn-sm"><i class="fas fa-envelope"></i> Email</a>
         </div>
       </div>
       <div class="card team-card reveal">
@@ -1264,6 +1362,159 @@ footer a:hover{text-decoration:underline}
         }
       })
       .catch(function () { info.textContent = 'Unavailable'; });
+  }
+})();
+
+/* ============================================================
+   NEXT-LEVEL MOTION
+   All of it is progressive enhancement: gated on feature tests,
+   bailing out entirely under prefers-reduced-motion, and driven by
+   a single rAF-throttled scroll handler. No layout thrash.
+   ============================================================ */
+(function () {
+  'use strict';
+
+  var mqReduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)');
+  var mqFine = window.matchMedia && window.matchMedia('(hover: hover) and (pointer: fine)');
+
+  // Reduced motion: un-hide everything the reveal observer would have
+  // revealed, then do nothing else.
+  if (mqReduce && mqReduce.matches) {
+    var stuck = document.querySelectorAll('.reveal');
+    for (var s = 0; s < stuck.length; s++) stuck[s].classList.add('in');
+    return;
+  }
+
+  var fine = !!(mqFine && mqFine.matches);
+
+  /* ---- animated gradient on display type ---- */
+  var display = document.querySelectorAll('.hero-title, .panel-title');
+  for (var d = 0; d < display.length; d++) display[d].classList.add('shimmer');
+
+  /* ---- stagger: cascade siblings instead of firing as one block ---- */
+  var reveals = document.querySelectorAll('.reveal');
+  for (var r = 0; r < reveals.length; r++) {
+    var el = reveals[r];
+    var sibs = el.parentNode ? el.parentNode.children : null;
+    var idx = sibs ? Array.prototype.indexOf.call(sibs, el) : 0;
+    el.style.setProperty('--d', (idx < 0 || idx > 14 ? 0 : idx * 65) + 'ms');
+  }
+
+  /* ---- scroll progress + nav scrolled state (one rAF per frame) ---- */
+  var sbar = document.getElementById('sbar');
+  var nav = document.querySelector('.nav');
+  var queued = false;
+
+  function paint() {
+    queued = false;
+    var y = window.pageYOffset;
+    var span = (document.documentElement.scrollHeight - window.innerHeight) || 1;
+    if (sbar) sbar.style.width = (Math.min(1, Math.max(0, y / span)) * 100).toFixed(2) + '%';
+    if (nav) {
+      if (y > 24) nav.classList.add('scrolled');
+      else nav.classList.remove('scrolled');
+    }
+  }
+  function onScroll() {
+    if (!queued) { queued = true; requestAnimationFrame(paint); }
+  }
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', onScroll, { passive: true });
+  paint();
+
+  /* ---- cursor spotlight ---- */
+  var spot = document.getElementById('spot');
+  if (spot && fine) {
+    var sx = 0, sy = 0, tx = 0, ty = 0, spotQueued = false;
+    function spotLoop() {
+      spotQueued = false;
+      sx += (tx - sx) * 0.12;
+      sy += (ty - sy) * 0.12;
+      spot.style.transform = 'translate3d(' + sx.toFixed(1) + 'px,' + sy.toFixed(1) + 'px,0)';
+      if (Math.abs(tx - sx) > 0.4 || Math.abs(ty - sy) > 0.4) {
+        spotQueued = true;
+        requestAnimationFrame(spotLoop);
+      }
+    }
+    window.addEventListener('pointermove', function (e) {
+      tx = e.clientX; ty = e.clientY;
+      spot.classList.add('on');
+      if (!spotQueued) { spotQueued = true; requestAnimationFrame(spotLoop); }
+    }, { passive: true });
+    document.addEventListener('pointerleave', function () { spot.classList.remove('on'); });
+  }
+
+  /* ---- card tilt + pointer glare (desktop only) ---- */
+  if (fine) {
+    var cards = document.querySelectorAll('.card');
+    for (var c = 0; c < cards.length; c++) {
+      (function (card) {
+        card.classList.add('tilt');
+        card.addEventListener('pointerenter', function () { card.classList.add('on'); });
+        card.addEventListener('pointermove', function (e) {
+          var box = card.getBoundingClientRect();
+          var px = (e.clientX - box.left) / box.width;
+          var py = (e.clientY - box.top) / box.height;
+          card.style.setProperty('--gx', (px * 100).toFixed(1) + '%');
+          card.style.setProperty('--gy', (py * 100).toFixed(1) + '%');
+          card.style.setProperty('--ry', ((px - 0.5) * 7).toFixed(2) + 'deg');
+          card.style.setProperty('--rx', ((0.5 - py) * 7).toFixed(2) + 'deg');
+        });
+        card.addEventListener('pointerleave', function () {
+          card.classList.remove('on');
+          card.style.setProperty('--rx', '0deg');
+          card.style.setProperty('--ry', '0deg');
+        });
+      })(cards[c]);
+    }
+
+    /* ---- magnetic buttons ---- */
+    var btns = document.querySelectorAll('.btn');
+    for (var b = 0; b < btns.length; b++) {
+      (function (btn) {
+        btn.classList.add('magnet');
+        btn.addEventListener('pointermove', function (e) {
+          var box = btn.getBoundingClientRect();
+          var dx = (e.clientX - (box.left + box.width / 2)) * 0.16;
+          var dy = (e.clientY - (box.top + box.height / 2)) * 0.24;
+          btn.style.transform = 'translate3d(' + dx.toFixed(1) + 'px,' + dy.toFixed(1) + 'px,0) scale(1.03)';
+        });
+        btn.addEventListener('pointerleave', function () { btn.style.transform = ''; });
+      })(btns[b]);
+    }
+  }
+
+  /* ---- stat count-up ----
+     Only runs on elements whose whole text is a number plus an optional
+     non-digit suffix, so version strings like "v1.0.3" are left alone.
+     Elements containing markup are skipped to avoid flattening them. */
+  function countUp(el) {
+    if (el.children.length) return;
+    var txt = (el.textContent || '').trim();
+    var m = txt.match(/^(\d+)(\D[\s\S]*)?$/);
+    if (!m) return;
+    var target = parseInt(m[1], 10);
+    if (isNaN(target) || target > 10000) return;
+    var suffix = m[2] || '';
+    var t0 = performance.now();
+    var dur = 1100;
+    el.classList.add('counting');
+    function step(now) {
+      var p = Math.min(1, (now - t0) / dur);
+      var e = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * e) + suffix;
+      if (p < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+  var nums = document.querySelectorAll('.stat-num');
+  if (nums.length && 'IntersectionObserver' in window) {
+    var nio = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (en.isIntersecting) { countUp(en.target); nio.unobserve(en.target); }
+      });
+    }, { threshold: 0.6 });
+    for (var n = 0; n < nums.length; n++) nio.observe(nums[n]);
   }
 })();
 </script>
